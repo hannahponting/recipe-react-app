@@ -28,16 +28,18 @@ return(
                         // </div>
 
 
-                <Card style={{ width: '18rem' }}>
-                    <Card.Img variant="top" src={recipe.image} />
-                    <Card.Body>
-                        <Card.Title>{recipe.name}</Card.Title>
-                        <Card.Text>
-                            cuisine: {recipe.cuisine}
-                        </Card.Text>
-                        <Button variant="primary">Go somewhere</Button>
-                    </Card.Body>
-                </Card>
+                    <Card style={{width: '18rem'}}>
+                        <Card.Img   variant="top" src={`http://localhost:8080/api/recipes/image/${recipe.id}`} style={{ width: '300px', height: '300px' }}
+                         />
+
+                        <Card.Body>
+                            <Card.Title>{recipe.name}</Card.Title>
+                            <Card.Text>
+                                cuisine: {recipe.cuisine}
+                            </Card.Text>
+                            <Button variant="primary">See the details</Button>
+                        </Card.Body>
+                    </Card>
 
 
                 )
