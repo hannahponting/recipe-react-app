@@ -1,10 +1,27 @@
 import * as React from "https://cdn.skypack.dev/react@17.0.1";
 import "./recipeCard.css";
-import {GetRecipes} from "../utils";
+import {GetRecipesPaginated} from "../utils";
 import { Link } from "react-router-dom";
+import { useEffect, useState } from "react";
 
-function RecipeCardList(props) {
-    const recipes  = props.recipes;
+function RecipeCardList() {
+    const [recipes, setRecipes] = useState([]);
+    const [currentPage, setCurrentPage] = useState(1);
+    let data = GetRecipesPaginated(currentPage, 10);
+    const fetchedRecipes = data.recipes;
+    const [totalPages, setTotalPages] = useState(1);
+
+    useEffect(() => {
+        setRecipes(fetchedRecipes);
+    }, [currentPage, data]);
+    useEffect(() => {
+        setTotalPages(data.totalPages);
+    }, [data]);
+    const handlePageChange = (newPage) => {
+        if (newPage > 0 && newPage <= totalPages) {
+            setCurrentPage(newPage);
+        }
+    };
     return <div className="wrapper">
 
         {recipes.map((recipe) => {
@@ -12,6 +29,7 @@ function RecipeCardList(props) {
             return (
 
                 <Card
+                    key={recipe.id}
                     img={`http://localhost:8080/api/recipes/image/${recipe.id}`}
                     title={recipe.name}
                     description="Take your boring salads up a knotch. This recipe is perfect for lunch
@@ -21,7 +39,12 @@ function RecipeCardList(props) {
 
             )
         })}
-
+<button onClick={() => handlePageChange(currentPage - 1)} disabled={currentPage === 1}>
+                Previous Page
+            </button>
+            <button onClick={() => handlePageChange(currentPage + 1)} disabled={currentPage === totalPages}>
+                Next Page
+            </button>
     </div>;
 }
 
