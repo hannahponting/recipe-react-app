@@ -3,8 +3,8 @@ import './App.css';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
 import WelcomePage from './WelcomePage';
-import RecipePage from './RecipePage';
 import RecipeDetails from './RecipeDetails';
+import RecipeCardList from "../src/recipe/recipeCard.js"
 import NavBar from './NavBar';
 
 function App() {
@@ -12,10 +12,11 @@ function App() {
     <div className="App">
               <BrowserRouter>
       <Routes>
-            <Route path='/' element={<NavBar />}>
-            <Route path="/" element={<WelcomePage />}/>
-            <Route path="/recipes" element={<RecipePage />}/>
-            <Route path="/recipes/:id" element={<RecipeDetails/>}/>
+              <Route path='/' element={<NavBar />}>
+              <Route path="/" element={<WelcomePage />}/>
+              <Route path="/recipes" element={<RecipeCardList />}/>
+              <Route path="/recipes/:id" element={<RecipeDetails/>}/>
+
             </Route>
       </Routes>
       </BrowserRouter>
