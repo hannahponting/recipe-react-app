@@ -7,13 +7,14 @@ import RecipeDetails from './RecipeDetails';
 import RecipeCardList from "../src/recipe/recipeCard.js"
 import NavBar from './NavBar';
 import WhoWeAre from './WhoWeAre';
+import { GetRecipes } from './utils.js';
 
 function App() {
+
+  const recipes = GetRecipes();
   return (
     <div className="App">
-
-
-      
+             
       <BrowserRouter>
         <Routes>
           <Route path='/' element={<NavBar />}>
