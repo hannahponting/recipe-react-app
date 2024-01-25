@@ -1,0 +1,39 @@
+.heading{
+    color: #000;
+    font-feature-settings: 'clig' off, 'liga' off;
+    font-family: Newsreader;
+    font-size: 64px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 120%; /* 76.8px */
+    letter-spacing: -1.28px;
+}
+
+.properties{
+    list-style-type: none;
+}
+
+.timer{
+    width: 18px;
+    height: 18px;
+    float: left;
+}
+
+.boxes{
+    margin-top: 20px;  
+}
+
+.details{
+    text-align: left;
+    padding-top: 50px;
+    padding-right: 30px;
+    padding-bottom: 50px;
+    padding-left: 80px;
+}
+
+.details_image{
+    width: 231px;
+    height: 270px;
+    float:right;
+
+}
