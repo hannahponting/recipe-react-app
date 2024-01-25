@@ -1,6 +1,7 @@
 import * as React from "https://cdn.skypack.dev/react@17.0.1";
 import "./recipeCard.css";
 import {GetRecipes} from "../utils";
+import { Link } from "react-router-dom";
 
 function RecipeCardList() {
     const recipes = GetRecipes();
@@ -15,6 +16,7 @@ function RecipeCardList() {
                     title={recipe.name}
                     description="Take your boring salads up a knotch. This recipe is perfect for lunch
       and only contains 5 ingredients!"
+                    id={recipe.id}
                 />
 
             )
@@ -24,6 +26,7 @@ function RecipeCardList() {
 }
 
 function Card(props) {
+    let link = "/recipes/"+props.id;
     return (
         <div className="card">
             <div className="card__body">
@@ -31,7 +34,9 @@ function Card(props) {
                 <h2 className="card__title">{props.title}</h2>
                 <p className="card__description">{props.description}</p>
             </div>
+            <Link to = {link}>
             <button className="card__btn">View Recipe</button>
+            </Link>
         </div>
     );
 }
