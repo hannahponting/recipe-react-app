@@ -3,8 +3,8 @@ import "./recipeCard.css";
 import {GetRecipes} from "../utils";
 import { Link } from "react-router-dom";
 
-function RecipeCardList() {
-    const recipes = GetRecipes();
+function RecipeCardList(props) {
+    const recipes  = props.recipes;
     return <div className="wrapper">
 
         {recipes.map((recipe) => {
