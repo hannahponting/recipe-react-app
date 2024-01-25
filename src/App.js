@@ -6,6 +6,7 @@ import WelcomePage from './WelcomePage';
 import RecipeDetails from './RecipeDetails';
 import RecipeCardList from "../src/recipe/recipeCard.js"
 import NavBar from './NavBar';
+import WhoWeAre from './WhoWeAre';
 import { GetRecipes } from './utils.js';
 
 function App() {
@@ -13,15 +14,17 @@ function App() {
   const recipes = GetRecipes();
   return (
     <div className="App">
-              <BrowserRouter>
-      <Routes>
-              <Route path='/' element={<NavBar />}>
-              <Route path="/" element={<WelcomePage />}/>
-              <Route path="/recipes" element={<RecipeCardList recipes = {recipes}/>}/>
-              <Route path="/recipes/:id" element={<RecipeDetails recipes = {recipes}/>}/>
+             
+      <BrowserRouter>
+        <Routes>
+          <Route path='/' element={<NavBar />}>
+            <Route path="/" element={<WelcomePage />} />
+            <Route path="/recipes" element={<RecipeCardList />} />
+            <Route path="/recipes/:id" element={<RecipeDetails />} />
+            <Route path="/WhoWeAre" element={<WhoWeAre />} />
 
-            </Route>
-      </Routes>
+          </Route>
+        </Routes>
       </BrowserRouter>
     </div>
   );
