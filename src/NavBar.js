@@ -1,11 +1,24 @@
-import { Link, Outlet } from "react-router-dom";
-import React from "react";
+import { Link, Navigate, Outlet, useNavigate } from "react-router-dom";
+import React, { useEffect } from "react";
+import { useState } from "react";
 import "./NavBar.css";
 import { Nav } from "react-bootstrap";
+import { InputGroup } from "react-bootstrap";
 
 
 
 const Navigation = () => {
+
+        const [searchTerm, setSearchTerm] = useState('');
+        const navigate = useNavigate();
+        
+
+        const handleSearch = () => {
+          navigate(`/recipes/search?keyword=${encodeURIComponent(searchTerm)}`)
+        }
+
+
+     
     return (
 
         <div className="navigation">
@@ -33,7 +46,23 @@ const Navigation = () => {
                 </div>
             </div>
 
+
+            <div className="search-container">
+              <input
+                type="text"
+                value={searchTerm}
+                onChange={(e) => setSearchTerm(e.target.value)}
+                
+              />
+              <button onClick={handleSearch}>Search</button>
+              </div>
+
+            
             <Outlet />
+
+
+            
+      
 
         </div>
 
