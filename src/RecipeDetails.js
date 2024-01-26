@@ -13,15 +13,17 @@ function RecipeDetails(props) {
             return (
         <div className="details-page">
                 <h1 className="heading">{recipe.name}</h1>
+                <div className="Divider"></div>
                 <div className="details">
                     <div class="details_image">
                     <StarRating rating={recipe.rating} number={recipe.ratingCount}></StarRating>
                      <img src={`http://localhost:8080/api/recipes/image/${recipe.id}`}class="details_image"/>
                      </div>
+
                         <h2>Details</h2>
                         <ul className="properties">
                         <li><img src={require('./icons8-clock-100 1.png')} className="timer"/>
-                            <strong> &nbsp;Time to cook: </strong>{recipe.time_to_cook}</li>
+                            <strong> &nbsp;</strong>{recipe.time_to_cook}</li>
                             <li><strong>Name: </strong>{recipe.name}</li>
                             <li><strong>Meal Type: </strong>{recipe.mealType[0] + recipe.mealType.slice(1).toLowerCase()}</li>
                             <li><strong>Cuisine: </strong>{recipe.cuisine[0] + recipe.cuisine.slice(1).toLowerCase()}</li>

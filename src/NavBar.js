@@ -12,7 +12,7 @@ const Navigation = () => {
             </div>
             <div className="div"><Link to="/">Home</Link> </div>
             <div className="cart-button">
-                <div className="text-wrapper-2">Who we are</div>
+                <div className="text-wrapper-2"><Link to="/WhoWeAre">Who we are</Link></div>
             </div>
             <Outlet />
 
