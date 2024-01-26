@@ -1,6 +1,6 @@
 import * as React from "https://cdn.skypack.dev/react@17.0.1";
 import "./recipeCard.css";
-import {GetRecipesPaginated} from "../utils";
+import { GetRecipesPaginated } from "../utils";
 import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 
@@ -41,26 +41,36 @@ function RecipeCardList() {
 
             )
         })}
-<button onClick={() => handlePageChange(currentPage - 1)} disabled={currentPage === 1}>
-                Previous Page
-            </button>
-            <button onClick={() => handlePageChange(currentPage + 1)} disabled={currentPage === totalPages}>
-                Next Page
-            </button>
+
+        <div className="row">
+            <div className="column">
+                <button className="button" onClick={() => handlePageChange(currentPage - 1)} disabled={currentPage === 1}>
+                    Previous Page
+                </button>
+            </div>
+            <div className="column">
+                <button className="button" onClick={() => handlePageChange(currentPage + 1)} disabled={currentPage === totalPages}>
+                    Next Page
+                </button>
+            </div>
+
+
+        </div>
+
     </div>;
 }
 
 function Card(props) {
-    let link = "/recipes/"+props.id;
+    let link = "/recipes/" + props.id;
     return (
         <div className="card">
             <div className="card__body">
-                <img src={props.img} class="card__image"/>
+                <img src={props.img} class="card__image" />
                 <h2 className="card__title">{props.title}</h2>
                 <p className="card__description">{props.description}</p>
             </div>
-            <Link to = {link}>
-            <button className="card__btn">View Recipe</button>
+            <Link to={link}>
+                <button className="card__btn">View Recipe</button>
             </Link>
         </div>
     );
