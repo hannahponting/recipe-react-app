@@ -3,6 +3,7 @@ import React from "react";
 import "./NavBar.css";
 
 
+
 const Navigation = () => {
     return (
         <div className="navigation">
@@ -14,6 +15,7 @@ const Navigation = () => {
                 <div className="text-wrapper-2">Who we are</div>
             </div>
             <Outlet />
+
 
             <img className="nerd-logo-removebg" alt="Nerd logo removebg" src="./Nerd_logo-removebg-preview.png" />
         </div>
