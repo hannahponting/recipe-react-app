@@ -45,7 +45,7 @@
 }
 
 .navigation .cart-button {
-    background-color: #07689f;
+    /*background-color: #07689f;*/
     border-radius: 8px;
     height: 48px;
     left: 1218px;
@@ -57,11 +57,11 @@
 
 .navigation .text-wrapper-2 {
     color: #ffffff;
-    font-family: "Inter-SemiBold", Helvetica;
+    font-family: "Inter-Regular", Helvetica;
     font-size: 16px;
-    font-weight: 600;
+    /*font-weight: 600;*/
     height: 21px;
-    left: 18px;
+    left: 0px;
     letter-spacing: 0;
     line-height: 20.8px;
     position: absolute;
