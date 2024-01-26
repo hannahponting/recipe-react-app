@@ -2,6 +2,8 @@
     height: 112px;
     position: relative;
     width: 1440px;
+    padding-top: 150px;
+
 }
 
 .navigation .overlap-group {
@@ -73,6 +75,6 @@
     left: 73px;
     object-fit: cover;
     position: absolute;
-    top: 32px;
+    top: 25px;
     width: 131px;
 }

@@ -22,6 +22,8 @@ function RecipeCardList() {
             setCurrentPage(newPage);
         }
     };
+
+
     return <div className="wrapper">
 
         {recipes.map((recipe) => {
