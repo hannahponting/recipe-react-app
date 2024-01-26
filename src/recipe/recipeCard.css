@@ -33,6 +33,7 @@ body {
     justify-content: space-between;
     cursor: pointer;
     transition: transform 200ms ease-in;
+    border-radius: 5%;
 }
 .card__image {
     height: 12rem;
@@ -64,3 +65,27 @@ body {
     background: #07689F;
     color: white;
 }
+.row {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+  }
+  
+  .column {
+    float: 100px;
+    width:75%;
+    padding: 10px;
+  }
+
+.button{
+    background-color: white;
+      color: #07689f;
+      font-size: 20px;
+      padding: 10px 60px;
+      float: right;
+      border-radius: 5px;
+      margin: 10px 0px;
+      cursor: pointer;
+    
+    
+    }

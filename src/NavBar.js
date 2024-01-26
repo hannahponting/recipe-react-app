@@ -1,24 +1,43 @@
 import { Link, Outlet } from "react-router-dom";
 import React from "react";
 import "./NavBar.css";
+import { Nav } from "react-bootstrap";
 
 
 
 const Navigation = () => {
     return (
+
         <div className="navigation">
-            <div className="overlap-group">
-                <div className="text-wrapper"><Link to={"/recipes"}>Recipes</Link></div>
+            <div className="row">
+                <div className="column">
+                    <img className="nerd-logo-removebg" alt="Nerd logo removebg" src="../invertedNerdLogo.png" />
+
+                </div>
+                <div className="column">
+                    <Link to={"/"}>
+                        <button className="button">Home</button>
+                    </Link>
+
+                </div>
+                <div className="column">
+                    <Link to={"/recipes"}>
+                        <button className="button">Recipes</button>
+                    </Link>
+
+                </div>
+                <div className="column">
+                    <Link to={"/WhoWeAre"}>
+                        <button className="button">Who We Are</button>
+                    </Link>
+                </div>
             </div>
-            <div className="div"><Link to="/">Home</Link> </div>
-            <div className="cart-button">
-                <div className="text-wrapper-2"><Link to="/WhoWeAre">Who we are</Link></div>
-            </div>
+
             <Outlet />
 
-
-            <img className="nerd-logo-removebg" alt="Nerd logo removebg" src="./Nerd_logo-removebg-preview.png" />
         </div>
+
+
     );
 };
 export default Navigation;
