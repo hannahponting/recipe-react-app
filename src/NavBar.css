@@ -1,0 +1,80 @@
+.navigation {
+    height: 112px;
+    position: relative;
+    width: 1440px;
+    padding-top: 150px;
+
+}
+
+.navigation .overlap-group {
+    height: 21px;
+    left: 1120px;
+    position: absolute;
+    top: 44px;
+    width: 60px;
+}
+
+.navigation .text-wrapper {
+    color: #000000;
+    font-family: "Inter-Regular", Helvetica;
+    font-size: 16px;
+    font-weight: 400;
+    height: 21px;
+    left: 0;
+    letter-spacing: 0;
+    line-height: 20.8px;
+    position: absolute;
+    text-align: center;
+    top: 0;
+    white-space: nowrap;
+}
+
+.navigation .div {
+    color: #000000;
+    font-family: "Inter-Regular", Helvetica;
+    font-size: 16px;
+    font-weight: 400;
+    height: 21px;
+    left: 1037px;
+    letter-spacing: 0;
+    line-height: 20.8px;
+    position: absolute;
+    text-align: center;
+    top: 44px;
+    white-space: nowrap;
+}
+
+.navigation .cart-button {
+    background-color: #07689f;
+    border-radius: 8px;
+    height: 48px;
+    left: 1218px;
+    overflow: hidden;
+    position: absolute;
+    top: 32px;
+    width: 126px;
+}
+
+.navigation .text-wrapper-2 {
+    color: #ffffff;
+    font-family: "Inter-SemiBold", Helvetica;
+    font-size: 16px;
+    font-weight: 600;
+    height: 21px;
+    left: 18px;
+    letter-spacing: 0;
+    line-height: 20.8px;
+    position: absolute;
+    text-align: center;
+    top: 12px;
+    white-space: nowrap;
+}
+
+.navigation .nerd-logo-removebg {
+    height: 80px;
+    left: 73px;
+    object-fit: cover;
+    position: absolute;
+    top: 25px;
+    width: 131px;
+}
