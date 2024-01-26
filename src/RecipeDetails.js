@@ -10,9 +10,11 @@ function RecipeDetails(props) {
             return (
         <div className="details-page">
                 <h1 className="heading">{recipe.name}</h1>
+                <div className="Divider"></div>
                 <div className="details">
             
                      <img src={`http://localhost:8080/api/recipes/image/${recipe.id}`}class="details_image"/>
+                     
                         <h2>Details</h2>
                         <ul className="properties">
                         <li><img src={require('./icons8-clock-100 1.png')} className="timer"/>

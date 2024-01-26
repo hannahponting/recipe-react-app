@@ -51,9 +51,9 @@ body {
     font-weight: bold;
     font-size: 1rem;
     margin: 1rem;
-    border: 2px solid #d50000;
+    border: 2px solid #07689F;
     background: transparent;
-    color: #d50000;
+    color: #07689F;
     border-radius: 0.2rem;
     transition: background 200ms ease-in, color 200ms ease-in;
 }
@@ -61,6 +61,6 @@ body {
     transform: scale(1.02);
 }
 .card:hover .card__btn {
-    background: #d50000;
+    background: #07689F;
     color: white;
 }

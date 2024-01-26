@@ -7,8 +7,12 @@
     font-weight: 400;
     line-height: 120%; /* 76.8px */
     letter-spacing: -1.28px;
-    align-items: left;
-    
+    /* margin-right:50%; */
+    text-align: left;
+    /* align-items: left; */
+    padding-left: 5%;
+    font-weight: 400;
+    line-height: 120%;
     
 }
 
@@ -43,6 +47,9 @@
     width: auto;
     height: 500px;
     float:right;
+    border-radius: 2%;
+    border-color: #000;
+
 
 }
 
@@ -52,4 +59,13 @@
 
 .recipe-instructions{
     margin:15px;
+}
+
+.Divider {
+    width: auto;
+    height: 0;
+    box-shadow: 0px 4px 4px rgba (0,0,0,0.25);
+    border: 2px;
+    border-color: lightgrey;
+    border-style: solid;
 }
