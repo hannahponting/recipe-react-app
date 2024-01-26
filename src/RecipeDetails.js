@@ -3,6 +3,7 @@ import { GetRecipes, GetRecipesById } from "./utils";
 import "./RecipeDetails.css";
 import { useState } from "react";
 import StarRating from "./StarRating";
+import RateRecipe from "./RateRecipe";
 
 
 function RecipeDetails(props) {
@@ -48,6 +49,10 @@ function RecipeDetails(props) {
                             {recipe.instructions.map((ingredient, index) => {
                             return <li key="{index}">{ingredient}</li>})}
                         </ul>
+                        <div>
+                            <h3>Rate this recipe?</h3>
+                            <RateRecipe id={recipe.id}></RateRecipe>
+                        </div>
                         </div>
                         </div>
 
