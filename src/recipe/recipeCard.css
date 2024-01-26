@@ -64,3 +64,10 @@ body {
     background: #d50000;
     color: white;
 }
+
+.search-error-container {
+   
+    height: 300px;
+    margin-top: 40px;
+
+}

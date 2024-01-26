@@ -8,6 +8,7 @@ import RecipeCardList from "../src/recipe/recipeCard.js"
 import NavBar from './NavBar';
 import WhoWeAre from './WhoWeAre';
 import { GetRecipes } from './utils.js';
+import RecipeSearchResults from './recipeSearchResults.js';
 
 function App() {
 
@@ -21,6 +22,8 @@ function App() {
             <Route path="/" element={<WelcomePage />} />
             <Route path="/recipes" element={<RecipeCardList />} />
             <Route path="/recipes/:id" element={<RecipeDetails />} />
+            <Route path="/recipes/search" element={<RecipeSearchResults />} />
+
             <Route path="/WhoWeAre" element={<WhoWeAre />} />
 
           </Route>

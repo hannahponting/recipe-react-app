@@ -1,13 +1,21 @@
 import * as React from "https://cdn.skypack.dev/react@17.0.1";
-import "./recipeCard.css";
-import {GetRecipesPaginated} from "../utils";
-import { Link } from "react-router-dom";
+import "./recipe/recipeCard.css";
+import {GetRecipesByKeyword, GetRecipesPaginated} from "./utils";
+import { Link, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
+import { useLocation } from "react-router-dom";
+import { Navbar } from "react-bootstrap";
 
-function RecipeCardList() {
+function RecipeSearchResults() {
+    const location = useLocation();
+    const searchTerm = new URLSearchParams(location.search).get('keyword')
+
+       
+    
     const [recipes, setRecipes] = useState([]);
     const [currentPage, setCurrentPage] = useState(1);
-    let data = GetRecipesPaginated(currentPage, 10);
+    let data = GetRecipesByKeyword(searchTerm)
+    let searchdata = data
     const fetchedRecipes = data.recipes;
     const [totalPages, setTotalPages] = useState(1);
 
@@ -23,13 +31,14 @@ function RecipeCardList() {
         }
     };
 
-
+    if (searchdata.length > 0) {   
+        
+        
     return <div className="wrapper">
 
-        {recipes.map((recipe) => {
-
-            return (
-
+    {searchdata.map((recipe) => {
+       
+            return (<> 
                 <Card
                     key={recipe.id}
                     img={`http://localhost:8080/api/recipes/image/${recipe.id}`}
@@ -38,17 +47,54 @@ function RecipeCardList() {
       and only contains 5 ingredients!"
                     id={recipe.id}
                 />
-
+</>
             )
-        })}
-<button onClick={() => handlePageChange(currentPage - 1)} disabled={currentPage === 1}>
-                Previous Page
-            </button>
-            <button onClick={() => handlePageChange(currentPage + 1)} disabled={currentPage === totalPages}>
-                Next Page
-            </button>
-    </div>;
+        }
+    )}
+
+
+
+
+
+
+
+
+
+
+
+        
+</div>; }
+
+        else return (
+                <h1 className="search-error-container 
+                    ">
+                    Please enter a valid recipe to search for!
+                </h1>
+
+        )
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+   
 }
+
+
+
+
+
+
+
+
 
 function Card(props) {
     let link = "/recipes/"+props.id;
@@ -66,4 +112,4 @@ function Card(props) {
     );
 }
 
-export default RecipeCardList;
+export default RecipeSearchResults;
