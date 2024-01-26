@@ -8,20 +8,36 @@ function RecipeCardList() {
     const [recipes, setRecipes] = useState([]);
     const [currentPage, setCurrentPage] = useState(1);
     let data = GetRecipesPaginated(currentPage, 10);
-    const fetchedRecipes = data.recipes;
+    const [fetchedRecipes, setFetchedRecipes] = useState(data.recipes);
     const [totalPages, setTotalPages] = useState(1);
 
+    
     useEffect(() => {
-        setRecipes(fetchedRecipes);
-    }, [currentPage, data]);
+        setRecipes((prevRecipes) => [...prevRecipes, ...fetchedRecipes]);
+    }, [currentPage]);
+    useEffect(() => {
+        setFetchedRecipes(data.recipes);
+    }, [data, totalPages]);
     useEffect(() => {
         setTotalPages(data.totalPages);
-    }, [data]);
-    const handlePageChange = (newPage) => {
-        if (newPage > 0 && newPage <= totalPages) {
-            setCurrentPage(newPage);
+    }, [data.totalPages]);
+    const handleScroll = () => {
+        const windowHeight = window.innerHeight;
+        const documentHeight = document.documentElement.scrollHeight;
+        const scrollTop = document.documentElement.scrollTop;
+    
+        if (scrollTop + windowHeight >= documentHeight - 100) {
+          if (currentPage <= totalPages) {
+            setCurrentPage((prevPage) => prevPage + 1);
+          }
         }
-    };
+      };
+      useEffect(() => {
+        window.addEventListener('scroll', handleScroll);
+        return () => {
+          window.removeEventListener('scroll', handleScroll);
+        };
+      }, [currentPage, totalPages]);
     return <div className="wrapper">
 
         {recipes.map((recipe) => {
@@ -39,12 +55,6 @@ function RecipeCardList() {
 
             )
         })}
-<button onClick={() => handlePageChange(currentPage - 1)} disabled={currentPage === 1}>
-                Previous Page
-            </button>
-            <button onClick={() => handlePageChange(currentPage + 1)} disabled={currentPage === totalPages}>
-                Next Page
-            </button>
     </div>;
 }
 
