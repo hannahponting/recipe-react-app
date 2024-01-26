@@ -90,3 +90,35 @@ export function GetRecipesPaginated(pageNum, pageSize){
     return data;
 
 }
+
+
+export function PostRating(id, rate){
+    const initialState = {
+        isLoading: true,
+        recipes: []
+    }
+    const [data, setData] = useState(initialState)
+
+    const requestBody = {
+        recipe: {
+            id: id,
+        },
+        myRating: rate,
+    };
+
+    const getData = async () => {
+        const response = await fetch('http://localhost:8080/api/recipes/rating', {
+            method: 'PATCH',
+            body: JSON.stringify(requestBody),
+        });
+        const body = await response.json()
+        console.log(body);
+        setData({ recipes: body, isLoading: false })
+
+    }
+    useEffect(() => {
+        getData()
+    }, [])
+
+    return data.recipes;
+}

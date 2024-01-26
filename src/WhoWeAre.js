@@ -12,7 +12,7 @@ const WhoWeAre = (props) => {
         <>
             <h1 className="Title">Who we are</h1>
 
-            <div className="Divider" style={{width: 1850, height: 0, boxShadow: '0px 4px 4px rgba(0, 0, 0, 0.25)', border: '2px #E6E6E6 solid'}}></div>
+            <div className="Divider"></div>
 
             <div className="TextContainer">
                 <div className="TextBody"><br />Welcome to NERD Recipes where passion meets practicality in the world of culinary delights!
