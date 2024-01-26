@@ -1,0 +1,19 @@
+.star{
+    width: 30px;
+    height: 30px;
+
+}
+
+.star-container{
+    font-size: 26px;
+    align-content: center;
+    display: inline-block;
+    
+}
+
+.font{
+    float: right;
+    position: relative;
+    bottom: 2px;
+    padding-left: 5px;
+}
