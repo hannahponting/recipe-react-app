@@ -3,7 +3,7 @@ import { GetRecipes, GetRecipesById } from "./utils";
 import "./RecipeDetails.css";
 import { useState } from "react";
 import StarRating from "./StarRating";
-import Rate from "./rating";
+import RateRecipe from "./RateRecipe";
 
 
 function RecipeDetails(props) {
@@ -51,7 +51,7 @@ function RecipeDetails(props) {
                         </ul>
                         <div>
                             <h3>Rate this recipe?</h3>
-                            <Rate id={recipe.id}></Rate>
+                            <RateRecipe id={recipe.id}></RateRecipe>
                         </div>
                         </div>
                         </div>
