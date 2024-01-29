@@ -5,6 +5,7 @@ const RecipeFilter = ({ applyFilters }) => {
     const [difficultyLevel, setDifficultyLevel] = useState('EASY');
     const [spiceLevel, setSpiceLevel] = useState('NONE');
 
+
     const handleCostChange = (e) => {
         setCostLevel(e.target.value);
     };
@@ -16,8 +17,6 @@ const RecipeFilter = ({ applyFilters }) => {
     const handleSpiceLevelChange = (e) => {
         setSpiceLevel(e.target.value);
     };
-
-
 
 
     return (
@@ -61,18 +60,22 @@ const RecipeFilter = ({ applyFilters }) => {
 
  const RecipeList = ({ recipes }) => {
     return (
-        <div id="recipes">
-            {recipes.length === 0 ? (
+
+        < div className = "wrapper" >
+         {recipes.length === 0 ? (
                 <p>No recipes for this filter combination found</p>
             ) : (
                 recipes.map((recipe) => (
                     <>
-                    <Card> </Card>
-                    <a key={recipe.id} href={`http://localhost:8080/recipes/${recipe.id}`}>
-                        <div className="individual-items" id={`specific-item${recipe.name}`}>
-                            {recipe.name}
-                        </div>
-                    </a>
+                    {/*<Card> </Card>*/}
+                        <Card
+                            key={recipe.id}
+                            img={`http://localhost:8080/api/recipes/image/${recipe.id}`}
+                            title={recipe.name}
+                            description="Take your boring salads up a knotch. This recipe is perfect for lunch
+      and only contains 5 ingredients!"
+                            id={recipe.id}
+                        />
                     </>
                 ))
             )}
@@ -83,7 +86,10 @@ const RecipeFilter = ({ applyFilters }) => {
 export default function RecipeFilterApp() {
 
     const [filteredRecipes, setFilteredRecipes] = useState([]);
+    const [filterButtonStatus,setFilterButtonStatus] = useState("off");
     const applyFilters = (costLevel, difficultyLevel, spiceLevel) => {
+
+        setFilterButtonStatus('on');
 
         fetch(`http://localhost:8080/api/recipes/cost/${costLevel}`)
             .then(response => response.json())
@@ -100,12 +106,13 @@ export default function RecipeFilterApp() {
 
     }
 
-
                 return (
                     <div>
                         <RecipeFilter applyFilters={applyFilters}/>
-                        {/* Pass the filtered recipes to the RecipeList component */}
-                        <RecipeList recipes={filteredRecipes}/>
+                        {filterButtonStatus === 'on' && (
+                            <RecipeList recipes={filteredRecipes} />
+                        )}
+
 
                     </div>
                 )
