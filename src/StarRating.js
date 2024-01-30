@@ -1,10 +1,10 @@
-import React from 'react';
 import './StarRating.css';
+import { GetRatingById } from './utils';
 
 const StarRating = (props) => {
-  const starRating = props.rating;
-  const fullStars = Math.floor(starRating);
-  const hasHalfStar = starRating % 1 > 0;
+  let rating = GetRatingById(props.recipeId);
+  const fullStars = Math.floor(rating);
+  const hasHalfStar = rating % 1 > 0.5;
 
   const stars = Array.from({ length: 5 }, (_, index) => {
     if (index < fullStars) {
@@ -21,7 +21,7 @@ const StarRating = (props) => {
     }
   });
 
-  return <div className="star-container">{stars}<p className='font'>({props.number})</p></div>;
+  return <div className="star-container">{stars}<p className='font'></p> </div>;
 };
 
 export default StarRating;
