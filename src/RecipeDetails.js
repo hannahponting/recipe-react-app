@@ -17,7 +17,7 @@ function RecipeDetails(props) {
                 <div className="Divider"></div>
                 <div className="details">
                     <div class="details_image">
-                    <StarRating rating={recipe.rating} number={recipe.ratingCount}></StarRating>
+                    <StarRating recipeId={recipe.id}></StarRating>
                      <img src={`http://localhost:8080/api/recipes/image/${recipe.id}`}class="details_image"/>
                      </div>
 
