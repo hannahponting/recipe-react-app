@@ -42,14 +42,20 @@ justify-content: space-between;
 
 }
 
-  .rowWelcomePage {
+  .image-container-welcomePage {
     display: flex;
+    border: solid black;
+    justify-content: center;
+    margin: auto;
+    max-width: fit-content
   }
   
   .columnWelcomePage {
-    float: left;
+    /* justify-content: center; */
     width: 35%;
+    margin: 10px;
     padding: 50px;
+    
   }
 
 

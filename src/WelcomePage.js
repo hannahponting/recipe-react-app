@@ -44,7 +44,7 @@ const WelcomePage = (props) => {
 
 
 
-            <div class="rowWelcomePage">
+            <div class="image-container-welcomePage">
                 <div class="columnWelcomePage">
 
                     <Link to="/recipes/1730">
