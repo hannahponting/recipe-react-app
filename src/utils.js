@@ -93,36 +93,36 @@ export function GetRecipesPaginated(pageNum, pageSize){
 }
 
 
-export function PostRating(id, rate){
-    const initialState = {
-        isLoading: true,
-        recipes: []
-    }
-    const [data, setData] = useState(initialState)
+// export function PostRating(id, rate){
+//     const initialState = {
+//         isLoading: true,
+//         recipes: []
+//     }
+//     const [data, setData] = useState(initialState)
 
-    const requestBody = {
-        recipe: {
-            id: id,
-        },
-        myRating: rate,
-    };
+//     const requestBody = {
+//         recipe: {
+//             id: id,
+//         },
+//         myRating: rate,
+//     };
 
-    const getData = async () => {
-        const response = await fetch('http://localhost:8080/api/recipes/rating', {
-            method: 'PATCH',
-            body: JSON.stringify(requestBody),
-        });
-        const body = await response.json()
-        console.log(body);
-        setData({ recipes: body, isLoading: false })
+//     const getData = async () => {
+//         const response = await fetch('http://localhost:8080/api/recipes/rating', {
+//             method: 'PATCH',
+//             body: JSON.stringify(requestBody),
+//         });
+//         const body = await response.json()
+//         // console.log(body);
+//         setData({ recipes: body, isLoading: false })
 
-    }
-    useEffect(() => {
-        getData()
-    }, [])
+//     }
+//     useEffect(() => {
+//         getData()
+//     }, [])
 
-    return data.recipes;
-}
+//     return data.recipes;
+// }
 
 export function GetRatingById(id){
     const initialState = {
@@ -139,12 +139,12 @@ export function GetRatingById(id){
                 const contentType = response.headers.get('content-type');
                 if (contentType && contentType.includes('application/json')) {
                     const body = await response.json();
-                    // console.log(body);
+                    console.log(body);
                     setData({ rating: body, isLoading: false });
-                    // console.log(data);
+                    console.log(data);
                 } else {
                     const body = await response.text();
-                    // console.log(body);
+                    console.log(body);
                     setData({ rating: { id: parseInt(body) }, isLoading: false });
                 }
             } else {
@@ -164,5 +164,28 @@ export function GetRatingById(id){
     // console.log(data);
 
     return data.rating;
+
+}
+
+
+export function GetUserByEmail(id){
+    const initialState = {
+        isLoading: true,
+        user: []
+    }
+    const [data, setData] = useState(initialState)
+    const getData = async () => {
+        const response = await fetch(`http://localhost:8080/api/person/${id}`);
+        const body = await response.json()
+        console.log(body)
+        setData({ user: body, isLoading: false })
+
+    }
+    useEffect(() => {
+        getData()
+    }, [])
+
+
+    return data.user;
 
 }

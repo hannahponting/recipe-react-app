@@ -4,10 +4,12 @@ import { useState } from "react";
 import "./NavBar.css";
 import { Nav } from "react-bootstrap";
 import { InputGroup } from "react-bootstrap";
+import { GetUserByEmail } from "./utils";
 
 
 
-const Navigation = () => {
+const Navigation = (props) => {
+    let person = GetUserByEmail(props.userID);
 
     const [searchTerm, setSearchTerm] = useState('');
     const navigate = useNavigate();
@@ -22,6 +24,7 @@ const Navigation = () => {
     return (
         <div>
             <nav className="navigation">
+            <h3>Hello {person.firstName}</h3>
 
                 <ul className="itemsAligned">
                     {/* <div className="column"> */}
@@ -40,12 +43,15 @@ const Navigation = () => {
                         <a className="hyperlink" href="/recipes">Recipes</a>
 
                     </li>
-
                     <li>
                     <a className="hyperlink" href="/WhoWeAre">Who We Are</a>
 
                     </li>
 
+                    <li>
+                        <a className="hyperlink" href="/login">Login here</a>
+
+                    </li>
                     {/* </div> */}
                     {/* <div className="column"> */}
 
