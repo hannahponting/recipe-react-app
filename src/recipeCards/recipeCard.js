@@ -79,11 +79,11 @@ function RecipeCardList() {
 
         <div className="button-container">
             <div>
-                <button onClick={() => handlePageChange(currentPage - 1)} disabled={currentPage === 1}>
+                <button className="buttonEditing" onClick={() => handlePageChange(currentPage - 1)} disabled={currentPage === 1}>
                     Previous Page
                 </button>
                 &nbsp;&nbsp;&nbsp;
-                <button onClick={() => handlePageChange(currentPage + 1)} disabled={currentPage === totalPages}>
+                <button className="buttonEditing" onClick={() => handlePageChange(currentPage + 1)} disabled={currentPage === totalPages}>
                     Next Page
                 </button>
             </div>
