@@ -9,6 +9,7 @@ import NavBar from './NavBar';
 import WhoWeAre from './WhoWeAre';
 import { GetRecipes } from './utils.js';
 import RecipeSearchResults from './recipeSearchResults.js';
+import Footer from './Footer.js';
 
 function App() {
 
@@ -29,6 +30,9 @@ function App() {
           </Route>
         </Routes>
       </BrowserRouter>
+
+      <Footer></Footer>
+
     </div>
   );
 }

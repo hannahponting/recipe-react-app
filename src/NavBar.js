@@ -23,24 +23,40 @@ const Navigation = () => {
         <div>
             <nav className="navigation">
 
-                <div className="row">
+                <ul className="itemsAligned">
                     {/* <div className="column"> */}
-                        <img className="nerd-logo-removebg" alt="Nerd logo" src={require('.//Resources/invertedNerdLogo.png')}></img>
 
-                    {/* </div> */}
-                    {/* <div className="column"> */}
+                    <li>
+                    <img className="nerd-logo-removebg" alt="Nerd logo" src={require('.//Resources/invertedNerdLogo.png')}></img>
+
+                    </li>
+
+                    <li>
                         <a className="hyperlink" href="/">Home</a>
 
-                    {/* </div> */}
-                    // <div className="column">
+                    </li>
+
+                    <li>
                         <a className="hyperlink" href="/recipes">Recipes</a>
+
+                    </li>
+
+                    <li>
+                    <a className="hyperlink" href="/WhoWeAre">Who We Are</a>
+
+                    </li>
 
                     {/* </div> */}
                     {/* <div className="column"> */}
-                        <a className="hyperlink" href="/WhoWeAre">Who We Are</a>
 
-                    </div>
-                </div>
+                    {/* </div> */}
+                    {/* // <div className="column"> */}
+
+                    {/* </div> */}
+                    {/* <div className="column"> */}
+
+                    {/* </div> */}
+                </ul>
 
             </nav>
 
