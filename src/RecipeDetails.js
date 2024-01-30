@@ -1,18 +1,26 @@
 import { Await, useParams } from "react-router-dom"
 import { GetRecipes, GetRecipesById } from "./utils";
 import "./RecipeDetails.css";
+import { useState } from "react";
+import StarRating from "./StarRating";
+import RateRecipe from "./RateRecipe";
 
 
 function RecipeDetails(props) {
+
     let params = useParams();
     try{
     let recipe = GetRecipesById(params.id);
             return (
         <div className="details-page">
                 <h1 className="heading">{recipe.name}</h1>
+                <div className="Divider"></div>
                 <div className="details">
-            
+                    <div class="details_image">
+                    <StarRating rating={recipe.rating} number={recipe.ratingCount}></StarRating>
                      <img src={`http://localhost:8080/api/recipes/image/${recipe.id}`}class="details_image"/>
+                     </div>
+
                         <h2>Details</h2>
                         <ul className="properties">
                         <li><img src={require('./icons8-clock-100 1.png')} className="timer"/>
@@ -25,7 +33,9 @@ function RecipeDetails(props) {
                             <li><strong>Cost: </strong>{recipe.cost[0] + recipe.cost.slice(1).toLowerCase()}</li>
                             <li><strong>Spice level: </strong>{recipe.spice_level[0] + recipe.spice_level.slice(1).toLowerCase()}</li>
                         </ul>
-                 
+                        <div>
+                        </div>
+    
                         <div className="boxes">
                         <h2>Ingredients </h2>
                         <ul className="recipe-ingredients">
@@ -39,6 +49,10 @@ function RecipeDetails(props) {
                             {recipe.instructions.map((ingredient, index) => {
                             return <li key="{index}">{ingredient}</li>})}
                         </ul>
+                        <div>
+                            <h3>Rate this recipe?</h3>
+                            <RateRecipe id={recipe.id}></RateRecipe>
+                        </div>
                         </div>
                         </div>
 
