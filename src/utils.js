@@ -8,9 +8,10 @@ export function GetRecipes(){
     const [data, setData] = useState(initialState)
     const getData = async () => {
         const response = await fetch('http://localhost:8080/api/recipes');
+        console.log("BODY"+response);
 
         const body = await response.json()
-        console.log(body);
+        console.log("BODY"+body);
         setData({ recipes: body, isLoading: false })
 
     }

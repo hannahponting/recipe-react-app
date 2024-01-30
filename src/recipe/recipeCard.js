@@ -3,6 +3,8 @@ import "./recipeCard.css";
 import { GetRecipesPaginated } from "../utils";
 import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
+import "../filterBar/RecipeFilter"
+
 
 function RecipeCardList() {
     const [recipes, setRecipes] = useState([]);
@@ -24,7 +26,10 @@ function RecipeCardList() {
     };
 
 
-    return <div className="wrapper">
+    return (
+    <>
+
+    <div className="wrapper">
 
         {recipes.map((recipe) => {
 
@@ -58,10 +63,14 @@ function RecipeCardList() {
         </div>
 
     </div>;
+    </>
+    )
 }
 
-function Card(props) {
-    let link = "/recipes/" + props.id;
+
+export function Card(props) {
+    let link = "/recipes/"+props.id;
+
     return (
         <div className="card">
             <div className="card__body">

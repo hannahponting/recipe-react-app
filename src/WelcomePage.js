@@ -1,16 +1,28 @@
 import { Link } from "react-router-dom";
 import Navigation from './NavBar';
+
+import RecipeCardList from "./recipe/recipeCard";
+import RecipeFilterApp from "./filterBar/RecipeFilter";
 //import {RecipeCardList} from "../src/recipe/recipeCard";
 import './WelcomePage.css';
+
+
 
 const WelcomePage = (props) => {
     return (
         <>
 
+
             <h1 className="Title"> Home </h1>
             <div className="Divider"></div>
 
             {/* <h2 className="Title2">Highlights</h2> */}
+            <div>
+
+                <RecipeFilterApp></RecipeFilterApp>
+
+
+            </div>
 
 
 
