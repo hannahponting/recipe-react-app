@@ -9,62 +9,63 @@ import { InputGroup } from "react-bootstrap";
 
 const Navigation = () => {
 
-        const [searchTerm, setSearchTerm] = useState('');
-        const navigate = useNavigate();
-        
-
-        const handleSearch = () => {
-          navigate(`/recipes/search?keyword=${encodeURIComponent(searchTerm)}`)
-        }
+    const [searchTerm, setSearchTerm] = useState('');
+    const navigate = useNavigate();
 
 
-     
+    const handleSearch = () => {
+        navigate(`/recipes/search?keyword=${encodeURIComponent(searchTerm)}`)
+    }
+
+
+
     return (
+        <div>
+            <nav className="navigation">
 
-        <div className="navigation">
-            <div className="row">
-                <div className="column">
-                    <img className="nerd-logo-removebg" alt="Nerd logo removebg" src="../invertedNerdLogo.png" />
+                <ul className="itemsAligned">
+                    {/* <div className="column"> */}
 
-                </div>
-                <div className="column">
-                    <Link to={"/"}>
-                        <button className="button">Home</button>
-                    </Link>
+                    <li>
+                    <img className="nerd-logo-removebg" alt="Nerd logo" src={require('.//Resources/invertedNerdLogo.png')}></img>
 
-                </div>
-                <div className="column">
-                    <Link to={"/recipes"}>
-                        <button className="button">Recipes</button>
-                    </Link>
+                    </li>
 
-                </div>
-                <div className="column">
-                    <Link to={"/WhoWeAre"}>
-                        <button className="button">Who We Are</button>
-                    </Link>
-                </div>
-            </div>
+                    <li>
+                        <a className="hyperlink" href="/">Home</a>
+
+                    </li>
+
+                    <li>
+                        <a className="hyperlink" href="/recipes">Recipes</a>
+
+                    </li>
+
+                    <li>
+                    <a className="hyperlink" href="/WhoWeAre">Who We Are</a>
+
+                    </li>
+
+                    {/* </div> */}
+                    {/* <div className="column"> */}
+
+                    {/* </div> */}
+                    {/* // <div className="column"> */}
+
+                    {/* </div> */}
+                    {/* <div className="column"> */}
+
+                    {/* </div> */}
+                </ul>
+
+            </nav>
 
 
-            <div className="search-container">
-              <input
-                type="text"
-                value={searchTerm}
-                onChange={(e) => setSearchTerm(e.target.value)}
-                
-              />
-              <button onClick={handleSearch}>Search</button>
-              </div>
-
-            
             <Outlet />
 
-
-            
-      
-
         </div>
+
+
 
 
     );

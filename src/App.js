@@ -4,11 +4,12 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
 import WelcomePage from './WelcomePage';
 import RecipeDetails from './RecipeDetails';
-import RecipeCardList from "../src/recipe/recipeCard.js"
+import RecipeCardList from "../src/recipeCards/recipeCard.js"
 import NavBar from './NavBar';
 import WhoWeAre from './WhoWeAre';
 import { GetRecipes } from './utils.js';
 import RecipeSearchResults from './recipeSearchResults.js';
+import Footer from './Footer.js';
 
 function App() {
 
@@ -29,6 +30,9 @@ function App() {
           </Route>
         </Routes>
       </BrowserRouter>
+
+      <Footer></Footer>
+
     </div>
   );
 }

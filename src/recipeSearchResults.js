@@ -1,5 +1,5 @@
 import * as React from "https://cdn.skypack.dev/react@17.0.1";
-import "./recipe/recipeCard.css";
+import "./recipeCards/recipeCard.css";
 import {GetRecipesByKeyword, GetRecipesPaginated} from "./utils";
 import { Link, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";

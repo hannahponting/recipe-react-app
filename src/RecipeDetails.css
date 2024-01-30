@@ -1,24 +1,40 @@
-.heading{
-    color: #000;
-    font-feature-settings: 'clig' off, 'liga' off;
-    font-family: Newsreader;
+.header {
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.header.Title {
+    color: black;
     font-size: 64px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: 120%; /* 76.8px */
-    letter-spacing: -1.28px;
-    /* margin-right:50%; */
-    text-align: left;
-    /* align-items: left; */
-    padding-left: 5%;
+    font-family: Newsreader;
+    padding-left: 2%;
     font-weight: 400;
     line-height: 120%;
-    
+    word-wrap: "break-word";
+    justify-content: space-between;
+
+}
+
+.subTitles {
+    padding-left: 6%;
+}
+
+.Divider {
+    width: auto;
+    /* height: 0; */
+    box-shadow: 0px 4px 4px rgba (0,0,0,0.25);
+    border: 2px;
+    border-color: lightgrey;
+    border-style: solid;
+    /* height: 20px; */
 }
 
 .properties{
-    margin:10px 0;
-    list-style-type: none;
+    /* margin:10px;
+    list-style-type: none; */
+    /* vertical-align: middle; */
+    display: block;
 }
 
 .timer{
@@ -32,14 +48,16 @@
 
 }
 
-.details{
+.recipe-details{
+    max-width: 1440px;
+    margin: auto;
     text-align: left;
     font-family: 'Inter';
     font-size: 24px;
-    padding-top: 50px;
+    /* padding-top: 50px;
     padding-right: 30px;
     padding-bottom: 50px;
-    padding-left: 80px;
+    padding-left: 80px; */
     
 }
 
@@ -48,24 +66,16 @@
     height: 500px;
     float:right;
     border-radius: 5%;
-    border-color: #000;
 
 
 }
 
 .recipe-ingredients{
+    display: block;
     margin:15px;
 }
 
 .recipe-instructions{
+    display: block;
     margin:15px;
-}
-
-.Divider {
-    width: auto;
-    height: 0;
-    box-shadow: 0px 4px 4px rgba (0,0,0,0.25);
-    border: 2px;
-    border-color: lightgrey;
-    border-style: solid;
 }
