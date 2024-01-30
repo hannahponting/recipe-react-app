@@ -113,22 +113,6 @@ body {
 }
 
 
-/* .button-container {
-    background-color: white;
-    color: #07689f;
-      font-size: 20px;
-    padding: 10px 60px;
-    position: flex;
-    bottom: 0;
-    width: 100%;
-    text-align: center;
-    justify-content: space-between;
-    padding: 20px 5px;
-    border-radius: 5px;
-    margin: 30px;
-    cursor: pointer;
-
-} */
 .buttonEditing {
     color: #07689f;
     font-size: 20px;
