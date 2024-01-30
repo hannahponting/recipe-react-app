@@ -22,9 +22,9 @@ function RecipeDetails(props) {
                 <div className="Divider"></div>
                 <div className="recipe-details">
                     <div class="details_image">
-                        <StarRating rating={recipe.rating} number={recipe.ratingCount}></StarRating>
-                        <img src={`http://localhost:8080/api/recipes/image/${recipe.id}`} class="details_image" />
-                    </div>
+                    <StarRating recipeId={recipe.id}></StarRating>
+                     <img src={`http://localhost:8080/api/recipes/image/${recipe.id}`}class="details_image"/>
+                     </div>
 
                     <h2 className="subTitles">Details</h2>
                     <ul className="properties">

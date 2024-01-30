@@ -1,5 +1,8 @@
 import { Link, useNavigate } from "react-router-dom";
 import Navigation from './NavBar';
+
+import RecipeCardList from "./recipe/recipeCard";
+import RecipeFilterApp from "./filterBar/RecipeFilter";
 //import {RecipeCardList} from "../src/recipe/recipeCard";
 
 import React, { useEffect } from "react";
@@ -39,6 +42,12 @@ const WelcomePage = (props) => {
             <div className="Divider"></div>
 
             {/* <h2 className="Title2">Highlights</h2> */}
+            <div>
+
+                <RecipeFilterApp></RecipeFilterApp>
+
+
+            </div>
 
 
 

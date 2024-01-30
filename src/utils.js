@@ -8,9 +8,10 @@ export function GetRecipes(){
     const [data, setData] = useState(initialState)
     const getData = async () => {
         const response = await fetch('http://localhost:8080/api/recipes');
+        console.log("BODY"+response);
 
         const body = await response.json()
-        console.log(body);
+        console.log("BODY"+body);
         setData({ recipes: body, isLoading: false })
 
     }
@@ -121,4 +122,47 @@ export function PostRating(id, rate){
     }, [])
 
     return data.recipes;
+}
+
+export function GetRatingById(id){
+    const initialState = {
+        isLoading: true,
+        rating: null
+    } 
+    const [data, setData] = useState(initialState);
+
+    const getData = async () => {
+        try {
+            const response = await fetch(`http://localhost:8080/api/rating/${id}`);
+
+            if (response.ok) {
+                const contentType = response.headers.get('content-type');
+                if (contentType && contentType.includes('application/json')) {
+                    const body = await response.json();
+                    // console.log(body);
+                    setData({ rating: body, isLoading: false });
+                    // console.log(data);
+                } else {
+                    const body = await response.text();
+                    // console.log(body);
+                    setData({ rating: { id: parseInt(body) }, isLoading: false });
+                }
+            } else {
+                console.error('Error fetching data:', response.status);
+                setData({ rating: null, isLoading: false });
+            }
+        } catch (error) {
+            console.error('Network error:', error);
+            setData({ rating: null, isLoading: false });
+        }
+    };
+
+    useEffect(() => {
+        getData();
+    }, [id]);
+
+    // console.log(data);
+
+    return data.rating;
+
 }
