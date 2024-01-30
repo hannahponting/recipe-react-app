@@ -1,0 +1,139 @@
+@import url("https://fonts.googleapis.com/css2?family=Oxygen:wght@300;400;700&display=swap");
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+.header {
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.header.Title {
+    color: black;
+    font-size: 64px;
+    font-family: Newsreader;
+    padding-left: 2%;
+    font-weight: 400;
+    line-height: 120%;
+    word-wrap: "break-word";
+    justify-content: space-between;
+
+}
+
+.header.search-container {
+    margin: 15px;
+    display: flex;
+    border-radius: 5px;
+    padding: 5px;
+
+
+}
+
+.wrapper.search-container {
+    margin-top: 50%;
+}
+
+body {
+    font-family: Oxygen, sans-serif;
+    margin: 2rem;
+}
+
+.wrapper {
+
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(12rem, 16rem));
+    gap: 2rem;
+    justify-content: center;
+
+
+
+}
+
+.card {
+    overflow: hidden;
+    box-shadow: 0 2px 20px #e1e5ee;
+    border-radius: 0.2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    cursor: pointer;
+    transition: transform 200ms ease-in;
+    border-radius: 5%;
+}
+
+.card__image {
+    height: 12rem;
+    width: 100%;
+    object-fit: cover;
+}
+
+.card__title {
+    padding: 1rem;
+}
+
+.card__description {
+    padding: 0 1rem;
+}
+
+.Divider {
+    width: auto;
+    box-shadow: 0px 4px 4px rgba (0, 0, 0, 0.25);
+    border-top: 2px;
+    border-color: lightgrey;
+    border-style: solid;
+    margin-bottom: 1%;
+}
+
+.card__btn {
+    padding: 1rem;
+    font-family: inherit;
+    font-weight: bold;
+    font-size: 1rem;
+    margin: 1rem;
+    border: 2px solid #07689F;
+    background: transparent;
+    color: #07689F;
+    border-radius: 0.2rem;
+    transition: background 200ms ease-in, color 200ms ease-in;
+}
+
+.card:hover {
+    transform: scale(1.02);
+}
+
+.card:hover .card__btn {
+    background: #07689F;
+    color: white;
+}
+
+
+.button-container {
+    background-color: white;
+    /* color: #07689f;
+      font-size: 20px; */
+    /* padding: 10px 60px; */
+    /* position: flex; */
+    /* bottom: 0; */
+    width: 100%;
+    text-align: center;
+    /* justify-content: space-between; */
+    padding: 20px 5px;
+    border-radius: 5px;
+    /* margin: 30px; */
+    cursor: pointer;
+
+}
+
+
+
+.search-error-container {
+    height: 300px;
+    margin-top: 40px;
+
+}

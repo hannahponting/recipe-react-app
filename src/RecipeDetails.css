@@ -1,19 +1,19 @@
-.heading{
-    color: #000;
-    font-feature-settings: 'clig' off, 'liga' off;
-    font-family: Newsreader;
+.header {
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.header.Title {
+    color: black;
     font-size: 64px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: 120%; /* 76.8px */
-    letter-spacing: -1.28px;
-    /* margin-right:50%; */
-    text-align: left;
-    /* align-items: left; */
-    padding-left: 5%;
+    font-family: Newsreader;
+    padding-left: 2%;
     font-weight: 400;
     line-height: 120%;
-    
+    word-wrap: "break-word";
+    justify-content: space-between;
+
 }
 
 .properties{

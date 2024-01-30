@@ -10,7 +10,9 @@ const WhoWeAre = (props) => {
 
     return (
         <>
-            <h1 className="Title">Who we are</h1>
+            <header className="header">
+                <div className="Title">Who we are</div>
+            </header>
 
             <div className="Divider"></div>
 
