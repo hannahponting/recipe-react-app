@@ -75,6 +75,10 @@
     margin:15px;
 }
 
+.li::marker {
+    color: red;
+}
+
 .recipe-instructions{
     display: block;
     margin:15px;

@@ -40,22 +40,24 @@ function RecipeDetails(props) {
                     </ul>
                     <div>
                     </div>
+                    <br></br>
 
                     <div className="boxes">
                         <h2 className="subTitles">Ingredients </h2>
                         <ul className="recipe-ingredients">
-                            {recipe.ingredients.map((ingredient, index) => {
-                                return <li key="{index}">{ingredient}</li>
+                            {recipe.ingredients.map((ingredient) => {
+                                return (<li>{ingredient}</li>) 
                             })}
                         </ul>
                     </div>
                     <div className="boxes">
+                        <br></br>
                         <h2 className="subTitles">Instructions</h2>
-                        <ul className="recipe-instructions">
+                        <ol className="recipe-instructions">
                             {recipe.instructions.map((ingredient, index) => {
                                 return <li key="{index}">{ingredient}</li>
                             })}
-                        </ul>
+                        </ol>
                         <div className="boxes">
                             <h3 className="subTitles">Rate this recipe?</h3>
                             <RateRecipe id={recipe.id}></RateRecipe>
