@@ -25,7 +25,6 @@ function RecipeCardList() {
         }
     };
 
-
     return (
     <>
 
