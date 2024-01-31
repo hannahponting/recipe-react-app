@@ -39,7 +39,7 @@ function RecipeSearchResults() {
             <div>
                 <header className="header">
                     <div className="Title">
-                        Recipes with ${searchTerm}
+                        Recipes with {searchTerm}
                     </div>
                 </header>
             </div>

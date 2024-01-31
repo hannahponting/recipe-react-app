@@ -44,7 +44,20 @@ const WelcomePage = (props) => {
             {/* <h2 className="Title2">Highlights</h2> */}
 
 
+            <video autoPlay loop muted>
+                <source src={require('.//cookingVideo.mp4')} type='video/mp4' />
+            </video>
+
+
+            <header className="subheader">
+                <div className="subheading">
+                    Highlighted recipes
+                </div>
+            </header>
+
             <div class="image-container-welcomePage">
+
+
                 <div class="columnWelcomePage">
 
                     <Link to="/recipes/1730">

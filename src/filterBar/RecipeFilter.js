@@ -59,7 +59,7 @@ const RecipeFilter = ({ applyFilters }) => {
                         {/* Add more options as needed */}
                     </select>
                     &nbsp; &nbsp; &nbsp;
-                    <button className='buttonEditing' id="apply-filters" type="button" onClick={() => applyFilters(costLevel, difficultyLevel, spiceLevel)}>
+                    <button className='filterButton' id="apply-filters" type="button" onClick={() => applyFilters(costLevel, difficultyLevel, spiceLevel)}>
                         Apply Filters
                     </button>
                     <br />

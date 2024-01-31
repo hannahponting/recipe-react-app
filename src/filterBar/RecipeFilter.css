@@ -14,9 +14,8 @@
 }
 
 /* Search button styling */
-.buttonEditing  {
+.filter-contaner.filterButton  {
     background-color: #07689F;
-    /* Change the color to your preferred button color */
     color: #fff;
     border: none;
     border-radius: 5px;
