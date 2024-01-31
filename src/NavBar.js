@@ -9,11 +9,11 @@ import { GetUserByEmail } from "./utils";
 
 
 const Navigation = (props) => {
-    let person = GetUserByEmail(props.userID);
+
 
     const [searchTerm, setSearchTerm] = useState('');
     const navigate = useNavigate();
-
+    
 
     const handleSearch = () => {
         navigate(`/recipes/search?keyword=${encodeURIComponent(searchTerm)}`)
@@ -24,7 +24,7 @@ const Navigation = (props) => {
     return (
         <div>
             <nav className="navigation">
-            <h3>Hello {person.firstName}</h3>
+            <h3>Hello {props.userID}</h3>
 
                 <ul className="itemsAligned">
                     {/* <div className="column"> */}
@@ -35,21 +35,21 @@ const Navigation = (props) => {
                     </li>
 
                     <li>
-                        <a className="hyperlink" href="/">Home</a>
+                        <Link className="hyperlink" to="/">Home</Link>
 
                     </li>
 
                     <li>
-                        <a className="hyperlink" href="/recipes">Recipes</a>
+                        <Link className="hyperlink" to="/recipes">Recipes</Link>
 
                     </li>
                     <li>
-                    <a className="hyperlink" href="/WhoWeAre">Who We Are</a>
+                    <Link className="hyperlink" to="/WhoWeAre">Who We Are</Link>
 
                     </li>
 
                     <li>
-                        <a className="hyperlink" href="/login">Login here</a>
+                        <Link className="hyperlink" to="/login">Login here</Link>
 
                     </li>
                     {/* </div> */}
