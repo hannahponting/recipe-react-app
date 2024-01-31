@@ -42,6 +42,15 @@
 
 }
 
+.video-container {
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 1000px;
+  position: relative;
+}
+
 
 
 /* Basic styling for the search bar */
