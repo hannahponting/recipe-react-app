@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import { Card } from "../recipe/recipeCard"
 
-const RecipeFilter = ({ applyFilters }) => {
+export const RecipeFilter = ({ applyFilters }) => {
     const [costLevel, setCostLevel] = useState('');
     const [difficultyLevel, setDifficultyLevel] = useState('');
     const [spiceLevel, setSpiceLevel] = useState('');
-
+    const [filterStatus,setFilterStatus]= useState('off');
 
     const handleCostChange = (e) => {
         setCostLevel(e.target.value);
@@ -17,6 +17,9 @@ const RecipeFilter = ({ applyFilters }) => {
 
     const handleSpiceLevelChange = (e) => {
         setSpiceLevel(e.target.value);
+    };
+    const handleFilterStatusChange = (e) => {
+        setFilterStatus("on");
     };
 
 
@@ -59,7 +62,9 @@ const RecipeFilter = ({ applyFilters }) => {
                         {/* Add more options as needed */}
                     </select>
                     &nbsp; &nbsp; &nbsp;
-                    <button className='filterButton' id="apply-filters" type="button" onClick={() => applyFilters(costLevel, difficultyLevel, spiceLevel)}>
+                    <button className='filterButton' id="apply-filters" type="button" onClick={() => {
+                        applyFilters(costLevel, difficultyLevel, spiceLevel);
+                        setFilterStatus("on");}}>
                         Apply Filters
                     </button>
                     <br />
@@ -105,7 +110,7 @@ const RecipeList = ({ recipes }) => {
 
 
 
-export default function RecipeFilterApp() {
+export default function RecipeFilterApp({ setFilterStatus }) {
 
     const [filteredRecipes, setFilteredRecipes] = useState([]);
     const [filterButtonStatus, setFilterButtonStatus] = useState("off");
@@ -121,6 +126,9 @@ export default function RecipeFilterApp() {
 
                 setFilteredRecipes(newdata);
                 setFilterButtonStatus('on');
+                setFilterStatus('on');
+
+
             })
 
     }
