@@ -26,7 +26,7 @@ const WelcomePage = (props) => {
                 <div className="Title">
                     Home
                 </div>
-                <div className="search-container">
+                <div className="search-bar">
                     <input
                         type="text"
                         value={searchTerm}
@@ -42,15 +42,6 @@ const WelcomePage = (props) => {
             <div className="Divider"></div>
 
             {/* <h2 className="Title2">Highlights</h2> */}
-            <div>
-
-                <RecipeFilterApp></RecipeFilterApp>
-
-
-            </div>
-
-
-
 
 
             <div class="image-container-welcomePage">

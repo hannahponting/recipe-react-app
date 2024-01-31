@@ -3,6 +3,7 @@ import "./recipeCard.css";
 import { GetRecipesPaginated } from "../utils";
 import { Link, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
+import RecipeFilterApp from "../filterBar/RecipeFilter";
 
 function RecipeCardList() {
 
@@ -34,20 +35,31 @@ function RecipeCardList() {
 
 
     return <>
-        <header className="header">
-            <div className="Title">
-                Recipes
-            </div>
-            <div className="search-container">
-                <input
-                    type="text"
-                    value={searchTerm}
-                    onChange={(e) => setSearchTerm(e.target.value)}
-                />
-                <button onClick={handleSearch}>Search</button>
-            </div>
 
-        </header>
+        <div>
+            <header className="header">
+                <div className="Title">
+                    Recipes
+                </div>
+                <div>
+                    <RecipeFilterApp></RecipeFilterApp>
+                </div>
+                <div className="search-bar">
+                    <input
+                        type="text"
+                        value={searchTerm}
+                        onChange={(e) => setSearchTerm(e.target.value)}
+                    />
+                    <button onClick={handleSearch}>Search</button>
+                </div>
+
+            </header>
+
+
+        </div>
+
+
+
 
         <div className="Divider" ></div>
 
