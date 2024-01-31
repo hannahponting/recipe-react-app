@@ -4,14 +4,16 @@ import { useState } from "react";
 import "./NavBar.css";
 import { Nav } from "react-bootstrap";
 import { InputGroup } from "react-bootstrap";
+import { GetUserByEmail } from "./utils";
 
 
 
-const Navigation = () => {
+const Navigation = (props) => {
+
 
     const [searchTerm, setSearchTerm] = useState('');
     const navigate = useNavigate();
-
+    
 
     const handleSearch = () => {
         navigate(`/recipes/search?keyword=${encodeURIComponent(searchTerm)}`)
@@ -22,6 +24,7 @@ const Navigation = () => {
     return (
         <div>
             <nav className="navigation">
+            <h3>Hello {props.userID}</h3>
 
                 <ul className="itemsAligned">
                     {/* <div className="column"> */}
@@ -32,20 +35,23 @@ const Navigation = () => {
                     </li>
 
                     <li>
-                        <a className="hyperlink" href="/">Home</a>
+                        <Link className="hyperlink" to="/">Home</Link>
 
                     </li>
 
                     <li>
-                        <a className="hyperlink" href="/recipes">Recipes</a>
+                        <Link className="hyperlink" to="/recipes">Recipes</Link>
+
+                    </li>
+                    <li>
+                    <Link className="hyperlink" to="/WhoWeAre">Who We Are</Link>
 
                     </li>
 
                     <li>
-                    <a className="hyperlink" href="/WhoWeAre">Who We Are</a>
+                        <Link className="hyperlink" to="/login">Login here</Link>
 
                     </li>
-
                     {/* </div> */}
                     {/* <div className="column"> */}
 

@@ -7,24 +7,26 @@ import RecipeDetails from './RecipeDetails';
 import RecipeCardList from "../src/recipeCards/recipeCard.js"
 import NavBar from './NavBar';
 import WhoWeAre from './WhoWeAre';
-import { GetRecipes } from './utils.js';
+import { GetRecipes, GetUserByEmail } from './utils.js';
 import RecipeSearchResults from './recipeSearchResults.js';
 import Footer from './Footer.js';
+import LoginPage from './LoginPage.js';
+import { useEffect, useState } from 'react';
 
 function App() {
+  const [userID, setUserID] = useState("hannah@nerdrecipes.com");
 
-  const recipes = GetRecipes();
   return (
     <div className="App">
              
       <BrowserRouter>
         <Routes>
-          <Route path='/' element={<NavBar />}>
+          <Route path='/' element={<NavBar userID={userID}/>}>
             <Route path="/" element={<WelcomePage />} />
             <Route path="/recipes" element={<RecipeCardList />} />
             <Route path="/recipes/:id" element={<RecipeDetails />} />
             <Route path="/recipes/search" element={<RecipeSearchResults />} />
-
+            <Route path="/login" element={<LoginPage setUserID={setUserID}/>} />
             <Route path="/WhoWeAre" element={<WhoWeAre />} />
 
           </Route>
