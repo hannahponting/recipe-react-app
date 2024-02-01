@@ -13,7 +13,7 @@ import Footer from './Footer.js';
 import LoginPage from './LoginPage.js';
 import { useEffect, useState } from 'react';
 import ChangePassword from './ChangePassword.js';
-import 'bootstrap/dist/css/bootstrap.min.css';
+// import 'bootstrap/dist/css/bootstrap.min.css';
 
 
 

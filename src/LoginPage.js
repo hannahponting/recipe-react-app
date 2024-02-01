@@ -74,7 +74,6 @@ const LoginPage = (props) => {
           <label className="loginDetails">Email:</label>
           <input type="text" value={username} onChange={handleUsernameChange} />
         </div>
-        </br>
         <div>
 
           <label className="loginDetails">Password:</label>
