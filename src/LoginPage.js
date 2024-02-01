@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { PostUserLogin } from "./utils";
+import { Link } from "react-router-dom";
 
 const LoginPage = (props) => {
     const [username, setUsername] = useState('');
@@ -64,8 +65,9 @@ const LoginPage = (props) => {
                         <input type="password" value={password} onChange={handlePasswordChange} />
                         </div>
                         <button onClick={handleSubmitClick}>Login</button>
+                        <Link to='/changepassword'>Change Password</Link>
                     </div>
-
+                    
 
     )
 }
