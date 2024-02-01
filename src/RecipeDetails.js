@@ -64,13 +64,13 @@ function RecipeDetails(props) {
                     </div>
                 </div>
 
-
+                
 
                 <Accordion>
                     <AccordionHeader className="accordion-header"><h2 className="subtitles-accordion">Given this recipe a try?</h2></AccordionHeader>
                     <AccordionBody className="accordion-body" >
                         <h3 id="subtitles-accordion">Rate this recipe</h3>
-                            <RateRecipe id={recipe.id}></RateRecipe>
+                            <RateRecipe id={recipe.id} userID={props.userID}></RateRecipe>
                         </AccordionBody>
                 </Accordion>
 

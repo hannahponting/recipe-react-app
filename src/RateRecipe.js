@@ -14,7 +14,7 @@ const RateRecipe = (props) => {
   
     const requestBody = {
       recipeId: props.id,
-      personId: 2,
+      personId: props.userID,
       myRating: myRating,
       favourite: true
     };
@@ -28,7 +28,7 @@ const RateRecipe = (props) => {
         });
   
         const body = await response.json();
-        console.log("Request: " + JSON.stringify(body)); // Logging the entire response
+        console.log("Request: " + JSON.stringify(body));
   
         setData((prevData) => ({ ...prevData, rating: body, isLoading: false }));
       } catch (error) {
