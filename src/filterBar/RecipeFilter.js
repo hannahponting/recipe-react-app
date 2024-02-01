@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Card } from "../recipe/recipeCard"
+import { Card } from "../recipeCards/recipeCard"
 
 export const RecipeFilter = ({ applyFilters }) => {
     const [costLevel, setCostLevel] = useState('');
@@ -76,11 +76,11 @@ export const RecipeFilter = ({ applyFilters }) => {
 
 };
 
-const RecipeList = ({ recipes }) => {
+export const RecipeList = ({ recipes }) => {
     return (
         <>
 
-            <div className="Divider" ></div>
+            {/*<div className="Divider" ></div>*/}
 
             <br /><br />
 
