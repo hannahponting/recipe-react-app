@@ -112,7 +112,7 @@ function RecipeCardList() {
     </>;
 }
 
-function Card(props) {
+export function Card(props) {
     let link = "/recipes/" + props.id;
     return (
         <div className="card">
