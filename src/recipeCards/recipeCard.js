@@ -41,24 +41,56 @@ function RecipeCardList() {
 
 
 
-    const [filteredRecipes, setFilteredRecipes] = useState([]);
-    const [filterButtonStatus, setFilterButtonStatus] = useState("off");
-    const applyFilters = (costLevel, difficultyLevel, spiceLevel) => {
+    // const [filteredRecipes, setFilteredRecipes] = useState([]);
+    // const [filterButtonStatus, setFilterButtonStatus] = useState("off");
+    // const applyFilters = (costLevel, difficultyLevel, spiceLevel) => {
+    //
+    //     fetch(`http://localhost:8080/api/recipes`)
+    //         .then(response => response.json())
+    //         .then(data => {
+    //             let newdata = data.filter(recipe => {
+    //                 return recipe["cost"].includes(costLevel) && recipe["difficulty_level"].includes(difficultyLevel) && recipe["spice_level"].includes(spiceLevel)
+    //
+    //             });
+    //
+    //             setFilteredRecipes(newdata);
+    //             setFilterButtonStatus('on');
+    //             setFilterStatus('on');
+    //
+    //
+    //         })
+    //
+    // }
 
-        fetch(`http://localhost:8080/api/recipes`)
+    const [filteredRecipes, setFilteredRecipes] = useState([]);
+    const [filterButtonStatus,setFilterButtonStatus] = useState("off");
+    const applyFilters = (costType,difficultyLevel, spiceLevel) => {
+        const page = 1;
+        const pageSize = 10;
+        let apiUrl="";
+
+        if (costType===""&&difficultyLevel===""&&spiceLevel==="")
+            apiUrl=`http://localhost:8080/api/recipes/search/custom/page/${page}/${pageSize}`
+        else
+            apiUrl =
+                `http://localhost:8080/api/recipes/search/custom/page/${page}/${pageSize}?query=difficultyLevel%3D${difficultyLevel}%26costType%3D${costType}%26spiceType%3D${spiceLevel}`;
+
+
+        fetch(apiUrl)
             .then(response => response.json())
             .then(data => {
-                let newdata = data.filter(recipe => {
-                    return recipe["cost"].includes(costLevel) && recipe["difficulty_level"].includes(difficultyLevel) && recipe["spice_level"].includes(spiceLevel)
 
-                });
-
-                setFilteredRecipes(newdata);
+                console.log("Fetched data:", data.content);
+                setFilteredRecipes(data.content);
                 setFilterButtonStatus('on');
                 setFilterStatus('on');
 
-
             })
+            .catch(error => {
+                // Handle errors if any occurred during the fetch
+                console.error("Error fetching data:", error);
+            });
+
 
     }
 
@@ -72,7 +104,6 @@ function RecipeCardList() {
                     Recipes
                 </div>
                 <div>
-
                     <RecipeFilter applyFilters={applyFilters} />
                 </div>
                 <div className="search-bar">
@@ -134,8 +165,6 @@ function RecipeCardList() {
 
 
             :<div>
-                {/*<RecipeFilterApp setFilterStatus={setFilterStatus}></RecipeFilterApp>*/}
-
                 {filterButtonStatus === "on" && <RecipeList recipes={filteredRecipes} />}
             </div>}
 
