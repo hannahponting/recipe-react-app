@@ -35,82 +35,39 @@ function RecipeCardList() {
     const handlePageChange = (newPage) => {
         if (newPage > 0 && newPage <= totalPages) {
             setCurrentPage(newPage);
-        }
+        };
+
     };
 
-
-
-    // const [filteredRecipes, setFilteredRecipes] = useState([]);
-    // const [filterButtonStatus, setFilterButtonStatus] = useState("off");
-    // const applyFilters = (costLevel, difficultyLevel, spiceLevel) => {
-    //
-    //     fetch(`http://localhost:8080/api/recipes`)
-    //         .then(response => response.json())
-    //         .then(data => {
-    //             let newdata = data.filter(recipe => {
-    //                 return recipe["cost"].includes(costLevel) && recipe["difficulty_level"].includes(difficultyLevel) && recipe["spice_level"].includes(spiceLevel)
-    //
-    //             });
-    //
-    //             setFilteredRecipes(newdata);
-    //             setFilterButtonStatus('on');
-    //             setFilterStatus('on');
-    //
-    //
-    //         })
-    //
-    // }
-
-
-    // const initialState = {
-    //     isLoading: true,
-    //     recipes: [],
-    //     totalPages: 0
-    // }
-    //const [data, setData] = useState(initialState)
-    // const getData = async () => {
-    //     const response = await fetch(`http://localhost:8080/api/recipes/page/${pageNum}/${pageSize}`);
-    //
-    //     const body = await response.json()
-    //     console.log(body);
-    //     setData({ recipes: body.content, isLoading: false, totalPages: body.totalPages })
-    //
-    // }
-    // useEffect(() => {
-    //     getData()
-    // }, [pageNum,pageSize])
-    //
 
     const [filteredRecipes, setFilteredRecipes] = useState([]);
     const [filterButtonStatus,setFilterButtonStatus] = useState("off");
     const [totalPageForFilter,setTotalPageForFilter]=useState(1);
     const [currentPageForFilter, setCurrentPageForFilter] = useState(1);
+    const [costType, setCostType]= useState("Select All");
+    const [difficultyLevel, setDifficultyLevel]= useState("Select All");
+    const [spiceLevel,setSpiceLevel] = useState("Select All");
+
+    console.log("currentPageForFilter not in handle page"+currentPageForFilter)
 
 
     const handlePageChangeForFilter = (newPage) => {
         if (newPage > 0 && newPage <= totalPageForFilter) {
-            setCurrentPageForFilter(newPage);
-        }
+            setCurrentPageForFilter(newPage)}
+        console.log("newPage"+newPage)
+        console.log("currentPageForFilter"+currentPageForFilter)
+
+        applyFilters(costType, difficultyLevel, spiceLevel,currentPageForFilter);
+
     };
 
-
-    const applyFilters = (costType,difficultyLevel, spiceLevel) => {
-        return costType,difficultyLevel, spiceLevel
-    }
+    const applyFilters = (costType,difficultyLevel, spiceLevel,currentPageForFilter) => {
 
         const pageSize = 10;
-        let apiUrl="";
-        console.log("page inside the filter "+currentPageForFilter)
-    const costType=""
-    const difficultyLevel=""
-    const spiceLevel = ""
+        let apiUrl = "";
 
-
-
-
-
-        if (costType===""&&difficultyLevel===""&&spiceLevel==="")
-            apiUrl=`http://localhost:8080/api/recipes/search/custom/page/${currentPageForFilter}/${pageSize}`
+        if (costType === "" && difficultyLevel === "" && spiceLevel === "")
+            apiUrl = `http://localhost:8080/api/recipes/search/custom/page/${currentPageForFilter}/${pageSize}`
         else
             apiUrl =
                 `http://localhost:8080/api/recipes/search/custom/page/${currentPageForFilter}/${pageSize}?query=difficultyLevel%3D${difficultyLevel}%26costType%3D${costType}%26spiceType%3D${spiceLevel}`;
@@ -120,14 +77,14 @@ function RecipeCardList() {
             .then(response => response.json())
             .then(data => {
 
-                console.log("Fetched data:", data);
-
                 setFilteredRecipes(data.content);
                 setFilterButtonStatus('on');
                 setFilterStatus('on');
                 setTotalPageForFilter(data.totalPages)
-                console.log("totalPageForFilter", data.totalPages);
-                console.log("currentPageForFilter", currentPageForFilter)
+                setCostType(costType);
+                setDifficultyLevel(difficultyLevel);
+                setSpiceLevel(spiceLevel);
+                setCurrentPage(currentPageForFilter);
 
             })
             .catch(error => {
@@ -135,10 +92,7 @@ function RecipeCardList() {
                 console.error("Error fetching data:", error);
             });
 
-
-
-
-
+    }
 
 
 
@@ -200,7 +154,7 @@ function RecipeCardList() {
                         Previous Page
                     </button>
                     &nbsp;&nbsp;&nbsp;
-                    <button className="buttonEditing" onClick={() => handlePageChange(currentPage + 1)}
+                    <button className="buttonEditing" onClick={() => handlePageChange(currentPage)}
                             disabled={currentPage === totalPages}>
                         Next Page
                     </button>
@@ -218,13 +172,13 @@ function RecipeCardList() {
 
             <div className="button-container">
             <div>
-            <button className="buttonEditing" onClick={() => {handlePageChangeForFilter(currentPageForFilter - 1);}}
+            <button className="buttonEditing" onClick={() => {handlePageChangeForFilter(currentPageForFilter - 1)}}
         disabled={currentPage === 1}>
     Previous Page
     </button>
 &nbsp;&nbsp;&nbsp;
     <button className="buttonEditing" onClick={() => {handlePageChangeForFilter(currentPageForFilter + 1);}}
-            disabled={currentPage === totalPages}>
+            disabled={currentPage === totalPageForFilter}>
         Next Page
     </button>
 </div>

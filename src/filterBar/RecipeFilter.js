@@ -6,6 +6,7 @@ export const RecipeFilter = ({ applyFilters }) => {
     const [difficultyLevel, setDifficultyLevel] = useState('');
     const [spiceLevel, setSpiceLevel] = useState('');
     const [filterStatus,setFilterStatus]= useState('off');
+    //const [currentPageForFilter, setCurrentPageForFilter] = useState(2);
 
 
     const handleCostChange = (e) => {
@@ -64,7 +65,7 @@ export const RecipeFilter = ({ applyFilters }) => {
                     </select>
                     &nbsp; &nbsp; &nbsp;
                     <button className='filterButton' id="apply-filters" type="button" onClick={() => {
-                        applyFilters(costLevel, difficultyLevel, spiceLevel);
+                        applyFilters(costLevel, difficultyLevel, spiceLevel,1);
                         setFilterStatus("on");}}>
                         Apply Filters
                     </button>
