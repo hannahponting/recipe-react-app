@@ -11,9 +11,19 @@ import { GetUserByEmail } from "./utils";
 const Navigation = (props) => {
 
 
+    const [isLoggedIn, setIsLoggedIn] = useState(false);
+    const handleLogin = () => {
+        
+        
+        setIsLoggedIn(true);
+
+    };
+
+    
+
     const [searchTerm, setSearchTerm] = useState('');
     const navigate = useNavigate();
-    
+
 
     const handleSearch = () => {
         navigate(`/recipes/search?keyword=${encodeURIComponent(searchTerm)}`)
@@ -21,59 +31,49 @@ const Navigation = (props) => {
 
 
 
-    return (
-        <div>
-            <nav className="navigation">
-            <h3>Hello {props.userID}</h3>
+        return (
+            <>
+                <nav className="navigation">
+                    <h3>Hello {props.userID}</h3>
 
-                <ul className="itemsAligned">
-                    {/* <div className="column"> */}
+                    <ul className="itemsAligned">
+                        <li>
+                            <img className="nerd-logo-removebg" alt="Nerd logo" src={require('.//Resources/invertedNerdLogo.png')}></img>
 
-                    <li>
-                    <img className="nerd-logo-removebg" alt="Nerd logo" src={require('.//Resources/invertedNerdLogo.png')}></img>
+                        </li>
 
-                    </li>
+                        <li>
+                            <Link className="hyperlink" to="/">Home</Link>
 
-                    <li>
-                        <Link className="hyperlink" to="/">Home</Link>
+                        </li>
 
-                    </li>
+                        <li>
+                            <Link className="hyperlink" to="/recipes">Recipes</Link>
 
-                    <li>
-                        <Link className="hyperlink" to="/recipes">Recipes</Link>
+                        </li>
+                        <li>
+                            <Link className="hyperlink" to="/WhoWeAre">Who We Are</Link>
+                        </li>
+                        {isLoggedIn ? (
+                            <li>
+                                <Link className="hyperlink" to ="/favourites">Favorites</Link></li>
+                        ) : (
+                            <li><Link className="hyperlink" onClick={handleLogin} to = "/login">Log In</Link></li>
+                        )}
 
-                    </li>
-                    <li>
-                    <Link className="hyperlink" to="/WhoWeAre">Who We Are</Link>
+                    </ul>
 
-                    </li>
-
-                    <li>
-                        <Link className="hyperlink" to="/login">Login here</Link>
-
-                    </li>
-                    {/* </div> */}
-                    {/* <div className="column"> */}
-
-                    {/* </div> */}
-                    {/* // <div className="column"> */}
-
-                    {/* </div> */}
-                    {/* <div className="column"> */}
-
-                    {/* </div> */}
-                </ul>
-
-            </nav>
+                </nav>
 
 
-            <Outlet />
-
-        </div>
+                <Outlet />
 
 
 
+            </>
 
-    );
+
+        );
+    
 };
 export default Navigation;
