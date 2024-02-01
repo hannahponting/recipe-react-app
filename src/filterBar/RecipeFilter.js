@@ -7,6 +7,7 @@ export const RecipeFilter = ({ applyFilters }) => {
     const [spiceLevel, setSpiceLevel] = useState('');
     const [filterStatus,setFilterStatus]= useState('off');
 
+
     const handleCostChange = (e) => {
         setCostLevel(e.target.value);
     };

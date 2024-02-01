@@ -12,10 +12,7 @@ function RecipeCardList() {
 
     const [searchTerm, setSearchTerm] = useState('');
     const navigate = useNavigate();
-
     const [filterStatus, setFilterStatus] = useState("off");
-
-
 
     const handleSearch = () => {
         navigate(`/recipes/search?keyword=${encodeURIComponent(searchTerm)}`)
@@ -24,6 +21,8 @@ function RecipeCardList() {
     const [recipes, setRecipes] = useState([]);
     const [currentPage, setCurrentPage] = useState(1);
     let data = GetRecipesPaginated(currentPage, 10);
+
+    // console.log(data)
     const fetchedRecipes = data.recipes;
     const [totalPages, setTotalPages] = useState(1);
 
@@ -62,28 +61,73 @@ function RecipeCardList() {
     //
     // }
 
+
+    // const initialState = {
+    //     isLoading: true,
+    //     recipes: [],
+    //     totalPages: 0
+    // }
+    //const [data, setData] = useState(initialState)
+    // const getData = async () => {
+    //     const response = await fetch(`http://localhost:8080/api/recipes/page/${pageNum}/${pageSize}`);
+    //
+    //     const body = await response.json()
+    //     console.log(body);
+    //     setData({ recipes: body.content, isLoading: false, totalPages: body.totalPages })
+    //
+    // }
+    // useEffect(() => {
+    //     getData()
+    // }, [pageNum,pageSize])
+    //
+
     const [filteredRecipes, setFilteredRecipes] = useState([]);
     const [filterButtonStatus,setFilterButtonStatus] = useState("off");
+    const [totalPageForFilter,setTotalPageForFilter]=useState(1);
+    const [currentPageForFilter, setCurrentPageForFilter] = useState(1);
+
+
+    const handlePageChangeForFilter = (newPage) => {
+        if (newPage > 0 && newPage <= totalPageForFilter) {
+            setCurrentPageForFilter(newPage);
+        }
+    };
+
+
     const applyFilters = (costType,difficultyLevel, spiceLevel) => {
-        const page = 1;
+        return costType,difficultyLevel, spiceLevel
+    }
+
         const pageSize = 10;
         let apiUrl="";
+        console.log("page inside the filter "+currentPageForFilter)
+    const costType=""
+    const difficultyLevel=""
+    const spiceLevel = ""
+
+
+
+
 
         if (costType===""&&difficultyLevel===""&&spiceLevel==="")
-            apiUrl=`http://localhost:8080/api/recipes/search/custom/page/${page}/${pageSize}`
+            apiUrl=`http://localhost:8080/api/recipes/search/custom/page/${currentPageForFilter}/${pageSize}`
         else
             apiUrl =
-                `http://localhost:8080/api/recipes/search/custom/page/${page}/${pageSize}?query=difficultyLevel%3D${difficultyLevel}%26costType%3D${costType}%26spiceType%3D${spiceLevel}`;
+                `http://localhost:8080/api/recipes/search/custom/page/${currentPageForFilter}/${pageSize}?query=difficultyLevel%3D${difficultyLevel}%26costType%3D${costType}%26spiceType%3D${spiceLevel}`;
 
 
         fetch(apiUrl)
             .then(response => response.json())
             .then(data => {
 
-                console.log("Fetched data:", data.content);
+                console.log("Fetched data:", data);
+
                 setFilteredRecipes(data.content);
                 setFilterButtonStatus('on');
                 setFilterStatus('on');
+                setTotalPageForFilter(data.totalPages)
+                console.log("totalPageForFilter", data.totalPages);
+                console.log("currentPageForFilter", currentPageForFilter)
 
             })
             .catch(error => {
@@ -92,7 +136,9 @@ function RecipeCardList() {
             });
 
 
-    }
+
+
+
 
 
 
@@ -164,9 +210,29 @@ function RecipeCardList() {
             </>
 
 
-            :<div>
+            :
+            <>
+            <div>
                 {filterButtonStatus === "on" && <RecipeList recipes={filteredRecipes} />}
-            </div>}
+            </div>
+
+            <div className="button-container">
+            <div>
+            <button className="buttonEditing" onClick={() => {handlePageChangeForFilter(currentPageForFilter - 1);}}
+        disabled={currentPage === 1}>
+    Previous Page
+    </button>
+&nbsp;&nbsp;&nbsp;
+    <button className="buttonEditing" onClick={() => {handlePageChangeForFilter(currentPageForFilter + 1);}}
+            disabled={currentPage === totalPages}>
+        Next Page
+    </button>
+</div>
+            </div>
+            </>
+
+
+        }
 
 
     </>;
