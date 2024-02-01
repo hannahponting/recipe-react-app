@@ -47,13 +47,14 @@ const SignUp = (props) => {
         console.log(answer)
         if (response.status==201) {
           props.setUserID((prevUserID) => email)
-        setData((prevData) => ({ ...prevData, worked: body, isLoading: false }));
-        console.log(data);
+          setMessage("Signed up")
+        }
+        else{
+            setMessage("Error")
         }
       } catch (error) {
         console.error('Error fetching data:', error);
-    
-        setData((prevData) => ({ ...prevData, isLoading: false }));
+        setMessage("error")
         console.log(data);
       }
     };
@@ -92,7 +93,7 @@ const SignUp = (props) => {
               <li><Link to="/login">Login</Link></li>
           </ul>
           </div>
-         <div>{data.worked.message}</div>
+          {message && <p>{message}</p>}
         </div>
       </>
     )
