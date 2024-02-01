@@ -43,10 +43,11 @@ const WelcomePage = (props) => {
 
             {/* <h2 className="Title2">Highlights</h2> */}
 
-
-            <video autoPlay loop muted>
-                <source src={require('.//cookingVideo.mp4')} type='video/mp4' />
-            </video>
+            <div className="video-container">
+                <video autoPlay loop muted>
+                    <source src={require('.//cookingVideo.mp4')} type='video/mp4' />
+                </video>
+            </div>
 
 
             <header className="subheader">
