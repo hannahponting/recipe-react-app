@@ -76,11 +76,11 @@ export const RecipeFilter = ({ applyFilters }) => {
 
 };
 
-const RecipeList = ({ recipes }) => {
+export const RecipeList = ({ recipes }) => {
     return (
         <>
 
-            <div className="Divider" ></div>
+            {/*<div className="Divider" ></div>*/}
 
             <br /><br />
 
