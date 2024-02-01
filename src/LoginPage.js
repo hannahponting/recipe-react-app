@@ -80,6 +80,10 @@ const LoginPage = (props) => {
           <input type="password" value={password} onChange={handlePasswordChange} />
         </div>
         <button onClick={handleSubmitClick}>Login</button>
+        <ul className="list">
+        <li><Link to="/signup">Sign up</Link></li>
+        <li><Link to="/changepassword">Forgotten Password</Link></li>
+        </ul>
       </div>
 
     </>
