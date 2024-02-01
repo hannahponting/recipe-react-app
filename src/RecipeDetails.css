@@ -1,14 +1,26 @@
+@import url('https://fonts.googleapis.com/css2?family=Newsreader:opsz@6..72&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+
+
+
 .header {
     padding: 10px 20px;
     display: flex;
+    margin: auto;
+    align-items: center;
+    max-width: 3000px;
     justify-content: space-between;
 }
 
-.header.Title {
+.recipe-title-container {
     color: black;
+    height:120px;
+    display: flex;
+    align-items: center;
+    padding: 30px;
     font-size: 64px;
-    font-family: Newsreader;
-    padding-left: 2%;
+    font-family: NewsReader;
     font-weight: 400;
     line-height: 120%;
     word-wrap: "break-word";
@@ -16,8 +28,30 @@
 
 }
 
-.subTitles {
-    padding-left: 6%;
+#recipe-title {
+    display: flex;
+    padding: 5px;
+    align-items: center;
+}
+
+
+
+
+
+.subtitles {
+    margin-bottom: 15px;
+    font-family: Inter, sans-serif;
+    font-weight: bold;
+}
+
+.subtitles-accordion {
+    font-weight: 500;
+    display: inline-block;
+}
+
+#subtitles-accordion {
+    font-weight: 700;
+    text-align: center;
 }
 
 .Divider {
@@ -30,11 +64,18 @@
     /* height: 20px; */
 }
 
-.properties{
-    /* margin:10px;
-    list-style-type: none; */
+.details{
+    /* margin:10px; */
+   
+    /* list-style-type: none; */
     /* vertical-align: middle; */
     display: block;
+    width: 400px;
+    margin-bottom: 40px;
+}
+
+.details li {
+    list-style-type: none;
 }
 
 .timer{
@@ -49,10 +90,12 @@
 }
 
 .recipe-details{
+    padding: 40px;
     max-width: 1440px;
     margin: auto;
     text-align: left;
-    font-family: 'Inter';
+    font-family: 'Inter', sans-serif;
+    font-weight: 400;
     font-size: 24px;
     /* padding-top: 50px;
     padding-right: 30px;
@@ -63,7 +106,7 @@
 
 .details_image{
     width: auto;
-    height: 500px;
+    height: 600px;
     float:right;
     border-radius: 5%;
 
@@ -73,13 +116,29 @@
 .recipe-ingredients{
     display: block;
     margin:15px;
+    margin-bottom: 40px;
 }
 
-.li::marker {
-    color: red;
-}
+
 
 .recipe-instructions{
     display: block;
     margin:15px;
+}
+
+.accordion {
+    background-color: #eee;
+    margin-top: 35px;
+    color: #444;
+    padding: 18px;
+    width: 100%;
+    text-align: left;
+    outline: none;
+    font-family: 'Inter', sans-serif;
+    transition: 0.4s;
+}
+
+
+.accordion-body {
+    height: 230px;
 }

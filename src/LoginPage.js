@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { PostUserLogin } from "./utils";
 import "./LoginPage.css";
+import { Link } from "react-router-dom";
+
 
 const LoginPage = (props) => {
   const [username, setUsername] = useState('');
@@ -74,6 +76,7 @@ const LoginPage = (props) => {
         </div>
         </br>
         <div>
+
           <label className="loginDetails">Password:</label>
           <input type="password" value={password} onChange={handlePasswordChange} />
         </div>
@@ -82,6 +85,7 @@ const LoginPage = (props) => {
 
     </>
   )
+
 }
 
 export default LoginPage;

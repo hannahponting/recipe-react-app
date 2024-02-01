@@ -12,6 +12,10 @@ import RecipeSearchResults from './recipeSearchResults.js';
 import Footer from './Footer.js';
 import LoginPage from './LoginPage.js';
 import { useEffect, useState } from 'react';
+import ChangePassword from './ChangePassword.js';
+import 'bootstrap/dist/css/bootstrap.min.css';
+
+
 
 function App() {
   const [userID, setUserID] = useState("hannah@nerdrecipes.com");
@@ -28,6 +32,7 @@ function App() {
             <Route path="/recipes/search" element={<RecipeSearchResults />} />
             <Route path="/login" element={<LoginPage setUserID={setUserID}/>} />
             <Route path="/WhoWeAre" element={<WhoWeAre />} />
+            <Route path="/changepassword" element={<ChangePassword/>}/>
 
           </Route>
         </Routes>
