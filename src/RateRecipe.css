@@ -1,0 +1,51 @@
+@import url('https://fonts.googleapis.com/css2?family=Newsreader:opsz@6..72&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+.body {
+    text-align: center;
+}
+
+
+.rate-recipe-button {
+    margin: 20px;
+    padding: 10px 20px;
+    border-radius: 5%;
+}
+
+
+
+.rating-label {
+    color: black;
+    align-items: center;
+    padding: 30px;
+    font-size: 40px;
+    font-family: NewsReader;
+    font-weight: 400;
+    line-height: 120%;
+    word-wrap: "break-word";
+    justify-content: space-between;
+
+}
+
+#rating-input {
+    padding: 5px;
+    border-radius: 5%;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
