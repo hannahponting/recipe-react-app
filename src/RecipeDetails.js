@@ -4,6 +4,7 @@ import "./RecipeDetails.css";
 import { useState } from "react";
 import StarRating from "./StarRating";
 import RateRecipe from "./RateRecipe";
+import { Accordion, AccordionBody, AccordionHeader, AccordionItem } from "react-bootstrap";
 
 
 function RecipeDetails(props) {
@@ -15,19 +16,23 @@ function RecipeDetails(props) {
 
             <>
                 <header className="header">
-                    <div className="Title">{recipe.name}</div>
+                    <div className="recipe-title-container">
+                       <div id="recipe-title">{recipe.name}</div> 
+                        
+                        </div>
+                     <StarRating  recipeId={recipe.id}></StarRating>
                 </header>
 
 
                 <div className="Divider"></div>
                 <div className="recipe-details">
                     <div class="details_image">
-                    <StarRating recipeId={recipe.id}></StarRating>
+                   
                      <img src={`http://localhost:8080/api/recipes/image/${recipe.id}`}class="details_image"/>
                      </div>
 
-                    <h2 className="subTitles">Details</h2>
-                    <ul className="properties">
+                    <h2 className="subtitles">Details</h2>
+                    <ul className="details">
                         <li><img src={require('.//Resources/clockIcon.png')} className="timer" />
                             <strong> &nbsp;</strong>{recipe.time_to_cook}</li>
                         <li><strong>Name: </strong>{recipe.name}</li>
@@ -40,10 +45,9 @@ function RecipeDetails(props) {
                     </ul>
                     <div>
                     </div>
-                    <br></br>
 
                     <div className="boxes">
-                        <h2 className="subTitles">Ingredients </h2>
+                        <h2 className="subtitles">Ingredients </h2>
                         <ul className="recipe-ingredients">
                             {recipe.ingredients.map((ingredient) => {
                                 return (<li>{ingredient}</li>) 
@@ -51,19 +55,24 @@ function RecipeDetails(props) {
                         </ul>
                     </div>
                     <div className="boxes">
-                        <br></br>
-                        <h2 className="subTitles">Instructions</h2>
+                        <h2 className="subtitles">Instructions</h2>
                         <ol className="recipe-instructions">
                             {recipe.instructions.map((ingredient, index) => {
                                 return <li key="{index}">{ingredient}</li>
                             })}
                         </ol>
-                        <div className="boxes">
-                            <h3 className="subTitles">Rate this recipe?</h3>
-                            <RateRecipe id={recipe.id}></RateRecipe>
-                        </div>
                     </div>
                 </div>
+
+
+
+                <Accordion>
+                    <AccordionHeader className="accordion-header"><h2 className="subtitles-accordion">Given this recipe a try?</h2></AccordionHeader>
+                    <AccordionBody className="accordion-body" >
+                        <h3 id="subtitles-accordion">Rate this recipe</h3>
+                            <RateRecipe id={recipe.id}></RateRecipe>
+                        </AccordionBody>
+                </Accordion>
 
 
             </>

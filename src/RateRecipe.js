@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import "./RateRecipe.css"
 
 
 const RateRecipe = (props) => {
@@ -42,19 +43,19 @@ const RateRecipe = (props) => {
     };
   
     return (
-      <div>
+      <div className="body">
         <div>
-          <label htmlFor="rating">Enter:</label>
+          <label className="rating-label" htmlFor="rating">Enter Rating Here: </label>
           <input
             type="number"
-            id="rating"
+            id="rating-input"
             min={1}
             max={5}
             value={myRating}
             onChange={(e) => setMyRating(parseInt(e.target.value))}
           />
         </div>
-        <button onClick={handleRateClick}>Rate Recipe</button>
+        <button className="rate-recipe-button" onClick={handleRateClick}>Rate Recipe</button>
         {data.isLoading ? (
           <p>Loading...</p>
         ) : (
