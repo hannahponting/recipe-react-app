@@ -67,7 +67,7 @@ const ChangePassword =() => {
                         <li><Link to="/login">Login</Link></li>
                 </ul>
                         {message && <p>{message}</p>}
-                         <div>{data.worked.message}</div>
+
                   </div>
            
               
