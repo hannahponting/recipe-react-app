@@ -69,19 +69,32 @@
    
     /* list-style-type: none; */
     /* vertical-align: middle; */
+    background-color: rgba(7, 104, 159, 0.25);
+    background: linear-gradient(90deg,rgba(7, 104, 159, 0.25) 50%, rgba(7, 104, 159, 0.35) 100%);
+    box-shadow: 0px 1px 5px ;
+
     display: block;
     width: 400px;
+    padding: 12px;
+    padding-bottom: 25px;
     margin-bottom: 40px;
+    border-radius: 3%;
 }
 
 .details li {
     list-style-type: none;
 }
 
-.timer{
-    width: 18px;
-    height: 18px;
-    float: left;
+.timer-listitem {
+    display: flex;
+    align-items: center;
+    height: 50px;
+    margin-top: 20px;
+}
+
+#timer{
+    height: 40px;
+    margin-right: 10px;    
 }
 
 .boxes{
