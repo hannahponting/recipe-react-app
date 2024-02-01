@@ -33,8 +33,8 @@ function RecipeDetails(props) {
 
                     <h2 className="subtitles">Details</h2>
                     <ul className="details">
-                        <li><img src={require('.//Resources/clockIcon.png')} className="timer" />
-                            <strong> &nbsp;</strong>{recipe.time_to_cook}</li>
+                        <li className="timer-listitem"><img src={require('.//Resources/clockIcon.png')} id="timer" />
+                            <strong>{recipe.time_to_cook} </strong></li>
                         <li><strong>Name: </strong>{recipe.name}</li>
                         <li><strong>Meal Type: </strong>{recipe.mealType[0] + recipe.mealType.slice(1).toLowerCase()}</li>
                         <li><strong>Cuisine: </strong>{recipe.cuisine[0] + recipe.cuisine.slice(1).toLowerCase()}</li>
