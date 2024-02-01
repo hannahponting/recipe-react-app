@@ -4,6 +4,7 @@ import { GetRecipesPaginated } from "../utils";
 import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import "../filterBar/RecipeFilter"
+import RecipeFilterApp from "../filterBar/RecipeFilter";
 
 
 function RecipeCardList() {
@@ -26,54 +27,53 @@ function RecipeCardList() {
     };
 
     return (
-    <>
+        <>
+            <div className="wrapper">
 
-    <div className="wrapper">
+                {recipes.map((recipe) => {
 
-        {recipes.map((recipe) => {
+                    return (
 
-            return (
-
-                <Card
-                    key={recipe.id}
-                    img={`http://localhost:8080/api/recipes/image/${recipe.id}`}
-                    title={recipe.name}
-                    description="Take your boring salads up a knotch. This recipe is perfect for lunch
+                        <Card
+                            key={recipe.id}
+                            img={`http://localhost:8080/api/recipes/image/${recipe.id}`}
+                            title={recipe.name}
+                            description="Take your boring salads up a knotch. This recipe is perfect for lunch
       and only contains 5 ingredients!"
-                    id={recipe.id}
-                />
+                            id={recipe.id}
+                        />
 
-            )
-        })}
+                    )
+                })}
 
-        <div className="row">
-            <div className="column">
-                <button className="button" onClick={() => handlePageChange(currentPage - 1)} disabled={currentPage === 1}>
-                    Previous Page
-                </button>
-            </div>
-            <div className="column">
-                <button className="button" onClick={() => handlePageChange(currentPage + 1)} disabled={currentPage === totalPages}>
-                    Next Page
-                </button>
-            </div>
+                <div className="row">
+                    <div className="column">
+                        <button className="button" onClick={() => handlePageChange(currentPage - 1)} disabled={currentPage === 1}>
+                            Previous Page
+                        </button>
+                    </div>
+                    <div className="column">
+                        <button className="button" onClick={() => handlePageChange(currentPage + 1)} disabled={currentPage === totalPages}>
+                            Next Page
+                        </button>
+                    </div>
 
 
-        </div>
+                </div>
 
-    </div>;
-    </>
+            </div>;
+        </>
     )
 }
 
 
 export function Card(props) {
-    let link = "/recipes/"+props.id;
+    let link = "/recipes/" + props.id;
 
     return (
         <div className="card">
             <div className="card__body">
-                <img src={props.img} className="card__image"/>
+                <img src={props.img} className="card__image" />
                 <h2 className="card__title">{props.title}</h2>
                 <p className="card__description">{props.description}</p>
             </div>

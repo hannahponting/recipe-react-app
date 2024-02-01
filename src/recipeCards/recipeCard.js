@@ -3,11 +3,15 @@ import "./recipeCard.css";
 import { GetRecipesPaginated } from "../utils";
 import { Link, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
+import RecipeFilterApp, {RecipeFilter} from "../filterBar/RecipeFilter";
 
 function RecipeCardList() {
 
     const [searchTerm, setSearchTerm] = useState('');
     const navigate = useNavigate();
+
+    const [filterStatus, setFilterStatus] = useState("off");
+
 
 
     const handleSearch = () => {
@@ -34,61 +38,76 @@ function RecipeCardList() {
 
 
     return <>
-        <header className="header">
-            <div className="Title">
-                Recipes
-            </div>
-            <div className="search-container">
-                <input
-                    type="text"
-                    value={searchTerm}
-                    onChange={(e) => setSearchTerm(e.target.value)}
-                />
-                <button onClick={handleSearch}>Search</button>
-            </div>
 
-        </header>
+        <div>
+            <header className="header">
+                <div className="Title">
+                    Recipes
+                </div>
+                <div>
+                    <RecipeFilterApp setFilterStatus={setFilterStatus}></RecipeFilterApp>
+
+                </div>
+                <div className="search-bar">
+                    <input
+                        type="text"
+                        value={searchTerm}
+                        onChange={(e) => setSearchTerm(e.target.value)}
+                    />
+                    <button onClick={handleSearch}>Search</button>
+                </div>
+
+            </header>
+
+
+        </div>
+
+
+
 
         <div className="Divider" ></div>
 
 
+        {filterStatus === "off" ?
 
-        <div className="wrapper">
+            <>
+            <div className="wrapper">
 
-
-
-            {recipes.map((recipe) => {
-
-                return (
-
-                    <Card
-                        key={recipe.id}
-                        img={`http://localhost:8080/api/recipes/image/${recipe.id}`}
-                        title={recipe.name}
-                        description="Take your boring salads up a knotch. This recipe is perfect for lunch
+                {recipes.map((recipe) => {
+                    return (
+                        <Card
+                            key={recipe.id}
+                            img={`http://localhost:8080/api/recipes/image/${recipe.id}`}
+                            title={recipe.name}
+                            description="Take your boring salads up a knotch. This recipe is perfect for lunch
       and only contains 5 ingredients!"
-                        id={recipe.id}
-                    />
+                            id={recipe.id}
+                        />
+                    )
+                })}
 
-                )
-            })}
-
-
-
-        </div>
-
-        <div className="button-container">
-            <div>
-                <button className="buttonEditing" onClick={() => handlePageChange(currentPage - 1)} disabled={currentPage === 1}>
-                    Previous Page
-                </button>
-                &nbsp;&nbsp;&nbsp;
-                <button className="buttonEditing" onClick={() => handlePageChange(currentPage + 1)} disabled={currentPage === totalPages}>
-                    Next Page
-                </button>
             </div>
 
-        </div>
+
+            <div className="button-container">
+                <div>
+                    <button className="buttonEditing" onClick={() => handlePageChange(currentPage - 1)}
+                            disabled={currentPage === 1}>
+                        Previous Page
+                    </button>
+                    &nbsp;&nbsp;&nbsp;
+                    <button className="buttonEditing" onClick={() => handlePageChange(currentPage + 1)}
+                            disabled={currentPage === totalPages}>
+                        Next Page
+                    </button>
+                </div>
+
+            </div>
+            </>
+
+
+            :<div></div>}
+
 
     </>;
 }
@@ -98,7 +117,7 @@ function Card(props) {
     return (
         <div className="card">
             <div className="card__body">
-                <img src={props.img} className="card__image" />
+                <img src={props.img} className="card__image"/>
                 <h2 className="card__title">{props.title}</h2>
                 <p className="card__description">{props.description}</p>
             </div>

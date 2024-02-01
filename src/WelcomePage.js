@@ -26,7 +26,7 @@ const WelcomePage = (props) => {
                 <div className="Title">
                     Home
                 </div>
-                <div className="search-container">
+                <div className="search-bar">
                     <input
                         type="text"
                         value={searchTerm}
@@ -42,18 +42,23 @@ const WelcomePage = (props) => {
             <div className="Divider"></div>
 
             {/* <h2 className="Title2">Highlights</h2> */}
-            <div>
 
-                <RecipeFilterApp></RecipeFilterApp>
-
-
+            <div className="video-container">
+                <video autoPlay loop muted>
+                    <source src={require('.//cookingVideo.mp4')} type='video/mp4' />
+                </video>
             </div>
 
 
-
-
+            <header className="subheader">
+                <div className="subheading">
+                    Highlighted recipes
+                </div>
+            </header>
 
             <div class="image-container-welcomePage">
+
+
                 <div class="columnWelcomePage">
 
                     <Link to="/recipes/1730">

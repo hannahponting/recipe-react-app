@@ -1,0 +1,34 @@
+.label {
+    font-size: 100px;
+    font-family: Inter;
+    color: brown;
+}
+
+.Divider {
+    width: auto;
+    box-shadow: 0px 4px 4px rgba (0, 0, 0, 0.25);
+    border-top: 2px;
+    border-color: lightgrey;
+    border-style: solid;
+    margin-bottom: 3%;
+}
+
+/* Search button styling */
+.filter-contaner.filterButton  {
+    background-color: #07689F;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 15px;
+    margin-left:10px 5px;
+    cursor: pointer;
+}
+
+/* Hover effect for the button */
+.buttonEditing:hover {
+    background-color: #052f47;
+    /* Change the hover color */
+}
+.filter-container {
+    padding: 2%;
+}
