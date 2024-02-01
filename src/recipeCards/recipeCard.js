@@ -5,6 +5,9 @@ import { Link, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import RecipeFilterApp, {RecipeFilter} from "../filterBar/RecipeFilter";
 
+import {RecipeList} from "../filterBar/RecipeFilter";
+
+
 function RecipeCardList() {
 
     const [searchTerm, setSearchTerm] = useState('');
@@ -37,6 +40,30 @@ function RecipeCardList() {
     };
 
 
+
+    const [filteredRecipes, setFilteredRecipes] = useState([]);
+    const [filterButtonStatus, setFilterButtonStatus] = useState("off");
+    const applyFilters = (costLevel, difficultyLevel, spiceLevel) => {
+
+        fetch(`http://localhost:8080/api/recipes`)
+            .then(response => response.json())
+            .then(data => {
+                let newdata = data.filter(recipe => {
+                    return recipe["cost"].includes(costLevel) && recipe["difficulty_level"].includes(difficultyLevel) && recipe["spice_level"].includes(spiceLevel)
+
+                });
+
+                setFilteredRecipes(newdata);
+                setFilterButtonStatus('on');
+                setFilterStatus('on');
+
+
+            })
+
+    }
+
+
+
     return <>
 
         <div>
@@ -45,8 +72,8 @@ function RecipeCardList() {
                     Recipes
                 </div>
                 <div>
-                    <RecipeFilterApp setFilterStatus={setFilterStatus}></RecipeFilterApp>
 
+                    <RecipeFilter applyFilters={applyFilters} />
                 </div>
                 <div className="search-bar">
                     <input
@@ -106,7 +133,11 @@ function RecipeCardList() {
             </>
 
 
-            :<div></div>}
+            :<div>
+                {/*<RecipeFilterApp setFilterStatus={setFilterStatus}></RecipeFilterApp>*/}
+
+                {filterButtonStatus === "on" && <RecipeList recipes={filteredRecipes} />}
+            </div>}
 
 
     </>;
