@@ -28,8 +28,8 @@ const ChangePassword =() => {
     
           const body = await response.text();
           console.log(body)
-          if (body === "password saved") {
-            setMessage('Password successfully changed.');
+          if (response.status==201) {
+            setMessage(body);
           } else {
             setMessage('Password not changed. Please check your credentials.');
           }
@@ -67,7 +67,6 @@ const ChangePassword =() => {
                         <li><Link to="/login">Login</Link></li>
                 </ul>
                         {message && <p>{message}</p>}
-
                   </div>
            
               
