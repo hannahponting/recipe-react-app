@@ -109,6 +109,42 @@ export const RecipeList = ({ recipes }) => {
         </>
     );
 };
+//
+//
+// export function applyFilters (costType,difficultyLevel, spiceLevel,currentPageForFilter) {
+//
+//     const pageSize = 10;
+//     let apiUrl = "";
+//
+//     if (costType === "" && difficultyLevel === "" && spiceLevel === "")
+//         apiUrl = `http://localhost:8080/api/recipes/search/custom/page/${currentPageForFilter}/${pageSize}`
+//     else
+//         apiUrl =
+//             `http://localhost:8080/api/recipes/search/custom/page/${currentPageForFilter}/${pageSize}?query=difficultyLevel%3D${difficultyLevel}%26costType%3D${costType}%26spiceType%3D${spiceLevel}`;
+//
+//
+//     fetch(apiUrl)
+//         .then(response => response.json())
+//         .then(data => {
+//
+//             setFilteredRecipes(data.content);
+//             setFilterButtonStatus('on');
+//             setFilterStatus('on');
+//             setTotalPageForFilter(data.totalPages)
+//             setCostType(costType);
+//             setDifficultyLevel(difficultyLevel);
+//             setSpiceLevel(spiceLevel);
+//             // setCurrentPageForFilter(currentPageForFilter);
+//
+//         })
+//         .catch(error => {
+//             // Handle errors if any occurred during the fetch
+//             console.error("Error fetching data:", error);
+//         });
+//
+// }
+//
+
 
 
 
