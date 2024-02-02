@@ -1,6 +1,5 @@
 import * as React from "https://cdn.skypack.dev/react@17.0.1";
 import "./recipeCards/recipeCard.css";
-import "./RecipeSearchResults.css";
 import { GetRecipesByKeyword, GetRecipesPaginated } from "./utils";
 import { Link, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
@@ -35,7 +34,7 @@ function RecipeSearchResults() {
     if (searchdata.length > 0) {
 
 
-        return <div className="recipesearchresults-page-container">
+        return <>
 
             <div>
                 <header className="header">
@@ -66,7 +65,7 @@ function RecipeSearchResults() {
                 }
                 )}
             </div>
-        </div>
+        </>
     }
 
     else return (
