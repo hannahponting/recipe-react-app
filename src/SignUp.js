@@ -47,15 +47,15 @@ const SignUp = (props) => {
         console.log(answer)
         if (response.status==201) {
           props.setUserID((prevUserID) => email)
-          setMessage("Signed up")
+          setMessage("Successfully signed up")
         }
-        else{
-            setMessage("Error")
+        if(response.status==500){
+          console.log(body.message)
+          setMessage(body.message)
         }
       } catch (error) {
         console.error('Error fetching data:', error);
-        setMessage("error")
-        console.log(data);
+        setMessage(error.message)
       }
     };
   
