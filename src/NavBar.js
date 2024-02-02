@@ -19,6 +19,7 @@ const Navigation = (props) => {
 
     const handleLogOut = () => {
         props.setIsLoggedIn(false);
+        props.setUserId('');
     }
 
         return (

@@ -32,7 +32,7 @@ function App() {
 
         <Routes>
       
-          <Route path='/' element={<NavBar userID={userID} isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn}/>}>
+          <Route path='/' element={<NavBar userID={userID} isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} setUserID={setUserID}/>}>
             <Route path="/" element={<WelcomePage />} />
             <Route path="/recipes" element={<RecipeCardList />} />
             <Route path="/recipes/:id" element={<RecipeDetails userID={userID} />} />
