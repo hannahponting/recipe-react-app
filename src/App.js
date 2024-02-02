@@ -22,6 +22,7 @@ import Favourites from './Favourites.js'
 
 function App() {
   const [userID, setUserID] = useState("hannah@nerdrecipes.com");
+  const [uuID, setUuID] = useState(0);
   const isLoginPage = window.location.pathname === '/login';
 
   return (
@@ -34,11 +35,11 @@ function App() {
           <Route path='/' element={<NavBar userID={userID}/>}>
             <Route path="/" element={<WelcomePage />} />
             <Route path="/recipes" element={<RecipeCardList />} />
-            <Route path="/recipes/:id" element={<RecipeDetails userID={userID} />} />
+            <Route path="/recipes/:id" element={<RecipeDetails uuID={uuID} />} />
             <Route path="/recipes/search" element={<RecipeSearchResults />} />
-            <Route path="/login" element={<LoginPage setUserID={setUserID}/>} />
+            <Route path="/login" element={<LoginPage setUserID={setUserID} setUuID={setUuID}/>} />
             <Route path="/WhoWeAre" element={<WhoWeAre />} />
-            <Route path="/favourites" element={<Favourites />} />
+            <Route path="/favourites" element={<Favourites uuID={uuID}/>} />
             <Route path="/changepassword" element={<ChangePassword/>}/>
             <Route path="/signup" element={<SignUp setUserID={setUserID}/>}/>
           </Route>

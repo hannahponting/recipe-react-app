@@ -8,6 +8,7 @@ const LoginPage = (props) => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [message, setMessage] = useState('');
+  const [uuid, setUuid] = useState(0);
 
 
   const handleUsernameChange = (event) => {
@@ -33,8 +34,15 @@ const LoginPage = (props) => {
       console.log(body)
       if (body == true) {
         props.setUserID((prevUserID) => username);
-
         setMessage('Logged in');
+
+        const urlApi = `http://localhost:8080/api/person/${username}`
+        const response = await fetch(urlApi);
+        const body = await response.json();
+        props.setUuID(body.id);
+
+        // const data = ({recipes: body.content, isLoading: false, totalPages: body.totalPages})
+
       }
       else {
         setMessage('Error please check your credentials');
