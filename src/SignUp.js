@@ -35,20 +35,43 @@ const SignUp = (props) => {
     "lastName": lastName
   }
 
-  const getData = async () => {
-    try {
-      const response = await fetch('http://localhost:8080/api/person', {
-        method: 'POST',
-        headers: { 'content-type': 'application/json' },
-        body: JSON.stringify(requestBody),
-      });
-      const body = await response.json();
-      console.log(response)
-      answer = JSON.stringify(body);
-      console.log(answer)
-      if (response.status == 201) {
-        props.setUserID((prevUserID) => email)
-        setMessage("Signed up")
+  
+    const initialState = {
+      isLoading: false,
+      worked: { message: "" }
+    };
+  
+    const [data, setData] = useState(initialState);
+  
+    const requestBody ={
+        "email": email,
+        "firstName": firstName,
+        "lastName": lastName
+        }
+  
+    const getData = async () => {
+      try {
+        const response = await fetch('http://localhost:8080/api/person', {
+          method: 'POST',
+          headers: { 'content-type': 'application/json' },
+          body: JSON.stringify(requestBody),
+        });
+        const body = await response.json();
+        console.log(response)
+        answer = JSON.stringify(body);
+        console.log(answer)
+        if (response.status==201) {
+          props.setUserID((prevUserID) => email)
+          setMessage("Successfully signed up")
+        }
+        if(response.status==500){
+          console.log(body.message)
+          setMessage(body.message)
+        }
+      } catch (error) {
+        console.error('Error fetching data:', error);
+        setMessage(error.message)
+
       }
       else {
         setMessage("Error")

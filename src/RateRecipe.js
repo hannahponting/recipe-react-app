@@ -1,20 +1,17 @@
 import React, { useEffect, useState } from "react";
 import "./RateRecipe.css"
+import { GetUserByEmail } from "./utils";
 
 
 const RateRecipe = (props) => {
+  let person = GetUserByEmail(props.userID);
 
-    const initialState = {
-      isLoading: false,
-      rating: { message: "" }
-    };
-
-    const [data, setData] = useState(initialState);
     const [myRating, setMyRating] = useState(0);
+    const [message, setMessage] = useState();
   
     const requestBody = {
       recipeId: props.id,
-      personId: props.userID,
+      personId: person.id,
       myRating: myRating,
       favourite: true
     };
@@ -26,20 +23,24 @@ const RateRecipe = (props) => {
           headers: { 'content-type': 'application/json' },
           body: JSON.stringify(requestBody),
         });
-  
         const body = await response.json();
-        console.log("Request: " + JSON.stringify(body));
-  
-        setData((prevData) => ({ ...prevData, rating: body, isLoading: false }));
+        if(response.status==201){
+        console.log((body));
+        props.fetchData();
+        setMessage("Submitted Rating");
+        }
+        if(response.status == 500){
+          console.log(body.message);
+          setMessage(body.message);
+        }
       } catch (error) {
         console.error('Error fetching data:', error);
-        setData((prevData) => ({ ...prevData, isLoading: false }));
+        setMessage(error.message)
       }
     };
   
     const handleRateClick = () => {
       getData();
-      window.location.reload(false);
     };
   
     return (
@@ -56,11 +57,7 @@ const RateRecipe = (props) => {
           />
         </div>
         <button className="rate-recipe-button" onClick={handleRateClick}>Rate Recipe</button>
-        {data.isLoading ? (
-          <p>Loading...</p>
-        ) : (
-          <div>{data.rating.message}</div>
-        )}
+        <p>{message}</p>
       </div>
     );
   };
