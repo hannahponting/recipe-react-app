@@ -1,20 +1,14 @@
+
+
 .footer {
-    background-color: #757683;
-
-
-}
-
-.box {
-    margin-top: 2%;
+    display: block;
+    position: absolute;
+    bottom: 0;
     background-color: #07689f;
-    height:90px;
-    /* display: flex;
-    flex-direction: row;
-    align-items: center; */
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    height:100px;
+    width:100%;
     }
+
 
 .footerText {
     color: white;
@@ -31,3 +25,7 @@
     border-radius: 5px;
     /* margin-top: 30px; */
 }
+
+/* Rectangle 2 */
+
+

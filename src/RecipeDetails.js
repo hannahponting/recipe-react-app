@@ -14,7 +14,7 @@ function RecipeDetails(props) {
         let recipe = GetRecipesById(params.id);
         return (
 
-            <>
+            <div className="recipe-detailspage-container">
                 <header className="header">
                     <div className="recipe-title-container">
                        <div id="recipe-title">{recipe.name}</div> 
@@ -75,7 +75,7 @@ function RecipeDetails(props) {
                 </Accordion>
 
 
-            </>
+            </div>
         );
     }
     catch (err) {

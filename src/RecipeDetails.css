@@ -2,7 +2,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
 
 
-
+.recipe-detailspage-container {
+    margin-bottom: 200px;
+}
 
 .header {
     padding: 10px 20px;

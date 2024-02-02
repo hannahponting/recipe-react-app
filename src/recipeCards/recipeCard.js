@@ -65,7 +65,7 @@ function RecipeCardList() {
 
 
     return <>
-
+    <div className="recipe-container"> 
         <div>
             <header className="header">
                 <div className="Title">
@@ -89,9 +89,9 @@ function RecipeCardList() {
 
         </div>
 
+        
 
-
-
+   
         <div className="Divider" ></div>
 
 
@@ -138,7 +138,7 @@ function RecipeCardList() {
 
                 {filterButtonStatus === "on" && <RecipeList recipes={filteredRecipes} />}
             </div>}
-
+        </div>
 
     </>;
 }

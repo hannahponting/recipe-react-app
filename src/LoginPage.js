@@ -56,7 +56,7 @@ const LoginPage = (props) => {
   };
 
   return (
-    <>
+    <div className="loginpage-container">
       <header className="header">
         <div className="Title">
           Login Page
@@ -68,7 +68,7 @@ const LoginPage = (props) => {
       </header>
 
       <div className="Divider"></div>
-      <div>
+      <div className="login-details-container">
 
         <div>
           <label className="loginDetails">Email:</label>
@@ -86,7 +86,7 @@ const LoginPage = (props) => {
         </ul>
       </div>
 
-    </>
+    </div>
   )
 
 }
