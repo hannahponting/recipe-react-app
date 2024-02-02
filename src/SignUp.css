@@ -35,7 +35,7 @@
     /* height: 20px; */
 }
 
-.loginDetails {
+.signupDetails {
     font-family: Inter;
     font-size: 48px;
     /* padding: 2%; */
@@ -43,7 +43,7 @@
 }
 
 
-.login-button {
+.signup-button {
     background-color: #07689F; /* Change the color to your preferred button color */
     color: #fff;
     border: none;
@@ -56,14 +56,14 @@
   }
   
   /* Hover effect for the button */
-.login-button:hover {
+.signup-button:hover {
     background-color: #0056b3; /* Change the hover color */
   }
-  .credential-container{
+  .signup-container{
     position: absolute;
     top: 50%;
     left: 50%;
-    height: 500px;
+    height: 825px;
     width: 500px;
     transform: translate(-50%, -50%);
 
@@ -75,7 +75,7 @@
     /* justify-content: center; */
    
   }
-  .credential-box{
+  .signup-box{
     display: flex;
     flex-direction: row;
     justify-content: left;
@@ -84,7 +84,7 @@
     margin-left: 50px;
   }
 
-  .credential-input-boxes {
+  .signup-input-boxes {
     height: 50px;
     /* margin-left: 10px; */
     /* padding-top: 3%; */
@@ -96,7 +96,7 @@
   padding-left: 10%;
 }
 
-.account-signup {
+.account-login {
   padding-top: 5%;
   font-size: 24px;
 }
