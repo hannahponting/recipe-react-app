@@ -22,7 +22,6 @@ function RecipeCardList() {
     useEffect(() => {
         const fetchData = async () => {
             const result = await GetRecipesPaginated(currentPage, 10, query);
-            console.log(result);
             setRecipes(result.recipes);
             setTotalPages(result.totalPages);
         };
@@ -41,7 +40,7 @@ function RecipeCardList() {
         if (costType===""&&difficultyLevel===""&&spiceLevel==="")
            {setQuery("");
            setCurrentPage(1);
-        console.log("empty query " + query)}
+        }
         else
         {
         let queryParams = "";
