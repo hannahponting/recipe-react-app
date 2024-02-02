@@ -8,6 +8,7 @@ const SignUp = (props) => {
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
   const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
   const [message, setMessage] = useState('');
   let answer = "";
 
@@ -20,19 +21,25 @@ const SignUp = (props) => {
   const handleEmailChange = (event) => {
     setEmail(event.target.value);
   }
+  const handlePasswordChange = (event) => {
+    setPassword(event.target.value)
+  }
 
 
   
 
-  const requestBody = {
+  let requestBody = {
     "email": email,
     "firstName": firstName,
     "lastName": lastName
   }
+  let passwordRequestBody = {
+    "email": email,
+    "password": password
+  };
 
   
    
-
   
     const getData = async () => {
       try {
@@ -48,6 +55,24 @@ const SignUp = (props) => {
         if (response.status==201) {
           props.setUserID((prevUserID) => email)
           setMessage("Successfully signed up")
+
+          try {
+            const response = await fetch('http://localhost:8080/api/account/setPassword', {
+              method: 'POST',
+              headers: { 'content-type': 'application/json' },
+              body: JSON.stringify(passwordRequestBody),
+            });
+            if(response.ok){
+                const body = await response.text();
+              }
+            if(response.status == 500){
+              const body = await response.json();
+              console.log(body.message);
+              }
+          } catch (error) {
+            console.error('Error fetching data:', error);
+            console.log(error.message);
+          }
         }
         if(response.status==500){
           console.log(body.message)
@@ -56,7 +81,6 @@ const SignUp = (props) => {
       } catch (error) {
         console.error('Error fetching data:', error);
         setMessage(error.message)
-
       }
     
     
@@ -107,7 +131,7 @@ const SignUp = (props) => {
         </div>
 
         <div>
-          <input className="signup-input-boxes" type="text" value={email} onChange={handleEmailChange} />
+          <input className="signup-input-boxes" type="password" value={password} onChange={handlePasswordChange} />
 
         </div>
 
