@@ -7,7 +7,6 @@ import RecipeFilterApp, {RecipeFilter} from "../filterBar/RecipeFilter";
 
 import {RecipeList} from "../filterBar/RecipeFilter";
 
-
 function RecipeCardList() {
 
     const {searchTerm, setSearchTerm, handleSearch, recipes,
