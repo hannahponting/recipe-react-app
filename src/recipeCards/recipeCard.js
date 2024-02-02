@@ -3,10 +3,10 @@ import "./recipeCard.css";
 import { GetRecipesPaginated } from "../utils";
 import { Link, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
-import {RecipeFilter} from "../filterBar/RecipeFilter";
+import { RecipeFilter } from "../filterBar/RecipeFilter";
 import { IngredientFilter } from "../filterBar/IngredientFilter";
 
-function RecipeCardList({filterType, queryEndpoint}) {
+function RecipeCardList({ filterType, queryEndpoint }) {
 
     const [searchTerm, setSearchTerm] = useState('');
     const navigate = useNavigate();
@@ -25,7 +25,7 @@ function RecipeCardList({filterType, queryEndpoint}) {
             setRecipes(result.recipes);
             setTotalPages(result.totalPages);
         };
-    
+
         fetchData();
     }, [currentPage, query]);
 
@@ -61,7 +61,7 @@ function RecipeCardList({filterType, queryEndpoint}) {
             // Handle other cases or show an error message
             console.error('Invalid filterArray format');
         }
-}
+    }
 
 
     return <div className="recipecard-page-container">
@@ -69,9 +69,12 @@ function RecipeCardList({filterType, queryEndpoint}) {
 
         <div>
             <header className="header">
-                <div className="Title">
-                    Recipes
+                <div className="recipelist-container">
+                    <div className="Title">
+                        Recipes
+                    </div>
                 </div>
+
                 {/* <div>
                 {filterType === 'ingredients' ? (
               <IngredientFilter applyFilters={applyFilters}/>
@@ -90,7 +93,7 @@ function RecipeCardList({filterType, queryEndpoint}) {
 
             </header>
 
-        {/* {recipes.map((recipe) => {
+            {/* {recipes.map((recipe) => {
             return (
                 <Card
                     key={recipe.id}
@@ -106,53 +109,54 @@ function RecipeCardList({filterType, queryEndpoint}) {
         </div>
         <div className="Divider"></div>
 
-{recipes.length > 0 ? (
-    <div className="wrapper">
-        {recipes.map((recipe) => (
-            <Card
-                key={recipe.id}
-                img={`http://localhost:8080/api/recipes/image/${recipe.id}`}
-                title={recipe.name}
-                description={"Delicious recipe from " + recipe.cuisine.toLowerCase() + " cuisine. It serves up to " + recipe.serving + " people!" }
-                id={recipe.id}
-            />
-        ))}
-    </div>
-) : (
-    <div className="no-recipes-message">
-        No recipes to display. Try adjusting your filters or searching with different keywords.
-    </div>
-)}
+        {recipes.length > 0 ? (
+            <div className="wrapper">
+                {recipes.map((recipe) => (
+                    <Card
+                        key={recipe.id}
+                        img={`http://localhost:8080/api/recipes/image/${recipe.id}`}
+                        title={recipe.name}
+                        description={"Delicious recipe from " + recipe.cuisine.toLowerCase() + " cuisine. It serves up to " + recipe.serving + " people!"}
+                        id={recipe.id}
+                    />
+                ))}
+            </div>
+        ) : (
+            <div className="no-recipes-message">
+                No recipes to display. Try adjusting your filters or searching with different keywords.
+            </div>
+        )}
 
-<div className="button-container">
-    <div>
-        <button
-            className="buttonEditing"
-            onClick={() => handlePageChange(currentPage - 1)}
-            disabled={currentPage === 1}
-        >
-            Previous Page
-        </button>
-        &nbsp;&nbsp;&nbsp;
-        <button
-            className="buttonEditing"
-            onClick={() => handlePageChange(currentPage + 1)}
-            disabled={currentPage === totalPages}
-        >
-            Next Page
-        </button>
+        <div className="button-container">
+            <div>
+                <button
+                    className="buttonEditing"
+                    onClick={() => handlePageChange(currentPage - 1)}
+                    disabled={currentPage === 1}
+                >
+                    Previous Page
+                </button>
+                &nbsp;&nbsp;&nbsp;
+                <button
+                    className="buttonEditing"
+                    onClick={() => handlePageChange(currentPage + 1)}
+                    disabled={currentPage === totalPages}
+                >
+                    Next Page
+                </button>
+            </div>
+        </div>
     </div>
-</div>
-</div>
 
-;}
+        ;
+}
 
 export function Card(props) {
     let link = "/recipes/" + props.id;
     return (
         <div className="card">
             <div className="card__body">
-                <img src={props.img} className="card__image"/>
+                <img src={props.img} className="card__image" />
                 <h2 className="card__title">{props.title}</h2>
                 <p className="card__description">{props.description}</p>
             </div>
