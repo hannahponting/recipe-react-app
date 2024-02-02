@@ -192,8 +192,62 @@ function getPage(handlePageChange, currentPage, totalPages) {
                 Next Page
             </button>
         </div>
+        
 
+<<<<<<< HEAD
+        
+
+   
+        <div className="Divider" ></div>
+
+
+function getRecipeCards(recipes) {
+    return <div className="wrapper">
+
+                {recipes.map((recipe) => {
+                    return (
+                        <Card
+                            key={recipe.id}
+                            img={`http://localhost:8080/api/recipes/image/${recipe.id}`}
+                            title={recipe.name}
+                            description="Take your boring salads up a knotch. This recipe is perfect for lunch
+      and only contains 5 ingredients!"
+                            id={recipe.id}
+                        />
+                    )
+                })}
+
+            </div>
+
+
+            <div className="button-container">
+                <div>
+                    <button className="buttonEditing" onClick={() => handlePageChange(currentPage - 1)}
+                            disabled={currentPage === 1}>
+                        Previous Page
+                    </button>
+                    &nbsp;&nbsp;&nbsp;
+                    <button className="buttonEditing" onClick={() => handlePageChange(currentPage + 1)}
+                            disabled={currentPage === totalPages}>
+                        Next Page
+                    </button>
+                </div>
+
+            </div>
+            </>
+
+
+            :<div>
+                {/*<RecipeFilterApp setFilterStatus={setFilterStatus}></RecipeFilterApp>*/}
+
+                {filterButtonStatus === "on" && <RecipeList recipes={filteredRecipes} />}
+            </div>}
+        </div>
+
+    </>;
+=======
     </div>;
+>>>>>>> ac6025bdf987a1dab8680967bf30ace7a91b601d
 }
 
 
