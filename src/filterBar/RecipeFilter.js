@@ -1,4 +1,7 @@
 import React, { useEffect, useState } from 'react';
+import { Card } from "../recipeCards/recipeCard"
+import './RecipeFilter.css';
+
 
 export const RecipeFilter = ({ applyFilters}) => {
     const [costType, setCostType] = useState('');
@@ -21,6 +24,7 @@ export const RecipeFilter = ({ applyFilters}) => {
         <>
             <div className="filter-container">
                 <form>
+
                     <label htmlFor="spice_level">Spicy Level:</label>
                     &nbsp;
                     <select id="spice_level" name="spice_level" value={spiceType} onChange={handleSpiceLevelChange}>
@@ -34,9 +38,9 @@ export const RecipeFilter = ({ applyFilters}) => {
 
                     &nbsp; &nbsp; &nbsp;
 
-                    <label htmlFor="difficulty">Difficult Level:</label>
-                    &nbsp;
-                    <select id="difficulty" name="difficulty" value={difficultyLevel} onChange={handleDifficultyChange}>
+                    <label className='label-edits' htmlFor="difficulty">Difficulty</label>
+                    &nbsp;&nbsp;
+                    <select className='filter-box' id="difficulty" name="difficulty" value={difficultyLevel} onChange={handleDifficultyChange}>
                         <option value="">Select All</option>
                         <option value="EASY">Easy</option>
                         <option value="MODERATE">Moderate</option>
@@ -45,6 +49,7 @@ export const RecipeFilter = ({ applyFilters}) => {
                     </select>
 
                     &nbsp; &nbsp; &nbsp;
+
 
                     <label htmlFor="cost">Cost Level:</label>
                     &nbsp;

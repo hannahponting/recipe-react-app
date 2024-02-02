@@ -9,18 +9,6 @@ import { GetUserByEmail } from "./utils";
 
 
 const Navigation = (props) => {
-
-
-    const [isLoggedIn, setIsLoggedIn] = useState(false);
-    const handleLogin = () => {
-        
-        
-        setIsLoggedIn(true);
-
-    };
-
-    
-
     const [searchTerm, setSearchTerm] = useState('');
     const navigate = useNavigate();
 
@@ -29,12 +17,20 @@ const Navigation = (props) => {
         navigate(`/recipes/search?keyword=${encodeURIComponent(searchTerm)}`)
     }
 
-
+    const handleLogOut = () => {
+        props.setIsLoggedIn(false);
+        props.setUserId('');
+    }
 
         return (
             <>
                 <nav className="navigation">
-                    <h3>Hello {props.userID}</h3>
+                         {props.isLoggedIn ? (
+                                 <h3>Hello {props.userID}</h3>
+                        ) : (
+                            <h3>Hello Guest</h3>
+                        )}
+                   
 
                     <ul className="itemsAligned">
                         <li>
@@ -54,12 +50,13 @@ const Navigation = (props) => {
                         <li>
                             <Link className="hyperlink" to="/WhoWeAre">Who We Are</Link>
                         </li>
-                        {isLoggedIn ? (
-                            <li>
-                                <Link className="hyperlink" to ="/favourites">Favorites</Link></li>
+                        <li> <Link className="hyperlink" to ="/favourites">Favorites</Link></li>
+                        {props.isLoggedIn ? (
+                            <li> <Link className="hyperlink" to="/" onClick={handleLogOut}>Log Out</Link></li>
                         ) : (
-                            <li><Link className="hyperlink" onClick={handleLogin} to = "/login">Log In</Link></li>
+                            <li><Link className="hyperlink" to = "/login">Log In</Link></li>
                         )}
+                        
 
                     </ul>
 

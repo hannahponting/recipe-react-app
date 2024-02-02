@@ -64,7 +64,8 @@ function RecipeCardList({filterType, queryEndpoint}) {
 }
 
 
-    return (<>
+    return <div className="recipecard-page-container">
+
 
         <div>
             <header className="header">
@@ -89,6 +90,18 @@ function RecipeCardList({filterType, queryEndpoint}) {
 
             </header>
 
+        {/* {recipes.map((recipe) => {
+            return (
+                <Card
+                    key={recipe.id}
+                    img={`http://localhost:8080/api/recipes/image/${recipe.id}`}
+                    title={recipe.name}
+                    description={"Delicious recipe from " + recipe.cuisine.toLowerCase() + " cuisine. It serves up to " + recipe.serving + " people!" }
+                    id={recipe.id}
+                />
+            )
+        })} */}
+
 
         </div>
         <div className="Divider"></div>
@@ -100,7 +113,7 @@ function RecipeCardList({filterType, queryEndpoint}) {
                 key={recipe.id}
                 img={`http://localhost:8080/api/recipes/image/${recipe.id}`}
                 title={recipe.name}
-                description="Take your boring salads up a notch. This recipe is perfect for lunch and only contains 5 ingredients!"
+                description={"Delicious recipe from " + recipe.cuisine.toLowerCase() + " cuisine. It serves up to " + recipe.serving + " people!" }
                 id={recipe.id}
             />
         ))}
@@ -130,7 +143,8 @@ function RecipeCardList({filterType, queryEndpoint}) {
         </button>
     </div>
 </div>
-</>)
+</div>
+
 ;}
 
 export function Card(props) {

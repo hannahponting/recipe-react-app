@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { PostUserLogin } from "./utils";
 import "./LoginPage.css";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 
 const LoginPage = (props) => {
@@ -9,6 +9,7 @@ const LoginPage = (props) => {
   const [password, setPassword] = useState('');
   const [message, setMessage] = useState('');
 
+  let navigate = useNavigate(); 
 
   const handleUsernameChange = (event) => {
     setUsername(event.target.value);
@@ -33,8 +34,10 @@ const LoginPage = (props) => {
       console.log(body)
       if (body == true) {
         props.setUserID((prevUserID) => username);
-
+        
+        props.setIsLoggedIn(true);
         setMessage('Logged in');
+        navigate("/");
       }
       else {
         setMessage('Error please check your credentials');
@@ -50,7 +53,7 @@ const LoginPage = (props) => {
   };
 
   return (
-    <>
+    <div className="loginpage-container">
       <header className="header">
         <div className="Title">
           Login Page
@@ -94,7 +97,7 @@ const LoginPage = (props) => {
         {message && <p>{message}</p>}
       </div>
 
-    </>
+    </div>
   )
 
 }

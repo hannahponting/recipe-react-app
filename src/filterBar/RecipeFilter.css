@@ -1,7 +1,7 @@
-.label {
-    font-size: 100px;
+.label-edits {
+    font-size: 24px;
     font-family: Inter;
-    color: brown;
+    color: black;
 }
 
 .Divider {
@@ -14,21 +14,25 @@
 }
 
 /* Search button styling */
-.filter-contaner.filterButton  {
+.filterButton  {
     background-color: #07689F;
     color: #fff;
     border: none;
     border-radius: 5px;
-    padding: 15px;
+    padding: 10px;
     margin-left:10px 5px;
     cursor: pointer;
 }
 
 /* Hover effect for the button */
-.buttonEditing:hover {
-    background-color: #052f47;
+.filterButton:hover {
+    background-color: #0b5e8f;
     /* Change the hover color */
 }
 .filter-container {
     padding: 2%;
+}
+
+.filter-box{
+    border-radius: 5%;
 }
