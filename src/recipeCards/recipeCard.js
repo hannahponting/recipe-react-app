@@ -8,6 +8,7 @@ import {RecipeFilter} from "../filterBar/RecipeFilter";
 
 function RecipeCardList() {
 
+    //change
     const [searchTerm, setSearchTerm] = useState('');
     const navigate = useNavigate();
     const handleSearch = () => {
