@@ -75,6 +75,12 @@ export async function GetRecipesPaginated(pageNum, pageSize, query){
     const data = ({ recipes: body.content, isLoading: false, totalPages: body.totalPages })
 return data;
 }
+export async function GetIngredientsPaginated(pageNum, pageSize, query){
+    const response = await fetch(`http://localhost:8080/api/recipes/search/ingredients/page/${pageNum}/${pageSize}${query}`);
+    const body = await response.json()
+    const data = ({ recipes: body.content, isLoading: false, totalPages: body.totalPages })
+return data;
+}
 
 
 

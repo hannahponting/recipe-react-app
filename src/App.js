@@ -7,7 +7,7 @@ import RecipeDetails from './RecipeDetails';
 import RecipeCardList from "../src/recipeCards/recipeCard.js"
 import NavBar from './NavBar';
 import WhoWeAre from './WhoWeAre';
-import { GetRecipes, GetUserByEmail } from './utils.js';
+import { GetIngredientsPaginated, GetRecipes, GetRecipesPaginated, GetUserByEmail } from './utils.js';
 import RecipeSearchResults from './recipeSearchResults.js';
 import Footer from './Footer.js';
 import LoginPage from './LoginPage.js';
@@ -34,7 +34,8 @@ function App() {
       
           <Route path='/' element={<NavBar userID={userID} isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} setUserID={setUserID}/>}>
             <Route path="/" element={<WelcomePage />} />
-            <Route path="/recipes" element={<RecipeCardList />} />
+            <Route path="/recipes" element={<RecipeCardList queryEndpoint={GetRecipesPaginated} />} />
+            <Route path="/ingredients" element={<RecipeCardList filterType="ingredients" queryEndpoint={GetIngredientsPaginated}/>} />
             <Route path="/recipes/:id" element={<RecipeDetails userID={userID} />} />
             <Route path="/recipes/search" element={<RecipeSearchResults />} />
             <Route path="/login" element={<LoginPage setUserID={setUserID} setIsLoggedIn={setIsLoggedIn}/>} />
