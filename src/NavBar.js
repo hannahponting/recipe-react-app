@@ -30,6 +30,7 @@ const Navigation = (props) => {
                             <h3>Hello Guest</h3>
                         )}
                    
+
                     <ul className="itemsAligned">
                         <li>
                             <img className="nerd-logo-removebg" alt="Nerd logo" src={require('.//Resources/invertedNerdLogo.png')}></img>
@@ -50,8 +51,7 @@ const Navigation = (props) => {
                         </li>
                         <li> <Link className="hyperlink" to ="/favourites">Favorites</Link></li>
                         {props.isLoggedIn ? (
-                            <li>
-                                <Link className="hyperlink" to="/" onClick={handleLogOut}>Log Out</Link></li>
+                            <li> <Link className="hyperlink" to="/" onClick={handleLogOut}>Log Out</Link></li>
                         ) : (
                             <li><Link className="hyperlink" to = "/login">Log In</Link></li>
                         )}

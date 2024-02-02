@@ -19,7 +19,7 @@ const WelcomePage = (props) => {
     }
 
     return (
-        <>
+        <div className=" welcomepage-container">
 
             <header className="header">
                 <div className="Title">
@@ -41,6 +41,7 @@ const WelcomePage = (props) => {
             <div className="Divider"></div>
 
             {/* <h2 className="Title2">Highlights</h2> */}
+            
 
             <div className="video-container">
                 <video autoPlay loop muted>
@@ -87,7 +88,7 @@ const WelcomePage = (props) => {
 
 
 
-        </>
+        </div>
     )
 }
 

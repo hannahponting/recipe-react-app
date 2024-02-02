@@ -1,5 +1,6 @@
 import * as React from "https://cdn.skypack.dev/react@17.0.1";
 import "./recipeCards/recipeCard.css";
+import "./RecipeSearchResults.css"
 import { GetRecipesByKeyword, GetRecipesPaginated } from "./utils";
 import { Link, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
@@ -34,7 +35,7 @@ function RecipeSearchResults() {
     if (searchdata.length > 0) {
 
 
-        return <>
+        return <div className="recipesearchresults-container">
 
             <div>
                 <header className="header">
@@ -56,8 +57,7 @@ function RecipeSearchResults() {
                             key={recipe.id}
                             img={`http://localhost:8080/api/recipes/image/${recipe.id}`}
                             title={recipe.name}
-                            description="Take your boring salads up a knotch. This recipe is perfect for lunch
-      and only contains 5 ingredients!"
+                            description={"Delicious recipe from " + recipe.cuisine.toLowerCase() + " cuisine. It serves up to " + recipe.serving + " people!" }
                             id={recipe.id}
                         />
                     </>
@@ -65,7 +65,7 @@ function RecipeSearchResults() {
                 }
                 )}
             </div>
-        </>
+        </div>
     }
 
     else return (
