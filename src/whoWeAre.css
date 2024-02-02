@@ -31,10 +31,10 @@
 }
 
 .TextContainer {
-    width: 55%;
-    display: flex;
-    padding-top: 2%;
-    margin: auto;
+    /* width: 55%; */
+    /* display: flex; */
+    /* padding-top: 2%; */
+    /* margin: auto; */
     justify-content: center;
     align-items: center;
 }

@@ -34,7 +34,7 @@ const Navigation = (props) => {
         return (
             <>
                 <nav className="navigation">
-                    <h3>Hello {props.userID}</h3>
+                    <p className="user-greeting">Hello {props.userFirtName}</p>
 
                     <ul className="itemsAligned">
                         <li>
@@ -56,7 +56,7 @@ const Navigation = (props) => {
                         </li>
                         {isLoggedIn ? (
                             <li>
-                                <Link className="hyperlink" to ="/favourites">Favorites</Link></li>
+                                <Link className="hyperlink" to ="/favourites">Favourites</Link></li>
                         ) : (
                             <li><Link className="hyperlink" onClick={handleLogin} to = "/login">Log In</Link></li>
                         )}
