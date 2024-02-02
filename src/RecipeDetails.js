@@ -1,15 +1,32 @@
 import { Await, useParams } from "react-router-dom"
-import { GetRecipes, GetRecipesById } from "./utils";
+import { GetNewRatingById, GetRatingById, GetRecipes, GetRecipesById } from "./utils";
 import "./RecipeDetails.css";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import StarRating from "./StarRating";
 import RateRecipe from "./RateRecipe";
 import { Accordion, AccordionBody, AccordionHeader, AccordionItem } from "react-bootstrap";
 
 
 function RecipeDetails(props) {
+    const [starRating, setStarRating] = useState(null);
+    const params = useParams();
 
-    let params = useParams();
+    const fetchData = async () => {
+        try {
+            const rating = await Promise.resolve(GetNewRatingById(params.id));
+            console.log(rating);
+            setStarRating(rating);
+            console.log(starRating);
+
+        } catch (error) {
+            console.error('Error fetching rating:', error);
+        }
+    };
+
+    useEffect(() => {
+        fetchData();
+    }, [params.id]);
+
     try {
         let recipe = GetRecipesById(params.id);
         return (
@@ -20,7 +37,7 @@ function RecipeDetails(props) {
                        <div id="recipe-title">{recipe.name}</div> 
                         
                         </div>
-                     <StarRating  recipeId={recipe.id}></StarRating>
+                     <StarRating  stars={starRating} recipeId={recipe.id}></StarRating>
                 </header>
 
 
@@ -70,7 +87,7 @@ function RecipeDetails(props) {
                     <AccordionHeader className="accordion-header"><h2 className="subtitles-accordion">Given this recipe a try?</h2></AccordionHeader>
                     <AccordionBody className="accordion-body" >
                         <h3 id="subtitles-accordion">Rate this recipe</h3>
-                            <RateRecipe id={recipe.id} userID={props.userID}></RateRecipe>
+                            <RateRecipe fetchData={fetchData} id={recipe.id} userID={props.userID}></RateRecipe>
                         </AccordionBody>
                 </Accordion>
 

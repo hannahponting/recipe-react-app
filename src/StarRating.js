@@ -2,7 +2,7 @@ import './StarRating.css';
 import { GetRatingById } from './utils';
 
 const StarRating = (props) => {
-  let rating = GetRatingById(props.recipeId);
+  let rating = props.stars
   const fullStars = Math.floor(rating);
   const hasHalfStar = rating % 1 > 0.5;
 
