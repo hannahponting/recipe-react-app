@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 const ChangePassword =() => {
     const [email, setEmail] = useState('');
@@ -27,8 +28,8 @@ const ChangePassword =() => {
     
           const body = await response.text();
           console.log(body)
-          if (body === "password saved") {
-            setMessage('Password successfully changed.');
+          if (response.status==201) {
+            setMessage(body);
           } else {
             setMessage('Password not changed. Please check your credentials.');
           }
@@ -44,21 +45,32 @@ const ChangePassword =() => {
 
 
     return(
-        <div>
-                   
-            <h2>Change Password Page</h2>
-                <div>
+      <>
+      <header className="header">
+        <div className="title">
+        Change Password Page
+        </div>
+      </header>
+        <div className="Divider"></div>
+                 <div>
                      <label>Email:</label>
                       <input type="text" value={email} onChange={handleEmailChange} />
                 </div>
-                    <div>
+                <div>
                         <label>New Password:</label>
                         <input type="password" value={password} onChange={handlePasswordChange} />
-                        </div>
+                </div>
                         <button onClick={handleSubmitClick}>Change</button>
+                  <div>
+                  <ul className="list">
+                        <li><Link to="/signup">Sign up</Link></li>
+                        <li><Link to="/login">Login</Link></li>
+                </ul>
                         {message && <p>{message}</p>}
-                
-        </div>
+                  </div>
+           
+              
+        </>
 
     )
 

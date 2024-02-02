@@ -7,7 +7,8 @@ import { Link } from "react-router-dom";
 const LoginPage = (props) => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
-  let answer = false;
+  const [message, setMessage] = useState('');
+
 
   const handleUsernameChange = (event) => {
     setUsername(event.target.value);
@@ -15,14 +16,6 @@ const LoginPage = (props) => {
   const handlePasswordChange = (event) => {
     setPassword(event.target.value);
   }
-
-
-  const initialState = {
-    isLoading: false,
-    worked: { message: "" }
-  };
-
-  const [data, setData] = useState(initialState);
 
   const requestBody = {
     "email": username,
@@ -36,18 +29,18 @@ const LoginPage = (props) => {
         headers: { 'content-type': 'application/json' },
         body: JSON.stringify(requestBody),
       });
-
       const body = await response.json();
-      answer = JSON.stringify(body);
-      console.log(answer)
-      if (answer == "true") {
+      console.log(body)
+      if (body == true) {
         props.setUserID((prevUserID) => username);
-
+        setMessage(()=>'Logged in');
       }
-      setData((prevData) => ({ ...prevData, worked: body, isLoading: false }));
+      else {
+        setMessage('Error');
+      }
     } catch (error) {
       console.error('Error fetching data:', error);
-      setData((prevData) => ({ ...prevData, isLoading: false }));
+      setMessage(error);
     }
   };
 
@@ -61,7 +54,6 @@ const LoginPage = (props) => {
         <div className="Title">
           Login Page
         </div>
-
       </header>
 
 
@@ -81,11 +73,14 @@ const LoginPage = (props) => {
         <div className="credential-box">
           <label className="loginDetails">Password:</label>
           <input className="credential-input-boxes" type="password" value={password} onChange={handlePasswordChange} />
-        </div>
-
-
 
         <button className="login-button" onClick={handleSubmitClick}>Login</button>
+        <ul className="list">
+        <li><Link to="/signup">Sign up</Link></li>
+        <li><Link to="/changepassword">Forgotten Password</Link></li>
+        </ul>
+        {message && <p>{message}</p>}
+
       </div>
 
     </>
