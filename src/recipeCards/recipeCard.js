@@ -7,7 +7,6 @@ import RecipeFilterApp, {RecipeFilter} from "../filterBar/RecipeFilter";
 
 import {RecipeList} from "../filterBar/RecipeFilter";
 
-
 function RecipeCardList() {
 
     const {searchTerm, setSearchTerm, handleSearch, recipes,
@@ -18,11 +17,11 @@ function RecipeCardList() {
 
     return <>
 
-            <header className="header">
-                 <div className="Title">Recipes</div>
-                 <RecipeFilter applyFilters={applyFilters}/>
-                {SearchBar(searchTerm, setSearchTerm, handleSearch)}
-            </header>
+        <header className="header">
+            <div className="Title">Recipes</div>
+            <RecipeFilter applyFilters={applyFilters}/>
+            {SearchBar(searchTerm, setSearchTerm, handleSearch)}
+        </header>
 
         <div className="Divider"></div>
 
@@ -199,7 +198,10 @@ function getPage(handlePageChange, currentPage, totalPages) {
 
 
 function getRecipeCards(recipes) {
-    return <div className="wrapper">
+    return  <div className="recipe-container">
+        
+    
+        <div className="wrapper">
 
         {recipes.map((recipe) => {
             return (
@@ -214,7 +216,9 @@ function getRecipeCards(recipes) {
             )
         })}
 
-    </div>;
+        </div> 
+    </div> 
+    ;
 }
 
 
@@ -238,5 +242,6 @@ export function Card(props) {
 
 
 export default RecipeCardList;
+
 
 
