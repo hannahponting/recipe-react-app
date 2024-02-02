@@ -54,28 +54,33 @@ const LoginPage = (props) => {
         <div className="Title">
           Login Page
         </div>
-
-
       </header>
 
+
       <div className="Divider"></div>
-      <div>
 
-        <div>
+
+      <div className="credential-container">
+
+
+        <div className="credential-box">
           <label className="loginDetails">Email:</label>
-          <input type="text" value={username} onChange={handleUsernameChange} />
+          <input className="credential-input-boxes" type="text" value={username} onChange={handleUsernameChange} />
         </div>
-        <div>
 
+
+
+        <div className="credential-box">
           <label className="loginDetails">Password:</label>
-          <input type="password" value={password} onChange={handlePasswordChange} />
-        </div>
-        <button onClick={handleSubmitClick}>Login</button>
+          <input className="credential-input-boxes" type="password" value={password} onChange={handlePasswordChange} />
+
+        <button className="login-button" onClick={handleSubmitClick}>Login</button>
         <ul className="list">
         <li><Link to="/signup">Sign up</Link></li>
         <li><Link to="/changepassword">Forgotten Password</Link></li>
         </ul>
         {message && <p>{message}</p>}
+
       </div>
 
     </>

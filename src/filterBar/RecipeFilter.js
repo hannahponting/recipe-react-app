@@ -80,9 +80,7 @@ export const RecipeList = ({ recipes }) => {
     return (
         <>
 
-            {/*<div className="Divider" ></div>*/}
 
-            <br /><br />
 
             < div className="wrapper" >
 
@@ -91,7 +89,7 @@ export const RecipeList = ({ recipes }) => {
                 ) : (
                     recipes.map((recipe) => (
                         <>
-                            {/*<Card> </Card>*/}
+    
                             <Card
                                 key={recipe.id}
                                 img={`http://localhost:8080/api/recipes/image/${recipe.id}`}
