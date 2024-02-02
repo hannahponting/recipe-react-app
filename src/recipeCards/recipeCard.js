@@ -4,8 +4,9 @@ import { GetRecipesPaginated } from "../utils";
 import { Link, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import {RecipeFilter} from "../filterBar/RecipeFilter";
+import { IngredientFilter } from "../filterBar/IngredientFilter";
 
-function RecipeCardList() {
+function RecipeCardList({filterType, queryEndpoint}) {
 
     const [searchTerm, setSearchTerm] = useState('');
     const navigate = useNavigate();
@@ -20,7 +21,7 @@ function RecipeCardList() {
 
     useEffect(() => {
         const fetchData = async () => {
-            const result = await GetRecipesPaginated(currentPage, 10, query);
+            const result = await queryEndpoint(currentPage, 10, query);
             setRecipes(result.recipes);
             setTotalPages(result.totalPages);
         };
@@ -34,35 +35,36 @@ function RecipeCardList() {
         }
     };
 
-    const applyFilters = (costType,difficultyLevel, spiceLevel) => {
+    const applyFilters = (filterArray) => {
 
-        if (costType===""&&difficultyLevel===""&&spiceLevel==="")
-           {setQuery("");
-           setCurrentPage(1);
+        if (Array.isArray(filterArray) && filterArray.length > 0) {
+            // Case: filterArray is an array of strings
+            const queryParams = filterArray.map(value => value).join('&');
+            setQuery(`?query=${encodeURIComponent(queryParams)}`);
+            setCurrentPage(1);
+        } else if (typeof filterArray === 'object' && filterArray !== null) {
+            // Case: filterArray is an object with key-value pairs
+            if (Object.values(filterArray).every(value => value === '')) {
+                setQuery('');
+                setCurrentPage(1);
+            } else {
+                let queryParams = '';
+                for (const key in filterArray) {
+                    if (filterArray[key] !== '') {
+                        queryParams += `${queryParams.length > 0 ? '&' : ''}${key}=${encodeURIComponent(filterArray[key])}`;
+                    }
+                }
+                setQuery(`?query=${encodeURIComponent(queryParams)}`);
+                setCurrentPage(1);
+            }
+        } else {
+            // Handle other cases or show an error message
+            console.error('Invalid filterArray format');
         }
-        else
-        {
-        let queryParams = "";
-    
-        if (costType !== "") {
-            queryParams += `costType=${costType}`;
-        }
-    
-        if (difficultyLevel !== "") {
-            queryParams += `${queryParams.length > 0 ? '&' : ''}difficultyLevel=${difficultyLevel}`;
-        }
-    
-        if (spiceLevel !== "") {
-            queryParams += `${queryParams.length > 0 ? '&' : ''}spiceType=${spiceLevel}`;
-        }
-    
-        setQuery("?query="+encodeURIComponent(queryParams));
-        setCurrentPage(1);
-    }
-};
+}
 
 
-    return <>
+    return (<>
 
         <div>
             <header className="header">
@@ -70,7 +72,11 @@ function RecipeCardList() {
                     Recipes
                 </div>
                 <div>
-                    <RecipeFilter applyFilters={applyFilters} />
+                {filterType === 'ingredients' ? (
+              <IngredientFilter applyFilters={applyFilters}/>
+            ) : (
+              <RecipeFilter applyFilters={applyFilters} />
+            )}
                 </div>
                 <div className="search-bar">
                     <input
@@ -124,7 +130,7 @@ function RecipeCardList() {
         </button>
     </div>
 </div>
-</>
+</>)
 ;}
 
 export function Card(props) {
