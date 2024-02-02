@@ -82,6 +82,7 @@ const LoginPage = (props) => {
         {message && <p>{message}</p>}
 
       </div>
+      </div>
 
     </>
   )
