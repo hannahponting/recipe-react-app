@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from "react";
 import "./RateRecipe.css"
+import { GetUserByEmail } from "./utils";
 
 
 const RateRecipe = (props) => {
+  let person = GetUserByEmail(props.userID);
 
     const initialState = {
       isLoading: false,
@@ -14,7 +16,7 @@ const RateRecipe = (props) => {
   
     const requestBody = {
       recipeId: props.id,
-      personId: props.userID,
+      personId: person.id,
       myRating: myRating,
       favourite: true
     };
