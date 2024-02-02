@@ -62,7 +62,7 @@ function RecipeCardList() {
 };
 
 
-    return <>
+    return <div className="recipecard-page-container">
 
         <div>
             <header className="header">
@@ -124,7 +124,7 @@ function RecipeCardList() {
         </button>
     </div>
 </div>
-</>
+</div>
 ;}
 
 export function Card(props) {
