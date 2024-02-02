@@ -5,7 +5,6 @@ import { Link, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import {RecipeFilter} from "../filterBar/RecipeFilter";
 
-
 function RecipeCardList() {
 
     const [searchTerm, setSearchTerm] = useState('');
@@ -86,10 +85,6 @@ function RecipeCardList() {
 
 
         </div>
-
-
-
-
         <div className="Divider"></div>
 
 {recipes.length > 0 ? (
@@ -147,5 +142,5 @@ export function Card(props) {
         </div>
     );
 }
-
 export default RecipeCardList;
+
