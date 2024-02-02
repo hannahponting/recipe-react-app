@@ -14,32 +14,6 @@ const ChangePassword = () => {
     setPassword(event.target.value);
   }
 
-  const requestBody = {
-    "email": email,
-    "password": password
-  };
-
-  const getData = async () => {
-    try {
-      const response = await fetch('http://localhost:8080/api/account/setPassword', {
-        method: 'POST',
-        headers: { 'content-type': 'application/json' },
-        body: JSON.stringify(requestBody),
-      });
-
-      const body = await response.text();
-      console.log(body)
-      if (response.status == 201) {
-        setMessage(body);
-      } else {
-        setMessage('Password not changed. Please check your credentials.');
-      }
-    } catch (error) {
-      console.error('Error fetching data:', error);
-      setMessage('An error occurred while changing the password.');
-    }
-  };
-
 
       const requestBody = {
         "email": email,

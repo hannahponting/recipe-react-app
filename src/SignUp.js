@@ -22,12 +22,7 @@ const SignUp = (props) => {
   }
 
 
-  const initialState = {
-    isLoading: false,
-    worked: { message: "" }
-  };
-
-  const [data, setData] = useState(initialState);
+  
 
   const requestBody = {
     "email": email,
@@ -36,18 +31,8 @@ const SignUp = (props) => {
   }
 
   
-    const initialState = {
-      isLoading: false,
-      worked: { message: "" }
-    };
-  
-    const [data, setData] = useState(initialState);
-  
-    const requestBody ={
-        "email": email,
-        "firstName": firstName,
-        "lastName": lastName
-        }
+   
+
   
     const getData = async () => {
       try {
@@ -73,14 +58,8 @@ const SignUp = (props) => {
         setMessage(error.message)
 
       }
-      else {
-        setMessage("Error")
-      }
-    } catch (error) {
-      console.error('Error fetching data:', error);
-      setMessage("error")
-      console.log(data);
-    }
+    
+    
   };
 
   const handleSubmitClick = () => {
@@ -147,6 +126,6 @@ const SignUp = (props) => {
     </>
   )
 
-}
+};
 
 export default SignUp;
