@@ -21,8 +21,10 @@ import Favourites from './Favourites.js'
 
 
 function App() {
-  const [userID, setUserID] = useState('');
+
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [userID, setUserID] = useState("hannah@nerdrecipes.com");
+  const [uuID, setUuID] = useState(0);
   const isLoginPage = window.location.pathname === '/login';
 
   return (
@@ -38,9 +40,9 @@ function App() {
             <Route path="/ingredients" element={<RecipeCardList filterType="ingredients" queryEndpoint={GetIngredientsPaginated}/>} />
             <Route path="/recipes/:id" element={<RecipeDetails userID={userID} />} />
             <Route path="/recipes/search" element={<RecipeSearchResults />} />
-            <Route path="/login" element={<LoginPage setUserID={setUserID} setIsLoggedIn={setIsLoggedIn}/>} />
+            <Route path="/login" element={<LoginPage setUserID={setUserID} setUuID={setUuID} setIsLoggedIn={setIsLoggedIn}/>} />
             <Route path="/WhoWeAre" element={<WhoWeAre />} />
-            <Route path="/favourites" element={<Favourites isLoggedIn={isLoggedIn}/>} />
+            <Route path="/favourites" element={<Favourites uuID={uuID} isLoggedIn={isLoggedIn}/>} />
             <Route path="/changepassword" element={<ChangePassword/>}/>
             <Route path="/signup" element={<SignUp setUserID={setUserID}/>}/>
           </Route>

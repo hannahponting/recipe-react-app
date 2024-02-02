@@ -13,12 +13,11 @@ const Favourites = (props) => {
     const [query, setQuery] = useState("");
     const [totalPages, setTotalPages] = useState(1);
 
-    const userId=2;
+
 
     useEffect(() => {
         const fetchData = async () => {
-            const result = await GetUserFavourRecipes(1, 5, userId);
-            console.log(result)
+            const result = await GetUserFavourRecipes(1, 5, props.uuID);
             setRecipes(result.recipes);
             setTotalPages(result.totalPages);
         };

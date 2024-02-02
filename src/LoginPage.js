@@ -8,8 +8,9 @@ const LoginPage = (props) => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [message, setMessage] = useState('');
+  const [uuid, setUuid] = useState(0);
 
-  let navigate = useNavigate(); 
+  let navigate = useNavigate();
 
   const handleUsernameChange = (event) => {
     setUsername(event.target.value);
@@ -34,9 +35,17 @@ const LoginPage = (props) => {
       console.log(body)
       if (body == true) {
         props.setUserID((prevUserID) => username);
-        
+
         props.setIsLoggedIn(true);
         setMessage('Logged in');
+
+        const urlApi = `http://localhost:8080/api/person/${username}`
+        const response = await fetch(urlApi);
+        const body = await response.json();
+        props.setUuID(body.id);
+
+        // const data = ({recipes: body.content, isLoading: false, totalPages: body.totalPages})
+
         navigate("/");
       }
       else {
