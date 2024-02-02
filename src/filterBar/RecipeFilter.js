@@ -5,10 +5,6 @@ export const RecipeFilter = ({ applyFilters }) => {
     const [costLevel, setCostLevel] = useState('');
     const [difficultyLevel, setDifficultyLevel] = useState('');
     const [spiceLevel, setSpiceLevel] = useState('');
-    const [filterStatus,setFilterStatus]= useState('off');
-    //const [currentPageForFilter, setCurrentPageForFilter] = useState(2);
-
-
     const handleCostChange = (e) => {
         setCostLevel(e.target.value);
     };
@@ -19,9 +15,6 @@ export const RecipeFilter = ({ applyFilters }) => {
 
     const handleSpiceLevelChange = (e) => {
         setSpiceLevel(e.target.value);
-    };
-    const handleFilterStatusChange = (e) => {
-        setFilterStatus("on");
     };
 
 
@@ -65,8 +58,7 @@ export const RecipeFilter = ({ applyFilters }) => {
                     </select>
                     &nbsp; &nbsp; &nbsp;
                     <button className='filterButton' id="apply-filters" type="button" onClick={() => {
-                        applyFilters(costLevel, difficultyLevel, spiceLevel,1);
-                        setFilterStatus("on");}}>
+                        applyFilters(costLevel, difficultyLevel, spiceLevel);}}>
                         Apply Filters
                     </button>
                     <br />
@@ -77,114 +69,3 @@ export const RecipeFilter = ({ applyFilters }) => {
     );
 
 };
-
-export const RecipeList = ({ recipes }) => {
-    return (
-        <>
-
-
-
-            < div className="wrapper" >
-
-                {recipes.length === 0 ? (
-                    <p>No recipes for this filter combination found</p>
-                ) : (
-                    recipes.map((recipe) => (
-                        <>
-    
-                            <Card
-                                key={recipe.id}
-                                img={`http://localhost:8080/api/recipes/image/${recipe.id}`}
-                                title={recipe.name}
-                                description="Take your boring salads up a knotch. This recipe is perfect for lunch and only contains 5 ingredients!"
-                                id={recipe.id}
-                            />
-                        </>
-                    ))
-                )}
-            </div>
-
-        </>
-    );
-};
-//
-//
-// export function applyFilters (costType,difficultyLevel, spiceLevel,currentPageForFilter) {
-//
-//     const pageSize = 10;
-//     let apiUrl = "";
-//
-//     if (costType === "" && difficultyLevel === "" && spiceLevel === "")
-//         apiUrl = `http://localhost:8080/api/recipes/search/custom/page/${currentPageForFilter}/${pageSize}`
-//     else
-//         apiUrl =
-//             `http://localhost:8080/api/recipes/search/custom/page/${currentPageForFilter}/${pageSize}?query=difficultyLevel%3D${difficultyLevel}%26costType%3D${costType}%26spiceType%3D${spiceLevel}`;
-//
-//
-//     fetch(apiUrl)
-//         .then(response => response.json())
-//         .then(data => {
-//
-//             setFilteredRecipes(data.content);
-//             setFilterButtonStatus('on');
-//             setFilterStatus('on');
-//             setTotalPageForFilter(data.totalPages)
-//             setCostType(costType);
-//             setDifficultyLevel(difficultyLevel);
-//             setSpiceLevel(spiceLevel);
-//             // setCurrentPageForFilter(currentPageForFilter);
-//
-//         })
-//         .catch(error => {
-//             // Handle errors if any occurred during the fetch
-//             console.error("Error fetching data:", error);
-//         });
-//
-// }
-//
-
-
-
-
-export default function RecipeFilterApp({ setFilterStatus }) {
-
-    const [filteredRecipes, setFilteredRecipes] = useState([]);
-    const [filterButtonStatus, setFilterButtonStatus] = useState("off");
-    const applyFilters = (costLevel, difficultyLevel, spiceLevel) => {
-
-        fetch(`http://localhost:8080/api/recipes`)
-            .then(response => response.json())
-            .then(data => {
-                let newdata = data.filter(recipe => {
-                    return recipe["cost"].includes(costLevel) && recipe["difficulty_level"].includes(difficultyLevel) && recipe["spice_level"].includes(spiceLevel)
-
-                });
-
-                setFilteredRecipes(newdata);
-                setFilterButtonStatus('on');
-                setFilterStatus('on');
-
-
-            })
-
-    }
-
-    return (
-        <>
-
-            <div>
-                <RecipeFilter applyFilters={applyFilters} />
-                {filterButtonStatus === "on" && <RecipeList recipes={filteredRecipes} />}
-            </div>
-        </>
-
-    )
-};
-
-
-
-
-
-
-
-
