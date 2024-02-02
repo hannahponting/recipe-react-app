@@ -10,19 +10,35 @@ const Favourites = (props) => {
 
     return (
         <>
+        <div>
+        {props.isLoggedIn ? (
+             <>
+             <header className="header">
+                 <div className="Title">Want to display my favourite recipes here</div>
+             </header>
+ 
+             <div className="Divider"></div>
+ 
+     
+             <div><img className= "photo" src={require('.//cooker.png')} alt="Cooker" /></div>
+         </>
+            ) : (
+        <>
             <header className="header">
-                <div className="Title">Want to display my favourite recipes here</div>
+                <div className="Title">Please Log in to see your favourite recipes</div>
             </header>
 
             <div className="Divider"></div>
 
-        
-
+    
             <div><img className= "photo" src={require('.//cooker.png')} alt="Cooker" /></div>
-
-
         </>
-    );
-}
+    )}
+
+    </div>
+    </>
+    )
+            
+};
 
 export default Favourites;
