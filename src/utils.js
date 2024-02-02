@@ -69,27 +69,11 @@ export function GetRecipesByKeyword(keyword){
 }
 
 
-export function GetRecipesPaginated(pageNum, pageSize){
-    const initialState = {
-        isLoading: true,
-        recipes: [],
-        totalPages: 0
-    }
-    const [data, setData] = useState(initialState)
-    const getData = async () => {
-        const response = await fetch(`http://localhost:8080/api/recipes/page/${pageNum}/${pageSize}`);
-
+export async function GetRecipesPaginated(pageNum, pageSize, query){
+        const response = await fetch(`http://localhost:8080/api/recipes/search/custom/page/${pageNum}/${pageSize}${query}`);
         const body = await response.json()
-        console.log(body);
-        setData({ recipes: body.content, isLoading: false, totalPages: body.totalPages })
-
-    }
-    useEffect(() => {
-        getData()
-    }, [pageNum,pageSize])
-
+        const data = ({ recipes: body.content, isLoading: false, totalPages: body.totalPages })
     return data;
-
 }
 
 

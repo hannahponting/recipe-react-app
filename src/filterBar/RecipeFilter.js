@@ -78,31 +78,32 @@ export const RecipeFilter = ({ applyFilters }) => {
 
 };
 
-export const RecipeList = ({ recipes }) => {
-    return (
-        <>
+// export const RecipeList = ({ recipes }) => {
+//     return (
+//         <>
 
 
 
-            < div className="wrapper" >
+//             < div className="wrapper" >
 
-                {recipes.length === 0 ? (
-                    <p>No recipes for this filter combination found</p>
-                ) : (
-                    recipes.map((recipe) => (
-                        <>
+//                 {recipes.length === 0 ? (
+//                     <p>No recipes for this filter combination found</p>
+//                 ) : (
+//                     recipes.map((recipe) => (
+//                         <>
     
-                            <Card
-                                key={recipe.id}
-                                img={`http://localhost:8080/api/recipes/image/${recipe.id}`}
-                                title={recipe.name}
-                                description="Take your boring salads up a knotch. This recipe is perfect for lunch and only contains 5 ingredients!"
-                                id={recipe.id}
-                            />
-                        </>
-                    ))
-                )}
-            </div>
+//                             <Card
+//                                 key={recipe.id}
+//                                 img={`http://localhost:8080/api/recipes/image/${recipe.id}`}
+//                                 title={recipe.name}
+//                                 description="Take your boring salads up a knotch. This recipe is perfect for lunch and only contains 5 ingredients!"
+//                                 id={recipe.id}
+//                             />
+//                         </>
+//                     ))
+//                 )}
+//             </div>
+
 
         </>
     );
@@ -146,40 +147,41 @@ export const RecipeList = ({ recipes }) => {
 
 
 
-export default function RecipeFilterApp({ setFilterStatus }) {
 
-    const [filteredRecipes, setFilteredRecipes] = useState([]);
-    const [filterButtonStatus, setFilterButtonStatus] = useState("off");
-    const applyFilters = (costLevel, difficultyLevel, spiceLevel) => {
+// export default function RecipeFilterApp({ setFilterStatus }) {
 
-        fetch(`http://localhost:8080/api/recipes`)
-            .then(response => response.json())
-            .then(data => {
-                let newdata = data.filter(recipe => {
-                    return recipe["cost"].includes(costLevel) && recipe["difficulty_level"].includes(difficultyLevel) && recipe["spice_level"].includes(spiceLevel)
+//     const [filteredRecipes, setFilteredRecipes] = useState([]);
+//     const [filterButtonStatus, setFilterButtonStatus] = useState("off");
+//     const applyFilters = (costLevel, difficultyLevel, spiceLevel) => {
 
-                });
+//         fetch(`http://localhost:8080/api/recipes`)
+//             .then(response => response.json())
+//             .then(data => {
+//                 let newdata = data.filter(recipe => {
+//                     return recipe["cost"].includes(costLevel) && recipe["difficulty_level"].includes(difficultyLevel) && recipe["spice_level"].includes(spiceLevel)
 
-                setFilteredRecipes(newdata);
-                setFilterButtonStatus('on');
-                setFilterStatus('on');
+//                 });
+
+//                 setFilteredRecipes(newdata);
+//                 setFilterButtonStatus('on');
+//                 setFilterStatus('on');
 
 
-            })
+//             })
 
-    }
+//     }
 
-    return (
-        <>
+//     return (
+//         <>
 
-            <div>
-                <RecipeFilter applyFilters={applyFilters} />
-                {filterButtonStatus === "on" && <RecipeList recipes={filteredRecipes} />}
-            </div>
-        </>
+//             <div>
+//                 <RecipeFilter applyFilters={applyFilters} />
+//                 {filterButtonStatus === "on" && <RecipeList recipes={filteredRecipes} />}
+//             </div>
+//         </>
 
-    )
-};
+//     )
+// };
 
 
 
