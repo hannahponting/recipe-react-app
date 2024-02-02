@@ -33,10 +33,10 @@ const LoginPage = (props) => {
       console.log(body)
       if (body == true) {
         props.setUserID((prevUserID) => username);
-        setMessage(()=>'Logged in');
+        setMessage('Logged in');
       }
       else {
-        setMessage('Error');
+        setMessage('Error please check your credentials');
       }
     } catch (error) {
       console.error('Error fetching data:', error);

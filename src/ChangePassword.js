@@ -25,24 +25,27 @@ const ChangePassword =() => {
             headers: { 'content-type': 'application/json' },
             body: JSON.stringify(requestBody),
           });
-    
-          const body = await response.text();
-          console.log(body)
-          if (response.status==201) {
-            setMessage(body);
-          } else {
-            setMessage('Password not changed. Please check your credentials.');
-          }
+          if(response.ok){
+              const body = await response.text();
+              console.log(body);
+              setMessage(body);
+            }
+          if(response.status == 500){
+            const body = await response.json();
+            console.log(body.message);
+            setMessage(body.message);
+            }
         } catch (error) {
           console.error('Error fetching data:', error);
-          setMessage('An error occurred while changing the password.');
+          console.log(error.message);
+          setMessage(error.message);
         }
       };
     
       const handleSubmitClick = () => {
         getData();
       };
-
+      
 
     return(
       <>
