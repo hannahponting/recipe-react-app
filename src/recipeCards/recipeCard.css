@@ -148,7 +148,7 @@
 .buttonEditing {
     color: #07689f;
     font-size: 20px;
-    /* padding: 10px 60px; */
+    padding: 10px 40px;
     position: flex;
     bottom: 0;
     border-radius: 5px;

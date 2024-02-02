@@ -69,9 +69,9 @@ function RecipeCardList() {
                 <div className="Title">
                     Recipes
                 </div>
-                <div>
+                {/* <div>
                     <RecipeFilter applyFilters={applyFilters} />
-                </div>
+                </div> */}
                 <div className="search-bar">
                     <input
                         type="text"
