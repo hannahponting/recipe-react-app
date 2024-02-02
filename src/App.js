@@ -21,6 +21,8 @@ import Favourites from './Favourites.js'
 
 
 function App() {
+
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [userID, setUserID] = useState("hannah@nerdrecipes.com");
   const [uuID, setUuID] = useState(0);
   const isLoginPage = window.location.pathname === '/login';
@@ -32,14 +34,14 @@ function App() {
 
         <Routes>
       
-          <Route path='/' element={<NavBar userID={userID}/>}>
+          <Route path='/' element={<NavBar userID={userID} isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} setUserID={setUserID}/>}>
             <Route path="/" element={<WelcomePage />} />
             <Route path="/recipes" element={<RecipeCardList />} />
-            <Route path="/recipes/:id" element={<RecipeDetails uuID={uuID} />} />
+            <Route path="/recipes/:id" element={<RecipeDetails userID={userID} />} />
             <Route path="/recipes/search" element={<RecipeSearchResults />} />
-            <Route path="/login" element={<LoginPage setUserID={setUserID} setUuID={setUuID}/>} />
+            <Route path="/login" element={<LoginPage setUserID={setUserID} setUuID={setUuID} setIsLoggedIn={setIsLoggedIn}/>} />
             <Route path="/WhoWeAre" element={<WhoWeAre />} />
-            <Route path="/favourites" element={<Favourites uuID={uuID}/>} />
+            <Route path="/favourites" element={<Favourites uuID={uuID} isLoggedIn={isLoggedIn}/>} />
             <Route path="/changepassword" element={<ChangePassword/>}/>
             <Route path="/signup" element={<SignUp setUserID={setUserID}/>}/>
           </Route>

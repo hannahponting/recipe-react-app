@@ -5,6 +5,10 @@
 .App {
   text-align: center;
   margin: auto;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  min-height: 100vh;
   
 }
 

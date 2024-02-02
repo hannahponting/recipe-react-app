@@ -1,6 +1,9 @@
 .footer {
-    background-color: #757683;
-    /* height: 100vh; */
+    background-color: #07689f;
+    height: 100px;
+    position: absolute;
+    width: 100%;
+    bottom: 0;
 
 
 }

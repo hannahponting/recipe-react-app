@@ -34,11 +34,28 @@ const Favourites = (props) => {
 
     return (
         <>
+        <div>
+        {props.isLoggedIn ? (
+             <>
+             <header className="header">
+                 <div className="Title">Want to display my favourite recipes here</div>
+             </header>
+ 
+             <div className="Divider"></div>
+ 
+     
+             <div><img className= "photo" src={require('.//cooker.png')} alt="Cooker" /></div>
+         </>
+            ) : (
+        <>
             <header className="header">
+
                 <div className="Title">Find your favourite recipes here</div>
+
             </header>
 
             <div className="Divider"></div>
+
 
             {recipes.length > 0 ? (
                 <div className="wrapper">
@@ -79,9 +96,15 @@ const Favourites = (props) => {
             </div>
 
 
+
         </>
-    );
-}
+    )}
+
+    </div>
+    </>
+    )
+            
+};
 
 
 export async function GetUserFavourRecipes(pageNum, pageSize, userId) {
