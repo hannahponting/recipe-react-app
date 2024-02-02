@@ -124,14 +124,51 @@ export function GetRecipesPaginated(pageNum, pageSize){
 //     return data.recipes;
 // }
 
-export function GetRatingById(id){
-    const initialState = {
-        isLoading: true,
-        rating: null
-    } 
-    const [data, setData] = useState(initialState);
+// export function GetRatingById(id){
+//     const initialState = {
+//         isLoading: true,
+//         rating: null
+//     } 
+//     const [data, setData] = useState(initialState);
 
-    const getData = async () => {
+//     const getData = async () => {
+//         try {
+//             const response = await fetch(`http://localhost:8080/api/rating/${id}`);
+
+//             if (response.ok) {
+//                 const contentType = response.headers.get('content-type');
+//                 if (contentType && contentType.includes('application/json')) {
+//                     const body = await response.json();
+//                     console.log(body);
+//                     setData({ rating: body, isLoading: false });
+//                     console.log(data);
+//                 } else {
+//                     const body = await response.text();
+//                     console.log(body);
+//                     setData({ rating: { id: parseInt(body) }, isLoading: false });
+//                 }
+//             } else {
+//                 console.error('Error fetching data:', response.status);
+//                 setData({ rating: null, isLoading: false });
+//             }
+//         } catch (error) {
+//             console.error('Network error:', error);
+//             setData({ rating: null, isLoading: false });
+//         }
+//     };
+
+//     useEffect(() => {
+//         getData();
+//     }, [id]);
+
+    // console.log(data);
+
+//     return data.rating;
+
+// }
+
+export function GetNewRatingById(id) {
+    return new Promise(async (resolve, reject) => {
         try {
             const response = await fetch(`http://localhost:8080/api/rating/${id}`);
 
@@ -139,32 +176,17 @@ export function GetRatingById(id){
                 const contentType = response.headers.get('content-type');
                 if (contentType && contentType.includes('application/json')) {
                     const body = await response.json();
-                    console.log(body);
-                    setData({ rating: body, isLoading: false });
-                    console.log(data);
-                } else {
-                    const body = await response.text();
-                    console.log(body);
-                    setData({ rating: { id: parseInt(body) }, isLoading: false });
+                    resolve(body);
                 }
             } else {
                 console.error('Error fetching data:', response.status);
-                setData({ rating: null, isLoading: false });
+                reject(response.status);
             }
         } catch (error) {
             console.error('Network error:', error);
-            setData({ rating: null, isLoading: false });
+            reject(error);
         }
-    };
-
-    useEffect(() => {
-        getData();
-    }, [id]);
-
-    // console.log(data);
-
-    return data.rating;
-
+    });
 }
 
 

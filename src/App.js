@@ -1,6 +1,6 @@
 import logo from './logo.svg';
 import './App.css';
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { BrowserRouter, Route, Routes, Switch } from 'react-router-dom';
 
 import WelcomePage from './WelcomePage';
 import RecipeDetails from './RecipeDetails';
@@ -15,18 +15,22 @@ import { useEffect, useState } from 'react';
 import ChangePassword from './ChangePassword.js';
 import SignUp from './SignUp.js';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import Favourites from './Favourites.js'
 
 
 
 
 function App() {
   const [userID, setUserID] = useState("hannah@nerdrecipes.com");
+  const isLoginPage = window.location.pathname === '/login';
 
   return (
     <div className="App">
              
       <BrowserRouter>
+
         <Routes>
+      
           <Route path='/' element={<NavBar userID={userID}/>}>
             <Route path="/" element={<WelcomePage />} />
             <Route path="/recipes" element={<RecipeCardList />} />
@@ -34,13 +38,20 @@ function App() {
             <Route path="/recipes/search" element={<RecipeSearchResults />} />
             <Route path="/login" element={<LoginPage setUserID={setUserID}/>} />
             <Route path="/WhoWeAre" element={<WhoWeAre />} />
+            <Route path="/favourites" element={<Favourites />} />
             <Route path="/changepassword" element={<ChangePassword/>}/>
             <Route path="/signup" element={<SignUp setUserID={setUserID}/>}/>
           </Route>
+          
+          
         </Routes>
+        {!isLoginPage && <Footer />}
+        
       </BrowserRouter>
+      
 
-      <Footer></Footer>
+      
+
 
     </div>
   );
