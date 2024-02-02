@@ -62,7 +62,7 @@ function RecipeCardList() {
 };
 
 
-    return <>
+    return <div className="recipecard-page-container">
 
         <div>
             <header className="header">
@@ -83,6 +83,18 @@ function RecipeCardList() {
 
             </header>
 
+        {/* {recipes.map((recipe) => {
+            return (
+                <Card
+                    key={recipe.id}
+                    img={`http://localhost:8080/api/recipes/image/${recipe.id}`}
+                    title={recipe.name}
+                    description={"Delicious recipe from " + recipe.cuisine.toLowerCase() + " cuisine. It serves up to " + recipe.serving + " people!" }
+                    id={recipe.id}
+                />
+            )
+        })} */}
+
 
         </div>
         <div className="Divider"></div>
@@ -94,7 +106,7 @@ function RecipeCardList() {
                 key={recipe.id}
                 img={`http://localhost:8080/api/recipes/image/${recipe.id}`}
                 title={recipe.name}
-                description="Take your boring salads up a notch. This recipe is perfect for lunch and only contains 5 ingredients!"
+                description={"Delicious recipe from " + recipe.cuisine.toLowerCase() + " cuisine. It serves up to " + recipe.serving + " people!" }
                 id={recipe.id}
             />
         ))}
@@ -124,7 +136,7 @@ function RecipeCardList() {
         </button>
     </div>
 </div>
-</>
+</div>
 ;}
 
 export function Card(props) {

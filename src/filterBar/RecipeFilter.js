@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Card } from "../recipeCards/recipeCard"
+import './RecipeFilter.css';
 
 export const RecipeFilter = ({ applyFilters }) => {
     const [costLevel, setCostLevel] = useState('');
@@ -22,8 +23,8 @@ export const RecipeFilter = ({ applyFilters }) => {
         <>
             <div className="filter-container">
                 <form>
-                    <label htmlFor="spice_level">Spicy Level:</label>
-                    &nbsp;
+                    <label className='label-edits' htmlFor="spice_level">Spiciness</label>
+                    &nbsp;&nbsp;
                     <select id="spice_level" name="spice_level" value={spiceLevel} onChange={handleSpiceLevelChange}>
                         <option value="">Select All</option>
                         <option value="NONE">None</option>
@@ -35,9 +36,9 @@ export const RecipeFilter = ({ applyFilters }) => {
 
                     &nbsp; &nbsp; &nbsp;
 
-                    <label htmlFor="difficulty">Difficult Level:</label>
-                    &nbsp;
-                    <select id="difficulty" name="difficulty" value={difficultyLevel} onChange={handleDifficultyChange}>
+                    <label className='label-edits' htmlFor="difficulty">Difficulty</label>
+                    &nbsp;&nbsp;
+                    <select className='filter-box' id="difficulty" name="difficulty" value={difficultyLevel} onChange={handleDifficultyChange}>
                         <option value="">Select All</option>
                         <option value="EASY">Easy</option>
                         <option value="MODERATE">Moderate</option>
@@ -47,8 +48,8 @@ export const RecipeFilter = ({ applyFilters }) => {
 
                     &nbsp; &nbsp; &nbsp;
 
-                    <label htmlFor="cost">Cost Level:</label>
-                    &nbsp;
+                    <label className='label-edits' htmlFor="cost">Cost</label>
+                    &nbsp;&nbsp;
                     <select id="cost" name="cost" value={costLevel} onChange={handleCostChange}>
                         <option value="">Select All</option>
                         <option value="LOW">Low</option>
