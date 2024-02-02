@@ -6,6 +6,8 @@ export const RecipeFilter = ({ applyFilters }) => {
     const [difficultyLevel, setDifficultyLevel] = useState('');
     const [spiceLevel, setSpiceLevel] = useState('');
     const [filterStatus,setFilterStatus]= useState('off');
+    //const [currentPageForFilter, setCurrentPageForFilter] = useState(2);
+
 
     const handleCostChange = (e) => {
         setCostLevel(e.target.value);
@@ -63,7 +65,7 @@ export const RecipeFilter = ({ applyFilters }) => {
                     </select>
                     &nbsp; &nbsp; &nbsp;
                     <button className='filterButton' id="apply-filters" type="button" onClick={() => {
-                        applyFilters(costLevel, difficultyLevel, spiceLevel);
+                        applyFilters(costLevel, difficultyLevel, spiceLevel,1);
                         setFilterStatus("on");}}>
                         Apply Filters
                     </button>
@@ -102,9 +104,47 @@ export const RecipeFilter = ({ applyFilters }) => {
 //                 )}
 //             </div>
 
-//         </>
-//     );
-// };
+
+        </>
+    );
+};
+//
+//
+// export function applyFilters (costType,difficultyLevel, spiceLevel,currentPageForFilter) {
+//
+//     const pageSize = 10;
+//     let apiUrl = "";
+//
+//     if (costType === "" && difficultyLevel === "" && spiceLevel === "")
+//         apiUrl = `http://localhost:8080/api/recipes/search/custom/page/${currentPageForFilter}/${pageSize}`
+//     else
+//         apiUrl =
+//             `http://localhost:8080/api/recipes/search/custom/page/${currentPageForFilter}/${pageSize}?query=difficultyLevel%3D${difficultyLevel}%26costType%3D${costType}%26spiceType%3D${spiceLevel}`;
+//
+//
+//     fetch(apiUrl)
+//         .then(response => response.json())
+//         .then(data => {
+//
+//             setFilteredRecipes(data.content);
+//             setFilterButtonStatus('on');
+//             setFilterStatus('on');
+//             setTotalPageForFilter(data.totalPages)
+//             setCostType(costType);
+//             setDifficultyLevel(difficultyLevel);
+//             setSpiceLevel(spiceLevel);
+//             // setCurrentPageForFilter(currentPageForFilter);
+//
+//         })
+//         .catch(error => {
+//             // Handle errors if any occurred during the fetch
+//             console.error("Error fetching data:", error);
+//         });
+//
+// }
+//
+
+
 
 
 

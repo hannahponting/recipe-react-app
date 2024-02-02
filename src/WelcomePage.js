@@ -3,7 +3,6 @@ import Navigation from './NavBar';
 
 
 import RecipeFilterApp from "./filterBar/RecipeFilter";
-//import {RecipeCardList} from "../src/recipe/recipeCard";
 
 import React, { useEffect } from "react";
 import { useState } from "react";

@@ -33,10 +33,11 @@ const LoginPage = (props) => {
       console.log(body)
       if (body == true) {
         props.setUserID((prevUserID) => username);
-        setMessage(()=>'Logged in');
+
+        setMessage('Logged in');
       }
       else {
-        setMessage('Error');
+        setMessage('Error please check your credentials');
       }
     } catch (error) {
       console.error('Error fetching data:', error);
@@ -64,24 +65,33 @@ const LoginPage = (props) => {
 
 
         <div className="credential-box">
-          <label className="loginDetails">Email:</label>
-          <input className="credential-input-boxes" type="text" value={username} onChange={handleUsernameChange} />
+          <label className="loginDetails">Email</label>
+
         </div>
+
+        <input className="credential-input-boxes" type="text" value={username} onChange={handleUsernameChange} />
+
+
 
 
 
         <div className="credential-box">
-          <label className="loginDetails">Password:</label>
-          <input className="credential-input-boxes" type="password" value={password} onChange={handlePasswordChange} />
+          <label className="loginDetails">Password</label>
 
-        <button className="login-button" onClick={handleSubmitClick}>Login</button>
-        <ul className="list">
-        <li><Link to="/signup">Sign up</Link></li>
-        <li><Link to="/changepassword">Forgotten Password</Link></li>
-        </ul>
+          <div className="password-container-change"><Link to="/changepassword">Forgot Password?</Link></div>
+        </div>
+        <input className="credential-input-boxes" type="password" value={password} onChange={handlePasswordChange} />
+        <div><button className="login-button" onClick={handleSubmitClick}>Login</button></div>
+
+        <div className="account-signup">
+          <label>Don't have an account?</label>
+          &nbsp;&nbsp;
+          <Link to="/signup">Sign up</Link>
+        </div>
+
+
+
         {message && <p>{message}</p>}
-
-      </div>
       </div>
 
     </>

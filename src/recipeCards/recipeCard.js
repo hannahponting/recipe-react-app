@@ -32,8 +32,11 @@ function RecipeCardList() {
     const handlePageChange = (newPage) => {
         if (newPage > 0 && newPage <= totalPages) {
             setCurrentPage(newPage);
+
         }
-    };
+
+    </>;
+}
 
     const applyFilters = (costType,difficultyLevel, spiceLevel) => {
 
@@ -63,32 +66,49 @@ function RecipeCardList() {
 };
 
 
-    return <>
-
+function getPageForFilter(handlePageChangeForFilter, currentPageForFilter, totalPageForFilter) {
+    return <div className="button-container">
         <div>
-            <header className="header">
-                <div className="Title">
-                    Recipes
-                </div>
-                <div>
-                    <RecipeFilter applyFilters={applyFilters} />
-                </div>
-                <div className="search-bar">
-                    <input
-                        type="text"
-                        value={searchTerm}
-                        onChange={(e) => setSearchTerm(e.target.value)}
-                    />
-                    <button onClick={handleSearch}>Search</button>
-                </div>
-
-            </header>
-
-
+            <button className="buttonEditing" onClick={() => {
+                handlePageChangeForFilter(currentPageForFilter - 1)
+            }}
+                    disabled={currentPageForFilter === 1}>
+                Previous Page
+            </button>
+            &nbsp;&nbsp;&nbsp;
+            <button className="buttonEditing" onClick={() => {
+                handlePageChangeForFilter(currentPageForFilter + 1);
+            }}
+                    disabled={currentPageForFilter === totalPageForFilter}>
+                Next Page
+            </button>
         </div>
+    </div>;
+}
 
 
 
+function SearchBar(searchTerm, setSearchTerm, handleSearch) {
+    return <div className="search-bar">
+        <input
+            type="text"
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}
+        />
+        <button onClick={handleSearch}>Search</button>
+    </div>;
+}
+
+
+
+
+function ExtractedSearchApp() {
+    const [searchTerm, setSearchTerm] = useState('');
+    const navigate = useNavigate();
+
+    const handleSearch = () => {
+        navigate(`/recipes/search?keyword=${encodeURIComponent(searchTerm)}`)
+    }
 
         <div className="Divider"></div>
 
@@ -132,6 +152,8 @@ function RecipeCardList() {
 </>
 ;}
 
+
+
 export function Card(props) {
     let link = "/recipes/" + props.id;
     return (
@@ -148,4 +170,9 @@ export function Card(props) {
     );
 }
 
+
+
+
 export default RecipeCardList;
+
+
