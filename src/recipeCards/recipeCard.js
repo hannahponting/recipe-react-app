@@ -198,7 +198,10 @@ function getPage(handlePageChange, currentPage, totalPages) {
 
 
 function getRecipeCards(recipes) {
-    return <div className="wrapper">
+    return  <div className="recipe-container">
+        
+    
+        <div className="wrapper">
 
         {recipes.map((recipe) => {
             return (
@@ -213,7 +216,9 @@ function getRecipeCards(recipes) {
             )
         })}
 
-    </div>;
+        </div> 
+    </div> 
+    ;
 }
 
 
