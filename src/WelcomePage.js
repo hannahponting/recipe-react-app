@@ -41,7 +41,7 @@ const WelcomePage = (props) => {
             <div className="Divider"></div>
 
             {/* <h2 className="Title2">Highlights</h2> */}
-        <div className="welcome-page-container">
+
             <div className="video-container">
                 <video autoPlay loop muted>
                     <source src={require('.//cookingVideo.mp4')} type='video/mp4' />
@@ -85,7 +85,7 @@ const WelcomePage = (props) => {
                 </div>
             </div>
 
-            </div>
+
 
         </>
     )

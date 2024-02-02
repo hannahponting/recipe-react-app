@@ -50,7 +50,7 @@ const LoginPage = (props) => {
   };
 
   return (
-    <div className="loginpage-container">
+    <>
       <header className="header">
         <div className="Title">
           Login Page
@@ -59,7 +59,7 @@ const LoginPage = (props) => {
 
 
       <div className="Divider"></div>
-    
+
 
       <div className="credential-container">
 
@@ -94,7 +94,7 @@ const LoginPage = (props) => {
         {message && <p>{message}</p>}
       </div>
 
-    </div>
+    </>
   )
 
 }
