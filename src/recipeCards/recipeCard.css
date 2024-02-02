@@ -7,6 +7,10 @@
     padding: 0;
 }
 
+.recipecard-page-container {
+    margin-bottom: 200px;
+}
+
 .header {
     /* padding: 10px 20px; */
     display: flex;
