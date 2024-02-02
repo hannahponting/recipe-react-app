@@ -34,19 +34,18 @@ function RecipeDetails(props) {
             <div className="recipedetails-page-container">
                 <header className="header">
                     <div className="recipe-title-container">
-                       <div id="recipe-title">{recipe.name}</div> 
-                        
-                        </div>
-                     <StarRating  stars={starRating} recipeId={recipe.id}></StarRating>
+                        <div id="recipe-title">{recipe.name}</div>
+                    </div>
+                    <StarRating stars={starRating} recipeId={recipe.id}></StarRating>
                 </header>
 
 
                 <div className="Divider"></div>
                 <div className="recipe-details">
                     <div class="details_image">
-                   
-                     <img src={`http://localhost:8080/api/recipes/image/${recipe.id}`}class="details_image"/>
-                     </div>
+
+                        <img src={`http://localhost:8080/api/recipes/image/${recipe.id}`} class="details_image" />
+                    </div>
 
                     <h2 className="subtitles">Details</h2>
                     <ul className="details">
@@ -67,7 +66,7 @@ function RecipeDetails(props) {
                         <h2 className="subtitles">Ingredients </h2>
                         <ul className="recipe-ingredients">
                             {recipe.ingredients.map((ingredient) => {
-                                return (<li>{ingredient}</li>) 
+                                return (<li>{ingredient}</li>)
                             })}
                         </ul>
                     </div>
@@ -81,14 +80,14 @@ function RecipeDetails(props) {
                     </div>
                 </div>
 
-                
+
 
                 <Accordion>
                     <AccordionHeader className="accordion-header"><h2 className="subtitles-accordion">Given this recipe a try?</h2></AccordionHeader>
                     <AccordionBody className="accordion-body" >
                         <h3 id="subtitles-accordion">Rate this recipe</h3>
-                            <RateRecipe fetchData={fetchData} id={recipe.id} userID={props.userID}></RateRecipe>
-                        </AccordionBody>
+                        <RateRecipe fetchData={fetchData} id={recipe.id} userID={props.userID}></RateRecipe>
+                    </AccordionBody>
                 </Accordion>
 
 

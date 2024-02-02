@@ -45,14 +45,12 @@ const Favourites = (props) => {
              <div className="Divider"></div>
  
      
-             <div><img className= "photo" src={require('.//cooker.png')} alt="Cooker" /></div>
+             <div><img className= "photo" src={require('.//Resources/genericKitchen.png')} alt="Cooker" /></div>
          </>
             ) : (
         <>
             <header className="header">
-
-                <div className="Title">Find your favourite recipes here</div>
-
+                <div className="Title">Please log in to see your favourite recipes</div>
             </header>
 
             <div className="Divider"></div>

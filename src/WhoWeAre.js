@@ -11,7 +11,12 @@ const WhoWeAre = (props) => {
     return (
         <div className="whoweare-page-container">
             <header className="header">
-                <div className="Title">Who we are</div>
+                <div className="whoweare-title-container">
+                    <div className="Title">
+                        Who we are
+                        </div>
+                </div>
+
             </header>
 
             <div className="Divider"></div>
@@ -29,7 +34,7 @@ const WhoWeAre = (props) => {
 
             </div>
 
-            <div><img className= "photo" src={require('.//cooker.png')} alt="Cooker" /></div>
+            <div><img className="photo" src={require('.//cooker.png')} alt="Cooker" /></div>
 
 
         </div>
