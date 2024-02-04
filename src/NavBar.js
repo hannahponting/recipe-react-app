@@ -50,9 +50,13 @@ const Navigation = (props) => {
                         <li>
                             <Link className="hyperlink" to="/WhoWeAre">Who We Are</Link>
                         </li>
-                        <li> <Link className="hyperlink" to ="/favourites">Favorites</Link></li>
+
+
                         {props.isLoggedIn ? (
+                            <>
+                            <li> <Link className="hyperlink" to ="/favourites">Favorites</Link></li>
                             <li> <Link className="hyperlink" to="/" onClick={handleLogOut}>Log Out</Link></li>
+                            </>
                         ) : (
                             <li><Link className="hyperlink" to = "/login">Log In</Link></li>
                         )}

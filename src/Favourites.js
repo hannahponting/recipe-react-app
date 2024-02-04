@@ -35,18 +35,7 @@ const Favourites = (props) => {
     return (
         <>
         <div>
-        {props.isLoggedIn ? (
-             <>
-             <header className="header">
-                 <div className="Title">Want to display my favourite recipes here</div>
-             </header>
- 
-             <div className="Divider"></div>
- 
-     
-             <div><img className= "photo" src={require('.//cooker.png')} alt="Cooker" /></div>
-         </>
-            ) : (
+        {props.isLoggedIn ?  (
         <>
             <header className="header">
 
@@ -98,7 +87,19 @@ const Favourites = (props) => {
 
 
         </>
-    )}
+    )
+            :(
+            <>
+                <header className="header">
+                    <div className="Title">Want to display my favourite recipes here</div>
+                </header>
+
+                <div className="Divider"></div>
+
+
+                {/*<div><img className= "photo" src={require('.//cooker.png')} alt="Cooker" /></div>*/}
+            </>
+        ) }
 
     </div>
     </>
