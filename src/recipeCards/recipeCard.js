@@ -4,8 +4,9 @@ import { GetRecipesPaginated } from "../utils";
 import { Link, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import {RecipeFilter} from "../filterBar/RecipeFilter";
+import LikeButton from "../likeButton/likeButtton";
 
-function RecipeCardList() {
+function RecipeCardList(props) {
 
     const [searchTerm, setSearchTerm] = useState('');
     const navigate = useNavigate();
@@ -108,6 +109,8 @@ function RecipeCardList() {
                 title={recipe.name}
                 description={"Delicious recipe from " + recipe.cuisine.toLowerCase() + " cuisine. It serves up to " + recipe.serving + " people!" }
                 id={recipe.id}
+                isLoggedIn={props.isLoggedIn}
+                uuId ={props.uuID}
             />
         ))}
     </div>
@@ -142,6 +145,7 @@ function RecipeCardList() {
 export function Card(props) {
     let link = "/recipes/" + props.id;
     return (
+
         <div className="card">
             <div className="card__body">
                 <img src={props.img} className="card__image"/>
@@ -151,7 +155,9 @@ export function Card(props) {
             <Link to={link}>
                 <button className="card__btn">View Recipe</button>
             </Link>
+            <LikeButton isUserLoggedIn={props.isLoggedIn}  recipeId={props.id}  uuId ={props.uuId}> </LikeButton>
         </div>
+
     );
 }
 export default RecipeCardList;

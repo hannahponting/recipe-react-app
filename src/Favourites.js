@@ -10,10 +10,7 @@ const Favourites = (props) => {
 
     const [recipes, setRecipes] = useState([]);
     const [currentPage, setCurrentPage] = useState(1);
-    const [query, setQuery] = useState("");
     const [totalPages, setTotalPages] = useState(1);
-
-
 
     useEffect(() => {
         const fetchData = async () => {
@@ -21,6 +18,8 @@ const Favourites = (props) => {
             setRecipes(result.recipes);
             setTotalPages(result.totalPages);
         };
+        console.log("print out recipes below")
+        console.log(recipes)
 
         fetchData();
     }, [currentPage]);
