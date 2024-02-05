@@ -1,6 +1,6 @@
 import * as React from "https://cdn.skypack.dev/react@17.0.1";
 import "./recipeCard.css";
-import { GetNewRatingById, GetRecipesPaginated, GetIngredientsPaginated } from "../../utils";
+import { GetNewRatingById, GetRecipesPaginated, GetIngredientsPaginated, GetRatingById } from "../../utils";
 import { Link, useNavigate } from "react-router-dom";
 import { useEffect, useState , useRef} from "react";
 import { RecipeFilter } from "../FilterBar/RecipeFilter";
@@ -178,11 +178,9 @@ function RecipeCardList() {
 export function Card(props) {
     let link = "/recipes/" + props.id;
     const [starRating, setStarRating] = useState(0);
-
     const fetchData = async () => {
         try {
-            const rating = await Promise.resolve(GetNewRatingById(props.id));
-            setStarRating(rating);
+            const rating = await GetRatingById(props.id, setStarRating)
         } catch (error) {
             console.error('Error fetching rating:', error);
         }
