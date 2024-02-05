@@ -23,7 +23,7 @@ import Favourites from './Favourites.js'
 function App() {
 
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [userID, setUserID] = useState("hannah@nerdrecipes.com");
+  const [userID, setUserID] = useState("");
   const [uuID, setUuID] = useState(0);
   const isLoginPage = window.location.pathname === '/login';
 
