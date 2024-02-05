@@ -7,6 +7,7 @@ import RecipeFilterApp from "../FilterBar/RecipeFilter";
 import React, { useEffect } from "react";
 import { useState } from "react";
 import "./WelcomePage.css";
+import GetTopThreeRecipes from "./GetTopThreeRecipes";
 
 const WelcomePage = (props) => {
 
@@ -55,11 +56,11 @@ const WelcomePage = (props) => {
 
             <header className="subheader">
                 <div className="subheading">
-                    Highlighted recipes
+                    Top Rated recipes
                 </div>
             </header>
 
-            <div class="image-container-welcomePage">
+            {/* <div class="image-container-welcomePage">
 
 
                 <div class="columnWelcomePage">
@@ -87,12 +88,15 @@ const WelcomePage = (props) => {
                     <div className="TextContainer"><div className="TextBody">Sushi Rolls with Spicy Tuna</div></div>
 
                 </div>
-            </div>
+            </div> */}
+
+            <GetTopThreeRecipes></GetTopThreeRecipes>
 
 
 
         </div>
     )
-}
+};
+
 
 export default WelcomePage;

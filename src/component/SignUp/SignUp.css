@@ -1,20 +1,28 @@
+.sign-up-background {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.527), rgba(0, 0, 0, 0.5)), url("../../Resources/BuffetPic.jpg");
+  background-position: center;
+  background-size: cover;
+}
+
 .signup-container {
   /* margin-bottom: 200px; */
 }
+
 .header {
   padding: 10px 20px;
   display: flex;
   margin: auto;
-  align-items: "center";
+  align-items: center;
   max-width: 3000px;
-  justify-content: "space-between";
+  /* color: white; */
+  /* justify-content: "space-between"; */
 }
 
-.header.Title {
-  color: black;
+.signuptitle {
+  color: white;
   font-size: 64px;
   font-family: Newsreader;
-  padding-left: 2%;
+  /* padding-left: 2%; */
   font-weight: 400;
   line-height: 120%;
   word-wrap: break-word;
@@ -23,17 +31,17 @@
 }
 
 .signup-title-container {
-  color: black;
-  height:120px;
+  /* color: white; */
+  height: 120px;
   display: flex;
   align-items: center;
   padding: 30px;
   font-size: 64px;
-  font-family: NewsReader;
-  font-weight: 400;
+  /* font-family: NewsReader;
+  font-weight: 400; */
   line-height: 120%;
-  word-wrap: "break-word";
-  justify-content: space-between;
+  /* word-wrap: "break-word";
+  justify-content: space-between; */
 
 }
 
@@ -59,9 +67,18 @@
 
 .signupDetails {
   font-family: Inter;
-  font-size: 48px;
+  font-size: 32px;
   /* padding: 2%; */
+  color: white;
 
+}
+
+.signupDetails-title {
+  font-family: Inter;
+  font-size: 48px;
+  text-align: center;
+  /* padding: 2%; */
+  color: white;
 }
 
 
@@ -90,17 +107,19 @@
   /* left: 50%; */
   margin-left: auto;
   margin-right: auto;
-
-  height: 825px;
+  margin-top: 3%;
+  height: 900px;
   width: 500px;
+  margin-bottom: 3%;
   /* transform: translate(-50%, -50%); */
 
 
   /* justify-content: space-between; */
-  background-color: #eee;
+  background-color: rgba(31, 31, 31, 0.8);
   border-radius: 5%;
   box-shadow: 1px 1px 10px 0px;
   /* justify-content: center; */
+
 
 }
 
@@ -127,6 +146,7 @@
 }
 
 .account-login {
+  color: white;
   padding-top: 5%;
   font-size: 24px;
 }
