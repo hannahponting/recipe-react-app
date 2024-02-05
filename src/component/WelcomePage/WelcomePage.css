@@ -9,7 +9,10 @@
 .header {
   padding: 10px 20px;
   display: flex;
-  justify-content: space-between;
+  margin: auto;
+  align-items: "center";
+  max-width: 3000px;
+  justify-content: "space-between";
 }
 
 .header.Title {
@@ -20,9 +23,25 @@
   font-weight: 400;
   line-height: 120%;
   word-wrap: "break-word";
-  justify-content: space-between;
+  justify-content: "space-between";
 
 }
+
+.welcomepage-title-container {
+  color: black;
+  height:120px;
+  display: flex;
+  align-items: left;
+  padding: 30px;
+  font-size: 64px;
+  font-family: NewsReader;
+  font-weight: 400;
+  line-height: 120%;
+  /* word-wrap: "break-word"; */
+  /* justify-content: space-between; */
+
+}
+
 
 .subheader {
   padding: 10px 20px;
@@ -37,7 +56,7 @@
   padding-left: 2%;
   font-weight: 400;
   line-height: 120%;
-  word-wrap: "break-word";
+  word-wrap: break-word;
   justify-content: space-between;
 }
 
@@ -133,14 +152,14 @@
 
 
 .TextBody {
-  color: 'black';
+  color: black;
   font-size: 18px;
   align-items: center;
   justify-content: center;
   font-family: 'Inter';
   font-weight: 400;
   margin-top: 50;
-  word-wrap: 'break-word'
+  word-wrap: break-word
 }
 
 .TextContainer {

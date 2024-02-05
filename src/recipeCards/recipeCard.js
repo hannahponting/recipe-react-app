@@ -1,3 +1,4 @@
+
 import * as React from "https://cdn.skypack.dev/react@17.0.1";
 import "./recipeCard.css";
 import { GetRecipesPaginated } from "../utils";
@@ -238,5 +239,3 @@ export function Card(props) {
 
 
 export default RecipeCardList;
-
-

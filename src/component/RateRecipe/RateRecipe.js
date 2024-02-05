@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "./RateRecipe.css"
-import { GetUserByEmail } from "./utils";
+import { GetUserByEmail } from "../../utils";
 
 
 const RateRecipe = (props) => {

@@ -1,8 +1,8 @@
 import { Link, useNavigate } from "react-router-dom";
-import Navigation from './NavBar';
+import Navigation from '../NavBar/NavBar';
 
 
-import RecipeFilterApp from "./filterBar/RecipeFilter";
+import RecipeFilterApp from "../FilterBar/RecipeFilter";
 
 import React, { useEffect } from "react";
 import { useState } from "react";
@@ -19,12 +19,15 @@ const WelcomePage = (props) => {
     }
 
     return (
-        <div className=" welcomepage-container">
+        <div className="welcomepage-container">
 
             <header className="header">
-                <div className="Title">
-                    Home
+                <div className="welcomepage-title-container">
+                    <div className="Title">
+                        Home
+                    </div>
                 </div>
+
                 <div className="search-bar">
                     <input
                         type="text"
@@ -41,11 +44,11 @@ const WelcomePage = (props) => {
             <div className="Divider"></div>
 
             {/* <h2 className="Title2">Highlights</h2> */}
-            
+
 
             <div className="video-container">
                 <video autoPlay loop muted>
-                    <source src={require('.//cookingVideo.mp4')} type='video/mp4' />
+                    <source src={require('../../Resources/cookingVideo.mp4')} type='video/mp4' />
                 </video>
             </div>
 
@@ -62,7 +65,7 @@ const WelcomePage = (props) => {
                 <div class="columnWelcomePage">
 
                     <Link to="/recipes/1730">
-                        <img className="gif" src={require('.//Resources/1730.jpg')} alt="Salmon" />
+                        <img className="gif" src={require('../../Resources/1730.jpg')} alt="Salmon" />
                     </Link>
 
                     <div className="TextContainer"><div className="TextBody">Glazed Salmon</div></div>
@@ -71,7 +74,7 @@ const WelcomePage = (props) => {
                 </div>
                 <div class="columnWelcomePage">
                     <Link to="/recipes/1713">
-                        <img className="gif" src={require('.//Resources/GreekYogurtParfait.jpg')} alt="Parfait" />
+                        <img className="gif" src={require('../../Resources/GreekYogurtParfait.jpg')} alt="Parfait" />
                     </Link>
                     <div className="TextContainer"><div className="TextBody">Greek Yogurt Parfait</div></div>
 
@@ -79,7 +82,7 @@ const WelcomePage = (props) => {
                 </div>
                 <div class="columnWelcomePage">
                     <Link to="/recipes/1719">
-                        <img className="gif" src={require('.//Resources/SushiRollswithSpicyTuna.jpg')} alt="Sushi" />
+                        <img className="gif" src={require('../../Resources/SushiRollswithSpicyTuna.jpg')} alt="Sushi" />
                     </Link>
                     <div className="TextContainer"><div className="TextBody">Sushi Rolls with Spicy Tuna</div></div>
 
