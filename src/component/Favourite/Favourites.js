@@ -1,10 +1,10 @@
 import { Link, useNavigate } from "react-router-dom";
-import TextFileReader from './TextFileReader';
-import './whoWeAre.css';
+import TextFileReader from '../../TextFileReader';
+import '../WhoWeAre/WhoWeAre.css';
 // import {View, Text} from 'react-native';
 import React, {useEffect, useState} from "react";
-import {GetRecipesPaginated} from "./utils";
-import {Card} from "./recipeCards/recipeCard";
+import {GetRecipesPaginated} from "../../utils";
+import {Card} from "../recipeCards/recipeCard";
 const Favourites = (props) => {
 
 
@@ -44,7 +44,7 @@ const Favourites = (props) => {
              <div className="Divider"></div>
  
      
-             <div><img className= "photo" src={require('.//Resources/genericKitchen.png')} alt="Cooker" /></div>
+             <div><img className= "photo" src={require('../../Resources/genericKitchen.png')} alt="Cooker" /></div>
          </>
             ) : (
         <>

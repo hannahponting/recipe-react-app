@@ -1,6 +1,6 @@
 import { Link, useNavigate } from "react-router-dom";
-import TextFileReader from './TextFileReader';
-import './whoWeAre.css';
+import TextFileReader from '../../TextFileReader';
+import './WhoWeAre.css';
 // import {View, Text} from 'react-native';
 import React from "react";
 const WhoWeAre = (props) => {
@@ -34,7 +34,7 @@ const WhoWeAre = (props) => {
 
             </div>
 
-            <div><img className="photo" src={require('.//cooker.png')} alt="Cooker" /></div>
+            <div><img className="photo" src={require('../../Resources/cooker.png')} alt="Cooker" /></div>
 
 
         </div>
