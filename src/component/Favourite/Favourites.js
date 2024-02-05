@@ -1,19 +1,13 @@
-import { Link, useNavigate } from "react-router-dom";
-import TextFileReader from '../../TextFileReader';
+
 import '../WhoWeAre/WhoWeAre.css';
-// import {View, Text} from 'react-native';
 import React, {useEffect, useState} from "react";
-import {GetRecipesPaginated} from "../../utils";
 import {Card} from "../recipeCards/recipeCard";
 const Favourites = (props) => {
 
 
     const [recipes, setRecipes] = useState([]);
     const [currentPage, setCurrentPage] = useState(1);
-    const [query, setQuery] = useState("");
     const [totalPages, setTotalPages] = useState(1);
-
-
 
     useEffect(() => {
         const fetchData = async () => {
@@ -21,6 +15,8 @@ const Favourites = (props) => {
             setRecipes(result.recipes);
             setTotalPages(result.totalPages);
         };
+        console.log("print out recipes below")
+        console.log(recipes)
 
         fetchData();
     }, [currentPage]);
@@ -34,74 +30,77 @@ const Favourites = (props) => {
 
     return (
         <>
-        <div>
-        {props.isLoggedIn ? (
-             <>
-             <header className="header">
-                 <div className="Title">Want to display my favourite recipes here</div>
-             </header>
- 
-             <div className="Divider"></div>
- 
-     
-             <div><img className= "photo" src={require('../../Resources/genericKitchen.png')} alt="Cooker" /></div>
-         </>
-            ) : (
-        <>
-            <header className="header">
-                <div className="Title">Please log in to see your favourite recipes</div>
-            </header>
+            <div>
+                {props.isLoggedIn ?  (
+                        <>
+                            <header className="header">
 
-            <div className="Divider"></div>
+                                <div className="Title">Find your favourite recipes here</div>
+
+                            </header>
+
+                            <div className="Divider"></div>
 
 
-            {recipes.length > 0 ? (
-                <div className="wrapper">
-                    {recipes.map((recipe) => (
-                        <Card
-                            key={recipe.id}
-                            img={`http://localhost:8080/api/recipes/image/${recipe.id}`}
-                            title={recipe.name}
-                            description="Take your boring salads up a notch. This recipe is perfect for lunch and only contains 5 ingredients!"
-                            id={recipe.id}
-                        />
-                    ))}
-                </div>
-            ) : (
-                <div className="no-recipes-message">
-                    No recipes to display.
-                </div>
-            )}
+                            {recipes.length > 0 ? (
+                                <div className="wrapper">
+                                    {recipes.map((recipe) => (
+                                        <Card
+                                            key={recipe.id}
+                                            img={`http://localhost:8080/api/recipes/image/${recipe.id}`}
+                                            title={recipe.name}
+                                            description="Take your boring salads up a notch. This recipe is perfect for lunch and only contains 5 ingredients!"
+                                            id={recipe.id}
+                                        />
+                                    ))}
+                                </div>
+                            ) : (
+                                <div className="no-recipes-message">
+                                    No recipes to display.
+                                </div>
+                            )}
 
-            <div className="button-container">
-                <div>
-                    <button
-                        className="buttonEditing"
-                        onClick={() => handlePageChange(currentPage - 1)}
-                        disabled={currentPage === 1}
-                    >
-                        Previous Page
-                    </button>
-                    &nbsp;&nbsp;&nbsp;
-                    <button
-                        className="buttonEditing"
-                        onClick={() => handlePageChange(currentPage + 1)}
-                        disabled={currentPage === totalPages}
-                    >
-                        Next Page
-                    </button>
-                </div>
+                            <div className="button-container">
+                                <div>
+                                    <button
+                                        className="buttonEditing"
+                                        onClick={() => handlePageChange(currentPage - 1)}
+                                        disabled={currentPage === 1}
+                                    >
+                                        Previous Page
+                                    </button>
+                                    &nbsp;&nbsp;&nbsp;
+                                    <button
+                                        className="buttonEditing"
+                                        onClick={() => handlePageChange(currentPage + 1)}
+                                        disabled={currentPage === totalPages}
+                                    >
+                                        Next Page
+                                    </button>
+                                </div>
+                            </div>
+
+
+
+                        </>
+                    )
+                    :(
+                        <>
+                            <header className="header">
+                                <div className="Title">Want to display my favourite recipes here</div>
+                            </header>
+
+                            <div className="Divider"></div>
+
+
+                            {/*<div><img className= "photo" src={require('.//cooker.png')} alt="Cooker" /></div>*/}
+                        </>
+                    ) }
+
             </div>
-
-
-
         </>
-    )}
-
-    </div>
-    </>
     )
-            
+
 };
 
 

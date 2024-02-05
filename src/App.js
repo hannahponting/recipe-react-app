@@ -59,7 +59,7 @@ function App() {
       
           <Route path='/' element={<NavBar userID={userID} isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} setUserID={setUserID}/>}>
             <Route path="/" element={<WelcomePage />} />
-            <Route path="/recipes" element={<RecipeCardList queryEndpoint={GetRecipesPaginated} />} />
+            <Route path="/recipes" element={<RecipeCardList queryEndpoint={GetRecipesPaginated} isLoggedIn={isLoggedIn} uuID={uuID}/>} />
             <Route path="/ingredients" element={<RecipeCardList filterType="ingredients" queryEndpoint={GetIngredientsPaginated}style={recipePageStyle} closeSidebarFunction={closeSidebar} function={moveSidebar} />} />
             <Route path="/recipes/:id" element={<RecipeDetails userID={userID} />} />
             <Route path="/recipes/search" element={<RecipeSearchResults />} />
