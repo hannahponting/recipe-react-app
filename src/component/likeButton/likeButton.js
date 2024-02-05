@@ -1,6 +1,10 @@
-import React, { useState } from 'react';
+import React, {useContext, useState} from 'react';
 import "./likeButton.css"
+import AuthContext from "../AuthContext/AuthContext";
 function LikeButton(props) {
+    const context = useContext(AuthContext)
+    let personID = context.user?.id ?? null;
+
 
     //fetch an endpoint which return if the recipe was liked or not given a specific user id.
 
@@ -21,7 +25,7 @@ function LikeButton(props) {
                 },
                 body: JSON.stringify({
                     recipeId: props.recipeId,
-                    personId: props.uuId,
+                    personId: personID,
                     favourite: liked
                 }),
             })

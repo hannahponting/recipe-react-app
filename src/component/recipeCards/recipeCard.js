@@ -12,7 +12,7 @@ import LikeButton from "../likeButton/likeButton";
 export default RecipeCardList;
 
 
-function RecipeCardList({queryEndpoint}) {
+function RecipeCardList(props) {
 
 
     const [searchTerm, setSearchTerm] = useState('');
@@ -133,7 +133,7 @@ function RecipeCardList({queryEndpoint}) {
         </div>
         <div className="Divider"></div>
 
-        {recipes.length > 0 ? (
+        {recipes?.length > 0 ? (
             <div className="wrapper">
                 {recipes.map((recipe) => (
                     <Card
@@ -142,6 +142,7 @@ function RecipeCardList({queryEndpoint}) {
                         title={recipe.name}
                         description={"Delicious recipe from " + recipe.cuisine.toLowerCase() + " cuisine. It serves up to " + recipe.serving + " people!"}
                         id={recipe.id}
+                        isLoggedIn={props.isLoggedIn}
                     />
                 ))}
             </div>

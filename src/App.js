@@ -32,7 +32,6 @@ function App() {
     <div className="App">
     <AuthContext.Provider value = {{user, setUser}}>
 
-             
       <BrowserRouter>
 
         <Routes>
