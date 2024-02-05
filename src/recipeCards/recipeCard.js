@@ -1,3 +1,4 @@
+
 import * as React from "https://cdn.skypack.dev/react@17.0.1";
 import "./recipeCard.css";
 import { GetRecipesPaginated } from "../utils";
@@ -25,7 +26,7 @@ function RecipeCardList(props) {
             setRecipes(result.recipes);
             setTotalPages(result.totalPages);
         };
-    
+
         fetchData();
     }, [currentPage, query]);
 
@@ -44,19 +45,19 @@ function RecipeCardList(props) {
         else
         {
         let queryParams = "";
-    
+
         if (costType !== "") {
             queryParams += `costType=${costType}`;
         }
-    
+
         if (difficultyLevel !== "") {
             queryParams += `${queryParams.length > 0 ? '&' : ''}difficultyLevel=${difficultyLevel}`;
         }
-    
+
         if (spiceLevel !== "") {
             queryParams += `${queryParams.length > 0 ? '&' : ''}spiceType=${spiceLevel}`;
         }
-    
+
         setQuery("?query="+encodeURIComponent(queryParams));
         setCurrentPage(1);
     }
@@ -161,4 +162,3 @@ export function Card(props) {
     );
 }
 export default RecipeCardList;
-

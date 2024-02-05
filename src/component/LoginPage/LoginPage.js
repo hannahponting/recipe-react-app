@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { PostUserLogin } from "./utils";
+import { PostUserLogin } from "../../utils";
 import "./LoginPage.css";
 import { Link, useNavigate } from "react-router-dom";
 
@@ -64,9 +64,12 @@ const LoginPage = (props) => {
   return (
     <div className="loginpage-container">
       <header className="header">
-        <div className="Title">
-          Login Page
+        <div className="login-title-container">
+          <div className="Title">
+            Login Page
+          </div>
         </div>
+
       </header>
 
 

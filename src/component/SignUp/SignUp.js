@@ -26,7 +26,7 @@ const SignUp = (props) => {
   }
 
 
-  
+
 
   let requestBody = {
     "email": email,
@@ -38,52 +38,52 @@ const SignUp = (props) => {
     "password": password
   };
 
-  
-   
-  
-    const getData = async () => {
-      try {
-        const response = await fetch('http://localhost:8080/api/person', {
-          method: 'POST',
-          headers: { 'content-type': 'application/json' },
-          body: JSON.stringify(requestBody),
-        });
-        const body = await response.json();
-        console.log(response)
-        answer = JSON.stringify(body);
-        console.log(answer)
-        if (response.status==201) {
-          props.setUserID((prevUserID) => email)
-          setMessage("Successfully signed up")
 
-          try {
-            const response = await fetch('http://localhost:8080/api/account/setPassword', {
-              method: 'POST',
-              headers: { 'content-type': 'application/json' },
-              body: JSON.stringify(passwordRequestBody),
-            });
-            if(response.ok){
-                const body = await response.text();
-              }
-            if(response.status == 500){
-              const body = await response.json();
-              console.log(body.message);
-              }
-          } catch (error) {
-            console.error('Error fetching data:', error);
-            console.log(error.message);
+
+
+  const getData = async () => {
+    try {
+      const response = await fetch('http://localhost:8080/api/person', {
+        method: 'POST',
+        headers: { 'content-type': 'application/json' },
+        body: JSON.stringify(requestBody),
+      });
+      const body = await response.json();
+      console.log(response)
+      answer = JSON.stringify(body);
+      console.log(answer)
+      if (response.status == 201) {
+        props.setUserID((prevUserID) => email)
+        setMessage("Successfully signed up")
+
+        try {
+          const response = await fetch('http://localhost:8080/api/account/setPassword', {
+            method: 'POST',
+            headers: { 'content-type': 'application/json' },
+            body: JSON.stringify(passwordRequestBody),
+          });
+          if (response.ok) {
+            const body = await response.text();
           }
+          if (response.status == 500) {
+            const body = await response.json();
+            console.log(body.message);
+          }
+        } catch (error) {
+          console.error('Error fetching data:', error);
+          console.log(error.message);
         }
-        if(response.status==500){
-          console.log(body.message)
-          setMessage(body.message)
-        }
-      } catch (error) {
-        console.error('Error fetching data:', error);
-        setMessage(error.message)
       }
-    
-    
+      if (response.status == 500) {
+        console.log(body.message)
+        setMessage(body.message)
+      }
+    } catch (error) {
+      console.error('Error fetching data:', error);
+      setMessage(error.message)
+    }
+
+
   };
 
   const handleSubmitClick = () => {
@@ -92,14 +92,20 @@ const SignUp = (props) => {
 
   return (
     <>
-      <header className="header">
-        <div className="Title">
-          Sign up
-        </div>
-      </header>
+      <div className="signup-container">
+        <header className="header">
+          <div className="signup-title-container">
+            <div className="Title">
+              Sign up
+            </div>
+          </div>
+
+        </header>
+      </div>
+
 
       <div className="Divider"></div>
-      <div className="signup-container">
+      <div className="signup-box-container">
         <div className="signup-box">
           <label className="signupDetails">First name</label>
         </div>
