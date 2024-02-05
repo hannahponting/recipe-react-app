@@ -4,7 +4,7 @@ import { useState } from "react";
 import "./NavBar.css";
 import { Nav } from "react-bootstrap";
 import { InputGroup } from "react-bootstrap";
-import { GetUserByEmail } from "./utils";
+import { GetUserByEmail } from "../../utils";
 
 
 
@@ -34,7 +34,7 @@ const Navigation = (props) => {
 
                     <ul className="itemsAligned">
                         <li>
-                            <img className="nerd-logo-removebg" alt="Nerd logo" src={require('.//Resources/invertedNerdLogo.png')}></img>
+                            <img className="nerd-logo-removebg" alt="Nerd logo" src={require('../../Resources/invertedNerdLogo.png')}></img>
 
                         </li>
 

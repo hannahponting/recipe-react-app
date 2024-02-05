@@ -2,12 +2,13 @@ import React, { useEffect, useState } from 'react';
 import { Card } from "../recipeCards/recipeCard"
 import './RecipeFilter.css';
 
-export const RecipeFilter = ({ applyFilters }) => {
-    const [costLevel, setCostLevel] = useState('');
+
+export const RecipeFilter = ({ applyFilters}) => {
+    const [costType, setCostType] = useState('');
     const [difficultyLevel, setDifficultyLevel] = useState('');
-    const [spiceLevel, setSpiceLevel] = useState('');
+    const [spiceType, setSpiceType] = useState('');
     const handleCostChange = (e) => {
-        setCostLevel(e.target.value);
+        setCostType(e.target.value);
     };
 
     const handleDifficultyChange = (e) => {
@@ -15,7 +16,7 @@ export const RecipeFilter = ({ applyFilters }) => {
     };
 
     const handleSpiceLevelChange = (e) => {
-        setSpiceLevel(e.target.value);
+        setSpiceType(e.target.value);
     };
 
 
@@ -23,9 +24,10 @@ export const RecipeFilter = ({ applyFilters }) => {
         <>
             <div className="filter-container">
                 <form>
-                    <label className='label-edits' htmlFor="spice_level">Spiciness</label>
-                    &nbsp;&nbsp;
-                    <select id="spice_level" name="spice_level" value={spiceLevel} onChange={handleSpiceLevelChange}>
+
+                    <label htmlFor="spice_level">Spicy Level:</label>
+                    &nbsp;
+                    <select id="spice_level" name="spice_level" value={spiceType} onChange={handleSpiceLevelChange}>
                         <option value="">Select All</option>
                         <option value="NONE">None</option>
                         <option value="MILD">Mild</option>
@@ -48,9 +50,10 @@ export const RecipeFilter = ({ applyFilters }) => {
 
                     &nbsp; &nbsp; &nbsp;
 
-                    <label className='label-edits' htmlFor="cost">Cost</label>
-                    &nbsp;&nbsp;
-                    <select id="cost" name="cost" value={costLevel} onChange={handleCostChange}>
+
+                    <label htmlFor="cost">Cost Level:</label>
+                    &nbsp;
+                    <select id="cost" name="cost" value={costType} onChange={handleCostChange}>
                         <option value="">Select All</option>
                         <option value="LOW">Low</option>
                         <option value="MODERATE">Moderate</option>
@@ -59,7 +62,8 @@ export const RecipeFilter = ({ applyFilters }) => {
                     </select>
                     &nbsp; &nbsp; &nbsp;
                     <button className='filterButton' id="apply-filters" type="button" onClick={() => {
-                        applyFilters(costLevel, difficultyLevel, spiceLevel);}}>
+                        const filterArray = {costLevel: costType, difficultyLevel, spiceLevel: spiceType};
+                        applyFilters(filterArray);}}>
                         Apply Filters
                     </button>
                     <br />

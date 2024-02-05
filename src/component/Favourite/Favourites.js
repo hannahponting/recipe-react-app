@@ -1,10 +1,10 @@
 import { Link, useNavigate } from "react-router-dom";
-import TextFileReader from './TextFileReader';
-import './whoWeAre.css';
+import TextFileReader from '../../TextFileReader';
+import '../WhoWeAre/WhoWeAre.css';
 // import {View, Text} from 'react-native';
 import React, {useEffect, useState} from "react";
-import {GetRecipesPaginated} from "./utils";
-import {Card} from "./recipeCards/recipeCard";
+import {GetRecipesPaginated} from "../../utils";
+import {Card} from "../recipeCards/recipeCard";
 const Favourites = (props) => {
 
 
@@ -13,12 +13,11 @@ const Favourites = (props) => {
     const [query, setQuery] = useState("");
     const [totalPages, setTotalPages] = useState(1);
 
-    const userId=2;
+
 
     useEffect(() => {
         const fetchData = async () => {
-            const result = await GetUserFavourRecipes(1, 5, userId);
-            console.log(result)
+            const result = await GetUserFavourRecipes(1, 5, props.uuID);
             setRecipes(result.recipes);
             setTotalPages(result.totalPages);
         };
@@ -45,14 +44,12 @@ const Favourites = (props) => {
              <div className="Divider"></div>
  
      
-             <div><img className= "photo" src={require('.//cooker.png')} alt="Cooker" /></div>
+             <div><img className= "photo" src={require('../../Resources/genericKitchen.png')} alt="Cooker" /></div>
          </>
             ) : (
         <>
             <header className="header">
-
-                <div className="Title">Find your favourite recipes here</div>
-
+                <div className="Title">Please log in to see your favourite recipes</div>
             </header>
 
             <div className="Divider"></div>
