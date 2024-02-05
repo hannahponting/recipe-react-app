@@ -10,13 +10,6 @@
     vertical-align: middle; */
 }
 
-.user-greeting{
-font-size: 24px;
-color: white;
-font-family: Inter;
-
-}
-
 
 .button{
 /* background-color: white;
@@ -33,13 +26,13 @@ font-family: Inter;
 .hyperlink {
     color: white;
     font-family: NewsReader;
-    font-size: 32px;
+    font-size: 24px;
     text-decoration: none;
-    text-align: left;
+    /* text-align: center; */
 }
 
 .nerd-logo-removebg {
-    height: 90px;
+    height: 100px;
     /* padding-right: 5%; */
     /* left: 0%; */
     /* object-fit: cover; */
@@ -47,7 +40,9 @@ font-family: Inter;
     /* top: 30px; */
     /* align-items: center; */
     width: auto; 
+    margin-bottom: 1%;
 }
+
 
 /* .navigation.itemsAligned {
     display: inline-block;
@@ -64,13 +59,16 @@ font-family: Inter;
 
   ul{
     display: flex;
-    justify-content: left;
-    align-items: center;
+    justify-content: center;
+    /* align-items: center; */
     /* padding-left: 100%; */
     /* margin-right: 10em; */
+    /* margin-top: 10%; */
+    
   }
   .itemsAligned li {
-    margin-left: 3%;
-    margin-right: 10%;
+    margin-left: 20px;
+    margin-right: 300px;
+
     list-style-type: none;
   }
