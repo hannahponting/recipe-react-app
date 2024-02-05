@@ -13,11 +13,7 @@ function RecipeDetails(props) {
 
     const fetchData = async () => {
         try {
-            const rating = await Promise.resolve(GetNewRatingById(params.id));
-            console.log(rating);
-            setStarRating(rating);
-            console.log(starRating);
-
+            const rating = await GetRatingById(params.id, setStarRating)
         } catch (error) {
             console.error('Error fetching rating:', error);
         }
@@ -30,7 +26,6 @@ function RecipeDetails(props) {
     try {
         let recipe = GetRecipesById(params.id);
         return (
-
             <div className="recipedetails-page-container">
                 <header className="header">
                     <div className="recipe-title-container">
