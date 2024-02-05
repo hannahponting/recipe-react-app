@@ -6,15 +6,18 @@ const Footer = () => {
         <div className="footer">
             <div className="information-container">
                 Contact us!
-                &nbsp;
+                <br/>
                 Email: nerdrecipes@support.com
+                <br/>
                 Telephone: 07894635382
                 
             </div>
 
             <div className="direction-container">
-                Radbroke Hall
+               Nutoka Hall
+               <br/>
                 WR9 L245
+                <br/>
                 United Kingdom
             </div>
           
