@@ -17,7 +17,7 @@
     justify-content: space-between;
 }
 
-.header.Title {
+.header.recipelist-container.Title {
     color: black;
     font-size: 64px;
     font-family: Newsreader;
@@ -99,19 +99,24 @@
 
 
 
+
 }
 
 .card {
     overflow: hidden;
-    box-shadow: 0 2px 20px #e1e5ee;
+    box-shadow: 0 2px 20px rgb(204, 204, 204, 0.80);
     border-radius: 0.2rem;
     display: flex;
+    position: relative;
     flex-direction: column;
     justify-content: space-between;
     cursor: pointer;
     transition: transform 200ms ease-in;
     border-radius: 5%;
+    background-color:  rgb(204, 204, 204, 0.80);
+
 }
+
 
 .card__image {
     height: 12rem;

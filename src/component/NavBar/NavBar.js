@@ -20,7 +20,7 @@ const Navigation = (props) => {
 
     return (
         <>
-            <nav className="navigation">
+            <nav style={props.style} className="navigation">
 
 
                 <Link to="/">

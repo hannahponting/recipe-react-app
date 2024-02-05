@@ -12,7 +12,7 @@ import LikeButton from "../likeButton/likeButton";
 export default RecipeCardList;
 
 
-function RecipeCardList({queryEndpoint}) {
+function RecipeCardList({queryEndpoint, sidebarFunction, style}) {
 
 
     const [searchTerm, setSearchTerm] = useState('');
@@ -106,6 +106,9 @@ function RecipeCardList({queryEndpoint}) {
                         <RecipeFilter applyFilters={applyFilters}/>
                     )}
                 </div>
+                <div>
+                    <button onClick={sidebarFunction}>Click for sidebar</button>
+                </div>
                 <div className="search-bar">
                     <input
                         type="text"
@@ -142,6 +145,7 @@ function RecipeCardList({queryEndpoint}) {
                         title={recipe.name}
                         description={"Delicious recipe from " + recipe.cuisine.toLowerCase() + " cuisine. It serves up to " + recipe.serving + " people!"}
                         id={recipe.id}
+                        style={style}
                     />
                 ))}
             </div>
@@ -191,7 +195,7 @@ export function Card(props) {
     }, [props.id]);
 
     return (
-        <div className="card">
+        <div style={props.style} className="card">
             <div className="card__body">
                 <img src={props.img} className="card__image"/>
                 <h2 className="card__title">{props.title}</h2>

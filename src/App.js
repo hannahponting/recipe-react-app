@@ -60,9 +60,9 @@ function App() {
 
         <Routes>
       
-          <Route path='/' element={<NavBar isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn}/>}>
+          <Route path='/' element={<NavBar isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} style={recipePageStyle}/>}>
             <Route path="/" element={<WelcomePage />} />
-            <Route path="/recipes" element={<RecipeCardList queryEndpoint={GetRecipesPaginated} isLoggedIn={isLoggedIn} style={recipePageStyle} closeSidebarFunction={closeSidebar} function={moveSidebar}/>} />
+            <Route path="/recipes" element={<RecipeCardList queryEndpoint={GetRecipesPaginated} isLoggedIn={isLoggedIn} style={recipePageStyle} closeSidebarFunction={closeSidebar} sidebarFunction={moveSidebar}/>} />
             <Route path="/recipes/:id" element={<RecipeDetails/>} />
             <Route path="/recipes/search" element={<RecipeSearchResults />} />
             <Route path="/login" element={<LoginPage setIsLoggedIn={setIsLoggedIn}/>} />
