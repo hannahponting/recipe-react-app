@@ -48,7 +48,7 @@ function LikeButton(props) {
             <div className={`heart-btn ${isActive ? 'heart-active' : ''}`} onClick={handleClick}>
                 <div className="content">
 
-                <span className={`heart ${isActive ? 'heart-active' : ''}`}></span>
+                    <span className={`heart ${isActive ? 'heart-active' : ''}`}></span>
                 </div>
             </div>
         </>
