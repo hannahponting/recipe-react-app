@@ -119,6 +119,9 @@ function RecipeCardList(props) {
 
 
         </div>
+        <div>
+      <button onClick={(toggleFilter)}>Toggle Filter</button>
+    </div>
         <div className="Divider"></div>
 
         {recipes?.length > 0 ? (
