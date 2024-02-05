@@ -117,18 +117,6 @@ function RecipeCardList(props) {
 
             </header>
 
-            {/* {recipes.map((recipe) => {
-        return (
-            <Card
-                key={recipe.id}
-                img={`http://localhost:8080/api/recipes/image/${recipe.id}`}
-                title={recipe.name}
-                description={"Delicious recipe from " + recipe.cuisine.toLowerCase() + " cuisine. It serves up to " + recipe.serving + " people!" }
-                id={recipe.id}
-            />
-        )
-    })} */}
-
 
         </div>
         <div className="Divider"></div>
