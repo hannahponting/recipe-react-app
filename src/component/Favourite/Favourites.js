@@ -49,7 +49,7 @@ const Favourites = (props) => {
                         <div className="Divider"></div>
 
 
-                        {recipes.length > 0 ? (
+                        {recipes?.length > 0 ? (
                             <div className="wrapper">
                                 {recipes.map((recipe) => (
                                     <Card
