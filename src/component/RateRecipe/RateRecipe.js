@@ -1,10 +1,12 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import "./RateRecipe.css"
 import { GetUserByEmail } from "../../utils";
+import AuthContext from "../AuthContext/AuthContext";
 
 
 const RateRecipe = (props) => {
-  let person = GetUserByEmail(props.userID);
+  const context = useContext(AuthContext)
+  let person = context.user;
 
     const [myRating, setMyRating] = useState(0);
     const [message, setMessage] = useState();
