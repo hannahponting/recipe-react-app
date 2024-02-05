@@ -1,5 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Newsreader:opsz@6..72&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
 
 
 .recipedetails-page-container {
@@ -144,7 +144,7 @@
     margin:15px;
 }
 
-.accordion {
+.details-accordion {
     background-color: #eee;
     margin-top: 35px;
     color: #444;

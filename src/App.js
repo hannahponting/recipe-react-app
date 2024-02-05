@@ -16,17 +16,40 @@ import ChangePassword from './ChangePassword.js';
 import SignUp from './SignUp.js';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Favourites from './Favourites.js'
+import Sidebar from './Sidebar.js';
 
 
 
 
 function App() {
+  const [sidebarVisible, setSidebarVisible] = useState(false);
   const [userID, setUserID] = useState('');
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const isLoginPage = window.location.pathname === '/login';
 
+ 
+
+    const styles = {
+      display : sidebarVisible ? "block" : "none"
+    }
+
+    const recipePageStyle = {
+      zIndex : sidebarVisible? "-1" : "1"
+    }
+
+    const moveSidebar = () => {
+      setSidebarVisible((prevSidebar) => !prevSidebar)
+  }
+
+  const closeSidebar = () => {
+    setSidebarVisible((prevSidebar) => {
+      return false
+    
+    })
+}
+
   return (
-    <div className="App">
+    <div  className="App">
              
       <BrowserRouter>
 
@@ -34,7 +57,7 @@ function App() {
       
           <Route path='/' element={<NavBar userID={userID} isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} setUserID={setUserID}/>}>
             <Route path="/" element={<WelcomePage />} />
-            <Route path="/recipes" element={<RecipeCardList />} />
+            <Route path="/recipes" element={<RecipeCardList style={recipePageStyle} closeSidebarFunction={closeSidebar} function={moveSidebar} />} />
             <Route path="/recipes/:id" element={<RecipeDetails userID={userID} />} />
             <Route path="/recipes/search" element={<RecipeSearchResults />} />
             <Route path="/login" element={<LoginPage setUserID={setUserID} setIsLoggedIn={setIsLoggedIn}/>} />
@@ -47,6 +70,10 @@ function App() {
           
         </Routes>
         {!isLoginPage && <Footer />}
+        <Sidebar
+        function= {moveSidebar}
+        style= {styles}
+        ></Sidebar>
         
       </BrowserRouter>
       

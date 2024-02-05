@@ -1,0 +1,49 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+.sidebar {
+
+  background-color: white;
+   height: 100%;
+   width: 35%;
+   /* max-width: 50%; */
+   position: fixed;
+   right: 0%;
+   border: solid #000000;
+   overflow: scroll;
+   /* display: flex; */
+   /* flex-direction: column; */
+}
+
+.sidebar-button-container {
+  height: 100px;
+  border-bottom: black solid;
+ 
+  width: 100%;
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
+  
+}
+
+.sidebar-button-container > button  {
+  width: 100px;
+  height: 50px;
+}
+
+.sidebar-accordion {
+  border-bottom: solid black;
+  margin: 10px 0px;
+}
+
+.sidebar-accordion-header {
+  background-color: purple;
+  color: antiquewhite;
+  font-family: Inter;
+  font-weight:300;
+}
+
+.sidebar-accordion-body{
+  font-family: Inter;
+}

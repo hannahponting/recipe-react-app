@@ -83,7 +83,7 @@ function RecipeDetails(props) {
 
                 
 
-                <Accordion>
+                <Accordion className="details-accordion">
                     <AccordionHeader className="accordion-header"><h2 className="subtitles-accordion">Given this recipe a try?</h2></AccordionHeader>
                     <AccordionBody className="accordion-body" >
                         <h3 id="subtitles-accordion">Rate this recipe</h3>

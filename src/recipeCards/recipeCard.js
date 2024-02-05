@@ -4,8 +4,9 @@ import { GetRecipesPaginated } from "../utils";
 import { Link, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import {RecipeFilter} from "../filterBar/RecipeFilter";
+import Sidebar from "../Sidebar";
 
-function RecipeCardList() {
+function RecipeCardList(props) {
 
     const [searchTerm, setSearchTerm] = useState('');
     const navigate = useNavigate();
@@ -61,8 +62,14 @@ function RecipeCardList() {
     }
 };
 
+       
 
-    return <div className="recipecard-page-container">
+
+       
+
+
+    return <div   className="recipecard-page-container">
+        {/* <Sidebar></Sidebar> */}
 
         <div>
             <header className="header">
@@ -71,6 +78,9 @@ function RecipeCardList() {
                 </div>
                 <div>
                     <RecipeFilter applyFilters={applyFilters} />
+                </div>
+                <div>
+                    <button onClick={props.function}>Click for Sidebar</button>
                 </div>
                 <div className="search-bar">
                     <input
@@ -99,8 +109,9 @@ function RecipeCardList() {
         </div>
         <div className="Divider"></div>
 
+
 {recipes.length > 0 ? (
-    <div className="wrapper">
+    <div onClick={props.closeSidebarFunction} className="wrapper">
         {recipes.map((recipe) => (
             <Card
                 key={recipe.id}
@@ -108,6 +119,10 @@ function RecipeCardList() {
                 title={recipe.name}
                 description={"Delicious recipe from " + recipe.cuisine.toLowerCase() + " cuisine. It serves up to " + recipe.serving + " people!" }
                 id={recipe.id}
+                style={props.style}
+                
+                
+              
             />
         ))}
     </div>
@@ -142,7 +157,7 @@ function RecipeCardList() {
 export function Card(props) {
     let link = "/recipes/" + props.id;
     return (
-        <div className="card">
+        <div style={props.style} className="card">
             <div className="card__body">
                 <img src={props.img} className="card__image"/>
                 <h2 className="card__title">{props.title}</h2>
