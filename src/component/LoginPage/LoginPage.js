@@ -80,7 +80,7 @@ const LoginPage = (props) => {
 
 
         <div className="credential-container">
-        <div className="credential-box">
+          <div className="credential-box">
             <label className="loginDetails-title">Login</label>
 
           </div>

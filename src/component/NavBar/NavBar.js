@@ -31,24 +31,37 @@ const Navigation = (props) => {
 
 
                 <div>
-                    <ul className="itemsAligned">
-                        <li>
-                            <Link className="hyperlink" to="/">Home</Link>
+                    <ul>
+                        <div className="alignedToLeft">
+                            <li>
+                                <Link className="hyperlink" to="/">Home</Link>
 
-                        </li>
+                            </li>
+                        </div>
 
-                        <li>
-                            <Link className="hyperlink" to="/recipes">Recipes</Link>
+                        <div className="alignedInTheMiddle">
+                            <li>
+                                <Link className="hyperlink" to="/recipes">Recipes</Link>
 
-                        </li>
-                        <li>
-                            <Link className="hyperlink" to="/WhoWeAre">Who We Are</Link>
-                        </li>
-                        {props.isLoggedIn ? (
-                            <li> <DropdownAccount className="drop-down-menu" userID={props.userID} /></li>
-                        ) : (
-                            <li><Link className="hyperlink" to="/login">Log In</Link></li>
-                        )}
+                            </li>
+                        </div>
+
+                        <div className="alignedInTheMiddle">
+                            <li>
+                                <Link className="hyperlink" to="/WhoWeAre">Who We Are</Link>
+                            </li>
+                        </div>
+
+                        <div className="alignedToRight">
+                            {props.isLoggedIn ? (
+                                <li> <DropdownAccount className="drop-down-menu" userID={props.userID} /></li>
+                            ) : (
+                                <li><Link className="hyperlink" to="/login">Log In</Link></li>
+                            )}
+                        </div>
+
+
+
 
 
                     </ul>
