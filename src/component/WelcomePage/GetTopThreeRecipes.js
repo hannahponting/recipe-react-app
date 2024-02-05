@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Card } from "../recipeCards/recipeCard";
 
-const GetTopThreeRecipes = () => {
+const GetTopThreeRecipes = (props) => {
 
     const [recipes, setRecipes] = useState([]);
     
@@ -15,7 +15,7 @@ const GetTopThreeRecipes = () => {
         console.log(recipes)
 
         fetchData();
-    }, );
+    }, []);
 
 
 
@@ -33,6 +33,7 @@ const GetTopThreeRecipes = () => {
                             title={recipe.name}
                             description={"Delicious recipe from " + recipe.cuisine.toLowerCase() + " cuisine. It serves up to " + recipe.serving + " people!"}
                             id={recipe.id}
+                            isLoggedIn={props.isLoggedIn}
                         />
                     ))}
                 </div>

@@ -31,13 +31,13 @@ function App() {
   return (
     <div className="App">
     <AuthContext.Provider value = {{user, setUser}}>
-
+             
       <BrowserRouter>
 
         <Routes>
       
           <Route path='/' element={<NavBar isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn}/>}>
-            <Route path="/" element={<WelcomePage />} />
+            <Route path="/" element={<WelcomePage isLoggedIn={isLoggedIn}/>} />
             <Route path="/recipes" element={<RecipeCardList queryEndpoint={GetRecipesPaginated} isLoggedIn={isLoggedIn}/>} />
             <Route path="/recipes/:id" element={<RecipeDetails/>} />
             <Route path="/recipes/search" element={<RecipeSearchResults />} />

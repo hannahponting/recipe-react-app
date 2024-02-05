@@ -90,7 +90,7 @@ const WelcomePage = (props) => {
                 </div>
             </div> */}
 
-            <GetTopThreeRecipes></GetTopThreeRecipes>
+            <GetTopThreeRecipes isLoggedIn={props.isLoggedIn}></GetTopThreeRecipes>
 
 
 
