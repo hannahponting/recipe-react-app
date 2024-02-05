@@ -19,7 +19,7 @@ const WelcomePage = (props) => {
     }
 
     return (
-        <div className=" welcomepage-container">
+        <div className="welcomepage-container">
 
             <header className="header">
                 <div className="welcomepage-title-container">

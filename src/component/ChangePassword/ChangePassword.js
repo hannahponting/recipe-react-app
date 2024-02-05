@@ -15,50 +15,56 @@ const ChangePassword = () => {
   }
 
 
-      const requestBody = {
-        "email": email,
-        "password": password
-      };
-    
-      const getData = async () => {
-        try {
-          const response = await fetch('http://localhost:8080/api/account/setPassword', {
-            method: 'POST',
-            headers: { 'content-type': 'application/json' },
-            body: JSON.stringify(requestBody),
-          });
-          if(response.ok){
-              const body = await response.text();
-              console.log(body);
-              setMessage(body);
-            }
-          if(response.status == 500){
-            const body = await response.json();
-            console.log(body.message);
-            setMessage(body.message);
-            }
-        } catch (error) {
-          console.error('Error fetching data:', error);
-          console.log(error.message);
-          setMessage(error.message);
-        }
-      };
-    
-      const handleSubmitClick = () => {
-        getData();
-      };
-      
+  const requestBody = {
+    "email": email,
+    "password": password
+  };
 
-    return(
-      <>
-      <header className="header">
-        <div className="Title">
-          Change Password Page
-        </div>
-      </header>
+  const getData = async () => {
+    try {
+      const response = await fetch('http://localhost:8080/api/account/setPassword', {
+        method: 'POST',
+        headers: { 'content-type': 'application/json' },
+        body: JSON.stringify(requestBody),
+      });
+      if (response.ok) {
+        const body = await response.text();
+        console.log(body);
+        setMessage(body);
+      }
+      if (response.status == 500) {
+        const body = await response.json();
+        console.log(body.message);
+        setMessage(body.message);
+      }
+    } catch (error) {
+      console.error('Error fetching data:', error);
+      console.log(error.message);
+      setMessage(error.message);
+    }
+  };
+
+  const handleSubmitClick = () => {
+    getData();
+  };
+
+
+  return (
+    <>
+      <div className="changepassword-container">
+        <header className="header">
+          <div className="changepassword-title-container">
+            <div className="Title">
+              Change Password Page
+            </div>
+          </div>
+
+        </header>
+      </div>
+
       <div className="Divider"></div>
 
-      <div className="changepassword-container">
+      <div className="changepassword-box-container">
         <div className="changepassword-box">
           <label className="passwordDetails">Email</label>
         </div>
@@ -79,18 +85,18 @@ const ChangePassword = () => {
         <div>
 
 
-        <div className="account-login">
-          <label>Don't have an account?</label>
-          &nbsp;&nbsp;
-          <Link to="/signup">Sign up</Link>
-        </div>
+          <div className="account-login">
+            <label>Don't have an account?</label>
+            &nbsp;&nbsp;
+            <Link to="/signup">Sign up</Link>
+          </div>
 
-        <div className="account-login">
-          <label>Already a member?</label>
-          &nbsp;&nbsp;
-          <Link to="/login">Login</Link>
-        </div>
-   
+          <div className="account-login">
+            <label>Already a member?</label>
+            &nbsp;&nbsp;
+            <Link to="/login">Login</Link>
+          </div>
+
 
         </div>
         {message && <p>{message}</p>}
