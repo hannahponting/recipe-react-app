@@ -17,7 +17,7 @@ const DropdownAccount = (props) => {
             <Dropdown.Menu>
                 <Dropdown.Item as={Link} to="/favourites">Favourites</Dropdown.Item>
                 <Dropdown.Item as={Link} to="/changepassword">Change Password</Dropdown.Item>
-                <Dropdown.Item as={Link} onClick={handleLogOut} to="/home">Log Out</Dropdown.Item>
+                <Dropdown.Item as={Link} onClick={handleLogOut} to="/">Log Out</Dropdown.Item>
             </Dropdown.Menu>
         </Dropdown>
     )
