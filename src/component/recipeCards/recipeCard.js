@@ -6,8 +6,12 @@ import { useEffect, useState } from "react";
 import { RecipeFilter } from "../FilterBar/RecipeFilter";
 import { IngredientFilter } from "../FilterBar/IngredientFilter";
 import StarRating from "../StarRating/StarRating";
+import LikeButton from "../likeButton/likeButton";
 
-function RecipeCardList({ filterType, queryEndpoint }) {
+export default RecipeCardList;
+
+
+function RecipeCardList({filterType, queryEndpoint}, props) {
 
     const [searchTerm, setSearchTerm] = useState('');
     const navigate = useNavigate();
@@ -77,11 +81,11 @@ function RecipeCardList({ filterType, queryEndpoint }) {
                 </div>
 
                 <div>
-                {filterType === 'ingredients' ? (
-              <IngredientFilter applyFilters={applyFilters}/>
-            ) : (
-              <RecipeFilter applyFilters={applyFilters} />
-            )}
+                    {filterType === 'ingredients' ? (
+                        <IngredientFilter applyFilters={applyFilters}/>
+                    ) : (
+                        <RecipeFilter applyFilters={applyFilters}/>
+                    )}
                 </div>
                 <div className="search-bar">
                     <input
@@ -95,16 +99,16 @@ function RecipeCardList({ filterType, queryEndpoint }) {
             </header>
 
             {/* {recipes.map((recipe) => {
-            return (
-                <Card
-                    key={recipe.id}
-                    img={`http://localhost:8080/api/recipes/image/${recipe.id}`}
-                    title={recipe.name}
-                    description={"Delicious recipe from " + recipe.cuisine.toLowerCase() + " cuisine. It serves up to " + recipe.serving + " people!" }
-                    id={recipe.id}
-                />
-            )
-        })} */}
+        return (
+            <Card
+                key={recipe.id}
+                img={`http://localhost:8080/api/recipes/image/${recipe.id}`}
+                title={recipe.name}
+                description={"Delicious recipe from " + recipe.cuisine.toLowerCase() + " cuisine. It serves up to " + recipe.serving + " people!" }
+                id={recipe.id}
+            />
+        )
+    })} */}
 
 
         </div>
@@ -149,8 +153,8 @@ function RecipeCardList({ filterType, queryEndpoint }) {
         </div>
     </div>
 
-        ;
 }
+
 
 export function Card(props) {
     let link = "/recipes/" + props.id;
@@ -172,7 +176,7 @@ export function Card(props) {
     return (
         <div className="card">
             <div className="card__body">
-                <img src={props.img} className="card__image" />
+                <img src={props.img} className="card__image"/>
                 <h2 className="card__title">{props.title}</h2>
                 <p className="card__description">{props.description}</p>
                 <StarRating id='stars' stars={starRating}></StarRating>
@@ -180,8 +184,13 @@ export function Card(props) {
             <Link to={link}>
                 <button className="card__btn">View Recipe</button>
             </Link>
+            <LikeButton isUserLoggedIn={props.isLoggedIn} recipeId={props.id} uuId={props.uuId}> </LikeButton>
         </div>
     );
 }
-export default RecipeCardList;
+
+
+
+
+
 
