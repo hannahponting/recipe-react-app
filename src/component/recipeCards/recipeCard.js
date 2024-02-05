@@ -75,13 +75,13 @@ function RecipeCardList({ filterType, queryEndpoint }) {
                     </div>
                 </div>
 
-                {/* <div>
+                <div>
                 {filterType === 'ingredients' ? (
               <IngredientFilter applyFilters={applyFilters}/>
             ) : (
               <RecipeFilter applyFilters={applyFilters} />
             )}
-                </div> */}
+                </div>
                 <div className="search-bar">
                     <input
                         type="text"
