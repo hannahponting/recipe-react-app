@@ -18,16 +18,18 @@ const Navigation = (props) => {
         navigate(`/recipes/search?keyword=${encodeURIComponent(searchTerm)}`)
     }
 
-        return (
-            <>
-                <nav className="navigation">
+    return (
+        <>
+            <nav className="navigation">
 
-                   
-                <img className="nerd-logo-removebg" alt="Nerd logo" src={require('../../Resources/invertedNerdLogo.png')}></img>
+                <Link to="/">
+                    <img className="nerd-logo-removebg" alt="Nerd logo" src={require('../../Resources/invertedNerdLogo.png')}></img>
+
+                </Link>
 
 
-                        <div>
-                        <ul className="itemsAligned">
+                <div>
+                    <ul className="itemsAligned">
                         <li>
                             <Link className="hyperlink" to="/">Home</Link>
 
@@ -41,26 +43,26 @@ const Navigation = (props) => {
                             <Link className="hyperlink" to="/WhoWeAre">Who We Are</Link>
                         </li>
                         {props.isLoggedIn ? (
-                            <li> <DropdownAccount className="hyperlink" userID={props.userID}/></li>
+                            <li> <DropdownAccount className="drop-down-menu" userID={props.userID} /></li>
                         ) : (
-                            <li><Link className="hyperlink" to = "/login">Log In</Link></li>
+                            <li><Link className="hyperlink" to="/login">Log In</Link></li>
                         )}
-                        
+
 
                     </ul>
-                    </div>
+                </div>
 
-                </nav>
-
-
-                <Outlet />
+            </nav>
 
 
+            <Outlet />
 
-            </>
 
 
-        );
-    
+        </>
+
+
+    );
+
 };
 export default Navigation;
