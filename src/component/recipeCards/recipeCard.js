@@ -1,6 +1,6 @@
 import * as React from "https://cdn.skypack.dev/react@17.0.1";
 import "./recipeCard.css";
-import { GetNewRatingById, GetRecipesPaginated } from "../../utils";
+import { GetNewRatingById, GetRecipesPaginated, GetIngredientsPaginated } from "../../utils";
 import { Link, useNavigate } from "react-router-dom";
 import { useEffect, useState , useRef} from "react";
 import { RecipeFilter } from "../FilterBar/RecipeFilter";
