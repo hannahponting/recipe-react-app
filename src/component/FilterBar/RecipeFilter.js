@@ -25,41 +25,31 @@ export const RecipeFilter = ({ applyFilters}) => {
             <div className="filter-container">
                 <form>
 
-                    <label htmlFor="spice_level">Spicy Level:</label>
+                    <h3 htmlFor="spice_level">Spicy Level:</h3>
                     &nbsp;
-                    <select id="spice_level" name="spice_level" value={spiceType} onChange={handleSpiceLevelChange}>
-                        <option value="">Select All</option>
-                        <option value="NONE">None</option>
-                        <option value="MILD">Mild</option>
-                        <option value="MEDIUM">Medium</option>
-                        <option value="SPICY">Spicy</option>
-
-                    </select>
+                    <label><input type='radio' name="spice_level" value="NONE" onChange={handleSpiceLevelChange}></input>None</label>
+                   <label><input type='radio' name="spice_level" value="MILD" onChange={handleSpiceLevelChange}></input>Mild</label>
+                   <label><input type='radio' name="spice_level" value="MEDIUM" onChange={handleSpiceLevelChange}></input>Medium</label>
+                   <label><input type='radio' name="spice_level" value="SPICY" onChange={handleSpiceLevelChange}></input>Spicey</label>
+                   <label><input type='radio' name="spice_level" value="" onChange={handleSpiceLevelChange}></input>Any</label>
 
                     &nbsp; &nbsp; &nbsp;
 
-                    <label className='label-edits' htmlFor="difficulty">Difficulty</label>
+                    <h3 className='label-edits' htmlFor="difficulty">Difficulty</h3>
                     &nbsp;&nbsp;
-                    <select className='filter-box' id="difficulty" name="difficulty" value={difficultyLevel} onChange={handleDifficultyChange}>
-                        <option value="">Select All</option>
-                        <option value="EASY">Easy</option>
-                        <option value="MODERATE">Moderate</option>
-                        <option value="HIGH">High</option>
-                        {/* Add more options as needed */}
-                    </select>
+                    <label><input type='radio' name="difficulty" value="EASY" onChange={handleDifficultyChange}></input>Easy</label>
+                    <label><input type='radio' name="difficulty" value="MODERATE" onChange={handleDifficultyChange}></input>Moderate</label>
+                    <label><input type='radio' name="difficulty" value="H" onChange={handleDifficultyChange}></input>High</label>
+                    <label><input type='radio' name="difficulty" value="" onChange={handleDifficultyChange}></input>Any</label>
 
                     &nbsp; &nbsp; &nbsp;
 
-
-                    <label htmlFor="cost">Cost Level:</label>
+                    <h3 htmlFor="cost">Cost Level:</h3>
                     &nbsp;
-                    <select id="cost" name="cost" value={costType} onChange={handleCostChange}>
-                        <option value="">Select All</option>
-                        <option value="LOW">Low</option>
-                        <option value="MODERATE">Moderate</option>
-                        <option value="PRICEY">Pricey</option>
-                        {/* Add more options as needed */}
-                    </select>
+                    <label><input type='radio' name="cost" value ="LOW" onChange={handleCostChange}></input>Low</label>
+                    <label><input type='radio' name="cost" value ="MODERATE" onChange={handleCostChange}></input>Moderate</label>
+                    <label><input type='radio' name="cost" value ="PRICEY" onChange={handleCostChange}></input>Pricey</label>
+                    <label><input type='radio' name="cost" value ="" onChange={handleCostChange}></input>Any</label>
                     &nbsp; &nbsp; &nbsp;
                     <button className='filterButton' id="apply-filters" type="button" onClick={() => {
                         const filterArray = {costType, difficultyLevel, spiceType};
