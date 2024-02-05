@@ -62,8 +62,9 @@ const LoginPage = (props) => {
   };
 
   return (
-    <div className="loginpage-container">
-      <header className="header">
+    <div className="login-background">
+      <div className="loginpage-container">
+        {/* <header className="header">
         <div className="login-title-container">
           <div className="Title">
             Login Page
@@ -73,43 +74,49 @@ const LoginPage = (props) => {
       </header>
 
 
-      <div className="Divider"></div>
+      <div className="Divider"></div> */}
 
 
-      <div className="credential-container">
-
-
+        <div className="credential-container">
         <div className="credential-box">
-          <label className="loginDetails">Email</label>
+            <label className="loginDetails-title">Login</label>
 
+          </div>
+
+
+          <div className="credential-box">
+            <label className="loginDetails">Email</label>
+
+          </div>
+
+          <input className="credential-input-boxes" type="text" value={username} onChange={handleUsernameChange} />
+
+
+
+
+
+          <div className="credential-box">
+            <label className="loginDetails">Password</label>
+
+            <div className="password-container-change"><Link to="/changepassword">Forgot Password?</Link></div>
+          </div>
+          <input className="credential-input-boxes" type="password" value={password} onChange={handlePasswordChange} />
+          <div><button className="login-button" onClick={handleSubmitClick}>Login</button></div>
+
+          <div className="account-signup">
+            <label>Don't have an account?</label>
+            &nbsp;&nbsp;
+            <Link to="/signup">Sign up</Link>
+          </div>
+
+
+
+          {message && <p>{message}</p>}
         </div>
 
-        <input className="credential-input-boxes" type="text" value={username} onChange={handleUsernameChange} />
-
-
-
-
-
-        <div className="credential-box">
-          <label className="loginDetails">Password</label>
-
-          <div className="password-container-change"><Link to="/changepassword">Forgot Password?</Link></div>
-        </div>
-        <input className="credential-input-boxes" type="password" value={password} onChange={handlePasswordChange} />
-        <div><button className="login-button" onClick={handleSubmitClick}>Login</button></div>
-
-        <div className="account-signup">
-          <label>Don't have an account?</label>
-          &nbsp;&nbsp;
-          <Link to="/signup">Sign up</Link>
-        </div>
-
-
-
-        {message && <p>{message}</p>}
       </div>
-
     </div>
+
   )
 
 }
