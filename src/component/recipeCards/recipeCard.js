@@ -12,7 +12,7 @@ import LikeButton from "../likeButton/likeButton";
 export default RecipeCardList;
 
 
-function RecipeCardList({filterType, queryEndpoint}, props) {
+function RecipeCardList({queryEndpoint}) {
 
 
     const [searchTerm, setSearchTerm] = useState('');

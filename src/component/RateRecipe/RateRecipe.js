@@ -6,14 +6,14 @@ import AuthContext from "../AuthContext/AuthContext";
 
 const RateRecipe = (props) => {
   const context = useContext(AuthContext)
-  let person = context.user;
+  let personID = context.user?.id ?? null;
 
     const [myRating, setMyRating] = useState(0);
     const [message, setMessage] = useState();
   
     const requestBody = {
       recipeId: props.id,
-      personId: person.id,
+      personId: personID,
       myRating: myRating,
       favourite: true
     };
