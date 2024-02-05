@@ -1,44 +1,63 @@
 import * as React from "https://cdn.skypack.dev/react@17.0.1";
 import "./recipeCard.css";
-import { GetNewRatingById, GetRecipesPaginated } from "../../utils";
+import { GetNewRatingById, GetRecipesPaginated, GetIngredientsPaginated } from "../../utils";
 import { Link, useNavigate } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { useEffect, useState , useRef} from "react";
 import { RecipeFilter } from "../FilterBar/RecipeFilter";
 import { IngredientFilter } from "../FilterBar/IngredientFilter";
 import StarRating from "../StarRating/StarRating";
 import LikeButton from "../likeButton/likeButton";
+
 
 export default RecipeCardList;
 
 
 function RecipeCardList({filterType, queryEndpoint}, props) {
 
+
     const [searchTerm, setSearchTerm] = useState('');
     const navigate = useNavigate();
     const handleSearch = () => {
         navigate(`/recipes/search?keyword=${encodeURIComponent(searchTerm)}`)
     }
-
     const [recipes, setRecipes] = useState([]);
     const [currentPage, setCurrentPage] = useState(1);
     const [query, setQuery] = useState("");
     const [totalPages, setTotalPages] = useState(1);
+    const [filterType, setFilterType] = useState("default");
+    const queryEndpointRef = useRef(GetRecipesPaginated);
 
     useEffect(() => {
         const fetchData = async () => {
-            const result = await queryEndpoint(currentPage, 10, query);
+            const result = await queryEndpointRef.current(currentPage, 10, query);
             setRecipes(result.recipes);
             setTotalPages(result.totalPages);
         };
 
         fetchData();
-    }, [currentPage, query]);
+    }, [currentPage, query, filterType]);
 
     const handlePageChange = (newPage) => {
         if (newPage > 0 && newPage <= totalPages) {
             setCurrentPage(newPage);
         }
     };
+
+    const toggleFilter = () => {
+        if (filterType === "default") {
+          // Update the ref without calling the function
+          queryEndpointRef.current = GetIngredientsPaginated;
+          setFilterType("ingredients");
+          setCurrentPage(1);
+          setQuery("");
+        } else {
+          // Update the ref without calling the function
+          queryEndpointRef.current = GetRecipesPaginated;
+          setFilterType("default");
+          setCurrentPage(1);
+          setQuery("");
+        }
+      };
 
     const applyFilters = (filterArray) => {
 
@@ -188,9 +207,6 @@ export function Card(props) {
         </div>
     );
 }
-
-
-
 
 
 
