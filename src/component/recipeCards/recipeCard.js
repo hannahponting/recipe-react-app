@@ -1,10 +1,10 @@
 import * as React from "https://cdn.skypack.dev/react@17.0.1";
 import "./recipeCard.css";
-import { GetRecipesPaginated } from "../utils";
+import { GetRecipesPaginated } from "../../utils";
 import { Link, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
-import { RecipeFilter } from "../filterBar/RecipeFilter";
-import { IngredientFilter } from "../filterBar/IngredientFilter";
+import { RecipeFilter } from "../FilterBar/RecipeFilter";
+import { IngredientFilter } from "../FilterBar/IngredientFilter";
 
 function RecipeCardList({ filterType, queryEndpoint }) {
 

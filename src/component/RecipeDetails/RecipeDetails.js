@@ -1,9 +1,9 @@
 import { Await, useParams } from "react-router-dom"
-import { GetNewRatingById, GetRatingById, GetRecipes, GetRecipesById } from "./utils";
+import { GetNewRatingById, GetRatingById, GetRecipes, GetRecipesById } from "../../utils";
 import "./RecipeDetails.css";
 import { useEffect, useState } from "react";
-import StarRating from "./StarRating";
-import RateRecipe from "./RateRecipe";
+import StarRating from "../StarRating/StarRating";
+import RateRecipe from "../RateRecipe/RateRecipe";
 import { Accordion, AccordionBody, AccordionHeader, AccordionItem } from "react-bootstrap";
 
 
@@ -49,7 +49,7 @@ function RecipeDetails(props) {
 
                     <h2 className="subtitles">Details</h2>
                     <ul className="details">
-                        <li className="timer-listitem"><img src={require('.//Resources/clockIcon.png')} id="timer" />
+                        <li className="timer-listitem"><img src={require('../../Resources/clockIcon.png')} id="timer" />
                             <strong>{recipe.time_to_cook} </strong></li>
                         <li><strong>Name: </strong>{recipe.name}</li>
                         <li><strong>Meal Type: </strong>{recipe.mealType[0] + recipe.mealType.slice(1).toLowerCase()}</li>

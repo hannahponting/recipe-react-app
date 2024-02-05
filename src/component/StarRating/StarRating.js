@@ -1,5 +1,5 @@
 import './StarRating.css';
-import { GetRatingById } from './utils';
+import { GetRatingById } from '../../utils';
 
 const StarRating = (props) => {
   let rating = props.stars
@@ -8,15 +8,15 @@ const StarRating = (props) => {
 
   const stars = Array.from({ length: 5 }, (_, index) => {
     if (index < fullStars) {
-      return <img src={require('./fullstar.png')} className='star'></img>
+      return <img src={require('../../Resources/fullstar.png')} className='star'></img>
     } else if (hasHalfStar && index === fullStars) {
       return (
-          <img src={require('./halfstar.png')} className='star'></img>
+          <img src={require('../../Resources/halfstar.png')} className='star'></img>
       );
     }
     else{
         return(
-            <img src={require('./greystar.png')} className='star'></img>
+            <img src={require('../../Resources/greystar.png')} className='star'></img>
         )
     }
   });
