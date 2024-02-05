@@ -4,14 +4,15 @@ const Footer = () => {
     return (
 
         <div className="footer">
-            <div>
+            <div className="information-container">
                 Contact us!
+                &nbsp;
                 Email: nerdrecipes@support.com
                 Telephone: 07894635382
                 
             </div>
 
-            <div>
+            <div className="direction-container">
                 Radbroke Hall
                 WR9 L245
                 United Kingdom
