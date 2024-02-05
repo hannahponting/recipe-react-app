@@ -1,17 +1,19 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import "./RateRecipe.css"
 import { GetUserByEmail } from "../../utils";
+import AuthContext from "../AuthContext/AuthContext";
 
 
 const RateRecipe = (props) => {
-  let person = GetUserByEmail(props.userID);
+  const context = useContext(AuthContext)
+  let personID = context.user?.id ?? null;
 
     const [myRating, setMyRating] = useState(0);
     const [message, setMessage] = useState();
   
     const requestBody = {
       recipeId: props.id,
-      personId: person.id,
+      personId: personID,
       myRating: myRating,
       favourite: true
     };

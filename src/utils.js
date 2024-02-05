@@ -83,12 +83,28 @@ return data;
 }
 
 
+export async function GetRatingById(id, setStarRating){
+    try {
+        const response = await fetch(`http://localhost:8080/api/rating/${id}`);
+        if (response.ok){
+            const contentType = response.headers.get('content-type');
+            if (contentType && contentType.includes('application/json')) {
+                const body = await response.json();
+                setStarRating(body);
+            }
+        } else {
+            console.error('Error fetching data:', response.status);
+        }
+    } catch (error) {
+        console.error('Network error:', error);
+    }
+};
+
 
 export function GetNewRatingById(id) {
     return new Promise(async (resolve, reject) => {
         try {
             const response = await fetch(`http://localhost:8080/api/rating/${id}`);
-
             if (response.ok) {
                 const contentType = response.headers.get('content-type');
                 if (contentType && contentType.includes('application/json')) {

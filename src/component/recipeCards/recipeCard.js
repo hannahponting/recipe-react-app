@@ -1,40 +1,63 @@
 import * as React from "https://cdn.skypack.dev/react@17.0.1";
 import "./recipeCard.css";
-import { GetNewRatingById, GetRecipesPaginated } from "../../utils";
+import { GetNewRatingById, GetRecipesPaginated, GetIngredientsPaginated, GetRatingById } from "../../utils";
 import { Link, useNavigate } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { useEffect, useState , useRef} from "react";
 import { RecipeFilter } from "../FilterBar/RecipeFilter";
 import { IngredientFilter } from "../FilterBar/IngredientFilter";
 import StarRating from "../StarRating/StarRating";
+import LikeButton from "../likeButton/likeButton";
 
-function RecipeCardList({ filterType, queryEndpoint }) {
+
+export default RecipeCardList;
+
+
+function RecipeCardList({queryEndpoint}) {
+
 
     const [searchTerm, setSearchTerm] = useState('');
     const navigate = useNavigate();
     const handleSearch = () => {
         navigate(`/recipes/search?keyword=${encodeURIComponent(searchTerm)}`)
     }
-
     const [recipes, setRecipes] = useState([]);
     const [currentPage, setCurrentPage] = useState(1);
     const [query, setQuery] = useState("");
     const [totalPages, setTotalPages] = useState(1);
+    const [filterType, setFilterType] = useState("default");
+    const queryEndpointRef = useRef(GetRecipesPaginated);
 
     useEffect(() => {
         const fetchData = async () => {
-            const result = await queryEndpoint(currentPage, 10, query);
+            const result = await queryEndpointRef.current(currentPage, 10, query);
             setRecipes(result.recipes);
             setTotalPages(result.totalPages);
         };
 
         fetchData();
-    }, [currentPage, query]);
+    }, [currentPage, query, filterType]);
 
     const handlePageChange = (newPage) => {
         if (newPage > 0 && newPage <= totalPages) {
             setCurrentPage(newPage);
         }
     };
+
+    const toggleFilter = () => {
+        if (filterType === "default") {
+          // Update the ref without calling the function
+          queryEndpointRef.current = GetIngredientsPaginated;
+          setFilterType("ingredients");
+          setCurrentPage(1);
+          setQuery("");
+        } else {
+          // Update the ref without calling the function
+          queryEndpointRef.current = GetRecipesPaginated;
+          setFilterType("default");
+          setCurrentPage(1);
+          setQuery("");
+        }
+      };
 
     const applyFilters = (filterArray) => {
 
@@ -77,11 +100,11 @@ function RecipeCardList({ filterType, queryEndpoint }) {
                 </div>
 
                 <div>
-                {filterType === 'ingredients' ? (
-              <IngredientFilter applyFilters={applyFilters}/>
-            ) : (
-              <RecipeFilter applyFilters={applyFilters} />
-            )}
+                    {filterType === 'ingredients' ? (
+                        <IngredientFilter applyFilters={applyFilters}/>
+                    ) : (
+                        <RecipeFilter applyFilters={applyFilters}/>
+                    )}
                 </div>
                 <div className="search-bar">
                     <input
@@ -95,16 +118,16 @@ function RecipeCardList({ filterType, queryEndpoint }) {
             </header>
 
             {/* {recipes.map((recipe) => {
-            return (
-                <Card
-                    key={recipe.id}
-                    img={`http://localhost:8080/api/recipes/image/${recipe.id}`}
-                    title={recipe.name}
-                    description={"Delicious recipe from " + recipe.cuisine.toLowerCase() + " cuisine. It serves up to " + recipe.serving + " people!" }
-                    id={recipe.id}
-                />
-            )
-        })} */}
+        return (
+            <Card
+                key={recipe.id}
+                img={`http://localhost:8080/api/recipes/image/${recipe.id}`}
+                title={recipe.name}
+                description={"Delicious recipe from " + recipe.cuisine.toLowerCase() + " cuisine. It serves up to " + recipe.serving + " people!" }
+                id={recipe.id}
+            />
+        )
+    })} */}
 
 
         </div>
@@ -149,17 +172,15 @@ function RecipeCardList({ filterType, queryEndpoint }) {
         </div>
     </div>
 
-        ;
 }
+
 
 export function Card(props) {
     let link = "/recipes/" + props.id;
     const [starRating, setStarRating] = useState(0);
-
     const fetchData = async () => {
         try {
-            const rating = await Promise.resolve(GetNewRatingById(props.id));
-            setStarRating(rating);
+            const rating = await GetRatingById(props.id, setStarRating)
         } catch (error) {
             console.error('Error fetching rating:', error);
         }
@@ -172,7 +193,7 @@ export function Card(props) {
     return (
         <div className="card">
             <div className="card__body">
-                <img src={props.img} className="card__image" />
+                <img src={props.img} className="card__image"/>
                 <h2 className="card__title">{props.title}</h2>
                 <p className="card__description">{props.description}</p>
                 <StarRating id='stars' stars={starRating}></StarRating>
@@ -180,8 +201,10 @@ export function Card(props) {
             <Link to={link}>
                 <button className="card__btn">View Recipe</button>
             </Link>
+            <LikeButton isUserLoggedIn={props.isLoggedIn} recipeId={props.id} uuId={props.uuId}> </LikeButton>
         </div>
     );
 }
-export default RecipeCardList;
+
+
 

@@ -16,6 +16,8 @@ import ChangePassword from './component/ChangePassword/ChangePassword.js';
 import SignUp from './component/SignUp/SignUp.js';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Favourites from './component/Favourite/Favourites.js'
+import AuthContext from './component/AuthContext/AuthContext.js';
+
 import Sidebar from './Sidebar.js';
 
 
@@ -25,8 +27,7 @@ function App() {
   const [sidebarVisible, setSidebarVisible] = useState(false);
 
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [userID, setUserID] = useState("");
-  const [uuID, setUuID] = useState(0);
+  const [user, setUser] = useState();
   const isLoginPage = window.location.pathname === '/login';
 
  
@@ -51,23 +52,24 @@ function App() {
 }
 
   return (
-    <div  className="App">
+    <div className="App">
+    <AuthContext.Provider value = {{user, setUser}}>
+
              
       <BrowserRouter>
 
         <Routes>
       
-          <Route path='/' element={<NavBar userID={userID} isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} setUserID={setUserID}/>}>
+          <Route path='/' element={<NavBar isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn}/>}>
             <Route path="/" element={<WelcomePage />} />
-            <Route path="/recipes" element={<RecipeCardList queryEndpoint={GetRecipesPaginated} isLoggedIn={isLoggedIn} uuID={uuID}/>} />
-            <Route path="/ingredients" element={<RecipeCardList filterType="ingredients" queryEndpoint={GetIngredientsPaginated}style={recipePageStyle} closeSidebarFunction={closeSidebar} function={moveSidebar} />} />
-            <Route path="/recipes/:id" element={<RecipeDetails userID={userID} />} />
+            <Route path="/recipes" element={<RecipeCardList queryEndpoint={GetRecipesPaginated} isLoggedIn={isLoggedIn} style={recipePageStyle} closeSidebarFunction={closeSidebar} function={moveSidebar}/>} />
+            <Route path="/recipes/:id" element={<RecipeDetails/>} />
             <Route path="/recipes/search" element={<RecipeSearchResults />} />
-            <Route path="/login" element={<LoginPage setUserID={setUserID} setUuID={setUuID} setIsLoggedIn={setIsLoggedIn}/>} />
+            <Route path="/login" element={<LoginPage setIsLoggedIn={setIsLoggedIn}/>} />
             <Route path="/WhoWeAre" element={<WhoWeAre />} />
-            <Route path="/favourites" element={<Favourites uuID={uuID} isLoggedIn={isLoggedIn}/>} />
+            <Route path="/favourites" element={<Favourites isLoggedIn={isLoggedIn}/>} />
             <Route path="/changepassword" element={<ChangePassword/>}/>
-            <Route path="/signup" element={<SignUp setUserID={setUserID}/>}/>
+            <Route path="/signup" element={<SignUp/>}/>
           </Route>
           
           
@@ -79,7 +81,7 @@ function App() {
         ></Sidebar>
         
       </BrowserRouter>
-      
+      </AuthContext.Provider>
 
       
 
