@@ -1,7 +1,8 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { PostUserLogin } from "../../utils";
 import "./LoginPage.css";
 import { Link, useNavigate } from "react-router-dom";
+import AuthContext from "../AuthContext/AuthContext";
 
 
 const LoginPage = (props) => {
@@ -9,6 +10,8 @@ const LoginPage = (props) => {
   const [password, setPassword] = useState('');
   const [message, setMessage] = useState('');
   const [uuid, setUuid] = useState(0);
+  const context = useContext(AuthContext)
+  const [user, setUser] = [context.user, context.setUser];
 
   let navigate = useNavigate();
 
@@ -34,15 +37,14 @@ const LoginPage = (props) => {
       const body = await response.json();
       console.log(body)
       if (body == true) {
-        props.setUserID((prevUserID) => username);
-
         props.setIsLoggedIn(true);
         setMessage('Logged in');
 
         const urlApi = `http://localhost:8080/api/person/${username}`
         const response = await fetch(urlApi);
         const body = await response.json();
-        props.setUuID(body.id);
+        setUser(body);
+
 
         // const data = ({recipes: body.content, isLoading: false, totalPages: body.totalPages})
 
