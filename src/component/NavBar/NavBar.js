@@ -22,10 +22,12 @@ const Navigation = (props) => {
         <>
             <nav className="navigation">
 
+
                 <Link to="/">
                     <img className="nerd-logo-removebg" alt="Nerd logo" src={require('../../Resources/invertedNerdLogo.png')}></img>
 
                 </Link>
+
 
 
                 <div>
