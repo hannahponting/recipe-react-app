@@ -56,7 +56,7 @@ const Favourites = (props) => {
                                         key={recipe.id}
                                         img={`http://localhost:8080/api/recipes/image/${recipe.id}`}
                                         title={recipe.name}
-                                        description="Take your boring salads up a notch. This recipe is perfect for lunch and only contains 5 ingredients!"
+                                        description={"Delicious recipe from " + recipe.cuisine.toLowerCase() + " cuisine. It serves up to " + recipe.serving + " people!"}
                                         id={recipe.id}
                                     />
                                 ))}
