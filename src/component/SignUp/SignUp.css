@@ -1,7 +1,13 @@
+.signup-container {
+  /* margin-bottom: 200px; */
+}
 .header {
   padding: 10px 20px;
   display: flex;
-  justify-content: space-between;
+  margin: auto;
+  align-items: "center";
+  max-width: 3000px;
+  justify-content: "space-between";
 }
 
 .header.Title {
@@ -15,6 +21,22 @@
   justify-content: space-between;
 
 }
+
+.signup-title-container {
+  color: black;
+  height:120px;
+  display: flex;
+  align-items: center;
+  padding: 30px;
+  font-size: 64px;
+  font-family: NewsReader;
+  font-weight: 400;
+  line-height: 120%;
+  word-wrap: "break-word";
+  justify-content: space-between;
+
+}
+
 
 .header.search-container {
   margin: 15px;
@@ -62,7 +84,7 @@
   /* Change the hover color */
 }
 
-.signup-container {
+.signup-box-container {
   /* position: absolute; */
   top: 50%;
   /* left: 50%; */

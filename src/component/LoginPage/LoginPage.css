@@ -4,9 +4,12 @@
 
 
 .header {
-    padding: 10px 20px;
-    display: flex;
-    justify-content: space-between;
+  padding: 10px 20px;
+  display: flex;
+  margin: auto;
+  align-items: center;
+  max-width: 3000px;
+  justify-content: space-between;
 }
 
 .header.Title {
@@ -20,7 +23,19 @@
     justify-content: space-between;
 
 }
-
+.login-title-container {
+  color: black;
+  height:120px;
+  display: flex;
+  align-items: left;
+  padding: 30px;
+  font-size: 64px;
+  font-family: NewsReader;
+  font-weight: 400;
+  line-height: 120%;
+  /* word-wrap: "break-word"; */
+  /* justify-content: space-between; */
+}
 
 .Divider {
     width: auto;

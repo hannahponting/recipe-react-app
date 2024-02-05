@@ -1,10 +1,11 @@
 import * as React from "https://cdn.skypack.dev/react@17.0.1";
 import "./recipeCard.css";
-import { GetIngredientsPaginated, GetRecipesPaginated } from "../../utils";
+import { GetNewRatingById, GetRecipesPaginated } from "../../utils";
 import { Link, useNavigate } from "react-router-dom";
 import { useEffect, useState , useRef} from "react";
 import { RecipeFilter } from "../FilterBar/RecipeFilter";
 import { IngredientFilter } from "../FilterBar/IngredientFilter";
+import StarRating from "../StarRating/StarRating";
 
 function RecipeCardList() {
 
@@ -176,12 +177,28 @@ function RecipeCardList() {
 
 export function Card(props) {
     let link = "/recipes/" + props.id;
+    const [starRating, setStarRating] = useState(0);
+
+    const fetchData = async () => {
+        try {
+            const rating = await Promise.resolve(GetNewRatingById(props.id));
+            setStarRating(rating);
+        } catch (error) {
+            console.error('Error fetching rating:', error);
+        }
+    };
+
+    useEffect(() => {
+        fetchData();
+    }, [props.id]);
+
     return (
         <div className="card">
             <div className="card__body">
                 <img src={props.img} className="card__image" />
                 <h2 className="card__title">{props.title}</h2>
                 <p className="card__description">{props.description}</p>
+                <StarRating id='stars' stars={starRating}></StarRating>
             </div>
             <Link to={link}>
                 <button className="card__btn">View Recipe</button>

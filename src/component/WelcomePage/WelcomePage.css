@@ -10,9 +10,9 @@
   padding: 10px 20px;
   display: flex;
   margin: auto;
-  align-items: center;
+  align-items: "center";
   max-width: 3000px;
-  justify-content: space-between;
+  justify-content: "space-between";
 }
 
 .header.Title {
@@ -22,8 +22,8 @@
   padding-left: 2%;
   font-weight: 400;
   line-height: 120%;
-  word-wrap: break-word;
-  justify-content: space-between;
+  word-wrap: "break-word";
+  justify-content: "space-between";
 
 }
 

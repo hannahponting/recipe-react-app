@@ -8,6 +8,7 @@
     padding: 10px;
     display: flex;
     align-items: center;
+    justify-content: center; 
     /* padding: 20px; */
     /* display: inline-block; */
     /* border: solid black; */
