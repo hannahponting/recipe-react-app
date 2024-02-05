@@ -62,7 +62,7 @@ export const RecipeFilter = ({ applyFilters}) => {
                     </select>
                     &nbsp; &nbsp; &nbsp;
                     <button className='filterButton' id="apply-filters" type="button" onClick={() => {
-                        const filterArray = {costLevel: costType, difficultyLevel, spiceLevel: spiceType};
+                        const filterArray = {costType, difficultyLevel, spiceType};
                         applyFilters(filterArray);}}>
                         Apply Filters
                     </button>
