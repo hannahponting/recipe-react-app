@@ -63,7 +63,7 @@ export const RecipeFilter = ({ applyFilters }) => {
                 <input type='radio' name="mealType" value="DINNER" onChange={handleInputChange} /> Dinner
                 <input type='radio' name="mealType" value="" onChange={handleInputChange} /> Any
 
-                <h3 htmlFor="cuisine">Meal:</h3>
+                <h3 htmlFor="cuisine">Cuisine:</h3>
                 <input type='radio' name="cuisineType" value="AMERICAN" onChange={handleInputChange} /> American
                 <input type='radio' name="cuisineType" value="ASIAN" onChange={handleInputChange} /> Asian
                 <input type='radio' name="cuisineType" value="BRITISH" onChange={handleInputChange} /> British
