@@ -193,7 +193,7 @@ export function Card(props) {
             <Link to={link}>
                 <button className="card__btn">View Recipe</button>
             </Link>
-            <LikeButton isUserLoggedIn={props.isLoggedIn} recipeId={props.id} uuId={props.uuId}> </LikeButton>
+            <LikeButton  recipeId={props.id}> </LikeButton>
         </div>
     );
 }
