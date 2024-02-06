@@ -24,7 +24,6 @@ import Sidebar from './component/Sidebar/Sidebar.js';
 function App() {
   const [sidebarVisible, setSidebarVisible] = useState(false);
 
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [user, setUser] = useState();
   const isLoginPage = window.location.pathname === '/login';
 
@@ -61,23 +60,22 @@ function App() {
 
         <Routes>
       
-          <Route path='/' element={<NavBar isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} style={recipePageStyle}/>}>
-            <Route path="/" element={<WelcomePage isLoggedIn={isLoggedIn}/>} />
-            <Route path="/recipes" element={<RecipeCardList queryEndpoint={GetRecipesPaginated} isLoggedIn={isLoggedIn} style={recipePageStyle} closeSidebarFunction={closeSidebar} sidebarFunction={moveSidebar}/>} />
+          <Route path='/' element={<NavBar style={recipePageStyle}/>}>
+            <Route path="/" element={<WelcomePage />} />
+            <Route path="/recipes" element={<RecipeCardList style={recipePageStyle} closeSidebarFunction={closeSidebar} sidebarFunction={moveSidebar}/>} />
             <Route path="/recipes/:id" element={<RecipeDetails/>} />
             <Route path="/recipes/search" element={<RecipeSearchResults />} />
-            <Route path="/login" element={<LoginPage setIsLoggedIn={setIsLoggedIn}/>} />
+            <Route path="/login" element={<LoginPage/>} />
             <Route path="/WhoWeAre" element={<WhoWeAre />} />
-            <Route path="/favourites" element={<Favourites isLoggedIn={isLoggedIn}/>} />
+            <Route path="/favourites" element={<Favourites/>} />
             <Route path="/changepassword" element={<ChangePassword/>}/>
             <Route path="/signup" element={<SignUp/>}/>
           </Route>
           
           
         </Routes>
-        {!isLoginPage && <Footer />}
-       
-        
+        {/* {!isLoginPage && <Footer />} */}
+        <Footer></Footer>
       </BrowserRouter>
       </AuthContext.Provider>
 
