@@ -30,7 +30,7 @@ function App() {
  
 
     const styles = {
-      display : sidebarVisible ? "block" : "none"
+      // display : sidebarVisible ? "block" : "none"
     }
 
     const recipePageStyle = {
