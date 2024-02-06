@@ -45,7 +45,7 @@ const Navigation = (props) => {
                             <Link className="hyperlink" to="/WhoWeAre">Who We Are</Link>
                         </li>
                         {props.isLoggedIn ? (
-                            <li> <DropdownAccount className="drop-down-menu" userID={props.userID} /></li>
+                            <li> <DropdownAccount className="drop-down-menu" setIsLoggedIn={props.setIsLoggedIn} /></li>
                         ) : (
                             <li><Link className="hyperlink" to="/login">Log In</Link></li>
                         )}
