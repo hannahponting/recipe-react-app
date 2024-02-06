@@ -4,6 +4,7 @@ import AuthContext from "../AuthContext/AuthContext";
 function LikeButton(props) {
     const context = useContext(AuthContext);
     let user = context.user;
+    console.log("user"+user);
     let personID = user?.id ?? null;
 
     const [isActive, setIsActive] = useState(false);
@@ -58,7 +59,15 @@ function LikeButton(props) {
                     console.error('Error:', error);
                 });
 
+        } else {
+
+
+
+
+
         }
+    }
+
 
         return (
             <>
@@ -70,12 +79,12 @@ function LikeButton(props) {
                 </div>
             </>
         );
-    }
-};
+
+}
 
 
 
-function isFavourite(recipeId, personId) {
+export function isFavourite(recipeId, personId) {
     const urlApi = `http://localhost:8080/api/rating/favourite/${personId}/${recipeId}`;
 
     return fetch(urlApi)
@@ -99,7 +108,6 @@ function isFavourite(recipeId, personId) {
         });
 }
 
-
-
-
 export default LikeButton;
+
+
