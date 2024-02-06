@@ -1,23 +1,38 @@
-import React, {useContext, useState} from 'react';
+import React, {useContext, useState,useEffect} from 'react';
 import "./likeButton.css"
 import AuthContext from "../AuthContext/AuthContext";
 function LikeButton(props) {
     const context = useContext(AuthContext)
     let personID = context.user?.id ?? null;
-
-
-    //fetch an endpoint which return if the recipe was liked or not given a specific user id.
-
-    const [liked, setLiked] = useState(false);
-
     const [isActive, setIsActive] = useState(false);
 
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                const initialState = await isFavourite(props.recipeId,personID);
+                setIsActive(initialState);
+            } catch (error) {
+                console.error('Error fetching data:', error);
+                // Handle error if necessary
+            }
+        };
+
+        fetchData(); // Call the fetchData function on component mount
+    }, [props.recipeId, personID]); // useEffect dependencies
+
+
+
     const handleClick = () => {
-
-
         if (props.isUserLoggedIn) {
-            setIsActive(!isActive);
-            setLiked(!liked);
+
+            setIsActive(prevState => {
+                const newIsActive = !prevState;
+                console.log("setIsActive" + newIsActive); // Log the new value
+                return newIsActive; // Return the new value
+            });
+
+
+
             fetch('http://localhost:8080/api/rating', {
                 method: 'POST',
                 headers: {
@@ -26,12 +41,12 @@ function LikeButton(props) {
                 body: JSON.stringify({
                     recipeId: props.recipeId,
                     personId: personID,
-                    favourite: liked
+                    favourite: !isActive
                 }),
             })
                 .then(response => {
                     if (response.ok) {
-                        console.log('Recipe added to favorites!');
+                        console.log('Recipe favourite status updated!');
                     } else {
                         console.log(response)
                         console.error('Failed to add recipe to favorites');
@@ -57,6 +72,31 @@ function LikeButton(props) {
             </div>
         </>
     );
+}
+
+
+
+export function isFavourite(recipeId, personId) {
+    const urlApi = `http://localhost:8080/api/rating/favourite/${personId}/${recipeId}`;
+
+    return fetch(urlApi)
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            return response.json();
+        })
+        .then(data => {
+            if (typeof data !== 'boolean') {
+                throw new Error('Response did not contain a boolean value');
+            }
+            return data;
+        })
+        .catch(error => {
+            console.error('Error fetching data:', error);
+            // Return false in case of an error
+            return false;
+        });
 }
 
 export default LikeButton;

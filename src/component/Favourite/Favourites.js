@@ -18,7 +18,7 @@ const Favourites = (props) => {
 
     useEffect(() => {
         const fetchData = async () => {
-            const result = await GetUserFavourRecipes(1, 5, personID);
+            const result = await GetUserFavourRecipes(currentPage, 5, personID);
             setRecipes(result.recipes);
             setTotalPages(result.totalPages);
         };
