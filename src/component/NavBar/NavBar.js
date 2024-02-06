@@ -1,17 +1,20 @@
 import { Link, Navigate, Outlet, useNavigate } from "react-router-dom";
-import React, { useEffect } from "react";
+import React, { useContext, useEffect } from "react";
 import { useState } from "react";
 import "./NavBar.css";
 import { Dropdown, Nav } from "react-bootstrap";
 import { InputGroup } from "react-bootstrap";
 import { GetUserByEmail } from "../../utils";
 import DropdownAccount from "./DropdownAccount";
+import AuthContext from "../AuthContext/AuthContext";
 
 
 
 const Navigation = (props) => {
     const [searchTerm, setSearchTerm] = useState('');
     const navigate = useNavigate();
+    const context = useContext(AuthContext);
+    let user = context.user;
 
 
     const handleSearch = () => {
@@ -53,8 +56,8 @@ const Navigation = (props) => {
                         </div>
 
                         <div className="alignedToRight">
-                            {props.isLoggedIn ? (
-                                <li> <DropdownAccount className="drop-down-menu" userID={props.userID} /></li>
+                            {user ? (
+                                <li> <DropdownAccount className="drop-down-menu" /></li>
                             ) : (
                                 <li><Link className="hyperlink" to="/login">Log In</Link></li>
                             )}

@@ -3,7 +3,8 @@ import "./likeButton.css"
 import AuthContext from "../AuthContext/AuthContext";
 function LikeButton(props) {
     const context = useContext(AuthContext)
-    let personID = context.user?.id ?? null;
+    let user = context.user
+    let personID = user?.id ?? null;
 
 
     //fetch an endpoint which return if the recipe was liked or not given a specific user id.
@@ -15,7 +16,7 @@ function LikeButton(props) {
     const handleClick = () => {
 
 
-        if (props.isUserLoggedIn) {
+        if (user) {
             setIsActive(!isActive);
             setLiked(!liked);
             fetch('http://localhost:8080/api/rating', {

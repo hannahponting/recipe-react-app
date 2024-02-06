@@ -36,7 +36,7 @@ function App() {
 
         <Routes>
       
-          <Route path='/' element={<NavBar isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn}/>}>
+          <Route path='/' element={<NavBar/>}>
             <Route path="/" element={<WelcomePage isLoggedIn={isLoggedIn}/>} />
             <Route path="/recipes" element={<RecipeCardList queryEndpoint={GetRecipesPaginated} isLoggedIn={isLoggedIn}/>} />
             <Route path="/recipes/:id" element={<RecipeDetails/>} />
