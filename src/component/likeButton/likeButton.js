@@ -10,22 +10,22 @@ function LikeButton(props) {
 
     useEffect(() => {
         const fetchData = async () => {
-            if(user){
-            try {
-                const initialState = await isFavourite(props.recipeId,personID);
-                setIsActive(initialState);
-            } catch (error) {
-                console.error('Error fetching data:', error);
+            if (user) {
+                try {
+                    const initialState = await isFavourite(props.recipeId, personID);
+                    setIsActive(initialState);
+                } catch (error) {
+                    console.error('Error fetching data:', error);
 
+                }
             }
-        }};
+        };
 
         fetchData();
     }, [props.recipeId, personID]);
 
 
     const handleClick = () => {
-
 
 
         if (user) {
@@ -58,23 +58,24 @@ function LikeButton(props) {
                     console.error('Error:', error);
                 });
 
-    }
+        }
 
-    return (
-        <>
-            <div className={`heart-btn ${isActive ? 'heart-active' : ''}`} onClick={handleClick}>
-                <div className="content">
+        return (
+            <>
+                <div className={`heart-btn ${isActive ? 'heart-active' : ''}`} onClick={handleClick}>
+                    <div className="content">
 
-                    <span className={`heart ${isActive ? 'heart-active' : ''}`}></span>
+                        <span className={`heart ${isActive ? 'heart-active' : ''}`}></span>
+                    </div>
                 </div>
-            </div>
-        </>
-    );
-}
+            </>
+        );
+    }
+};
 
 
 
-export function isFavourite(recipeId, personId) {
+function isFavourite(recipeId, personId) {
     const urlApi = `http://localhost:8080/api/rating/favourite/${personId}/${recipeId}`;
 
     return fetch(urlApi)
@@ -98,6 +99,7 @@ export function isFavourite(recipeId, personId) {
         });
 }
 
+
+
+
 export default LikeButton;
-
-
