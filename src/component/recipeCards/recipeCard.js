@@ -74,11 +74,12 @@ function RecipeCardList() {
             } else {
                 let queryParams = '';
                 for (const key in filterArray) {
-                    if (filterArray[key] !== '') {
-                        queryParams += `${queryParams.length > 0 ? '&' : ''}${key}=${encodeURIComponent(filterArray[key])}`;
+                    const { value, comparison } = filterArray[key];
+                    if (value !== '') {
+                        queryParams += `${queryParams.length > 0 ? '&' : ''}${key}${comparison}${encodeURIComponent(value)}`;
                     }
                 }
-                setQuery(`?query=${encodeURIComponent(queryParams)}`);
+                setQuery(`?query=${encodeURIComponent(queryParams)}`)
                 setCurrentPage(1);
             }
         } else {
