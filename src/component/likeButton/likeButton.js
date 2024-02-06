@@ -1,78 +1,50 @@
 import React, {useContext, useState,useEffect} from 'react';
 import "./likeButton.css"
 import AuthContext from "../AuthContext/AuthContext";
+
+
+
 function LikeButton(props) {
     const context = useContext(AuthContext);
     let user = context.user;
+    console.log("user"+user);
     let personID = user?.id ?? null;
 
     const [isActive, setIsActive] = useState(false);
 
     useEffect(() => {
-        const fetchData = async () => {
-            if(user){
-            try {
-                const initialState = await isFavourite(props.recipeId,personID);
-                setIsActive(initialState);
-            } catch (error) {
-                console.error('Error fetching data:', error);
-                // Handle error if necessary
-            }
+        fetchData();
+    }, [props.recipeId, personID]);
+
+    const fetchData = async () => {
+        if (user) {
+            const initialState = await isFavourite(props.recipeId, personID);
+            setIsActive(initialState);
         }};
-
-        fetchData(); // Call the fetchData function on component mount
-    }, [props.recipeId, personID]); // useEffect dependencies
-
-
 
     const handleClick = () => {
 
-
         if (user) {
-            setIsActive(prevState => {
-                const newIsActive = !prevState;
-                console.log("setIsActive" + newIsActive); // Log the new value
-                return newIsActive; // Return the new value
-            });
-            fetch('http://localhost:8080/api/rating', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({
-                    recipeId: props.recipeId,
-                    personId: personID,
-                    favourite: !isActive
-                }),
-            })
-                .then(response => {
-                    if (response.ok) {
-                        console.log('Recipe favourite status updated!');
-                    } else {
-                        console.log(response)
-                        console.error('Failed to add recipe to favorites');
-                    }
-                })
-                .catch(error => {
-                    console.error('Error:', error);
-                });
+            setIsActive(prevState => {return !prevState;});
+            postNewChangeToBack(props, personID, isActive);
+
         } else {
-            alert('You must log in before you click like it.');
 
 
         }
     }
 
-    return (
-        <>
-            <div className={`heart-btn ${isActive ? 'heart-active' : ''}`} onClick={handleClick}>
-                <div className="content">
+        return (
+            <>
+                <div className={`heart-btn ${isActive ? 'heart-active' : ''}`} onClick={handleClick}>
+                    <div className="content">
 
-                    <span className={`heart ${isActive ? 'heart-active' : ''}`}></span>
+                        <span className={`heart ${isActive ? 'heart-active' : ''}`}></span>
+                    </div>
                 </div>
-            </div>
-        </>
-    );
+            </>
+        );
+
 }
 
 
@@ -94,9 +66,33 @@ export function isFavourite(recipeId, personId) {
             return data;
         })
         .catch(error => {
-            console.error('Error fetching data:', error);
-            // Return false in case of an error
+
             return false;
+        });
+}
+
+function postNewChangeToBack(props, personID, isActive) {
+    fetch('http://localhost:8080/api/rating', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+            recipeId: props.recipeId,
+            personId: personID,
+            favourite: !isActive
+        }),
+    })
+        .then(response => {
+            if (response.ok) {
+                console.log('Recipe favourite status updated!');
+            } else {
+                console.log(response)
+                console.error('Failed to add recipe to favorites');
+            }
+        })
+        .catch(error => {
+            console.error('Error:', error);
         });
 }
 

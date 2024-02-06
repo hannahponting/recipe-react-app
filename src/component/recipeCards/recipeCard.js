@@ -182,8 +182,7 @@ export function Card(props) {
     const [starRating, setStarRating] = useState(0);
     const fetchData = async () => {
         try {
-            const rating = await GetRatingById(props.id, setStarRating)
-            console.log(rating)
+            GetNewRatingById(props.id).then((result) => {setStarRating(result)})
         } catch (error) {
             console.error('Error fetching rating:', error);
         }

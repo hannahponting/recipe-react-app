@@ -82,45 +82,22 @@ export async function GetIngredientsPaginated(pageNum, pageSize, query){
 return data;
 }
 
+export async function GetNewRatingById(id){
 
-export async function GetRatingById(id, setStarRating){
-    try {
-        const response = await fetch(`http://localhost:8080/api/rating/${id}`);
-        if (response.ok){
-            const contentType = response.headers.get('content-type');
-            if (contentType && contentType.includes('application/json')) {
-                const body = await response.json();
-                setStarRating(body);
+
+    fetch(`http://localhost:8080/api/rating/${id}`)
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
             }
-        } else {
-            console.error('Error fetching data:', response.status);
-        }
-    } catch (error) {
-        console.error('Network error:', error);
-    }
-};
+            return response.json();
+        })
+        .catch(error => {
+            return 0;
+        })
 
-
-export function GetNewRatingById(id) {
-    return new Promise(async (resolve, reject) => {
-        try {
-            const response = await fetch(`http://localhost:8080/api/rating/${id}`);
-            if (response.ok) {
-                const contentType = response.headers.get('content-type');
-                if (contentType && contentType.includes('application/json')) {
-                    const body = await response.json();
-                    resolve(body);
-                }
-            } else {
-                console.error('Error fetching data:', response.status);
-                reject(response.status);
-            }
-        } catch (error) {
-            console.error('Network error:', error);
-            reject(error);
-        }
-    });
 }
+
 
 
 export function GetUserByEmail(id){
@@ -142,5 +119,5 @@ export function GetUserByEmail(id){
 
 
     return data.user;
-
+    
 }
