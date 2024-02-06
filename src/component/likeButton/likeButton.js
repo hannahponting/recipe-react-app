@@ -2,12 +2,15 @@ import React, {useContext, useState,useEffect} from 'react';
 import "./likeButton.css"
 import AuthContext from "../AuthContext/AuthContext";
 function LikeButton(props) {
-    const context = useContext(AuthContext)
-    let personID = context.user?.id ?? null;
+    const context = useContext(AuthContext);
+    let user = context.user;
+    let personID = user?.id ?? null;
+
     const [isActive, setIsActive] = useState(false);
 
     useEffect(() => {
         const fetchData = async () => {
+            if(user){
             try {
                 const initialState = await isFavourite(props.recipeId,personID);
                 setIsActive(initialState);
@@ -15,24 +18,22 @@ function LikeButton(props) {
                 console.error('Error fetching data:', error);
 
             }
-        };
+        }};
 
         fetchData();
     }, [props.recipeId, personID]);
 
 
     const handleClick = () => {
-        if (!props.isUserLoggedIn) {
-            alert('You must log in before you click like it.');
-            return ;
-        }
 
+
+
+        if (user) {
             setIsActive(prevState => {
                 const newIsActive = !prevState;
                 console.log("setIsActive" + newIsActive);
                 return newIsActive; // Return the new value
             });
-
 
             fetch('http://localhost:8080/api/rating', {
                 method: 'POST',

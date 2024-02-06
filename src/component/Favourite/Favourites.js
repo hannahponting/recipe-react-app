@@ -1,12 +1,12 @@
 
 import './Favourite.css';
-import React, {useContext, useEffect, useState} from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Card } from "../recipeCards/recipeCard";
 import AuthContext from "../AuthContext/AuthContext";
 
 
 
-const Favourites = (props) => {
+const Favourites = () => {
 
 
     const [recipes, setRecipes] = useState([]);
@@ -14,7 +14,8 @@ const Favourites = (props) => {
     const [totalPages, setTotalPages] = useState(1);
 
     const context = useContext(AuthContext)
-    let personID = context.user?.id ?? null;
+    let user = context.user;
+    let personID = user?.id ?? null;
 
     useEffect(() => {
         const fetchData = async () => {
@@ -38,7 +39,7 @@ const Favourites = (props) => {
     return (
         <>
             <div>
-                {props.isLoggedIn ? (
+                {user ? (
                     <>
 
                         <div className='favourite-container'>
@@ -65,7 +66,6 @@ const Favourites = (props) => {
                                         title={recipe.name}
                                         description={"Delicious recipe from " + recipe.cuisine.toLowerCase() + " cuisine. It serves up to " + recipe.serving + " people!"}
                                         id={recipe.id}
-                                        isLoggedIn={props.isLoggedIn}
                                     />
                                 ))}
                             </div>
@@ -92,8 +92,11 @@ const Favourites = (props) => {
                                 >
                                     Next Page
                                 </button>
+
+
                             </div>
                         </div>
+                        <br />
 
 
 
@@ -101,14 +104,17 @@ const Favourites = (props) => {
                 )
                     : (
                         <>
-                            <header className="header">
-                                <div className="Title">Want to display my favourite recipes here</div>
-                            </header>
+                            <div className='favourite-container'>
+                                <header className="header">
+                                    <div className='favourite-title-container'>
+                                        <div className="Title">Need to login again to display Favourites</div>
+                                    </div>
+                                </header>
+                            </div>
 
                             <div className="Divider"></div>
-
-
-                            {/*<div><img className= "photo" src={require('.//cooker.png')} alt="Cooker" /></div>*/}
+                            <div><img className="photo" src={require('../../Resources/genericKitchen.png')} alt="Kitchen" /></div>
+                            <br />
                         </>
                     )}
 
