@@ -37,9 +37,9 @@ function RecipeDetails(props) {
 
                 <div className="Divider"></div>
                 <div className="recipe-details">
-                    <div class="details_image">
+                    <div className="details_image">
 
-                        <img src={`http://localhost:8080/api/recipes/image/${recipe.id}`} class="details_image" />
+                        <img src={`http://localhost:8080/api/recipes/image/${recipe.id}`} className="details_image" />
                     </div>
 
                     <h2 className="subtitles">Details</h2>
@@ -60,8 +60,8 @@ function RecipeDetails(props) {
                     <div className="boxes">
                         <h2 className="subtitles">Ingredients </h2>
                         <ul className="recipe-ingredients">
-                            {recipe.ingredients.map((ingredient) => {
-                                return (<li>{ingredient}</li>)
+                            {recipe.ingredients.map((ingredient, index) => {
+                                return (<li key={index}>{ingredient}</li>)
                             })}
                         </ul>
                     </div>
@@ -69,7 +69,7 @@ function RecipeDetails(props) {
                         <h2 className="subtitles">Instructions</h2>
                         <ol className="recipe-instructions">
                             {recipe.instructions.map((ingredient, index) => {
-                                return <li key="{index}">{ingredient}</li>
+                                return <li key={index}>{ingredient}</li>
                             })}
                         </ol>
                     </div>
