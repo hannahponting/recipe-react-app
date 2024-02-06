@@ -16,6 +16,16 @@ export default RecipeCardList;
 function RecipeCardList(props) {
 
 
+
+    const Sidebarstyles = {
+        display :  props.sidebarVisible? "block": "none",
+
+
+      }
+
+
+    
+      
     const [searchTerm, setSearchTerm] = useState('');
     const navigate = useNavigate();
     const handleSearch = () => {
@@ -90,15 +100,16 @@ function RecipeCardList(props) {
     }
 
 
-    return <div className="recipecard-page-container">
+    return <div className="recipecard-page-container" >
  <Sidebar
         // closeSidebar= {closeSidebar}
         applyFilters = {applyFilters}
-        // style= {styles}
+        closeSidebar = {props.closeSidebar}
+        style= {Sidebarstyles}
         ></Sidebar>
 
         <div>
-            <header className="header">
+            <header className="header" style={props.style}>
                 <div className="recipelist-container">
                     <div className="Title">
                         Recipes
@@ -113,7 +124,7 @@ function RecipeCardList(props) {
                     )}
                 </div>
                 <div>
-                    <button className="filter-button" onClick={props.sidebarFunction}>Filters</button>
+                    <button className="filter-button" onClick={props.moveSidebar}>Filters</button>
                 </div>
                 <div className="search-bar">
                     <input
@@ -135,7 +146,7 @@ function RecipeCardList(props) {
 
         {recipes?.length > 0 ? (
             <div className="wrapper">
-                {/* {recipes.map((recipe) => (
+                {recipes.map((recipe) => (
                     <Card
                         key={recipe.id}
                         img={`http://localhost:8080/api/recipes/image/${recipe.id}`}
@@ -145,7 +156,7 @@ function RecipeCardList(props) {
                         
                         style={props.style}
                     />
-                ))} */}
+                ))}
             </div>
         ) : (
             <div className="no-recipes-message">

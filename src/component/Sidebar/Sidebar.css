@@ -10,7 +10,6 @@
    right: 0%;
    overflow: scroll;
    display: block;
-   z-index: 1;
    /* flex-direction: column; */
 }
 

@@ -20,9 +20,10 @@ const Sidebar = (props) => {
             spice_level :"",
             difficulty : "",
             cost : "",
-            mealType: ""
-
-
+            mealType: "",
+            cuisineType: "",
+            servingNo: "",
+            cookingMinutes: ""
     })
 
     const handleChange = (event) => {
@@ -41,7 +42,6 @@ const Sidebar = (props) => {
         event.preventDefault()
     }
 
-    console.log(filterValues)
 
 
     const applyFiltersHandler = () => {
@@ -50,9 +50,9 @@ const Sidebar = (props) => {
             difficultyLevel: { value: filterValues.difficulty, comparison: '=' },
             spiceType: { value: filterValues.spice_level, comparison: '=' },
             mealType: { value: filterValues.mealType, comparison: '=' },
-            // cuisineType: {value: filterValues.cuisineType, comparison: '='},
-            // servingNo: {value: filterValues.servingNo, comparison: '>='},
-            // cookingMinutes: {value: filterValues.cookingMinutes, comparison: '<='}
+            cuisineType: {value: filterValues.cuisineType, comparison: '='},
+            servingNo: {value: filterValues.servingNo, comparison: '>='},
+            cookingMinutes: {value: filterValues.cookingMinutes, comparison: '<='}
 
         };
         props.applyFilters(filterArray);
@@ -80,7 +80,7 @@ const Sidebar = (props) => {
     //   console.log(isMouseOver)
         return (
                 <form onSubmit={handleSubmit} className="sidebar"
-                // style = {props.style}
+                style = {props.style}
                 // onMouseEnter={handleMouseEnter}
                 // onMouseLeave={handleMouseLeave}
                 // onWheel={handleScroll}
@@ -182,17 +182,19 @@ const Sidebar = (props) => {
                         </AccordionBody>
                 </Accordion>
                 <Accordion className="sidebar-accordion">
-                    <AccordionHeader className="sidebar-accordion-header"><h2 className="subtitles-accordion">Filter #</h2></AccordionHeader>
+                    <AccordionHeader className="sidebar-accordion-header"><h2 className="subtitles-accordion">Minimum Servings</h2></AccordionHeader>
                     <AccordionBody className="sidebar-accordion-body" >
-                        <h3 id="subtitles-accordion">Serving Number</h3>
+                        <h3 id="subtitles-accordion">Minimum Servings</h3>
                         <input type='number' name="servingNo" value={filterValues.servingNo} onChange={handleChange} />
 
                         </AccordionBody>
                 </Accordion>
                 <Accordion className="sidebar-accordion">
-                    <AccordionHeader className="sidebar-accordion-header"><h2 className="subtitles-accordion">Filter #</h2></AccordionHeader>
+                    <AccordionHeader className="sidebar-accordion-header"><h2 className="subtitles-accordion">Minutes to Prepare</h2></AccordionHeader>
                     <AccordionBody className="sidebar-accordion-body" >
-                        <h3 id="subtitles-accordion">Rate this recipe</h3>
+                        <h3 id="subtitles-accordion">Minutes to Prepare</h3>
+                        <input type='number' name="cookingMinutes" value={filterValues.cookingMinutes} onChange={handleChange} />
+
                         </AccordionBody>
                 </Accordion>
                 <Accordion className="sidebar-accordion">
