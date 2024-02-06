@@ -1,13 +1,21 @@
 .navigation {
 
     background-color: #07689f;
-    /* width: 100vw; */
+    width: 100%;
+    position: relative;
 
     /* height: 90px; */
     /* position: relative; */
     /* width: 1450px;
     padding-top: 40px 0px;
     vertical-align: middle; */
+    /* position: fixed;
+   */
+}
+
+.navbar-container {
+  max-width: 3000px;
+  overflow-x: hidden;
 }
 
 
