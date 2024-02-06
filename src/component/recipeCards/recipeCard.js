@@ -107,7 +107,7 @@ function RecipeCardList(props) {
                     )}
                 </div>
                 <div>
-                    <button className="filter-button" onClick={sidebarFunction}>Filters</button>
+                    <button className="filter-button" onClick={props.sidebarFunction}>Filters</button>
                 </div>
                 <div className="search-bar">
                     <input
@@ -137,7 +137,7 @@ function RecipeCardList(props) {
                         description={"Delicious recipe from " + recipe.cuisine.toLowerCase() + " cuisine. It serves up to " + recipe.serving + " people!"}
                         id={recipe.id}
                         isLoggedIn={props.isLoggedIn}
-                        style={style}
+                        style={props.style}
                     />
                 ))}
             </div>
