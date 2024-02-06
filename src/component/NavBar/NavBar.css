@@ -72,3 +72,20 @@
 
     list-style-type: none;
   }
+
+  .alignedToLeft{
+    list-style-type:none;
+    margin-right: 250px;
+  }
+
+  .alignedInTheMiddle {
+    list-style-type:none;
+    margin-right: 250px;
+    margin-left: 250px;
+
+  }
+
+  .alignedToRight {
+    list-style-type:none;
+    margin-left: 250px;
+  }
