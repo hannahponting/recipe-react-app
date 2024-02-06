@@ -9,7 +9,9 @@ export const RecipeFilter = ({ applyFilters }) => {
         difficultyLevel: '',
         spiceType: '',
         mealType: '',
-        servingNo: ''
+        servingNo: '',
+        cuisineType: '',
+        cookingMinutes: ''
     });
 
     const handleInputChange = (e) => {
@@ -26,7 +28,9 @@ export const RecipeFilter = ({ applyFilters }) => {
             difficultyLevel: { value: filterValues.difficultyLevel, comparison: '=' },
             spiceType: { value: filterValues.spiceType, comparison: '=' },
             mealType: { value: filterValues.mealType, comparison: '=' },
-            servingNo: {value: filterValues.servingNo, comparison: '>='}
+            cuisineType: {value: filterValues.cuisineType, comparison: '='},
+            servingNo: {value: filterValues.servingNo, comparison: '>='},
+            cookingMinutes: {value: filterValues.cookingMinutes, comparison: '<='}
         };
         applyFilters(filterArray);
     };
@@ -59,8 +63,24 @@ export const RecipeFilter = ({ applyFilters }) => {
                 <input type='radio' name="mealType" value="DINNER" onChange={handleInputChange} /> Dinner
                 <input type='radio' name="mealType" value="" onChange={handleInputChange} /> Any
 
-                <h3 htmlFor="meal">Minimum servings:</h3>
+                <h3 htmlFor="cuisine">Meal:</h3>
+                <input type='radio' name="cuisineType" value="AMERICAN" onChange={handleInputChange} /> American
+                <input type='radio' name="cuisineType" value="ASIAN" onChange={handleInputChange} /> Asian
+                <input type='radio' name="cuisineType" value="BRITISH" onChange={handleInputChange} /> British
+                <input type='radio' name="cuisineType" value="FRENCH" onChange={handleInputChange} /> French
+                <input type='radio' name="cuisineType" value="INDIAN" onChange={handleInputChange} /> Indian
+                <input type='radio' name="cuisineType" value="INTERNATIONAL" onChange={handleInputChange} /> International
+                <input type='radio' name="cuisineType" value="ITALIAN" onChange={handleInputChange} /> Italian
+                <input type='radio' name="cuisineType" value="MEDITERRANEAN" onChange={handleInputChange} /> Mediterranean
+                <input type='radio' name="cuisineType" value="MEXICAN" onChange={handleInputChange} /> Mexican
+                <input type='radio' name="cuisineType" value="SPANISH" onChange={handleInputChange} /> Spanish
+                <input type='radio' name="cuisineType" value="" onChange={handleInputChange} /> Any
+
+                <h3 htmlFor="meal">Minimum Servings:</h3>
                 <input type='number' name="servingNo" value={filterValues.servingNo} onChange={handleInputChange} />
+
+                <h3 htmlFor="time">Minutes to Prepare:</h3>
+                <input type='number' name="cookingMinutes" value={filterValues.cookingMinutes} onChange={handleInputChange} />
 
                 <button className='filterButton' id="apply-filters" type="button" onClick={applyFiltersHandler}>
                     Apply Filters
