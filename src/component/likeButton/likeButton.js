@@ -59,7 +59,15 @@ function LikeButton(props) {
                     console.error('Error:', error);
                 });
 
+        } else {
+
+
+
+
+
         }
+    }
+
 
         return (
             <>
@@ -71,7 +79,7 @@ function LikeButton(props) {
                 </div>
             </>
         );
-    }
+
 }
 
 
