@@ -1,9 +1,13 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import "./SignUp.css";
+import AuthContext from "../AuthContext/AuthContext";
 
 
-const SignUp = (props) => {
+const SignUp = () => {
+
+  const context = useContext(AuthContext);
+  let user = context.user;
 
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
@@ -53,7 +57,7 @@ const SignUp = (props) => {
       answer = JSON.stringify(body);
       console.log(answer)
       if (response.status == 201) {
-        props.setUserID((prevUserID) => email)
+        user = answer;
         setMessage("Successfully signed up")
 
         try {
