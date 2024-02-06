@@ -13,7 +13,7 @@ function RecipeDetails(props) {
 
     const fetchData = async () => {
         try {
-            GetNewRatingById(params.id).then((result) => {setStarRating(result)})
+            const rating = await GetRatingById(params.id, setStarRating)
         } catch (error) {
             console.error('Error fetching rating:', error);
         }
