@@ -5,7 +5,7 @@ import { Link, useNavigate } from "react-router-dom";
 import AuthContext from "../AuthContext/AuthContext";
 
 
-const LoginPage = (props) => {
+const LoginPage = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [message, setMessage] = useState('');
@@ -37,7 +37,6 @@ const LoginPage = (props) => {
       const body = await response.json();
       console.log(body)
       if (body == true) {
-        props.setIsLoggedIn(true);
         setMessage('Logged in');
 
         const urlApi = `http://localhost:8080/api/person/${username}`

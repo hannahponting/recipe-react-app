@@ -6,7 +6,7 @@ import AuthContext from "../AuthContext/AuthContext";
 
 
 
-const Favourites = (props) => {
+const Favourites = () => {
 
 
     const [recipes, setRecipes] = useState([]);
@@ -14,7 +14,8 @@ const Favourites = (props) => {
     const [totalPages, setTotalPages] = useState(1);
 
     const context = useContext(AuthContext)
-    let personID = context.user?.id ?? null;
+    let user = context.user;
+    let personID = user?.id ?? null;
 
     useEffect(() => {
         const fetchData = async () => {
@@ -38,7 +39,7 @@ const Favourites = (props) => {
     return (
         <>
             <div>
-                {props.isLoggedIn ? (
+                {user ? (
                     <>
 
                         <div className='favourite-container'>
@@ -65,7 +66,6 @@ const Favourites = (props) => {
                                         title={recipe.name}
                                         description={"Delicious recipe from " + recipe.cuisine.toLowerCase() + " cuisine. It serves up to " + recipe.serving + " people!"}
                                         id={recipe.id}
-                                        isLoggedIn={props.isLoggedIn}
                                     />
                                 ))}
                             </div>

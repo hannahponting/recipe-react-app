@@ -12,7 +12,7 @@ import LikeButton from "../likeButton/likeButton";
 export default RecipeCardList;
 
 
-function RecipeCardList(props) {
+function RecipeCardList() {
 
 
     const [searchTerm, setSearchTerm] = useState('');
@@ -133,7 +133,7 @@ function RecipeCardList(props) {
                         title={recipe.name}
                         description={"Delicious recipe from " + recipe.cuisine.toLowerCase() + " cuisine. It serves up to " + recipe.serving + " people!"}
                         id={recipe.id}
-                        isLoggedIn={props.isLoggedIn}
+                        
                     />
                 ))}
             </div>
