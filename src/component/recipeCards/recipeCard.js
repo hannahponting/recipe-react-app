@@ -173,6 +173,7 @@ export function Card(props) {
     const fetchData = async () => {
         try {
             const rating = await GetRatingById(props.id, setStarRating)
+            console.log(rating)
         } catch (error) {
             console.error('Error fetching rating:', error);
         }
@@ -187,8 +188,8 @@ export function Card(props) {
             <div className="card__body">
                 <img src={props.img} className="card__image"/>
                 <h2 className="card__title">{props.title}</h2>
-                <p className="card__description">{props.description}</p>
                 <StarRating id='stars' stars={starRating}></StarRating>
+                <p className="card__description">{props.description}</p>
             </div>
             <Link to={link}>
                 <button className="card__btn">View Recipe</button>
