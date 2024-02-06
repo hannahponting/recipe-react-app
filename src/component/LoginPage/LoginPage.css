@@ -83,3 +83,8 @@
   padding-top: 5%;
   font-size: 24px;
 }
+
+.login-output-message {
+  color: white;
+  margin-top: 2%;
+}

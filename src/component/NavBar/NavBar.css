@@ -83,17 +83,17 @@
 
   .alignedToLeft{
     list-style-type:none;
-    margin-right: 250px;
+    margin-right: 225px;
   }
 
   .alignedInTheMiddle {
     list-style-type:none;
-    margin-right: 250px;
-    margin-left: 250px;
+    margin-right: 225px;
+    margin-left: 225px;
 
   }
 
   .alignedToRight {
     list-style-type:none;
-    margin-left: 250px;
+    margin-left: 225px;
   }

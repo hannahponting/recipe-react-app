@@ -159,7 +159,11 @@ const SignUp = () => {
             &nbsp;&nbsp;
             <Link to="/login">Login</Link>
           </div>
+
+          <div className="signup-output-message">
           {message && <p>{message}</p>}
+          </div>
+          
         </div>
 
       </div>

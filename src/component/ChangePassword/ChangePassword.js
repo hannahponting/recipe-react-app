@@ -68,7 +68,7 @@ const ChangePassword = () => {
 
 
         <div className="changepassword-box-container">
-        <div className="changepassword-box">
+          <div className="changepassword-box">
             <label className="passwordDetails-title">Change Password</label>
           </div>
           <div className="changepassword-box">
@@ -105,7 +105,11 @@ const ChangePassword = () => {
 
 
           </div>
-          {message && <p>{message}</p>}
+
+          <div className="changepassword-output-message">
+            {message && <p>{message}</p>}
+
+          </div>
         </div>
 
       </div>
