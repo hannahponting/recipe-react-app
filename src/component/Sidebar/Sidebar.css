@@ -20,7 +20,7 @@
   align-items: center;
   padding: 10px;
   border-bottom: 2px solid rgb(204, 204, 204, 0.70)ck;
-  box-shadow: 1px 0.85px  10px  ;
+  box-shadow: 1px 0.2px  7px;
 
 }
 
@@ -30,9 +30,16 @@
   font-family: Inter;
 }
 
-.sidebar-top > img {
-  height: 30%;
+.sidebar-close-button {
+  border: none;
+  background-color: transparent;
+}
+
+.sidebar-close-img {
+  width: 50%;
   margin-right: 10px;
+  opacity: 0.3;
+  
 }
 
 

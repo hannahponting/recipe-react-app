@@ -17,9 +17,7 @@ import SignUp from './component/SignUp/SignUp.js';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Favourites from './component/Favourite/Favourites.js'
 import AuthContext from './component/AuthContext/AuthContext.js';
-
-import Sidebar from './Sidebar.js';
-
+import Sidebar from './component/Sidebar/Sidebar.js';
 
 
 
@@ -44,7 +42,8 @@ function App() {
       setSidebarVisible((prevSidebar) => !prevSidebar)
   }
 
-  const closeSidebar = () => {
+  const closeSidebar = (event) => {
+    event.preventDefault()
     setSidebarVisible((prevSidebar) => {
       return false
     
@@ -76,7 +75,7 @@ function App() {
         </Routes>
         {!isLoginPage && <Footer />}
         <Sidebar
-        function= {moveSidebar}
+        closeSidebar= {closeSidebar}
         style= {styles}
         ></Sidebar>
         

@@ -107,7 +107,7 @@ function RecipeCardList({queryEndpoint, sidebarFunction, style}) {
                     )}
                 </div>
                 <div>
-                    <button onClick={sidebarFunction}>Click for sidebar</button>
+                    <button className="filter-button" onClick={sidebarFunction}>Filters</button>
                 </div>
                 <div className="search-bar">
                     <input

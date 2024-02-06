@@ -43,6 +43,18 @@
   
   }
 
+  .filter-button {
+     background-color: #07689F; /* Change the color to your preferred button color */
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 15px;
+    margin-left: 5px;
+    margin-right: 5px;
+    cursor: pointer;
+
+  }
+
 .header.search-container {
     margin: 15px;
     display: flex;

@@ -2,11 +2,11 @@ import { Link, Navigate, Outlet, useNavigate } from "react-router-dom";
 import React, { useEffect, useRef } from "react";
 import { useState } from "react";
 import "./Sidebar.css";
+import { RecipeFilter } from "../FilterBar/RecipeFilter";
 import { Accordion, AccordionBody, AccordionHeader, Nav } from "react-bootstrap";
 import { InputGroup } from "react-bootstrap";
-import { GetUserByEmail } from "./utils";
-import close from "./Resources/delete-sign.png"
-
+import { GetUserByEmail } from "../../utils";
+import close from "../../Resources/delete-sign.png"
 
 
 const Sidebar = (props) => {
@@ -36,19 +36,22 @@ const Sidebar = (props) => {
         
       console.log(isMouseOver)
         return (
-            
-                <nav className="sidebar"
+                <form className="sidebar"
                 style = {props.style}
                 onMouseEnter={handleMouseEnter}
                 onMouseLeave={handleMouseLeave}
                 onWheel={handleScroll}
                 ref={containerRef} 
                 
+                >
+                <nav 
+               
+                
                 
                 >
                         <div className="sidebar-top">
                         <h2>Filter recipes</h2>
-                            <img src={close}></img>
+                            <button className="sidebar-close-button" onClick={props.closeSidebar}><img className="sidebar-close-img" src={close}></img> </button>
                         </div>
                    
                        
@@ -103,9 +106,10 @@ const Sidebar = (props) => {
                         </AccordionBody>
                 </Accordion>
 
+            
                 </nav>
 
-          
+                </form>
 
 
         );
