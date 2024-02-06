@@ -83,19 +83,13 @@ return data;
 }
 
 export async function GetNewRatingById(id){
-
-
-    fetch(`http://localhost:8080/api/rating/${id}`)
-        .then(response => {
-            if (!response.ok) {
-                throw new Error('Network response was not ok');
-            }
-            return response.json();
-        })
-        .catch(error => {
-            return 0;
-        })
-
+    try{const response = await fetch(`http://localhost:8080/api/rating/${id}`)
+    if(response.ok){
+        return response.json();
+    }
+    }catch(error){
+        return error.message();
+    }
 }
 
 
