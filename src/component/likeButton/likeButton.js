@@ -10,6 +10,7 @@ function LikeButton(props) {
 
     useEffect(() => {
         const fetchData = async () => {
+            if(user){
             try {
                 const initialState = await isFavourite(props.recipeId,personID);
                 setIsActive(initialState);
@@ -17,7 +18,7 @@ function LikeButton(props) {
                 console.error('Error fetching data:', error);
                 // Handle error if necessary
             }
-        };
+        }};
 
         fetchData(); // Call the fetchData function on component mount
     }, [props.recipeId, personID]); // useEffect dependencies
