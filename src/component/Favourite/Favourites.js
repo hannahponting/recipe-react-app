@@ -1,7 +1,11 @@
 
 import './Favourite.css';
-import React, { useEffect, useState } from "react";
+import React, {useContext, useEffect, useState} from "react";
 import { Card } from "../recipeCards/recipeCard";
+import AuthContext from "../AuthContext/AuthContext";
+
+
+
 const Favourites = (props) => {
 
 
@@ -9,9 +13,12 @@ const Favourites = (props) => {
     const [currentPage, setCurrentPage] = useState(1);
     const [totalPages, setTotalPages] = useState(1);
 
+    const context = useContext(AuthContext)
+    let personID = context.user?.id ?? null;
+
     useEffect(() => {
         const fetchData = async () => {
-            const result = await GetUserFavourRecipes(1, 5, props.uuID);
+            const result = await GetUserFavourRecipes(1, 5, personID);
             setRecipes(result.recipes);
             setTotalPages(result.totalPages);
         };
@@ -56,8 +63,9 @@ const Favourites = (props) => {
                                         key={recipe.id}
                                         img={`http://localhost:8080/api/recipes/image/${recipe.id}`}
                                         title={recipe.name}
-                                        description="Take your boring salads up a notch. This recipe is perfect for lunch and only contains 5 ingredients!"
+                                        description={"Delicious recipe from " + recipe.cuisine.toLowerCase() + " cuisine. It serves up to " + recipe.serving + " people!"}
                                         id={recipe.id}
+                                        isLoggedIn={props.isLoggedIn}
                                     />
                                 ))}
                             </div>
@@ -109,6 +117,8 @@ const Favourites = (props) => {
     )
 
 };
+
+
 
 
 export async function GetUserFavourRecipes(pageNum, pageSize, userId) {

@@ -12,7 +12,7 @@ import LikeButton from "../likeButton/likeButton";
 export default RecipeCardList;
 
 
-function RecipeCardList({queryEndpoint, sidebarFunction, style}) {
+function RecipeCardList(props) {
 
 
     const [searchTerm, setSearchTerm] = useState('');
@@ -120,23 +120,14 @@ function RecipeCardList({queryEndpoint, sidebarFunction, style}) {
 
             </header>
 
-            {/* {recipes.map((recipe) => {
-        return (
-            <Card
-                key={recipe.id}
-                img={`http://localhost:8080/api/recipes/image/${recipe.id}`}
-                title={recipe.name}
-                description={"Delicious recipe from " + recipe.cuisine.toLowerCase() + " cuisine. It serves up to " + recipe.serving + " people!" }
-                id={recipe.id}
-            />
-        )
-    })} */}
-
 
         </div>
+        <div>
+      <button onClick={(toggleFilter)}>Toggle Filter</button>
+    </div>
         <div className="Divider"></div>
 
-        {recipes.length > 0 ? (
+        {recipes?.length > 0 ? (
             <div className="wrapper">
                 {recipes.map((recipe) => (
                     <Card
@@ -145,6 +136,7 @@ function RecipeCardList({queryEndpoint, sidebarFunction, style}) {
                         title={recipe.name}
                         description={"Delicious recipe from " + recipe.cuisine.toLowerCase() + " cuisine. It serves up to " + recipe.serving + " people!"}
                         id={recipe.id}
+                        isLoggedIn={props.isLoggedIn}
                         style={style}
                     />
                 ))}
