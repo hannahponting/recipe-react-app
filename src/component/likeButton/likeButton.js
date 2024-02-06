@@ -2,8 +2,10 @@ import React, {useContext, useState,useEffect} from 'react';
 import "./likeButton.css"
 import AuthContext from "../AuthContext/AuthContext";
 function LikeButton(props) {
-    const context = useContext(AuthContext)
-    let personID = context.user?.id ?? null;
+    const context = useContext(AuthContext);
+    let user = context.user;
+    let personID = user?.id ?? null;
+
     const [isActive, setIsActive] = useState(false);
 
     useEffect(() => {
@@ -23,16 +25,14 @@ function LikeButton(props) {
 
 
     const handleClick = () => {
-        if (props.isUserLoggedIn) {
 
+
+        if (user) {
             setIsActive(prevState => {
                 const newIsActive = !prevState;
                 console.log("setIsActive" + newIsActive); // Log the new value
                 return newIsActive; // Return the new value
             });
-
-
-
             fetch('http://localhost:8080/api/rating', {
                 method: 'POST',
                 headers: {
