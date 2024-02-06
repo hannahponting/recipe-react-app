@@ -5,15 +5,15 @@ import AuthContext from "../AuthContext/AuthContext";
 
 
 const SignUp = () => {
-
-  const context = useContext(AuthContext);
-  let user = context.user;
-
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [message, setMessage] = useState('');
+
+  const context = useContext(AuthContext)
+  const [user, setUser] = [context.user, context.setUser];
+
   let answer = "";
 
   const handleFirstNameChange = (event) => {
@@ -57,9 +57,7 @@ const SignUp = () => {
       answer = JSON.stringify(body);
       console.log(answer)
       if (response.status == 201) {
-        user = answer;
-        setMessage("Successfully signed up")
-
+        
         try {
           const response = await fetch('http://localhost:8080/api/account/setPassword', {
             method: 'POST',
@@ -67,7 +65,11 @@ const SignUp = () => {
             body: JSON.stringify(passwordRequestBody),
           });
           if (response.ok) {
-            const body = await response.text();
+            setMessage("Successfully signed up")
+            const urlApi = `http://localhost:8080/api/person/${email}`
+            const response = await fetch(urlApi);
+            const user = await response.json();
+            setUser(user);
           }
           if (response.status == 500) {
             const body = await response.json();
