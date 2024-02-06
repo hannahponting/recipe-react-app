@@ -4,28 +4,29 @@ import AuthContext from "../AuthContext/AuthContext";
 function LikeButton(props) {
     const context = useContext(AuthContext);
     let user = context.user;
+    console.log("user"+user);
     let personID = user?.id ?? null;
 
     const [isActive, setIsActive] = useState(false);
 
     useEffect(() => {
         const fetchData = async () => {
-            if(user){
-            try {
-                const initialState = await isFavourite(props.recipeId,personID);
-                setIsActive(initialState);
-            } catch (error) {
-                console.error('Error fetching data:', error);
+            if (user) {
+                try {
+                    const initialState = await isFavourite(props.recipeId, personID);
+                    setIsActive(initialState);
+                } catch (error) {
+                    console.error('Error fetching data:', error);
 
+                }
             }
-        }};
+        };
 
         fetchData();
     }, [props.recipeId, personID]);
 
 
     const handleClick = () => {
-
 
 
         if (user) {
@@ -58,18 +59,19 @@ function LikeButton(props) {
                     console.error('Error:', error);
                 });
 
-    }
+        }
 
-    return (
-        <>
-            <div className={`heart-btn ${isActive ? 'heart-active' : ''}`} onClick={handleClick}>
-                <div className="content">
+        return (
+            <>
+                <div className={`heart-btn ${isActive ? 'heart-active' : ''}`} onClick={handleClick}>
+                    <div className="content">
 
-                    <span className={`heart ${isActive ? 'heart-active' : ''}`}></span>
+                        <span className={`heart ${isActive ? 'heart-active' : ''}`}></span>
+                    </div>
                 </div>
-            </div>
-        </>
-    );
+            </>
+        );
+    }
 }
 
 
