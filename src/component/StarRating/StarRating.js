@@ -8,15 +8,15 @@ const StarRating = (props) => {
 
   const stars = Array.from({ length: 5 }, (_, index) => {
     if (index < fullStars) {
-      return <img src={require('../../Resources/fullstar.png')} className='star'></img>
+      return <img src={require('../../Resources/fullstar.png')} className='star' key={index}></img>
     } else if (hasHalfStar && index === fullStars) {
       return (
-          <img src={require('../../Resources/halfstar.png')} className='star'></img>
+          <img src={require('../../Resources/halfstar.png')} className='star' key={index}></img>
       );
     }
     else{
         return(
-            <img src={require('../../Resources/greystar.png')} className='star'></img>
+            <img src={require('../../Resources/greystar.png')} className='star'key={index}></img>
         )
     }
   });
