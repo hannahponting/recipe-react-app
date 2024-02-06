@@ -2,11 +2,12 @@ import { Link, Navigate, Outlet, useNavigate } from "react-router-dom";
 import React, { useContext, useEffect } from "react";
 import { useState } from "react";
 import "./NavBar.css";
-import { Dropdown, Nav } from "react-bootstrap";
+import { Dropdown, Nav, Navbar } from "react-bootstrap";
 import { InputGroup } from "react-bootstrap";
 import { GetUserByEmail } from "../../utils";
 import DropdownAccount from "./DropdownAccount";
 import AuthContext from "../AuthContext/AuthContext";
+import Container from 'react-bootstrap/Container';
 
 
 
@@ -24,8 +25,7 @@ const Navigation = (props) => {
     return (
         <>
             <nav className="navigation">
-
-
+                <div className="navbar-container">
                 <Link to="/">
                     <img className="nerd-logo-removebg" alt="Nerd logo" src={require('../../Resources/invertedNerdLogo.png')}></img>
 
@@ -69,6 +69,10 @@ const Navigation = (props) => {
 
                     </ul>
                 </div>
+                </div>
+
+
+                
 
             </nav>
 
