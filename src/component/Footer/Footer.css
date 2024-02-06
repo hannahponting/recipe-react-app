@@ -19,7 +19,7 @@
     font-size: 24px;
     /* align-items: left; */
     text-align: left;
-    margin-right: 15%;
+    margin-right: 25%;
     display: inline-block;
     align-items: center;
 }
@@ -30,8 +30,8 @@
     font-size: 24px;
     text-align: left;
     display: inline-block;
-    margin-left: 15%;
-    margin-top: 2%;
+    margin-left: 25%;
+    margin-top: 3%;
 }
 
 /* .buttonStyling{

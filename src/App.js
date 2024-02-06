@@ -51,8 +51,8 @@ function App() {
           
           
         </Routes>
-        {!isLoginPage && <Footer />}
-        
+        {/* {!isLoginPage && <Footer />} */}
+        <Footer></Footer>
       </BrowserRouter>
       </AuthContext.Provider>
 
