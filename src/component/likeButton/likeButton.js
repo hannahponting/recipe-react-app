@@ -2,18 +2,22 @@ import React, {useContext, useState,useEffect} from 'react';
 import "./likeButton.css"
 import AuthContext from "../AuthContext/AuthContext";
 function LikeButton(props) {
-    const context = useContext(AuthContext)
-    let personID = context.user?.id ?? null;
+    const context = useContext(AuthContext);
+    let user = context.user;
+    let personID = user?.id ?? null;
+
     const [isActive, setIsActive] = useState(false);
 
     useEffect(() => {
         const fetchData = async () => {
-            try {
-                const initialState = await isFavourite(props.recipeId,personID);
-                setIsActive(initialState);
-            } catch (error) {
-                console.error('Error fetching data:', error);
+            if (user) {
+                try {
+                    const initialState = await isFavourite(props.recipeId, personID);
+                    setIsActive(initialState);
+                } catch (error) {
+                    console.error('Error fetching data:', error);
 
+                }
             }
         };
 
@@ -22,17 +26,14 @@ function LikeButton(props) {
 
 
     const handleClick = () => {
-        if (!props.isUserLoggedIn) {
-            alert('You must log in before you click like it.');
-            return ;
-        }
 
+
+        if (user) {
             setIsActive(prevState => {
                 const newIsActive = !prevState;
                 console.log("setIsActive" + newIsActive);
                 return newIsActive; // Return the new value
             });
-
 
             fetch('http://localhost:8080/api/rating', {
                 method: 'POST',
@@ -57,23 +58,24 @@ function LikeButton(props) {
                     console.error('Error:', error);
                 });
 
-    }
+        }
 
-    return (
-        <>
-            <div className={`heart-btn ${isActive ? 'heart-active' : ''}`} onClick={handleClick}>
-                <div className="content">
+        return (
+            <>
+                <div className={`heart-btn ${isActive ? 'heart-active' : ''}`} onClick={handleClick}>
+                    <div className="content">
 
-                    <span className={`heart ${isActive ? 'heart-active' : ''}`}></span>
+                        <span className={`heart ${isActive ? 'heart-active' : ''}`}></span>
+                    </div>
                 </div>
-            </div>
-        </>
-    );
-}
+            </>
+        );
+    }
+};
 
 
 
-export function isFavourite(recipeId, personId) {
+function isFavourite(recipeId, personId) {
     const urlApi = `http://localhost:8080/api/rating/favourite/${personId}/${recipeId}`;
 
     return fetch(urlApi)
@@ -97,6 +99,7 @@ export function isFavourite(recipeId, personId) {
         });
 }
 
+
+
+
 export default LikeButton;
-
-

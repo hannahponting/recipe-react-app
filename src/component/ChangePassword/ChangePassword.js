@@ -51,7 +51,7 @@ const ChangePassword = () => {
 
   return (
     <>
-      <div className="changepassword-container">
+      {/* <div className="changepassword-container">
         <header className="header">
           <div className="changepassword-title-container">
             <div className="Title">
@@ -60,47 +60,60 @@ const ChangePassword = () => {
           </div>
 
         </header>
-      </div>
+      </div> */}
 
-      <div className="Divider"></div>
+      {/* <div className="Divider"></div> */}
 
-      <div className="changepassword-box-container">
-        <div className="changepassword-box">
-          <label className="passwordDetails">Email</label>
-        </div>
-
-        <div>
-          <input className="changepassword-input-boxes" type="text" value={email} onChange={handleEmailChange} />
-
-        </div>
-
-        <div className="changepassword-box">
-          <label className="passwordDetails">New Password</label>
-        </div>
-        <div>
-          <input className="changepassword-input-boxes" type="password" value={password} onChange={handlePasswordChange} />
-
-        </div>
-        <button className="changepassword-button" onClick={handleSubmitClick}>Change</button>
-        <div>
+      <div className="changepassword-background">
 
 
-          <div className="account-login">
-            <label>Don't have an account?</label>
-            &nbsp;&nbsp;
-            <Link to="/signup">Sign up</Link>
+        <div className="changepassword-box-container">
+          <div className="changepassword-box">
+            <label className="passwordDetails-title">Change Password</label>
+          </div>
+          <div className="changepassword-box">
+            <label className="passwordDetails">Email</label>
           </div>
 
-          <div className="account-login">
-            <label>Already a member?</label>
-            &nbsp;&nbsp;
-            <Link to="/login">Login</Link>
+          <div>
+            <input className="changepassword-input-boxes" type="text" value={email} onChange={handleEmailChange} />
+
           </div>
 
+          <div className="changepassword-box">
+            <label className="passwordDetails">New Password</label>
+          </div>
+          <div>
+            <input className="changepassword-input-boxes" type="password" value={password} onChange={handlePasswordChange} />
 
+          </div>
+          <button className="changepassword-button" onClick={handleSubmitClick}>Change</button>
+          <div>
+
+
+            <div className="account-login">
+              <label>Don't have an account?</label>
+              &nbsp;&nbsp;
+              <Link to="/signup">Sign up</Link>
+            </div>
+
+            <div className="account-login">
+              <label>Already a member?</label>
+              &nbsp;&nbsp;
+              <Link to="/login">Login</Link>
+            </div>
+
+
+          </div>
+
+          <div className="changepassword-output-message">
+            {message && <p>{message}</p>}
+
+          </div>
         </div>
-        {message && <p>{message}</p>}
+
       </div>
+
 
 
     </>

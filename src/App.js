@@ -24,7 +24,6 @@ import AuthContext from './component/AuthContext/AuthContext.js';
 
 function App() {
 
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [user, setUser] = useState();
   const isLoginPage = window.location.pathname === '/login';
 
@@ -36,22 +35,22 @@ function App() {
 
         <Routes>
       
-          <Route path='/' element={<NavBar isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn}/>}>
-            <Route path="/" element={<WelcomePage isLoggedIn={isLoggedIn}/>} />
-            <Route path="/recipes" element={<RecipeCardList queryEndpoint={GetRecipesPaginated} isLoggedIn={isLoggedIn}/>} />
+          <Route path='/' element={<NavBar/>}>
+            <Route path="/" element={<WelcomePage />} />
+            <Route path="/recipes" element={<RecipeCardList/>} />
             <Route path="/recipes/:id" element={<RecipeDetails/>} />
             <Route path="/recipes/search" element={<RecipeSearchResults />} />
-            <Route path="/login" element={<LoginPage setIsLoggedIn={setIsLoggedIn}/>} />
+            <Route path="/login" element={<LoginPage/>} />
             <Route path="/WhoWeAre" element={<WhoWeAre />} />
-            <Route path="/favourites" element={<Favourites isLoggedIn={isLoggedIn}/>} />
+            <Route path="/favourites" element={<Favourites/>} />
             <Route path="/changepassword" element={<ChangePassword/>}/>
             <Route path="/signup" element={<SignUp/>}/>
           </Route>
           
           
         </Routes>
-        {!isLoginPage && <Footer />}
-        
+        {/* {!isLoginPage && <Footer />} */}
+        <Footer></Footer>
       </BrowserRouter>
       </AuthContext.Provider>
 

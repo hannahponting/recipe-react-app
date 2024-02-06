@@ -1,15 +1,19 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import "./SignUp.css";
+import AuthContext from "../AuthContext/AuthContext";
 
 
-const SignUp = (props) => {
-
+const SignUp = () => {
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [message, setMessage] = useState('');
+
+  const context = useContext(AuthContext)
+  const [user, setUser] = [context.user, context.setUser];
+
   let answer = "";
 
   const handleFirstNameChange = (event) => {
@@ -53,9 +57,7 @@ const SignUp = (props) => {
       answer = JSON.stringify(body);
       console.log(answer)
       if (response.status == 201) {
-        props.setUserID((prevUserID) => email)
-        setMessage("Successfully signed up")
-
+        
         try {
           const response = await fetch('http://localhost:8080/api/account/setPassword', {
             method: 'POST',
@@ -63,7 +65,11 @@ const SignUp = (props) => {
             body: JSON.stringify(passwordRequestBody),
           });
           if (response.ok) {
-            const body = await response.text();
+            setMessage("Successfully signed up")
+            const urlApi = `http://localhost:8080/api/person/${email}`
+            const response = await fetch(urlApi);
+            const user = await response.json();
+            setUser(user);
           }
           if (response.status == 500) {
             const body = await response.json();
@@ -155,7 +161,11 @@ const SignUp = (props) => {
             &nbsp;&nbsp;
             <Link to="/login">Login</Link>
           </div>
+
+          <div className="signup-output-message">
           {message && <p>{message}</p>}
+          </div>
+          
         </div>
 
       </div>
