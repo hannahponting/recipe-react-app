@@ -112,8 +112,10 @@ const LoginPage = (props) => {
           </div>
 
 
+          <div className="login-output-message">
+            {message && <p>{message}</p>}
 
-          {message && <p>{message}</p>}
+          </div>
         </div>
 
       </div>
