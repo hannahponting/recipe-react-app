@@ -16,16 +16,17 @@ const Sidebar = (props) => {
     const containerRef = useRef(null);
     const [isMouseOver, setIsMouseOver] = useState(false);
     const [isScrolling, setIsScrolling] = useState(false);
-    const [formData, setFormData] = useState({
+    const [filterValues, setFilterValues] = useState({
             spice_level :"",
             difficulty : "",
-            cost : ""
+            cost : "",
+            mealType: ""
 
 
     })
 
     const handleChange = (event) => {
-        setFormData((prevFormData) => {
+        setFilterValues((prevFormData) => {
             return (    
 
                 { ...prevFormData,
@@ -40,7 +41,23 @@ const Sidebar = (props) => {
         event.preventDefault()
     }
 
-    console.log(formData)
+    console.log(filterValues)
+
+
+    const applyFiltersHandler = () => {
+        const filterArray = {
+            costType: { value: filterValues.cost, comparison: '=' },
+            difficultyLevel: { value: filterValues.difficulty, comparison: '=' },
+            spiceType: { value: filterValues.spice_level, comparison: '=' },
+            mealType: { value: filterValues.mealType, comparison: '=' },
+            // cuisineType: {value: filterValues.cuisineType, comparison: '='},
+            // servingNo: {value: filterValues.servingNo, comparison: '>='},
+            // cookingMinutes: {value: filterValues.cookingMinutes, comparison: '<='}
+
+        };
+        props.applyFilters(filterArray);
+    }
+        
 
 
     // const handleMouseEnter = () => {
@@ -63,7 +80,7 @@ const Sidebar = (props) => {
     //   console.log(isMouseOver)
         return (
                 <form onSubmit={handleSubmit} className="sidebar"
-                style = {props.style}
+                // style = {props.style}
                 // onMouseEnter={handleMouseEnter}
                 // onMouseLeave={handleMouseLeave}
                 // onWheel={handleScroll}
@@ -125,20 +142,51 @@ const Sidebar = (props) => {
                      </AccordionBody>
                 </Accordion>
                 <Accordion className="sidebar-accordion">
-                    <AccordionHeader className="sidebar-accordion-header"><h2 className="subtitles-accordion">Filter #</h2></AccordionHeader>
+                    <AccordionHeader className="sidebar-accordion-header"><h2 className="subtitles-accordion">Meal</h2></AccordionHeader>
                     <AccordionBody className="sidebar-accordion-body" >
+                    <h3 id="subtitles-accordion">Meal</h3>
+                    <input type='radio' name="mealType" value="BREAKFAST" onChange={handleChange} /> Breakfast
+                    <br></br>
+                <input type='radio' name="mealType" value="LUNCH" onChange={handleChange} /> Lunch
+                    <br></br>
+                <input type='radio' name="mealType" value="DINNER" onChange={handleChange} /> Dinner
+                    <br></br>
+                <input type='radio' name="mealType" value="" onChange={handleChange} /> Any
                                        </AccordionBody>
                 </Accordion>
                 <Accordion className="sidebar-accordion">
-                    <AccordionHeader className="sidebar-accordion-header"><h2 className="subtitles-accordion">Filter #</h2></AccordionHeader>
+                    <AccordionHeader className="sidebar-accordion-header"><h2 className="subtitles-accordion">Cuisine</h2></AccordionHeader>
                     <AccordionBody className="sidebar-accordion-body" >
-                        <h3 id="subtitles-accordion">Rate this recipe</h3>
+                        <h3 id="subtitles-accordion">Cuisine</h3>
+                        <input type='radio' name="cuisineType" value="AMERICAN" onChange={handleChange} /> American
+                <br></br>
+                <input type='radio' name="cuisineType" value="ASIAN" onChange={handleChange} /> Asian
+                <br></br>
+                <input type='radio' name="cuisineType" value="BRITISH" onChange={handleChange} /> British
+                <br></br>
+                <input type='radio' name="cuisineType" value="FRENCH" onChange={handleChange} /> French
+                <br></br>
+                <input type='radio' name="cuisineType" value="INDIAN" onChange={handleChange} /> Indian
+                <br></br>
+                <input type='radio' name="cuisineType" value="INTERNATIONAL" onChange={handleChange} /> International
+                <br></br>
+                <input type='radio' name="cuisineType" value="ITALIAN" onChange={handleChange} /> Italian
+                <br></br>
+                <input type='radio' name="cuisineType" value="MEDITERRANEAN" onChange={handleChange} /> Mediterranean
+                <br></br>
+                <input type='radio' name="cuisineType" value="MEXICAN" onChange={handleChange} /> Mexican
+                <br></br>
+                <input type='radio' name="cuisineType" value="SPANISH" onChange={handleChange} /> Spanish
+                <br></br>
+                <input type='radio' name="cuisineType" value="" onChange={handleChange} /> Any
                         </AccordionBody>
                 </Accordion>
                 <Accordion className="sidebar-accordion">
                     <AccordionHeader className="sidebar-accordion-header"><h2 className="subtitles-accordion">Filter #</h2></AccordionHeader>
                     <AccordionBody className="sidebar-accordion-body" >
-                        <h3 id="subtitles-accordion">Rate this recipe</h3>
+                        <h3 id="subtitles-accordion">Serving Number</h3>
+                        <input type='number' name="servingNo" value={filterValues.servingNo} onChange={handleChange} />
+
                         </AccordionBody>
                 </Accordion>
                 <Accordion className="sidebar-accordion">
@@ -160,18 +208,20 @@ const Sidebar = (props) => {
 
                 <button  className="apply-filter-button" 
                 
-                onClick={() => {
-                                const filterArray = {costType: formData.cost , difficultyLevel: formData.difficulty, spiceType : formData.spice_level};
-                                {    console.log(filterArray)
-                                }
-                        props.applyFilters(filterArray);}}>
+                onClick={applyFiltersHandler}>
 
 
                         Apply Filters</button>
 
                 </form>
+        )
 
-
-        );
-};
+        }
 export default Sidebar;
+
+
+// () => {
+//     const filterArray = {costType: formData.cost , difficultyLevel: formData.difficulty, spiceType : formData.spice_level, mealType: formData.mealType};
+//     {    console.log(filterArray)
+//     }
+// props.applyFilters(filterArray);}

@@ -135,7 +135,7 @@ function RecipeCardList(props) {
 
         {recipes?.length > 0 ? (
             <div className="wrapper">
-                {recipes.map((recipe) => (
+                {/* {recipes.map((recipe) => (
                     <Card
                         key={recipe.id}
                         img={`http://localhost:8080/api/recipes/image/${recipe.id}`}
@@ -145,7 +145,7 @@ function RecipeCardList(props) {
                         
                         style={props.style}
                     />
-                ))}
+                ))} */}
             </div>
         ) : (
             <div className="no-recipes-message">
