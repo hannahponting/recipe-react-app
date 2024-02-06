@@ -13,24 +13,25 @@ function LikeButton(props) {
                 setIsActive(initialState);
             } catch (error) {
                 console.error('Error fetching data:', error);
-                // Handle error if necessary
+
             }
         };
 
-        fetchData(); // Call the fetchData function on component mount
-    }, [props.recipeId, personID]); // useEffect dependencies
-
+        fetchData();
+    }, [props.recipeId, personID]);
 
 
     const handleClick = () => {
-        if (props.isUserLoggedIn) {
+        if (!props.isUserLoggedIn) {
+            alert('You must log in before you click like it.');
+            return ;
+        }
 
             setIsActive(prevState => {
                 const newIsActive = !prevState;
-                console.log("setIsActive" + newIsActive); // Log the new value
+                console.log("setIsActive" + newIsActive);
                 return newIsActive; // Return the new value
             });
-
 
 
             fetch('http://localhost:8080/api/rating', {
@@ -55,11 +56,7 @@ function LikeButton(props) {
                 .catch(error => {
                     console.error('Error:', error);
                 });
-        } else {
-            alert('You must log in before you click like it.');
 
-
-        }
     }
 
     return (
@@ -93,8 +90,9 @@ export function isFavourite(recipeId, personId) {
             return data;
         })
         .catch(error => {
-            console.error('Error fetching data:', error);
-            // Return false in case of an error
+            //console.error('Error fetching data:', error);
+            // console.log(fetch(urlApi)
+
             return false;
         });
 }
