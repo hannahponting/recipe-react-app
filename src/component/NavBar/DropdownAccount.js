@@ -1,33 +1,80 @@
-import { useContext } from "react";
-import { Dropdown } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import React, { useContext, useState } from 'react';
+import Dropdown from 'react-bootstrap/Dropdown';
+import Form from 'react-bootstrap/Form';
+import { Link } from 'react-router-dom';
 import AuthContext from "../AuthContext/AuthContext";
+import { Button, ButtonGroup } from 'react-bootstrap';
 
-const DropdownAccount = (props) => {
 
+const CustomToggle = React.forwardRef(({ style, className, children, onClick }, ref) => (
+    <a
+      href=""
+      ref={ref}
+      style={style}
+      className={className}
+      onClick={(e) => {
+        e.preventDefault();
+        onClick(e);
+      }}
+    >
+      {children}
+    </a>
+  ));
+  
+  const CustomMenu = React.forwardRef(
+    ({ children, style, className, 'aria-labelledby': labeledBy }, ref) => {
+      const [value, setValue] = useState('');
+  
+      return (
+        <div
+          ref={ref}
+          style={style}
+          className={className} 
+          aria-labelledby={labeledBy}>
+    
+          <ul className="styled-list">
+            {React.Children.toArray(children).filter(
+              (child) =>
+                !value || child.props.children.toLowerCase().startsWith(value),
+            )}
+          </ul>
+        </div>
+      );
+    },
+  );
+
+  const DropdownAccount = (props) =>{
     const context = useContext(AuthContext);
+    
     let user = context.user;
     let firstName = context.user?.firstName ?? "Guest";
 
     const handleLogOut = () => {
         props.setIsLoggedIn(false);
-        user = null;
+        props.setUserId('');
     }
 
+    const mystyle = {
+        color: "white",
+        backgroundColor: "#07689f",
+        fontFamily: "NewsReader",
+        fontSize: "24px",
+        textDecoration: "none"
+      };
 
-    return(
-        <Dropdown>
-            <Dropdown.Toggle varient="success" id="dropdown-basic">
-                Hello {firstName}
-            </Dropdown.Toggle>
-            <Dropdown.Menu>
-                <Dropdown.Item as={Link} to="/favourites">Favourites</Dropdown.Item>
-                <Dropdown.Item as={Link} to="/changepassword">Change Password</Dropdown.Item>
-                <Dropdown.Item as={Link} onClick={handleLogOut} to="/">Log Out</Dropdown.Item>
-            </Dropdown.Menu>
-        </Dropdown>
-    )
+  return(
+    <Dropdown className="dropdown">
+      <Dropdown.Toggle as={CustomToggle} className="dropdownToggle" style={mystyle}>
+        Hello {firstName}
+      </Dropdown.Toggle>
+      <Dropdown.Menu as={CustomMenu} className="dropdownList" >
+       <Dropdown.Item as={Link} to="/favourites">Favourites</Dropdown.Item>
+       <Dropdown.Item as={Link} to="/changepassword">Change Password</Dropdown.Item>
+       <Dropdown.Item as={Link} onClick={handleLogOut} to="/">Log Out</Dropdown.Item>
+      </Dropdown.Menu>
+    </Dropdown>
+  )
+  }
 
-}
+  export default DropdownAccount;
 
-export default DropdownAccount;
