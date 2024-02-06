@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import "./RateRecipe.css"
 import { GetUserByEmail } from "../../utils";
+
 import AuthContext from "../AuthContext/AuthContext";
 
 
@@ -8,14 +9,14 @@ const RateRecipe = (props) => {
   const context = useContext(AuthContext)
   let personID = context.user?.id ?? null;
 
-    const [myRating, setMyRating] = useState(0);
-    const [message, setMessage] = useState();
+  const [rating, setRating] = useState(0);
+  const [message, setMessage] = useState("");
+  const [hover, setHover] = useState(null);
   
     const requestBody = {
       recipeId: props.id,
       personId: personID,
-      myRating: myRating,
-      favourite: true
+      myRating: rating,
     };
   
     const getData = async () => {
@@ -40,28 +41,36 @@ const RateRecipe = (props) => {
         setMessage(error.message)
       }
     };
-  
-    const handleRateClick = () => {
+
+    function handleClick(){
       getData();
-    };
+  }
   
     return (
-      <div className="body">
-        <div>
-          <label className="rating-label" htmlFor="rating">Enter Rating Here: </label>
-          <input
-            type="number"
-            id="rating-input"
-            min={1}
-            max={5}
-            value={myRating}
-            onChange={(e) => setMyRating(parseInt(e.target.value))}
-          />
-        </div>
-        <button className="rate-recipe-button" onClick={handleRateClick}>Rate Recipe</button>
-        <p>{message}</p>
+      <div className="star-rating">
+      {[...Array(5)].map((star, index)=> {
+          index += 1;
+          return(
+              <button
+              type ="button"
+              key={index}
+              className={index <= (hover || rating) ? "on" : "off"}
+              onClick={() => setRating(index)}
+              onMouseEnter={() => setHover(index)}
+              onMouseLeave={()=> setHover(rating)}
+              >
+                  <span className="star">&#9733;</span>
+              </button>
+              
+          );
+      })}
+      <button className="submit" onClick={handleClick}>Submit</button>
+      <p>{message}</p>
       </div>
+      
+     
     );
+
   };
   
   export default RateRecipe;
