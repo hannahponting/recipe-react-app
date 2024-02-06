@@ -7,6 +7,7 @@ import { RecipeFilter } from "../FilterBar/RecipeFilter";
 import { IngredientFilter } from "../FilterBar/IngredientFilter";
 import StarRating from "../StarRating/StarRating";
 import LikeButton from "../likeButton/likeButton";
+import Sidebar from "../Sidebar/Sidebar";
 
 
 export default RecipeCardList;
@@ -89,7 +90,11 @@ function RecipeCardList(props) {
 
 
     return <div className="recipecard-page-container">
-
+ <Sidebar
+        // closeSidebar= {closeSidebar}
+        applyFilters = {applyFilters}
+        // style= {styles}
+        ></Sidebar>
 
         <div>
             <header className="header">

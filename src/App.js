@@ -50,6 +50,9 @@ function App() {
     })
 }
 
+
+
+
   return (
     <div className="App">
     <AuthContext.Provider value = {{user, setUser}}>
@@ -73,10 +76,7 @@ function App() {
           
         </Routes>
         {!isLoginPage && <Footer />}
-        <Sidebar
-        closeSidebar= {closeSidebar}
-        style= {styles}
-        ></Sidebar>
+       
         
       </BrowserRouter>
       </AuthContext.Provider>
