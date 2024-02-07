@@ -36,17 +36,23 @@ function RecipeCardList(props) {
     const [query, setQuery] = useState("");
     const [totalPages, setTotalPages] = useState(1);
     const [filterType, setFilterType] = useState("default");
+    const [pageSize, setPageSize] = useState();
     const queryEndpointRef = useRef(GetRecipesPaginated);
 
     useEffect(() => {
         const fetchData = async () => {
-            const result = await queryEndpointRef.current(currentPage, 10, query);
+            const result = await queryEndpointRef.current(currentPage, pageSize, query);
             setRecipes(result.recipes);
             setTotalPages(result.totalPages);
         };
 
-        fetchData();
-    }, [currentPage, query, filterType]);
+        if(pageSize)fetchData();
+    }, [currentPage, query, filterType, pageSize]);
+
+    useEffect(() => {
+        getPageSize();
+        console.log("pageSize: " + pageSize)
+    }, [pageSize])
 
     const handlePageChange = (newPage) => {
         if (newPage > 0 && newPage <= totalPages) {
@@ -69,6 +75,13 @@ function RecipeCardList(props) {
           setQuery("");
         }
       };
+      function getPageSize() {
+        console.log("get page size ran");
+        const windowWidth = window.innerWidth;
+        const imageWidth = 280;
+        const cardsPerRow = Math.floor(windowWidth / imageWidth); 
+        setPageSize(cardsPerRow * 2)};
+    
 
     const applyFilters = (filterArray) => {
 
