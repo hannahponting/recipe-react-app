@@ -2,7 +2,7 @@ import * as React from "https://cdn.skypack.dev/react@17.0.1";
 import "./recipeCard.css";
 import { GetNewRatingById, GetRecipesPaginated, GetIngredientsPaginated, GetRatingById, GetRecipeImage } from "../../utils";
 import { Link, useNavigate } from "react-router-dom";
-import { useEffect, useState , useRef} from "react";
+import { useEffect, useState, useRef } from "react";
 import { RecipeFilter } from "../FilterBar/RecipeFilter";
 import { IngredientFilter } from "../FilterBar/IngredientFilter";
 import StarRating from "../StarRating/StarRating";
@@ -18,14 +18,10 @@ function RecipeCardList(props) {
 
 
     const Sidebarstyles = {
-        display :  props.sidebarVisible? "block": "none",
+        display: props.sidebarVisible ? "block" : "none",
 
 
-      }
-
-
-    
-      
+    }
     const [searchTerm, setSearchTerm] = useState('');
     const navigate = useNavigate();
     const handleSearch = () => {
@@ -56,23 +52,25 @@ function RecipeCardList(props) {
 
     const toggleFilter = () => {
         if (filterType === "default") {
-          // Update the ref without calling the function
-          queryEndpointRef.current = GetIngredientsPaginated;
-          setFilterType("ingredients");
-          setCurrentPage(1);
-          setQuery("");
+            // Update the ref without calling the function
+            queryEndpointRef.current = GetIngredientsPaginated;
+            setFilterType("ingredients");
+            setCurrentPage(1);
+            setQuery("");
         } else {
-          // Update the ref without calling the function
-          queryEndpointRef.current = GetRecipesPaginated;
-          setFilterType("default");
-          setCurrentPage(1);
-          setQuery("");
+            // Update the ref without calling the function
+            queryEndpointRef.current = GetRecipesPaginated;
+            setFilterType("default");
+            setCurrentPage(1);
+            setQuery("");
         }
-      };
+    };
+
+
 
     const applyFilters = (filterArray) => {
 
-        
+
 
         if (Array.isArray(filterArray) && filterArray.length > 0) {
             // Case: filterArray is an array of strings
@@ -102,15 +100,15 @@ function RecipeCardList(props) {
     }
 
 
-    return <div className="recipecard-page-container" 
-    
+    return <div className="recipecard-page-container"
+
     >
- <Sidebar
-        applyFilters = {applyFilters}
-        closeSidebar = {props.closeSidebar}
-        handleMouseEnter={props.handleMouseEnter}
-        handleMouseLeave={props.handleMouseLeave}
-        style= {Sidebarstyles}
+        <Sidebar
+            applyFilters={applyFilters}
+            closeSidebar={props.closeSidebar}
+            handleMouseEnter={props.handleMouseEnter}
+            handleMouseLeave={props.handleMouseLeave}
+            style={Sidebarstyles}
         ></Sidebar>
 
         <div>
@@ -123,23 +121,23 @@ function RecipeCardList(props) {
 
                 <div>
                     {filterType === 'ingredients' ? (
-                        <IngredientFilter applyFilters={applyFilters}/>
+                        <IngredientFilter applyFilters={applyFilters} />
                     ) : (
-                        <RecipeFilter applyFilters={applyFilters}/>
+                        <RecipeFilter applyFilters={applyFilters} />
                     )}
                 </div>
                 <div>
                     <button className="filter-button" onClick={props.moveSidebar}>Filters</button>
                 </div>
-                <div className="header-search-container" style={props.style}> 
-                <div className="search-bar">
-                    <input
-                        type="text"
-                        value={searchTerm}
-                        onChange={(e) => setSearchTerm(e.target.value)}
-                    />
-                    <button onClick={handleSearch}>Search</button>
-                </div>
+                <div className="header-search-container" style={props.style}>
+                    <div className="search-bar">
+                        <input
+                            type="text"
+                            value={searchTerm}
+                            onChange={(e) => setSearchTerm(e.target.value)}
+                        />
+                        <button onClick={handleSearch}>Search</button>
+                    </div>
                 </div>
 
             </header>
@@ -147,8 +145,8 @@ function RecipeCardList(props) {
 
         </div>
         <div>
-      <button onClick={(toggleFilter)}>Toggle Filter</button>
-    </div>
+            <button onClick={(toggleFilter)}>Toggle Filter</button>
+        </div>
         <div className="Divider"></div>
 
         {recipes?.length > 0 ? (
@@ -157,10 +155,12 @@ function RecipeCardList(props) {
                     <Card
                         key={recipe.id}
                         title={recipe.name}
-                        description={"Delicious recipe from " + recipe.cuisine.toLowerCase() + " cuisine. It serves up to " + recipe.serving + " people!"}
+                        // description={"Delicious recipe from " + recipe.cuisine.toLowerCase() + " cuisine. It serves up to " + recipe.serving + " people!"}
                         id={recipe.id}
-                        
                         style={props.style}
+                        time_to_cook={recipe.time_to_cook}
+                        serving={recipe.serving}
+                        cuisine={recipe.cuisine}
                     />
                 ))}
             </div>
@@ -192,14 +192,16 @@ function RecipeCardList(props) {
     </div>
 
 }
-
+function Capitalize(str) {
+    return str.charAt(0).toUpperCase() + str.slice(1);
+}
 
 export function Card(props) {
     let link = "/recipes/" + props.id;
     const [starRating, setStarRating] = useState(0);
     const fetchData = async () => {
         try {
-            const rating = await GetRatingById(props.id).then((rating) => {setStarRating(rating)})
+            const rating = await GetRatingById(props.id).then((rating) => { setStarRating(rating) })
         } catch (error) {
             console.error('Error fetching rating:', error);
         }
@@ -228,15 +230,41 @@ export function Card(props) {
     return (
         <div style={props.style} className="card">
             <div className="card__body">
-                <img src={imageUrl} className="card__image"/>
+                <img src={imageUrl} className="card__image" />
                 <h2 className="card__title">{props.title}</h2>
                 <StarRating id='stars' stars={starRating}></StarRating>
-                <p className="card__description">{props.description}</p>
+
+
+
+                <div className="recipe-icon-container">
+                    <img src={require('../../Resources/clockIcon.png')} className="icon-image" />
+                    <p className="card__description">{props.time_to_cook}</p>
+                </div>
+                {/* <p className="card__description">{props.description}</p> */}
+
+                <div className="recipe-icon-container">
+                    <img src={require('../../Resources/person-icon.png')} className="icon-image" />
+                    <p className="card__description">{props.serving}</p>
+                </div>
+
+                <div className="recipe-icon-container">
+                    <img src={require('../../Resources/world.png')} className="icon-image" />
+                    <p className="card__description">{props.cuisine.toLowerCase()}</p>
+                </div>
+
             </div>
+
+            <div className="like-button-container">
+            <LikeButton recipeId={props.id}> </LikeButton>
+
+            </div>
+
             <Link to={link}>
                 <button className="card__btn">View Recipe</button>
             </Link>
-            <LikeButton  recipeId={props.id}> </LikeButton>
+
+
+
         </div>
     );
 }
