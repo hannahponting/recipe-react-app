@@ -105,7 +105,7 @@
     margin-bottom: 1%;
 }
 
-ul {
+.headerlist{
     display: flex;
     justify-content: flex-start;
     padding: 0;
