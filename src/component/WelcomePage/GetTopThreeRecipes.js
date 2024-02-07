@@ -9,12 +9,15 @@ const GetTopThreeRecipes = () => {
     useEffect(() => {
         const fetchData = async () => {
             const result = await getTopRated(3);
+            console.log("print out result below")
+            console.log(result.recipes)
             setRecipes(result.recipes);
         };
-        console.log("print out recipes below")
-        console.log(recipes)
+
 
         fetchData();
+        console.log("print out recipes below")
+        console.log(recipes)
     }, []);
 
 
@@ -23,9 +26,8 @@ const GetTopThreeRecipes = () => {
     return (
         <>
             {recipes.length > 0 ? (
-                <div className="wrapper">
+                <div className="wrapperr">
 
-                    
                     {recipes.map((recipe) => (
                         <Card
                             key={recipe.id}
@@ -36,10 +38,12 @@ const GetTopThreeRecipes = () => {
                         />
                     ))}
                 </div>
+
             ) : (
                 <div className="no-recipes-message">
                     No recipes to display.
                 </div>
+
             )}
         </>
     )
