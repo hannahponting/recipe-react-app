@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import "./ChangePassword.css";
+import { PostChangePassword } from "../../utils";
 
 const ChangePassword = () => {
   const [email, setEmail] = useState('');
@@ -15,32 +16,18 @@ const ChangePassword = () => {
   }
 
 
-  const requestBody = {
-    "email": email,
-    "password": password
-  };
-
   const getData = async () => {
     try {
-      const response = await fetch('http://localhost:8080/api/account/setPassword', {
-        method: 'POST',
-        headers: { 'content-type': 'application/json' },
-        body: JSON.stringify(requestBody),
-      });
-      if (response.ok) {
-        const body = await response.text();
-        console.log(body);
-        setMessage(body);
+      const body = await PostChangePassword(email, password).then((body)=>{
+         if (body=='password saved') {
+          setMessage(body)
       }
-      if (response.status == 500) {
-        const body = await response.json();
-        console.log(body.message);
+      else{
         setMessage(body.message);
       }
+    })
     } catch (error) {
-      console.error('Error fetching data:', error);
-      console.log(error.message);
-      setMessage(error.message);
+      setMessage(error)
     }
   };
 

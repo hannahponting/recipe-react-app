@@ -2,6 +2,7 @@ import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import "./SignUp.css";
 import AuthContext from "../AuthContext/AuthContext";
+import { GetPersonByEmail, GetUserByEmail, PostChangePassword, PostNewUser } from "../../utils";
 
 
 const SignUp = () => {
@@ -29,67 +30,37 @@ const SignUp = () => {
     setPassword(event.target.value)
   }
 
-
-
-
-  let requestBody = {
+  const newUser ={
     "email": email,
     "firstName": firstName,
     "lastName": lastName
   }
-  let passwordRequestBody = {
-    "email": email,
-    "password": password
-  };
-
-
 
 
   const getData = async () => {
-    try {
-      const response = await fetch('http://localhost:8080/api/person', {
-        method: 'POST',
-        headers: { 'content-type': 'application/json' },
-        body: JSON.stringify(requestBody),
-      });
-      const body = await response.json();
-      console.log(response)
-      answer = JSON.stringify(body);
-      console.log(answer)
-      if (response.status == 201) {
-        
+    try{
+      const body = await PostNewUser(email, firstName, lastName);
+      if (body == '201') {
         try {
-          const response = await fetch('http://localhost:8080/api/account/setPassword', {
-            method: 'POST',
-            headers: { 'content-type': 'application/json' },
-            body: JSON.stringify(passwordRequestBody),
-          });
-          if (response.ok) {
-            setMessage("Successfully signed up")
-            const urlApi = `http://localhost:8080/api/person/${email}`
-            const response = await fetch(urlApi);
-            const user = await response.json();
-            setUser(user);
+          const body = await PostChangePassword(email, password).then((body)=>{
+             if (body=='password saved') {
+              setMessage("Successfully signed up")
+              GetPersonByEmail(email).then((body)=>{setUser(body)})
           }
-          if (response.status == 500) {
-            const body = await response.json();
-            console.log(body.message);
+          else{
+            setMessage(body.message);
           }
+        })
         } catch (error) {
-          console.error('Error fetching data:', error);
-          console.log(error.message);
+          setMessage(error)
         }
       }
-      if (response.status == 500) {
-        console.log(body.message)
-        setMessage(body.message)
-      }
+    else{
+      setMessage(body.message);
+    }
     } catch (error) {
-      console.error('Error fetching data:', error);
       setMessage(error.message)
     }
-
-
   };
 
   const handleSubmitClick = () => {
