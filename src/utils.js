@@ -81,22 +81,46 @@ export async function GetIngredientsPaginated(pageNum, pageSize, query){
     const data = ({ recipes: body.content, isLoading: false, totalPages: body.totalPages })
 return data;
 }
-
-export async function GetNewRatingById(id){
-
-
-    fetch(`http://localhost:8080/api/rating/${id}`)
-        .then(response => {
-            if (!response.ok) {
-                throw new Error('Network response was not ok');
-            }
-            return response.json();
-        })
-        .catch(error => {
-            return 0;
-        })
-
+export async function GetRecipeImage(recipeId){
+    const response = await fetch(`http://localhost:8080/api/recipes/image/${recipeId}`);
+    const blob = await response.blob();
+    const imageUrl = URL.createObjectURL(blob);
+    return imageUrl;
 }
+
+export async function getTopRated(topRecipeNumber) {
+    const urlApi = `http://localhost:8080/api/recipes/top/${topRecipeNumber}`
+    const response = await fetch(urlApi);
+    const body = await response.json();
+    const data = ({ recipes: body, isLoading: false })
+    return data;
+}
+
+export async function GetRatingById(id){
+    const response = await fetch(`http://localhost:8080/api/rating/${id}`);
+    if (response.ok){
+        const contentType = response.headers.get('content-type');
+            if (contentType && contentType.includes('application/json')) {
+                const body = await response.json();
+                return body;
+             }
+    } 
+    return 0;
+}
+
+// export async function GeRatingById(id){
+//     fetch(`http://localhost:8080/api/rating/${id}`)
+//         .then(response => {
+//             if (!response.ok) {
+//                 throw new Error('Network response was not ok');
+//             }
+//             return response.json();
+//         })
+//         .catch(error => {
+//             return 0;
+//         })
+
+// }
 
 
 
@@ -123,21 +147,21 @@ export function GetUserByEmail(id){
 }
 
 
-export async function GetRatingById(id, setStarRating){
-    try {
-        const response = await fetch(`http://localhost:8080/api/rating/${id}`);
-        if (response.ok){
-            const contentType = response.headers.get('content-type');
-            if (contentType && contentType.includes('application/json')) {
-                const body = await response.json();
-                setStarRating(body);
-            }
-        } else {
-            console.error('Error fetching data:', response.status);
-        }
-    } catch (error) {
-        console.error('Network error:', error);
-    }
-};
+// export async function GetRatingById(id, setStarRating){
+//     try {
+//         const response = await fetch(`http://localhost:8080/api/rating/${id}`);
+//         if (response.ok){
+//             const contentType = response.headers.get('content-type');
+//             if (contentType && contentType.includes('application/json')) {
+//                 const body = await response.json();
+//                 setStarRating(body);
+//             }
+//         } else {
+//             console.error('Error fetching data:', response.status);
+//         }
+//     } catch (error) {
+//         console.error('Network error:', error);
+//     }
+// };
 
 

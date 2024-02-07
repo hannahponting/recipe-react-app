@@ -23,46 +23,50 @@ import Sidebar from './component/Sidebar/Sidebar.js';
 
 function App() {
   const [sidebarVisible, setSidebarVisible] = useState(false);
-
   const [user, setUser] = useState();
   const isLoginPage = window.location.pathname === '/login';
 
- 
-
-    const styles = {
-      display : sidebarVisible ? "block" : "none"
-    }
-
-    const recipePageStyle = {
-      zIndex : sidebarVisible? "-1" : "1"
-    }
-
-    const moveSidebar = () => {
-      setSidebarVisible((prevSidebar) => !prevSidebar)
-  }
+ const moveSidebar = () => {
+  setSidebarVisible((prevSidebar) => !prevSidebar)
+  console.log(sidebarVisible)
+}
 
   const closeSidebar = (event) => {
-    event.preventDefault()
-    setSidebarVisible((prevSidebar) => {
-      return false
+            event.preventDefault()
+            setSidebarVisible((prevSidebar) => {
+              return false
+            
+            })
+        }
+  
+ 
+ 
     
-    })
-}
+
+    const headerStyle = {
+      zIndex : !sidebarVisible? "1": "-1"
+      
+    }
+
+    const appStyle = {
+     backgroundColor : !sidebarVisible? "white ":"rgb(204, 204, 204, 0.70)"
+    }
+ 
 
 
 
 
   return (
-    <div className="App">
+    <div className="App" style={appStyle} >
     <AuthContext.Provider value = {{user, setUser}}>
              
       <BrowserRouter>
 
         <Routes>
       
-          <Route path='/' element={<NavBar style={recipePageStyle}/>}>
+          <Route path='/' element={<NavBar  style={headerStyle} />}>
             <Route path="/" element={<WelcomePage />} />
-            <Route path="/recipes" element={<RecipeCardList style={recipePageStyle} closeSidebarFunction={closeSidebar} sidebarFunction={moveSidebar}/>} />
+            <Route path="/recipes" element={<RecipeCardList sidebarVisible={sidebarVisible} moveSidebar={moveSidebar} style={headerStyle} closeSidebar={closeSidebar}  />} />
             <Route path="/recipes/:id" element={<RecipeDetails/>} />
             <Route path="/recipes/search" element={<RecipeSearchResults />} />
             <Route path="/login" element={<LoginPage/>} />

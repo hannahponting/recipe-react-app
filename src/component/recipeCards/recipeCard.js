@@ -1,6 +1,6 @@
 import * as React from "https://cdn.skypack.dev/react@17.0.1";
 import "./recipeCard.css";
-import { GetNewRatingById, GetRecipesPaginated, GetIngredientsPaginated, GetRatingById } from "../../utils";
+import { GetNewRatingById, GetRecipesPaginated, GetIngredientsPaginated, GetRatingById, GetRecipeImage } from "../../utils";
 import { Link, useNavigate } from "react-router-dom";
 import { useEffect, useState , useRef} from "react";
 import { RecipeFilter } from "../FilterBar/RecipeFilter";
@@ -16,6 +16,16 @@ export default RecipeCardList;
 function RecipeCardList(props) {
 
 
+
+    const Sidebarstyles = {
+        display :  props.sidebarVisible? "block": "none",
+
+
+      }
+
+
+    
+      
     const [searchTerm, setSearchTerm] = useState('');
     const navigate = useNavigate();
     const handleSearch = () => {
@@ -90,15 +100,16 @@ function RecipeCardList(props) {
     }
 
 
-    return <div className="recipecard-page-container">
+    return <div className="recipecard-page-container" >
  <Sidebar
         // closeSidebar= {closeSidebar}
         applyFilters = {applyFilters}
-        // style= {styles}
+        closeSidebar = {props.closeSidebar}
+        style= {Sidebarstyles}
         ></Sidebar>
 
         <div>
-            <header className="header">
+            <header className="header" style={props.style}>
                 <div className="recipelist-container">
                     <div className="Title">
                         Recipes
@@ -113,7 +124,7 @@ function RecipeCardList(props) {
                     )}
                 </div>
                 <div>
-                    <button className="filter-button" onClick={props.sidebarFunction}>Filters</button>
+                    <button className="filter-button" onClick={props.moveSidebar}>Filters</button>
                 </div>
                 <div className="search-bar">
                     <input
@@ -138,7 +149,6 @@ function RecipeCardList(props) {
                 {recipes.map((recipe) => (
                     <Card
                         key={recipe.id}
-                        img={`http://localhost:8080/api/recipes/image/${recipe.id}`}
                         title={recipe.name}
                         description={"Delicious recipe from " + recipe.cuisine.toLowerCase() + " cuisine. It serves up to " + recipe.serving + " people!"}
                         id={recipe.id}
@@ -182,8 +192,7 @@ export function Card(props) {
     const [starRating, setStarRating] = useState(0);
     const fetchData = async () => {
         try {
-            const rating = await GetRatingById(props.id, setStarRating)
-            console.log(rating)
+            const rating = await GetRatingById(props.id).then((rating) => {setStarRating(rating)})
         } catch (error) {
             console.error('Error fetching rating:', error);
         }
@@ -193,10 +202,26 @@ export function Card(props) {
         fetchData();
     }, [props.id]);
 
+
+    const [imageUrl, setImageUrl] = useState(null);
+
+    useEffect(() => {
+        async function fetchImage() {
+            try {
+                const imageUrl = await GetRecipeImage(props.id);
+                setImageUrl(imageUrl);
+            } catch (error) {
+                console.error('Error fetching image:', error);
+            }
+        }
+
+        fetchImage();
+    }, [props.id]);
+
     return (
         <div style={props.style} className="card">
             <div className="card__body">
-                <img src={props.img} className="card__image"/>
+                <img src={imageUrl} className="card__image"/>
                 <h2 className="card__title">{props.title}</h2>
                 <StarRating id='stars' stars={starRating}></StarRating>
                 <p className="card__description">{props.description}</p>
@@ -208,6 +233,3 @@ export function Card(props) {
         </div>
     );
 }
-
-
-
