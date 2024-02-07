@@ -60,38 +60,10 @@ const WelcomePage = (props) => {
                 </div>
             </header>
 
-            {/* <div class="image-container-welcomePage">
 
+            <GetTopThreeRecipes ></GetTopThreeRecipes>
 
-                <div class="columnWelcomePage">
-
-                    <Link to="/recipes/1730">
-                        <img className="gif" src={require('../../Resources/1730.jpg')} alt="Salmon" />
-                    </Link>
-
-                    <div className="TextContainer"><div className="TextBody">Glazed Salmon</div></div>
-
-
-                </div>
-                <div class="columnWelcomePage">
-                    <Link to="/recipes/1713">
-                        <img className="gif" src={require('../../Resources/GreekYogurtParfait.jpg')} alt="Parfait" />
-                    </Link>
-                    <div className="TextContainer"><div className="TextBody">Greek Yogurt Parfait</div></div>
-
-
-                </div>
-                <div class="columnWelcomePage">
-                    <Link to="/recipes/1719">
-                        <img className="gif" src={require('../../Resources/SushiRollswithSpicyTuna.jpg')} alt="Sushi" />
-                    </Link>
-                    <div className="TextContainer"><div className="TextBody">Sushi Rolls with Spicy Tuna</div></div>
-
-                </div>
-            </div> */}
-
-            <GetTopThreeRecipes isLoggedIn={props.isLoggedIn}></GetTopThreeRecipes>
-
+            {/*isLoggedIn={props.isLoggedIn}*/}
 
 
         </div>

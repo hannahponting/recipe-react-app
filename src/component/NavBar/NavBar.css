@@ -1,33 +1,94 @@
+/*navigation {*/
+/*    background-color: #07689F;*/
+/*    width: 100%;*/
+/*    position: relative;*/
+/*    !* height: 90px; *!*/
+/*    !* width: 1450px;*/
+/*    padding-top: 40px 0px;*/
+/*    vertical-align: middle; *!*/
+/*    !* position: fixed;*/
+/*   *!*/
+/*}*/
+/*.navbar-container {*/
+/*    max-width: 3000px;*/
+/*    overflow-x: hidden;*/
+/*}*/
+/*.button{*/
+/*    !* background-color: white;*/
+/*      color: #07689F;*/
+/*      font-size: 20px;*/
+/*      padding: 10px 60px;*/
+/*     float: right;*/
+/*      border-radius: 5px;*/
+/*      margin: 10px 0px;*/
+/*      cursor: pointer; *!*/
+/*}*/
+/*.hyperlink {*/
+/*    color: white;*/
+/*    font-family: NewsReader;*/
+/*    font-size: 24px;*/
+/*    text-decoration: none;*/
+/*    !* text-align: center; *!*/
+/*}*/
+/*.nerd-logo-removebg {*/
+/*    height: 100px;*/
+/*    !* padding-right: 5%; *!*/
+/*    !* left: 0%; *!*/
+/*    !* object-fit: cover; *!*/
+/*    !* position: relative; *!*/
+/*    !* top: 30px; *!*/
+/*    !* align-items: center; *!*/
+/*    width: auto;*/
+/*    margin-bottom: 1%;*/
+/*}*/
+/*!* .navigation.itemsAligned {*/
+/*    display: inline-block;*/
+/*    width: 20%;*/
+/*    padding-left: 3%;*/
+/*    padding-right: 10%;*/
+/*    cursor: pointer;*/
+/*    border-left: 1px solid white;*/
+/*    margin-right: 30px;*/
+/*  } *!*/
+/*ul{*/
+/*    display: flex;*/
+/*    justify-content: center;*/
+/*    !* align-items: center; *!*/
+/*    !* padding-left: 100%; *!*/
+/*    !* margin-right: 10em; *!*/
+/*    !* margin-top: 10%; *!*/
+/*}*/
+/*.itemsAligned li {*/
+/*    margin-left: 20px;*/
+/*    margin-right: 300px;*/
+/*    list-style-type: none;*/
+/*}*/
+/*.alignedToLeft{*/
+/*    list-style-type:none;*/
+/*    margin-right: 225px;*/
+/*}*/
+/*.alignedInTheMiddle {*/
+/*    list-style-type:none;*/
+/*    margin-right: 225px;*/
+/*    margin-left: 225px;*/
+/*}*/
+/*.alignedToRight {*/
+/*    list-style-type:none;*/
+/*    margin-left: 225px;*/
+/*}*/
+
 .navigation {
-
-    background-color: #07689f;
-    width: 100%;
+    background-color: #07689F;
     position: relative;
+    display: flex;
+    justify-content: flex-start;
 
-    /* height: 90px; */
-    /* width: 1450px;
-    padding-top: 40px 0px;
-    vertical-align: middle; */
-    /* position: fixed;
-   */
 }
 
 .navbar-container {
-  max-width: 3000px;
-  overflow-x: hidden;
-}
-
-
-.button{
-/* background-color: white;
-  color: #07689f;
-  font-size: 20px;
-  padding: 10px 60px;
- float: right; 
-  border-radius: 5px;
-  margin: 10px 0px;
-  cursor: pointer; */
-
+    max-width: 1000px;
+    margin: 0 auto;
+    /* overflow-x: auto; */
 }
 
 .hyperlink {
@@ -35,64 +96,37 @@
     font-family: NewsReader;
     font-size: 24px;
     text-decoration: none;
-    /* text-align: center; */
+    justify-content: flex-start;
 }
 
 .nerd-logo-removebg {
     height: 100px;
-    /* padding-right: 5%; */
-    /* left: 0%; */
-    /* object-fit: cover; */
-    /* position: relative; */
-    /* top: 30px; */
-    /* align-items: center; */
-    width: auto; 
+    width: auto;
     margin-bottom: 1%;
 }
 
-
-/* .navigation.itemsAligned {
-    display: inline-block;
-    width: 20%;
-    padding-left: 3%;
-    padding-right: 10%;
-    cursor: pointer;
-    border-left: 1px solid white;
-    margin-right: 30px;
-
-
-  } */
-  
-
-  ul{
+ul {
     display: flex;
-    justify-content: center;
-    /* align-items: center; */
-    /* padding-left: 100%; */
-    /* margin-right: 10em; */
-    /* margin-top: 10%; */
-    
-  }
-  .itemsAligned li {
-    margin-left: 20px;
-    margin-right: 300px;
+    justify-content: flex-start;
+    padding: 0;
+}
 
+li {
+    margin: 0 10px;
     list-style-type: none;
-  }
+    min-width: 225px;
 
-  .alignedToLeft{
-    list-style-type:none;
-    margin-right: 225px;
-  }
+}
 
-  .alignedInTheMiddle {
-    list-style-type:none;
-    margin-right: 225px;
-    margin-left: 225px;
 
-  }
+@media screen and (max-width: 768px) {
+    .navbar-container {
+        padding: 0 20px; /* Add some padding to the sides for smaller screens */
+    }
 
-  .alignedToRight {
-    list-style-type:none;
-    margin-left: 225px;
-  }
+    .itemsAligned li {
+        margin: 0 5px; /* Reduce the spacing between items for smaller screens */
+    }
+}
+
+
