@@ -47,11 +47,11 @@ const CustomToggle = React.forwardRef(({ style, className, children, onClick }, 
     const context = useContext(AuthContext);
     
     let user = context.user;
+    let setUser = context.setUser
     let firstName = context.user?.firstName ?? "Guest";
 
     const handleLogOut = () => {
-        props.setIsLoggedIn(false);
-        props.setUserId('');
+        setUser(null);
     }
 
     const mystyle = {
