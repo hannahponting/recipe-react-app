@@ -38,6 +38,8 @@ const SignUp = () => {
 
 
   const getData = async () => {
+    const regex = /^(?=.*[A-Z])(?=.*[!@#$%^&*()\-=']).{8,}$/;
+    if(regex.test(password)){
     try{
       const body = await PostNewUser(email, firstName, lastName);
       if (body == '201') {
@@ -61,7 +63,10 @@ const SignUp = () => {
     } catch (error) {
       setMessage(error.message)
     }
-  };
+  }else {
+    setMessage("The password must be at least 8 characters and contain an uppercase and a special character.")
+  }
+}
 
   const handleSubmitClick = () => {
     getData();
