@@ -94,21 +94,6 @@ export async function GetRatingById(id){
     return 0;
 }
 
-// export async function GeRatingById(id){
-//     fetch(`http://localhost:8080/api/rating/${id}`)
-//         .then(response => {
-//             if (!response.ok) {
-//                 throw new Error('Network response was not ok');
-//             }
-//             return response.json();
-//         })
-//         .catch(error => {
-//             return 0;
-//         })
-
-// }
-
-
 
 export function GetUserByEmail(id){
     const initialState = {
@@ -162,40 +147,42 @@ export async function PostNewUser(email, firstName, lastName){
         "firstName": firstName,
         "lastName": lastName
       }
-      console.log(requestBody)
-
       const response = await fetch('http://localhost:8080/api/person', {
         method: 'POST',
         headers: { 'content-type': 'application/json' },
         body: JSON.stringify(requestBody),
       });
-      console.log(response.status)
       if (response.status == '201') {
         return '201';
-    }else{
-    const body = await response.json();
-    console.log(body)
-      return body;
+      } if(response.status == 500) {
+        const body = await response.json();
+        return body
+      }
+        return "error";
     }
-}
 
+    export async function GetPersonByEmail(email){
+        const urlApi = `http://localhost:8080/api/person/${email}`
+        const response = await fetch(urlApi);
+        const body = await response.json();
+        return body;
+    }
 
+    export async function PostUserLogin(email, password){
+        const requestBody = {
+            "email": email,
+            "password": password
+          };
+            const response = await fetch('http://localhost:8080/api/account/login', {
+              method: 'POST',
+              headers: { 'content-type': 'application/json' },
+              body: JSON.stringify(requestBody),
+            });
+            const body = await response.json();
 
-// export async function GetRatingById(id, setStarRating){
-//     try {
-//         const response = await fetch(`http://localhost:8080/api/rating/${id}`);
-//         if (response.ok){
-//             const contentType = response.headers.get('content-type');
-//             if (contentType && contentType.includes('application/json')) {
-//                 const body = await response.json();
-//                 setStarRating(body);
-//             }
-//         } else {
-//             console.error('Error fetching data:', response.status);
-//         }
-//     } catch (error) {
-//         console.error('Network error:', error);
-//     }
-// };
+            return body;
+
+    }
+
 
 

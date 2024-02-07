@@ -20,7 +20,6 @@ const ChangePassword = () => {
     try {
       const body = await PostChangePassword(email, password).then((body)=>{setMessage(body)})
     } catch (error) {
-      console.error('Error fetching data:', error);
       setMessage(error.message);
     }
   };
@@ -28,7 +27,7 @@ const ChangePassword = () => {
   const handleSubmitClick = () => {
     getData();
   };
-
+  
 
   return (
     <>

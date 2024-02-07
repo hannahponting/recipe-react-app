@@ -2,7 +2,7 @@ import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import "./SignUp.css";
 import AuthContext from "../AuthContext/AuthContext";
-import { PostChangePassword, PostNewUser } from "../../utils";
+import { GetPersonByEmail, GetUserByEmail, PostChangePassword, PostNewUser } from "../../utils";
 
 
 const SignUp = () => {
@@ -30,38 +30,35 @@ const SignUp = () => {
     setPassword(event.target.value)
   }
 
+  const newUser ={
+    "email": email,
+    "firstName": firstName,
+    "lastName": lastName
+  }
+
 
   const getData = async () => {
     try{
       const body = await PostNewUser(email, firstName, lastName);
-      console.log(body)
-        answer = JSON.stringify(body);
-        console.log(answer)
       if (body == '201') {
         try {
           const body = await PostChangePassword(email, password).then((body)=>{
-          console.log(body);
-          if (body=='password saved') {
-            setMessage("Successfully signed up")
-            const urlApi = `http://localhost:8080/api/person/${email}`
-            const response = fetch(urlApi).then((response)=>{
-              const user = response.json();
-              setUser(user);
-            }
-            )
+             if (body=='password saved') {
+              setMessage("Successfully signed up")
+              GetPersonByEmail(email).then((body)=>{setUser(body)})
           }
           else{
-            setMessage(body);
+            setMessage(body.message);
           }
         })
-    
         } catch (error) {
-          console.error('Error fetching data:', error);
-          console.log(error.message);
+          setMessage(error)
         }
       }
+    else{
+      setMessage(body.message);
+    }
     } catch (error) {
-      console.error('Error fetching data:', error);
       setMessage(error.message)
     }
   };
