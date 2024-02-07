@@ -32,7 +32,7 @@ const CustomToggle = React.forwardRef(({ style, className, children, onClick }, 
           className={className} 
           aria-labelledby={labeledBy}>
     
-          <ul className="styled-list">
+          <ul className="styled-list" style={{paddingLeft: "1rem", paddingRight: "1rem"}}>
             {React.Children.toArray(children).filter(
               (child) =>
                 !value || child.props.children.toLowerCase().startsWith(value),
@@ -68,9 +68,9 @@ const CustomToggle = React.forwardRef(({ style, className, children, onClick }, 
         Hello {firstName}
       </Dropdown.Toggle>
       <Dropdown.Menu as={CustomMenu} className="dropdownList" >
-       <Dropdown.Item as={Link} to="/favourites">Favourites</Dropdown.Item>
-       <Dropdown.Item as={Link} to="/changepassword">Change Password</Dropdown.Item>
-       <Dropdown.Item as={Link} onClick={handleLogOut} to="/">Log Out</Dropdown.Item>
+       <Dropdown.Item as={Link} style={{textAlign: "center"}} to="/favourites">Favourites</Dropdown.Item>
+       <Dropdown.Item as={Link} style={{textAlign: "center"}} to="/changepassword">Change Password</Dropdown.Item>
+       <Dropdown.Item as={Link} style={{textAlign: "center"}} onClick={handleLogOut} to="/">Log Out</Dropdown.Item>
       </Dropdown.Menu>
     </Dropdown>
   )
