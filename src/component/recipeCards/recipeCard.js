@@ -103,12 +103,14 @@ function RecipeCardList(props) {
     return <div className="recipecard-page-container"
 
     >
-        <Sidebar
-            applyFilters={applyFilters}
-            closeSidebar={props.closeSidebar}
-            handleMouseEnter={props.handleMouseEnter}
-            handleMouseLeave={props.handleMouseLeave}
-            style={Sidebarstyles}
+ <Sidebar
+        toggle = {toggleFilter}
+        filterType = {filterType}
+        applyFilters = {applyFilters}
+        closeSidebar = {props.closeSidebar}
+        handleMouseEnter={props.handleMouseEnter}
+        handleMouseLeave={props.handleMouseLeave}
+        style= {Sidebarstyles}
         ></Sidebar>
 
         <div>
@@ -119,13 +121,13 @@ function RecipeCardList(props) {
                     </div>
                 </div>
 
-                <div>
+                {/* <div>
                     {filterType === 'ingredients' ? (
                         <IngredientFilter applyFilters={applyFilters} />
                     ) : (
                         <RecipeFilter applyFilters={applyFilters} />
                     )}
-                </div>
+                </div> */}
                 <div>
                     <button className="filter-button" onClick={props.moveSidebar}>Filters</button>
                 </div>
@@ -145,8 +147,8 @@ function RecipeCardList(props) {
 
         </div>
         <div>
-            <button onClick={(toggleFilter)}>Toggle Filter</button>
-        </div>
+      {/* <button onClick={(toggleFilter)}>Toggle Filter</button> */}
+    </div>
         <div className="Divider"></div>
 
         {recipes?.length > 0 ? (
