@@ -32,11 +32,6 @@ function LikeButton(props) {
           setIsActive(prevState => !prevState);
           postNewChangeToBack(props, personID, isActive);
         } else {
-
-
-
-
-
         navigate('/login');
 
         }
