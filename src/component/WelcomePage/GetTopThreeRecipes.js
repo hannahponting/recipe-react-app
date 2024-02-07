@@ -27,7 +27,7 @@ const GetTopThreeRecipes = () => {
     return (
         <>
             {recipes.length > 0 ? (
-                <div className="wrapperr">
+                <div className="wrapper">
 
                     {recipes.map((recipe) => (
                         <Card
