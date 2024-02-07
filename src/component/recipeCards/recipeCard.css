@@ -55,11 +55,11 @@
     cursor: pointer;
 
   }
-
+/* 
   .header {
     position: relative;
     z-index: -1;
-  }
+  } */
 
 .header.search-container {
     margin: 15px;
