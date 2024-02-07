@@ -26,17 +26,15 @@ function LikeButton(props) {
         }
     };
 
+
     const handleClick = () => {
-
         if (user) {
-            setIsActive(prevState => { return !prevState; });
-            postNewChangeToBack(props, personID, isActive);
-
+          setIsActive(prevState => !prevState);
+          postNewChangeToBack(props, personID, isActive);
         } else {
-
-            navigate('/login');
+        navigate('/login');
         }
-    };
+      };
     return (
         <>
             <div className={`heart-btn ${isActive ? 'heart-active' : ''}`} onClick={handleClick}>
