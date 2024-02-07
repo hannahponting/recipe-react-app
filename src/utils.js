@@ -196,12 +196,12 @@ export function GetUserByEmail(id){
 }
 
 
-export async function PostChangePassword(email, password){
+export async function PostChangePassword(email, password, code){
     const requestBody = {
         "email": email,
-        "password": password
-      };
-    
+        "password": password,
+        "resetCode": code
+    }
     const response = await fetch('http://localhost:8080/api/account/setPassword', {
           method: 'POST',
           headers: { 'content-type': 'application/json' },
@@ -262,5 +262,9 @@ export async function PostNewUser(email, firstName, lastName){
 
     }
 
+    export async function TriggerPasswordReset(email){
+        const response = await fetch(`http://localhost:8080/api/account/reset/${email}`);
+        return response.status;
+    }
 
 
