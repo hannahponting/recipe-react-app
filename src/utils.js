@@ -170,19 +170,6 @@ export async function submitRating (requestBody) {
       return response;
       
   }
-// export async function GeRatingById(id){
-//     fetch(`http://localhost:8080/api/rating/${id}`)
-//         .then(response => {
-//             if (!response.ok) {
-//                 throw new Error('Network response was not ok');
-//             }
-//             return response.json();
-//         })
-//         .catch(error => {
-//             return 0;
-//         })
-
-// }
 
 
 
@@ -209,21 +196,71 @@ export function GetUserByEmail(id){
 }
 
 
-// export async function GetRatingById(id, setStarRating){
-//     try {
-//         const response = await fetch(`http://localhost:8080/api/rating/${id}`);
-//         if (response.ok){
-//             const contentType = response.headers.get('content-type');
-//             if (contentType && contentType.includes('application/json')) {
-//                 const body = await response.json();
-//                 setStarRating(body);
-//             }
-//         } else {
-//             console.error('Error fetching data:', response.status);
-//         }
-//     } catch (error) {
-//         console.error('Network error:', error);
-//     }
-// };
+export async function PostChangePassword(email, password){
+    const requestBody = {
+        "email": email,
+        "password": password
+      };
+    
+    const response = await fetch('http://localhost:8080/api/account/setPassword', {
+          method: 'POST',
+          headers: { 'content-type': 'application/json' },
+          body: JSON.stringify(requestBody),
+        });
+    if (response.ok){
+        const body = await response.text();
+        return body;
+    }
+    if (response.status == 500) {
+        const body = await response.json();
+        return body;
+      }
+    return "error";
+}
+
+
+export async function PostNewUser(email, firstName, lastName){
+    let requestBody = {
+        "email": email,
+        "firstName": firstName,
+        "lastName": lastName
+      }
+      const response = await fetch('http://localhost:8080/api/person', {
+        method: 'POST',
+        headers: { 'content-type': 'application/json' },
+        body: JSON.stringify(requestBody),
+      });
+      if (response.status == '201') {
+        return '201';
+      } if(response.status == 500) {
+        const body = await response.json();
+        return body
+      }
+        return "error";
+    }
+
+    export async function GetPersonByEmail(email){
+        const urlApi = `http://localhost:8080/api/person/${email}`
+        const response = await fetch(urlApi);
+        const body = await response.json();
+        return body;
+    }
+
+    export async function PostUserLogin(email, password){
+        const requestBody = {
+            "email": email,
+            "password": password
+          };
+            const response = await fetch('http://localhost:8080/api/account/login', {
+              method: 'POST',
+              headers: { 'content-type': 'application/json' },
+              body: JSON.stringify(requestBody),
+            });
+            const body = await response.json();
+
+            return body;
+
+    }
+
 
 
