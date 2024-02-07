@@ -133,6 +133,54 @@ export function GetUserByEmail(id){
 }
 
 
+export async function PostChangePassword(email, password){
+    const requestBody = {
+        "email": email,
+        "password": password
+      };
+    
+    const response = await fetch('http://localhost:8080/api/account/setPassword', {
+          method: 'POST',
+          headers: { 'content-type': 'application/json' },
+          body: JSON.stringify(requestBody),
+        });
+    if (response.ok){
+        const body = await response.text();
+        return body;
+    }
+    if (response.status == 500) {
+        const body = await response.json();
+        return body
+      }
+    return "error";
+}
+
+
+export async function PostNewUser(email, firstName, lastName){
+    let requestBody = {
+        "email": email,
+        "firstName": firstName,
+        "lastName": lastName
+      }
+      console.log(requestBody)
+
+      const response = await fetch('http://localhost:8080/api/person', {
+        method: 'POST',
+        headers: { 'content-type': 'application/json' },
+        body: JSON.stringify(requestBody),
+      });
+      console.log(response.status)
+      if (response.status == '201') {
+        return '201';
+    }else{
+    const body = await response.json();
+    console.log(body)
+      return body;
+    }
+}
+
+
+
 // export async function GetRatingById(id, setStarRating){
 //     try {
 //         const response = await fetch(`http://localhost:8080/api/rating/${id}`);
