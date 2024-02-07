@@ -135,7 +135,7 @@ export async function PostChangePassword(email, password){
     }
     if (response.status == 500) {
         const body = await response.json();
-        return body
+        return body;
       }
     return "error";
 }

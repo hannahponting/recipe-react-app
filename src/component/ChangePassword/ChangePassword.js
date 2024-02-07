@@ -18,7 +18,7 @@ const ChangePassword = () => {
 
   const getData = async () => {
     try {
-      const body = await PostChangePassword(email, password).then((body)=>{setMessage(body)})
+      PostChangePassword(email, password).then((body)=>{setMessage(body)})
     } catch (error) {
       setMessage(error.message);
     }
@@ -27,7 +27,7 @@ const ChangePassword = () => {
   const handleSubmitClick = () => {
     getData();
   };
-  
+
 
   return (
     <>
