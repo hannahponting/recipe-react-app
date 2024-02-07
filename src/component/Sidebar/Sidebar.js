@@ -15,7 +15,7 @@ const Sidebar = (props) => {
 
 
     const containerRef = useRef(null);
-    const [filterType, setFilterType] = useState("default");
+    const [filterType, setFilterType] = useState(props.filterType);
     const [filterValues, setFilterValues] = useState({
             spice_level :"",
             difficulty : "",
@@ -92,7 +92,7 @@ const Sidebar = (props) => {
     console.log(filterType)
 
         
-        return ( filterType != 'ingredients' ? 
+        return ( props.filterType != 'ingredients' ? 
                 
                 
                 
@@ -104,16 +104,12 @@ const Sidebar = (props) => {
                 ref={containerRef} 
                 
                 >
-                <nav 
-               
-                
-                
-                >
+                <nav>
                         <div className="sidebar-top">
                         <h2>Filter recipes</h2>
 
-                            <button onClick={toggleFilterToDefault}>Recipe</button>
-                            <button onClick={props.toggle}>Ingredients</button>
+                            <button className="recipe-toggle" onClick={toggleFilterToDefault}>By Recipe Information</button>
+                            <button className="ingredients-toggle" onClick={()=> {toggleFilterToIngredients(); props.toggle();}}>By Ingredients</button>
                             <button className="sidebar-close-button" onClick={props.closeSidebar}><img className="sidebar-close-img" src={close}></img> </button>
                         </div>
                    
@@ -223,7 +219,6 @@ const Sidebar = (props) => {
                         <h3 id="subtitles-accordion">Rate this recipe</h3>
                         </AccordionBody>
                 </Accordion>
-                <IngredientFilter></IngredientFilter>
             
                 </nav>
                 
@@ -244,14 +239,21 @@ const Sidebar = (props) => {
         
         <div>
 
-<div className="ingredients-sidebar">
-<div className="sidebar-top">
+
+                <form className="ingredients-sidebar"
+                onSubmit={handleSubmit}
+                onMouseEnter={props.handleMouseEnter}
+                onMouseLeave={props.handleMouseLeave}
+                style = {props.style}
+
+                >
+                <div className="sidebar-top">
                         <h2>Filter recipes</h2>
-                        <button onClick={toggleFilterToDefault}>Recipe</button>
-                            <button onClick={toggleFilterToIngredients}>Ingredients</button>
+                        <button className="recipe-toggle" onClick={()=> {toggleFilterToDefault(); props.toggle();}}>By Recipe Information</button>
+                            <button className="ingredients-toggle"  onClick={toggleFilterToIngredients}>By Ingredients</button>
                             <button className="sidebar-close-button" onClick={props.closeSidebar}><img className="sidebar-close-img" src={close}></img> </button>
                         </div>
-                <form>
+                    <nav> 
                     {filters.map((filter, index) => (
                         <div key={index} className="filter-row">
                             <label htmlFor={`filter-${index}`}>Ingredient:</label>
@@ -259,7 +261,7 @@ const Sidebar = (props) => {
                                 type="text"
                                 id={`filter-${index}`}
                                 value={filter}
-                                onChange={(e) => handleInputChange(index, e.target.value)}
+                                onChange={(e) =>handleInputChange(index, e.target.value)}
                             />
                             {index > 0 && (
                                 <button type="button" onClick={() => handleRemoveFilter(index)}>
@@ -271,11 +273,11 @@ const Sidebar = (props) => {
                     <button type="button" onClick={handleAddFilter}>
                         Add ingredient
                     </button>
-                    <button className='filterButton' id="apply-filters" type="button" onClick={handleApplyFilters}>
+                    <button className='filterButton' id="apply-filters" type="button" onClick={()=>{ setFilterType("default"); handleApplyFilters(); props.closeSidebar();}}>
                         Apply Filters
                     </button>
+                    </nav>
                 </form>
-            </div>
 
 
 

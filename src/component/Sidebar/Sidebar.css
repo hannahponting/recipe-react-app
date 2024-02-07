@@ -15,7 +15,7 @@
 }
 
 .ingredients-sidebar {
-  background-color: rgba(226, 233, 236, 0.414);
+  background-color: white;
   height: 100%;
   width: 35%;
   position: absolute;
@@ -40,6 +40,26 @@
   margin-right: auto;
   margin-left: 15px;
   font-family: Inter;
+}
+
+
+.recipe-toggle {
+  width: 120px;
+  font-family: Inter;
+  font-weight: bold;
+  height: 60px;
+  margin-right: 15px;
+  border-radius: 5%;
+}
+
+.ingredients-toggle {
+  width: 120px;
+  font-family: Inter;
+  font-weight: bold;
+  height: 60px;
+  margin-right: 15px;
+  border-radius: 5%;
+  
 }
 
 .sidebar-close-button {
