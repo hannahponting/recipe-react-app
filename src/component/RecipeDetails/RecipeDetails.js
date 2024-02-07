@@ -57,7 +57,6 @@ function RecipeDetails(props) {
 
 
 
-                            </div>
 
 
                         </div>
