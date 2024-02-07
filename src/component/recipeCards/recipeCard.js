@@ -260,7 +260,7 @@ export function Card(props) {
 
                 <div className="recipe-icon-container">
                     <img src={require('../../Resources/world.png')} className="icon-image" />
-                    <p className="card__description">{props.cuisine.toLowerCase()}</p>
+                    <p className="card__description">{props.cuisine.charAt(0).toUpperCase() + props.cuisine.slice(1).toLowerCase()}</p>
                 </div>
 
             </div>

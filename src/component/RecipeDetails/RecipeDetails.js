@@ -51,14 +51,7 @@ function RecipeDetails(props) {
                             <div id="recipe-title">{recipe.name}
 
 
-                        <img src={imageUrl} className="details_image" />
                     </div>
-
-
-
-
-
-
                         </div>
 
                         <div className="like-button-container-recipe-info" >
