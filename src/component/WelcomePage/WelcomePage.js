@@ -20,7 +20,10 @@ const WelcomePage = (props) => {
     }
 
     return (
+
+
         <div className="welcomepage-container">
+
 
             <header className="header">
                 <div className="welcomepage-title-container">
@@ -40,8 +43,6 @@ const WelcomePage = (props) => {
             </header>
 
 
-
-
             <div className="Divider"></div>
 
             {/* <h2 className="Title2">Highlights</h2> */}
@@ -49,7 +50,7 @@ const WelcomePage = (props) => {
 
             <div className="video-container">
                 <video autoPlay loop muted>
-                    <source src={require('../../Resources/cookingVideo.mp4')} type='video/mp4' />
+                    <source src={require('../../Resources/cookingVideo.mp4')} type='video/mp4'/>
                 </video>
             </div>
 
@@ -61,7 +62,7 @@ const WelcomePage = (props) => {
             </header>
 
 
-            <GetTopThreeRecipes ></GetTopThreeRecipes>
+            <GetTopThreeRecipes></GetTopThreeRecipes>
 
             {/*isLoggedIn={props.isLoggedIn}*/}
 

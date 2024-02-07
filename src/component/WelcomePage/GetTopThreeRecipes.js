@@ -10,15 +10,11 @@ const GetTopThreeRecipes = () => {
     useEffect(() => {
         const fetchData = async () => {
             const result = await getTopRated(3);
-            console.log("print out result below")
-            console.log(result.recipes)
             setRecipes(result.recipes);
         };
 
 
         fetchData();
-        console.log("print out recipes below")
-        console.log(recipes)
     }, []);
 
 
@@ -26,16 +22,19 @@ const GetTopThreeRecipes = () => {
 
     return (
         <>
-            {recipes.length > 0 ? (
-                <div className="wrapperr">
-
-                    {recipes.map((recipe) => (
-                        <Card
-                            key={recipe.id}
-                            title={recipe.name}
-                            description={"Delicious recipe from " + recipe.cuisine.toLowerCase() + " cuisine. It serves up to " + recipe.serving + " people!"}
-                            id={recipe.id}
-                        />
+            {recipes?.length > 0 ? (
+            <div className="wrapper">
+                {recipes.map((recipe) => (
+                    <Card
+                        key={recipe.id}
+                        title={recipe.name}
+                        // description={"Delicious recipe from " + recipe.cuisine.toLowerCase() + " cuisine. It serves up to " + recipe.serving + " people!"}
+                        id={recipe.id}
+                        style={recipe.style}
+                        time_to_cook={recipe.time_to_cook}
+                        serving={recipe.serving}
+                        cuisine={recipe.cuisine}
+                    />
                     ))}
                 </div>
 

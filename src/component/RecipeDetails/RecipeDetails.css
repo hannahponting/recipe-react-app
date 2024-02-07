@@ -158,3 +158,8 @@
     align-items: center;
     text-align: center;
 }
+
+.like-button-container-recipe-info {
+    margin-left: 60%;
+    margin-top: 5px;
+}
