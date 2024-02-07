@@ -81,6 +81,20 @@ export async function GetIngredientsPaginated(pageNum, pageSize, query){
     const data = ({ recipes: body.content, isLoading: false, totalPages: body.totalPages })
 return data;
 }
+export async function GetRecipeImage(recipeId){
+    const response = await fetch(`http://localhost:8080/api/recipes/image/${recipeId}`);
+    const blob = await response.blob();
+    const imageUrl = URL.createObjectURL(blob);
+    return imageUrl;
+}
+
+export async function getTopRated(topRecipeNumber) {
+    const urlApi = `http://localhost:8080/api/recipes/top/${topRecipeNumber}`
+    const response = await fetch(urlApi);
+    const body = await response.json();
+    const data = ({ recipes: body, isLoading: false })
+    return data;
+}
 
 export async function GetRatingById(id){
     const response = await fetch(`http://localhost:8080/api/rating/${id}`);
