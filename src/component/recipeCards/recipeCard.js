@@ -106,11 +106,12 @@ function RecipeCardList(props) {
     
     >
  <Sidebar
+        toggle = {toggleFilter}
         applyFilters = {applyFilters}
         closeSidebar = {props.closeSidebar}
         handleMouseEnter={props.handleMouseEnter}
         handleMouseLeave={props.handleMouseLeave}
-        style= {Sidebarstyles}
+        // style= {Sidebarstyles}
         ></Sidebar>
 
         <div>

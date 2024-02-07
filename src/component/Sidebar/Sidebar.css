@@ -9,8 +9,21 @@
    position: absolute;
    right: 0%;
    overflow: scroll;
+   overflow-x: hidden;
    display: block;
    /* flex-direction: column; */
+}
+
+.ingredients-sidebar {
+  background-color: rgba(226, 233, 236, 0.414);
+  height: 100%;
+  width: 35%;
+  position: absolute;
+  right: 0%;
+  display: block;
+  overflow: scroll;
+  overflow-x: hidden;
+
 }
 
 .sidebar-top {

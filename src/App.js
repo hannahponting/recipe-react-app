@@ -59,7 +59,7 @@ function App() {
     }
  
 
-      console.log(isMouseOver)
+      // console.log(sidebarVisible)
 
 
   return (
