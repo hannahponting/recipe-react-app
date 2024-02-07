@@ -72,6 +72,8 @@ function RecipeCardList(props) {
 
     const applyFilters = (filterArray) => {
 
+        
+
         if (Array.isArray(filterArray) && filterArray.length > 0) {
             // Case: filterArray is an array of strings
             const queryParams = filterArray.map(value => value).join('&');
@@ -100,11 +102,14 @@ function RecipeCardList(props) {
     }
 
 
-    return <div className="recipecard-page-container" >
+    return <div className="recipecard-page-container" 
+    
+    >
  <Sidebar
-        // closeSidebar= {closeSidebar}
         applyFilters = {applyFilters}
         closeSidebar = {props.closeSidebar}
+        handleMouseEnter={props.handleMouseEnter}
+        handleMouseLeave={props.handleMouseLeave}
         style= {Sidebarstyles}
         ></Sidebar>
 
@@ -126,6 +131,7 @@ function RecipeCardList(props) {
                 <div>
                     <button className="filter-button" onClick={props.moveSidebar}>Filters</button>
                 </div>
+                <div className="header-search-container" style={props.style}> 
                 <div className="search-bar">
                     <input
                         type="text"
@@ -133,6 +139,7 @@ function RecipeCardList(props) {
                         onChange={(e) => setSearchTerm(e.target.value)}
                     />
                     <button onClick={handleSearch}>Search</button>
+                </div>
                 </div>
 
             </header>

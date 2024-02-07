@@ -61,7 +61,7 @@
     z-index: -1;
   } */
 
-.header.search-container {
+.header-search-container {
     margin: 15px;
     display: flex;
     border-radius: 5px;

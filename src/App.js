@@ -23,6 +23,7 @@ import Sidebar from './component/Sidebar/Sidebar.js';
 
 function App() {
   const [sidebarVisible, setSidebarVisible] = useState(false);
+  const [isMouseOver, setIsMouseOver] = useState(false);
   const [user, setUser] = useState();
   const isLoginPage = window.location.pathname === '/login';
 
@@ -32,20 +33,25 @@ function App() {
 }
 
   const closeSidebar = (event) => {
-            event.preventDefault()
+            if (event) event.preventDefault()
             setSidebarVisible((prevSidebar) => {
               return false
             
             })
         }
-  
- 
- 
-    
 
+        const closeSidebaronExitClick = () => {
+          if (isMouseOver === false && sidebarVisible === true) {closeSidebar()}
+        }
+        const handleMouseEnter = () => {
+          setIsMouseOver(true)
+      }
+      const handleMouseLeave = () => {
+          setIsMouseOver(false)
+        };
+  
     const headerStyle = {
       zIndex : !sidebarVisible? "1": "-1"
-      
     }
 
     const appStyle = {
@@ -53,11 +59,11 @@ function App() {
     }
  
 
-
+      console.log(isMouseOver)
 
 
   return (
-    <div className="App" style={appStyle} >
+    <div className="App" style={appStyle} onClick={closeSidebaronExitClick} >
     <AuthContext.Provider value = {{user, setUser}}>
              
       <BrowserRouter>
@@ -66,7 +72,7 @@ function App() {
       
           <Route path='/' element={<NavBar  style={headerStyle} />}>
             <Route path="/" element={<WelcomePage />} />
-            <Route path="/recipes" element={<RecipeCardList sidebarVisible={sidebarVisible} moveSidebar={moveSidebar} style={headerStyle} closeSidebar={closeSidebar}  />} />
+            <Route path="/recipes" element={<RecipeCardList sidebarVisible={sidebarVisible} handleMouseLeave={handleMouseLeave} handleMouseEnter={handleMouseEnter} moveSidebar={moveSidebar} style={headerStyle} closeSidebar={closeSidebar}   />} />
             <Route path="/recipes/:id" element={<RecipeDetails/>} />
             <Route path="/recipes/search" element={<RecipeSearchResults />} />
             <Route path="/login" element={<LoginPage/>} />
