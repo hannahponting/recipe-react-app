@@ -107,6 +107,70 @@ export async function GetRatingById(id){
     } 
     return 0;
 }
+export async function GetUserFavourRecipes(pageNum, pageSize, userId) {
+    const urlApi = `http://localhost:8080/api/recipes/favourite/${userId}/page/${pageNum}/${pageSize}`
+    const response = await fetch(urlApi);
+    const body = await response.json()
+    const data = ({ recipes: body.content, isLoading: false, totalPages: body.totalPages })
+    return data;
+}
+
+export function isFavourite(recipeId, personId) {
+    const urlApi = `http://localhost:8080/api/rating/favourite/${personId}/${recipeId}`;
+
+    return fetch(urlApi)
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            return response.json();
+        })
+        .then(data => {
+            if (typeof data !== 'boolean') {
+                throw new Error('Response did not contain a boolean value');
+            }
+            return data;
+        })
+        .catch(error => {
+
+            return false;
+        });
+}
+
+export function postNewChangeToBack(props, personID, isActive) {
+    fetch('http://localhost:8080/api/rating', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+            recipeId: props.recipeId,
+            personId: personID,
+            favourite: !isActive
+        }),
+    })
+        .then(response => {
+            if (response.ok) {
+            } else {
+                console.log(response)
+                console.error('Failed to add recipe to favorites');
+            }
+        })
+        .catch(error => {
+            console.error('Error:', error);
+        });
+}
+
+export async function submitRating (requestBody) {
+    const response = await fetch('http://localhost:8080/api/rating', {
+        method: 'POST',
+        headers: { 'content-type': 'application/json' },
+        body: JSON.stringify(requestBody),
+      });
+      return response;
+      
+  }
+
 
 
 export function GetUserByEmail(id){

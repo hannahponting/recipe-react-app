@@ -10,15 +10,11 @@ const GetTopThreeRecipes = () => {
     useEffect(() => {
         const fetchData = async () => {
             const result = await getTopRated(3);
-            console.log("print out result below")
-            console.log(result.recipes)
             setRecipes(result.recipes);
         };
 
 
         fetchData();
-        console.log("print out recipes below")
-        console.log(recipes)
     }, []);
 
 
