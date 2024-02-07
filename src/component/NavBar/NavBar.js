@@ -34,7 +34,7 @@ const Navigation = (props) => {
 
 
                 <div>
-                    <ul>
+                    <ul className="headerlist">
                         <div className="alignedToLeft">
                             <li>
                                 <Link className="hyperlink" to="/">Home</Link>
