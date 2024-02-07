@@ -3,6 +3,7 @@ import './Favourite.css';
 import React, { useContext, useEffect, useState } from "react";
 import { Card } from "../recipeCards/recipeCard";
 import AuthContext from "../AuthContext/AuthContext";
+import { GetUserFavourRecipes } from '../../utils';
 
 
 
@@ -62,7 +63,6 @@ const Favourites = () => {
                                 {recipes.map((recipe) => (
                                     <Card
                                         key={recipe.id}
-                                        img={`http://localhost:8080/api/recipes/image/${recipe.id}`}
                                         title={recipe.name}
                                         description={"Delicious recipe from " + recipe.cuisine.toLowerCase() + " cuisine. It serves up to " + recipe.serving + " people!"}
                                         id={recipe.id}
@@ -126,14 +126,6 @@ const Favourites = () => {
 
 
 
-
-export async function GetUserFavourRecipes(pageNum, pageSize, userId) {
-    const urlApi = `http://localhost:8080/api/recipes/favourite/${userId}/page/${pageNum}/${pageSize}`
-    const response = await fetch(urlApi);
-    const body = await response.json()
-    const data = ({ recipes: body.content, isLoading: false, totalPages: body.totalPages })
-    return data;
-}
 
 
 export default Favourites;
