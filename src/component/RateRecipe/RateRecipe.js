@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import "./RateRecipe.css"
-import { GetUserByEmail } from "../../utils";
+import { submitRating } from "../../utils";
 
 import AuthContext from "../AuthContext/AuthContext";
 import { useNavigate } from "react-router-dom";
@@ -22,28 +22,18 @@ const RateRecipe = (props) => {
   const navigate = useNavigate();
 
   const getData = async () => {
-    try {
-      const response = await fetch('http://localhost:8080/api/rating', {
-        method: 'POST',
-        headers: { 'content-type': 'application/json' },
-        body: JSON.stringify(requestBody),
-      });
-      const body = await response.json();
+    const response = await submitRating(requestBody);
+    const body = response.json();
       if (response.status == 201) {
-        console.log((body));
         props.fetchData();
         setMessage("Submitted Rating");
       }
       if (response.status == 500) {
         navigate('/login');
-        console.log(body.message);
         setMessage(body.message);
       }
-    } catch (error) {
-      console.error('Error fetching data:', error);
-      setMessage(error.message)
     }
-  };
+
 
   function handleClick() {
     getData();

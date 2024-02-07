@@ -29,7 +29,6 @@ function App() {
 
  const moveSidebar = () => {
   setSidebarVisible((prevSidebar) => !prevSidebar)
-  console.log(sidebarVisible)
 }
 
   const closeSidebar = (event) => {
@@ -59,7 +58,6 @@ function App() {
     }
  
 
-      console.log(isMouseOver)
 
 
   return (

@@ -1,5 +1,5 @@
 import { Await, useParams } from "react-router-dom"
-import { GetNewRatingById, GetRatingById, GetRecipes, GetRecipesById } from "../../utils";
+import { GetNewRatingById, GetRatingById, GetRecipes, GetRecipesById, GetRecipeImage } from "../../utils";
 import "./RecipeDetails.css";
 import { useEffect, useState } from "react";
 import StarRating from "../StarRating/StarRating";
@@ -24,6 +24,21 @@ function RecipeDetails(props) {
         fetchData();
     }, [params.id]);
 
+    const [imageUrl, setImageUrl] = useState(null);
+
+    useEffect(() => {
+        async function fetchImage() {
+            try {
+                const imageUrl = await GetRecipeImage(params.id);
+                setImageUrl(imageUrl);
+            } catch (error) {
+                console.error('Error fetching image:', error);
+            }
+        }
+
+        fetchImage();
+    }, [params.id]);
+
     try {
         let recipe = GetRecipesById(params.id);
         return (
@@ -35,7 +50,9 @@ function RecipeDetails(props) {
                         <div className="recipe-title-container">
                             <div id="recipe-title">{recipe.name}
 
-                                
+
+                        <img src={imageUrl} className="details_image" />
+                    </div>
 
 
 
