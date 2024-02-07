@@ -7,15 +7,15 @@ import { Accordion, AccordionBody, AccordionHeader, Nav } from "react-bootstrap"
 import { InputGroup } from "react-bootstrap";
 import { GetUserByEmail } from "../../utils";
 import close from "../../Resources/delete-sign.png"
+import { IngredientFilter } from "../FilterBar/IngredientFilter";
 
 
 const Sidebar = (props) => {
+    const [filters, setFilters] = useState(['']);
 
-    
 
     const containerRef = useRef(null);
-    const [isMouseOver, setIsMouseOver] = useState(false);
-    const [isScrolling, setIsScrolling] = useState(false);
+    const [filterType, setFilterType] = useState(props.filterType);
     const [filterValues, setFilterValues] = useState({
             spice_level :"",
             difficulty : "",
@@ -59,11 +59,43 @@ const Sidebar = (props) => {
     }
         
 
+    const handleInputChange = (index, value) => {
+        const newFilters = [...filters];
+        newFilters[index] = value;
+        setFilters(newFilters);
+    };
 
-  
-     
+    const handleRemoveFilter = (index) => {
+        const newFilters = [...filters];
+        newFilters.splice(index, 1);
+        setFilters(newFilters);
+    };
+
+
+    const handleApplyFilters = () => {
+        const nonEmptyFilters = filters.filter((filter) => filter !== '');
+        props.applyFilters(nonEmptyFilters);
+    };
+
+    const handleAddFilter = () => {
+        setFilters([...filters, '']);
+    };
+               
+                        
+    const toggleFilterToDefault = () => {
+        setFilterType("default")
+    }
+
+    const toggleFilterToIngredients = () => {
+        setFilterType("ingredients")
+    }
+    console.log(filterType)
+
         
-        return (
+        return ( props.filterType != 'ingredients' ? 
+                
+                
+                
                 <form onSubmit={handleSubmit} className="sidebar"
                 style = {props.style}
                 onMouseEnter={props.handleMouseEnter}
@@ -72,13 +104,12 @@ const Sidebar = (props) => {
                 ref={containerRef} 
                 
                 >
-                <nav 
-               
-                
-                
-                >
+                <nav>
                         <div className="sidebar-top">
                         <h2>Filter recipes</h2>
+
+                            <button className="recipe-toggle" onClick={toggleFilterToDefault}>By Recipe Information</button>
+                            <button className="ingredients-toggle" onClick={()=> {toggleFilterToIngredients(); props.toggle();}}>By Ingredients</button>
                             <button className="sidebar-close-button" onClick={props.closeSidebar}><img className="sidebar-close-img" src={close}></img> </button>
                         </div>
                    
@@ -188,7 +219,6 @@ const Sidebar = (props) => {
                         <h3 id="subtitles-accordion">Rate this recipe</h3>
                         </AccordionBody>
                 </Accordion>
-
             
                 </nav>
                 
@@ -201,6 +231,74 @@ const Sidebar = (props) => {
                         Apply Filters</button>
 
                 </form>
+
+
+
+        : 
+        
+        
+        <div>
+
+
+                <form className="ingredients-sidebar"
+                onSubmit={handleSubmit}
+                onMouseEnter={props.handleMouseEnter}
+                onMouseLeave={props.handleMouseLeave}
+                style = {props.style}
+
+                >
+                <div className="sidebar-top">
+                        <h2>Filter recipes</h2>
+                        <button className="recipe-toggle" onClick={()=> {toggleFilterToDefault(); props.toggle();}}>By Recipe Information</button>
+                            <button className="ingredients-toggle"  onClick={toggleFilterToIngredients}>By Ingredients</button>
+                            <button className="sidebar-close-button" onClick={props.closeSidebar}><img className="sidebar-close-img" src={close}></img> </button>
+                        </div>
+                    <nav> 
+                    {filters.map((filter, index) => (
+                        <div key={index} className="filter-row">
+                            <label htmlFor={`filter-${index}`}>Ingredient:</label>
+                            <input
+                                type="text"
+                                id={`filter-${index}`}
+                                value={filter}
+                                onChange={(e) =>handleInputChange(index, e.target.value)}
+                            />
+                            {index > 0 && (
+                                <button type="button" onClick={() => handleRemoveFilter(index)}>
+                                    Remove
+                                </button>
+                            )}
+                        </div>
+                    ))}
+                    <button type="button" onClick={handleAddFilter}>
+                        Add ingredient
+                    </button>
+                    <button className='filterButton' id="apply-filters" type="button" onClick={()=>{ setFilterType("default"); handleApplyFilters(); props.closeSidebar();}}>
+                        Apply Filters
+                    </button>
+                    </nav>
+                </form>
+
+
+
+
+
+        </div>
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
         )
 
         }

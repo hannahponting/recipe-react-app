@@ -9,8 +9,21 @@
    position: absolute;
    right: 0%;
    overflow: scroll;
+   overflow-x: hidden;
    display: block;
    /* flex-direction: column; */
+}
+
+.ingredients-sidebar {
+  background-color: white;
+  height: 100%;
+  width: 35%;
+  position: absolute;
+  right: 0%;
+  display: block;
+  overflow: scroll;
+  overflow-x: hidden;
+
 }
 
 .sidebar-top {
@@ -27,6 +40,26 @@
   margin-right: auto;
   margin-left: 15px;
   font-family: Inter;
+}
+
+
+.recipe-toggle {
+  width: 120px;
+  font-family: Inter;
+  font-weight: bold;
+  height: 60px;
+  margin-right: 15px;
+  border-radius: 5%;
+}
+
+.ingredients-toggle {
+  width: 120px;
+  font-family: Inter;
+  font-weight: bold;
+  height: 60px;
+  margin-right: 15px;
+  border-radius: 5%;
+  
 }
 
 .sidebar-close-button {

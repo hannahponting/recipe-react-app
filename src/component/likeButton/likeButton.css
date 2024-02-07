@@ -1,10 +1,10 @@
 
 @import url('https://fonts.googleapis.com/css?family=Montserrat:600&display=swap');
 .heart-btn{
-    position: absolute;
-    top: 91%;
-    left: 88%;
-    transform: translate(-50%,-50%);
+    /* position: absolute; */
+    /* top: 91%;
+    left: 88%; */
+    /* transform: translate(-50%,-50%); */
 }
 
 .heart{
@@ -14,23 +14,24 @@
     background-size: 2900%;
     height: 100px;
     width: 100px;
-    top: 50%;
-    left: 50%;
+    /* top: 50%;
+    left: 50%; */
     transform: translate(-50%,-50%);
 
 }
 .content{
-    padding: 20px 20px;
+    padding: 13px 16px;
     display: flex;
-    border: 2px solid white;
-    border-radius: 50%;
+    border: 5px solid rgb(255, 255, 255);
+
+    border-radius: 60%;
     cursor: pointer;
 
 }
 
 .heart-btn:hover .content{
 
-    border: 3px solid grey;
+    border: 3px solid rgb(255, 255, 255);
 }
 
 
