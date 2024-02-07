@@ -1,7 +1,7 @@
 .welcomepage-container{
 
   margin-bottom: 200px;
-
+  overflow-x: auto;
 
 }
 
@@ -11,7 +11,7 @@
   display: flex;
   margin: auto;
   align-items: "center";
-  max-width: 3000px;
+  /*max-width: 3000px;*/
   justify-content: "space-between";
 }
 
