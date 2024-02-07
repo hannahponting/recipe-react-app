@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Card } from "../recipeCards/recipeCard";
+import { getTopRated } from "../../utils";
 
 const GetTopThreeRecipes = () => {
 
@@ -29,7 +30,6 @@ const GetTopThreeRecipes = () => {
                     {recipes.map((recipe) => (
                         <Card
                             key={recipe.id}
-                            img={`http://localhost:8080/api/recipes/image/${recipe.id}`}
                             title={recipe.name}
                             description={"Delicious recipe from " + recipe.cuisine.toLowerCase() + " cuisine. It serves up to " + recipe.serving + " people!"}
                             id={recipe.id}
@@ -44,21 +44,6 @@ const GetTopThreeRecipes = () => {
         </>
     )
 };
-
-
-export async function getTopRated(topRecipeNumber) {
-    const urlApi = `http://localhost:8080/api/recipes/top/${topRecipeNumber}`
-    const response = await fetch(urlApi);
-
-    const body = await response.json();
-
-    console.log("body")
-    console.log(body)
-    const data = ({ recipes: body, isLoading: false })
-    return data;
-
-
-}
 
 
 export default GetTopThreeRecipes;
