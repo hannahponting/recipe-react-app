@@ -55,7 +55,7 @@ const Navigation = (props) => {
                             </li>
                         </div>
 
-                        <div className="alignedToRight">
+                        <div className="alignedInTheMiddle">
                             {user ? (
                                 <li> <DropdownAccount className="drop-down-menu" /></li>
                             ) : (

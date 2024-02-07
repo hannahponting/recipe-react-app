@@ -144,7 +144,7 @@
     background-color: #eee;
     margin-top: 35px;
     color: #444;
-    padding: 18px;
+    padding: 5px;
     width: 100%;
     text-align: left;
     outline: none;
@@ -154,5 +154,7 @@
 
 
 .accordion-body {
-    height: 230px;
+    height: 200px;
+    align-items: center;
+    text-align: center;
 }

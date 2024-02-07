@@ -60,29 +60,14 @@ const Sidebar = (props) => {
         
 
 
-    // const handleMouseEnter = () => {
-    //     setIsMouseOver(true)
-    //     // setIsScrolling(prevIsScrolling => !prevIsScrolling)
-    //     // console.log(isScrolling)
-    // }
+  
+     
         
-    // const handleMouseLeave = () => {
-    //     setIsMouseOver(false)
-    //     // setIsScrolling(prevIsScrolling => !prevIsScrolling);
-    //   };
-
-      const handleScroll = (e) => {
-            // if (isScrolling) {containerRef.current.scrollTop += e.deltaY;}
-            // console.log(containerRef.current.scrollTop)
-            // console.log(e.deltaY)
-      }
-        
-    //   console.log(isMouseOver)
         return (
                 <form onSubmit={handleSubmit} className="sidebar"
                 style = {props.style}
-                // onMouseEnter={handleMouseEnter}
-                // onMouseLeave={handleMouseLeave}
+                onMouseEnter={props.handleMouseEnter}
+                onMouseLeave={props.handleMouseLeave}
                 // onWheel={handleScroll}
                 ref={containerRef} 
                 
@@ -210,7 +195,7 @@ const Sidebar = (props) => {
 
                 <button  className="apply-filter-button" 
                 
-                onClick={applyFiltersHandler}>
+                onClick= {()=> {applyFiltersHandler(); props.closeSidebar();}}>
 
 
                         Apply Filters</button>
