@@ -18,9 +18,16 @@ const ChangePassword = () => {
 
   const getData = async () => {
     try {
-      PostChangePassword(email, password).then((body)=>{setMessage(body)})
+      const body = await PostChangePassword(email, password).then((body)=>{
+         if (body=='password saved') {
+          setMessage(body)
+      }
+      else{
+        setMessage(body.message);
+      }
+    })
     } catch (error) {
-      setMessage(error.message);
+      setMessage(error)
     }
   };
 
