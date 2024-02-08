@@ -14,15 +14,7 @@ export default RecipeCardList;
 
 
 function RecipeCardList(props) {
-
-
-
-    const Sidebarstyles = {
-        display: props.sidebarVisible ? "block" : "none",
-
-
-    }
-    const [searchTerm, setSearchTerm] = useState('');
+ const [searchTerm, setSearchTerm] = useState('');
     const navigate = useNavigate();
     const handleSearch = () => {
         navigate(`/recipes/search?keyword=${encodeURIComponent(searchTerm)}`)
@@ -34,6 +26,21 @@ function RecipeCardList(props) {
     const [filterType, setFilterType] = useState("default");
     const [pageSize, setPageSize] = useState();
     const queryEndpointRef = useRef(GetRecipesPaginated);
+
+
+    const Sidebarstyles = {
+        display: props.sidebarVisible ? "block" : "none"
+    }
+
+    const buttonStyleForDefault = {
+        backgroundColor: filterType === "default"? "#07689F": "buttonface",
+        color: "white"
+    }
+
+    const butttonStyleForIngredients = {
+        backgroundColor: filterType === "ingredients"? "#07689F": "buttonface",
+        color: "white"
+    }
 
     useEffect(() => {
         const fetchData = async () => {
@@ -119,6 +126,8 @@ function RecipeCardList(props) {
         closeSidebar = {props.closeSidebar}
         handleMouseEnter={props.handleMouseEnter}
         handleMouseLeave={props.handleMouseLeave}
+        buttonStyleForDefault = {buttonStyleForDefault}
+        butttonStyleForIngredients = {butttonStyleForIngredients}
         style= {Sidebarstyles}
         ></Sidebar>
 

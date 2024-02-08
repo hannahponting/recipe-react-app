@@ -5,6 +5,7 @@
   background-color: white;
    height: 100%;
    width: 35%;
+   min-width: fit-content;
    /* max-width: 50%; */
    position: absolute;
    right: 0%;
@@ -14,17 +15,7 @@
    /* flex-direction: column; */
 }
 
-.ingredients-sidebar {
-  background-color: white;
-  height: 100%;
-  width: 35%;
-  position: absolute;
-  right: 0%;
-  display: block;
-  overflow: scroll;
-  overflow-x: hidden;
 
-}
 
 .sidebar-top {
   height: 130px;
@@ -49,6 +40,7 @@
   font-weight: bold;
   height: 60px;
   margin-right: 15px;
+  margin-left: 10px;
   border-radius: 5%;
 }
 
@@ -60,6 +52,43 @@
   margin-right: 15px;
   border-radius: 5%;
   
+}
+
+.filter-rows {
+  display: flex;
+  height: 80px;
+  margin-left: 40px;
+  margin-bottom: 30px;
+  align-items: center;
+}
+
+.ingredient-label {
+  margin-right: 10px;
+  font-family: Inter;
+}
+
+.ingredient-input {
+  margin-right: 10px;
+}
+
+.remove-ingredients {
+  font-family: Inter;
+  width: 80px;
+  border-radius: 10%;
+
+}
+
+.add-ingredients-container {
+display: flex;
+flex-direction: column;
+
+}
+
+.add-ingredients {
+  align-self: center;
+  font-family: Inter;
+  width: 90px;
+  border-radius: 10%;
 }
 
 .sidebar-close-button {
@@ -78,7 +107,6 @@
 
 .sidebar-button-container {
   height: 100px;
-  border-bottom: black solid;
  
   width: 100%;
   margin-bottom: 20px;
@@ -94,35 +122,67 @@
   height: 50px;
 }
 
+
+
 .sidebar-accordion {
-  border-bottom: 1px solid black;
-  
   margin: 10px 0px;
+  border-bottom: 2px solid rgb(146, 143, 143);
+
 }
 
 .sidebar-accordion-header {
-  background-color: purple;
   color: antiquewhite;
   font-family: Inter;
   font-weight:300;
 }
 
-.sidebar-accordion-body{
+#subtitles-accordion {
+  padding: 10px;
+  border-bottom: 2px solid rgb(204, 204, 204, 0.70);
+
+}
+
+#sidebar-accordion-body{
+  height: fit-content;
   font-family: Inter;
-  margin-bottom: 100px;
+  display: flex;
+  flex-direction: column;
+}
+
+
+
+
+#input-container {
+  width: 500px;
+  display: flex;
+  flex-direction: column;
+  align-items: baseline;
+  margin-top: 30px;
+  margin-bottom: 50px;
+  
+}
+
+
+
+#input-container > label  {
+  margin-left: 15px;
+  align-self: center;
+  font-size: x-large;
 }
 
 .apply-filter-button {
 
-  width: 200px;
-  height: 100px;
+  width: 130px;
+  height: 60px;
   margin-top: 50px;
   background-color: #07689F; /* Change the color to your preferred button color */
   color: #fff;
   border: none;
+  font-family: Inter;
   border-radius: 5px;
   padding: 10px 15px;
   margin-left: 5px;
   margin-right: 5px;
   cursor: pointer;
+  align-self: center;
 }
