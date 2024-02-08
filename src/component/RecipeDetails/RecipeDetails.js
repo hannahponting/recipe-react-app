@@ -66,12 +66,12 @@ function RecipeDetails(props) {
                     <div className="Divider"></div>
                     <div className="recipe-details">
                         <div className="details_image">
-                            <img src={`http://localhost:8080/api/recipes/image/${recipe.id}`} className="details_image" />
+                            <img alt="" src={`http://localhost:8080/api/recipes/image/${recipe.id}`} className="details_image" />
                         </div>
 
                         <h2 className="subtitles">Details</h2>
                         <ul className="details">
-                            <li className="timer-listitem"><img src={require('../../Resources/clockIcon.png')} id="timer" />
+                            <li className="timer-listitem"><img alt="" src={require('../../Resources/clockIcon.png')} id="timer" />
                                 <strong>{recipe.time_to_cook} </strong>
                             </li>
                             <li><strong>Meal Type: </strong>{recipe.mealType[0] + recipe.mealType.slice(1).toLowerCase()}</li>
