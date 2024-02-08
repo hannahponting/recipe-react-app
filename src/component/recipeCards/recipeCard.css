@@ -142,9 +142,22 @@
 }
 
 .card__title {
-    padding: 1rem;
+    font-family: Inter;
+    font-size: 32px;
+
+    /* text-align: center;
+    justify-content: center; */
+    
 }
 
+.card__title__container{
+    height: 175px;
+    display: flex;
+    align-items: center;
+    padding: 2%;
+    justify-content: center; 
+
+}
 .card__description {
     padding: 0 1rem;
     font-size: 24px;
@@ -214,5 +227,7 @@
 }
 .like-button-container {
     margin-left: 40%;
+    /* align-items: center; */
+    display: flex;
 }
 

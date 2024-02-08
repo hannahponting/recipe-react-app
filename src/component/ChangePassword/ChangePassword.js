@@ -10,7 +10,7 @@ const ChangePassword = () => {
   const [codeMessage, setCodeMessage] = useState('');
   const [code, setCode] = useState('');
 
-  const[needCode, setNeedCode] = useState(false);
+  const [needCode, setNeedCode] = useState(false);
 
   const handleEmailChange = (event) => {
     setEmail(event.target.value);
@@ -24,14 +24,14 @@ const ChangePassword = () => {
 
   const getData = async () => {
     try {
-      const body = await PostChangePassword(email, password, code).then((body)=>{
-         if (body=='password saved') {
+      PostChangePassword(email, password, code).then((body) => {
+        if (body === 'password saved') {
           setMessage(body)
-      }
-      else{
-        setMessage(body.message);
-      }
-    })
+        }
+        else {
+          setMessage(body.message);
+        }
+      })
     } catch (error) {
       setMessage(error)
     }
@@ -43,11 +43,13 @@ const ChangePassword = () => {
 
   const handleCodeSubmitClick = () => {
     console.log("starting")
-    TriggerPasswordReset(email).then(((response)=>{if(response == '200'){
-      setCodeMessage("code sent")
-    }else{
-      setCodeMessage("error")
-    }}))
+    TriggerPasswordReset(email).then(((response) => {
+      if (response === '200') {
+        setCodeMessage("code sent")
+      } else {
+        setCodeMessage("error")
+      }
+    }))
   };
 
   const switchToCodeGeneration = () => {
@@ -61,82 +63,83 @@ const ChangePassword = () => {
   return (
     <div className="changepassword-background">
       <div >
-    {needCode ? (
-     <div className="changepassword-box-container" >
-       <div className="changepassword-box">
-         <label className="passwordDetails-title">Forgotten your password?</label>
-       </div>
-       <div className="changepassword-container">
-       <div className="changepassword-box">
-         <label className="passwordDetails">Send yourself a code below</label>
-       </div>
-       <div className="changepassword-box">
-         <label className="passwordDetails">Email</label>
-       </div>
-       <div>
-         <input className="changepassword-input-boxes" type="text" value={email} onChange={handleEmailChange} />
-       </div>
-       </div>
-       <div>
-       <button className="changepassword-button" onClick={handleCodeSubmitClick}>Generate code</button>
-       </div>
-       <div>
-        </div>
-       <div className="changepassword-output-message">
-         {codeMessage && <p>{codeMessage}</p>}
-
-       </div>
-       <Link className ="page-toggle" onClick={switchToResetPassword}>Already got a Code?</Link>
-     </div>
-     
-     ) : (
-
-
-      <div className="changepassword-box-container" >
-          <div className="changepassword-box">
-            <label className="passwordDetails-title">Change Password</label>
-          </div>
-          <div className="changepassword-container">
-          <div className="changepassword-box">
-            <label className="passwordDetails">Email</label>
-          </div>
-
-          <div>
-            <input className="changepassword-input-boxes" type="text" value={email} onChange={handleEmailChange} />
-
-          </div>
-
-          <div className="changepassword-box">
-            <label className="passwordDetails">New Password</label>
-          </div>
-          <div>
-            <input className="changepassword-input-boxes" type="password" value={password} onChange={handlePasswordChange} />
-
+        {needCode ? (
+          <div className="generate-code-box-container" >
             <div className="changepassword-box">
-            <label className="passwordDetails">Code</label>
-          </div>
-          <div>
-            <input className="changepassword-input-boxes" type="text" value={code} onChange={handleCodeChange} />
-          </div>
-          </div>
-          </div>
-          <button className="changepassword-button" onClick={handleSubmitClick}>Change</button>
-          <div>
+              <label className="sendCode-title">Forgotten your password?</label>
+            </div>
+            <div className="changepassword-container">
+              <div className="changepassword-box">
+                <label className="passwordDetails">Send yourself a code below</label>
+              </div>
+              <div className="changepassword-box">
+                <label className="passwordDetails">Email</label>
+              </div>
+              <div>
+                <input className="changepassword-input-boxes" type="text" value={email} onChange={handleEmailChange} />
+              </div>
+            </div>
+            <div>
+              <button className="changepassword-button" onClick={handleCodeSubmitClick}>Generate code</button>
+            </div>
+            <div>
+            </div>
+            <div className="changepassword-output-message">
+              {codeMessage && <p>{codeMessage}</p>}
+
+            </div>
+
+            <div className="already-got-code-container">
+              <Link className="page-toggle" onClick={switchToResetPassword}>Already got a Code?</Link>
+
+            </div>
           </div>
 
-          <div className="changepassword-output-message">
-            {message && <p>{message}</p>}
+        ) : (
 
+
+          <div className="changepassword-box-container" >
+            <div className="changepassword-box">
+              <label className="passwordDetails-title">Change Password</label>
+            </div>
+            <div className="changepassword-container">
+              <div className="changepassword-box">
+                <label className="passwordDetails">Email</label>
+              </div>
+
+              <div>
+                <input className="changepassword-input-boxes" type="text" value={email} onChange={handleEmailChange} />
+
+              </div>
+
+              <div className="changepassword-box">
+                <label className="passwordDetails">New Password</label>
+              </div>
+              <div>
+                <input className="changepassword-input-boxes" type="password" value={password} onChange={handlePasswordChange} />
+
+                <div className="changepassword-box">
+                  <label className="passwordDetails">Code</label>
+                </div>
+                <div>
+                  <input className="changepassword-input-boxes" type="text" value={code} onChange={handleCodeChange} />
+                </div>
+              </div>
+            </div>
+            <button className="changepassword-button" onClick={handleSubmitClick}>Change</button>
+            <div>
+            </div>
+
+            <div className="changepassword-output-message">
+              {message && <p>{message}</p>}
+
+            </div>
+            <Link className="page-toggle" onClick={switchToCodeGeneration}>Generate Code</Link>
           </div>
-          <Link className ="page-toggle" onClick={switchToCodeGeneration}>Generate Code</Link>
-        </div>
 
         )}
-        </div>
       </div>
-
-
-
+    </div>
 
   )
 

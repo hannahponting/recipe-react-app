@@ -1,13 +1,12 @@
-import { Link, Navigate, Outlet, useNavigate } from "react-router-dom";
-import React, { useEffect, useRef } from "react";
+
+import React, {useRef } from "react";
 import { useState } from "react";
 import "./Sidebar.css";
-import { RecipeFilter } from "../FilterBar/RecipeFilter";
-import { Accordion, AccordionBody, AccordionHeader, Nav } from "react-bootstrap";
-import { InputGroup } from "react-bootstrap";
-import { GetUserByEmail } from "../../utils";
+
+import { Accordion, AccordionBody, AccordionHeader} from "react-bootstrap";
+
 import close from "../../Resources/delete-sign.png"
-import { IngredientFilter } from "../FilterBar/IngredientFilter";
+
 
 
 const Sidebar = (props) => {
@@ -92,7 +91,7 @@ const Sidebar = (props) => {
     console.log(filterType)
 
         
-        return ( props.filterType != 'ingredients' ? 
+        return ( props.filterType !== 'ingredients' ? 
                 
                 
                 
@@ -110,7 +109,7 @@ const Sidebar = (props) => {
 
                             <button style={props.buttonStyleForDefault} className="recipe-toggle" onClick={toggleFilterToDefault}>By Recipe Information</button>
                             <button className="ingredients-toggle" onClick={()=> { props.toggle();}}>By Ingredients</button>
-                            <button className="sidebar-close-button" onClick={props.closeSidebar}><img className="sidebar-close-img" src={close}></img> </button>
+                            <button className="sidebar-close-button" onClick={props.closeSidebar}><img alt="" className="sidebar-close-img" src={close}></img> </button>
                         </div>
                    
                        
@@ -254,7 +253,7 @@ const Sidebar = (props) => {
                         <h2>Filter recipes</h2>
                         <button  className="recipe-toggle" onClick={()=> { props.toggle();}}>By Recipe Information</button>
                             <button style={props.butttonStyleForIngredients} className="ingredients-toggle"  onClick={toggleFilterToIngredients}>By Ingredients</button>
-                            <button className="sidebar-close-button" onClick={props.closeSidebar}><img className="sidebar-close-img" src={close}></img> </button>
+                            <button className="sidebar-close-button" onClick={props.closeSidebar}><img alt="" className="sidebar-close-img" src={close}></img> </button>
                         </div>
                     <nav> 
                     {filters.map((filter, index) => (

@@ -1,15 +1,15 @@
 import React, { useContext, useState } from 'react';
 import Dropdown from 'react-bootstrap/Dropdown';
-import Form from 'react-bootstrap/Form';
 import { Link } from 'react-router-dom';
 import AuthContext from "../AuthContext/AuthContext";
+
 import { Button, ButtonGroup } from 'react-bootstrap';
-import "../NavBar/DropDown.css"
+
 
 
 const CustomToggle = React.forwardRef(({ style, className, children, onClick }, ref) => (
     <a
-      href=""
+      href="/#"
       ref={ref}
       style={style}
       className={className}
@@ -24,7 +24,7 @@ const CustomToggle = React.forwardRef(({ style, className, children, onClick }, 
   
   const CustomMenu = React.forwardRef(
     ({ children, style, className, 'aria-labelledby': labeledBy }, ref) => {
-      const [value, setValue] = useState('');
+      const [value] = useState('');
   
       return (
         <div
@@ -47,7 +47,7 @@ const CustomToggle = React.forwardRef(({ style, className, children, onClick }, 
   const DropdownAccount = (props) =>{
     const context = useContext(AuthContext);
     
-    let user = context.user;
+
     let setUser = context.setUser
     let firstName = context.user?.firstName ?? "Guest";
 
