@@ -26,7 +26,7 @@ const LoginPage = () => {
     try{
       PostUserLogin(username, password).then((body) => {
       console.log(body)
-      if (body === true) {
+      if (body == true) {
         setMessage('Logged in');
         GetPersonByEmail(username).then((body)=>{setUser(body)})
         navigate("/");
