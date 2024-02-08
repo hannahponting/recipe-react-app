@@ -7,7 +7,7 @@ import AuthContext from "../AuthContext/AuthContext";
 
 const CustomToggle = React.forwardRef(({ style, className, children, onClick }, ref) => (
     <a
-      href=""
+      href="/#"
       ref={ref}
       style={style}
       className={className}
