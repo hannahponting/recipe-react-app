@@ -51,13 +51,14 @@ function RecipeDetails(props) {
                             <div id="recipe-title">{recipe.name}
 
 
-                    </div>
+                            </div>
                         </div>
 
                         <div className="like-button-container-recipe-info" >
-                                    <LikeButton recipeId={params.id}> </LikeButton>
-                                </div>
-                        <StarRating stars={starRating} recipeId={recipe.id}></StarRating>
+                            <LikeButton recipeId={params.id}> </LikeButton>
+                            <StarRating stars={starRating} recipeId={recipe.id}></StarRating>
+                        </div>
+                        
                     </header>
 
 
@@ -65,7 +66,6 @@ function RecipeDetails(props) {
                     <div className="Divider"></div>
                     <div className="recipe-details">
                         <div className="details_image">
-
                             <img src={`http://localhost:8080/api/recipes/image/${recipe.id}`} className="details_image" />
                         </div>
 
