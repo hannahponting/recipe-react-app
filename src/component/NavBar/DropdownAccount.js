@@ -56,8 +56,8 @@ const CustomToggle = React.forwardRef(({ style, className, children, onClick }, 
     const mystyle = {
         color: "white",
         backgroundColor: "#07689f",
-        fontFamily: "NewsReader",
-        fontSize: "24px",
+        fontFamily: "Inter",
+        fontSize: "32px",
         textDecoration: "none"
       };
 
