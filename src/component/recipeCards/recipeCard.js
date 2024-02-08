@@ -14,7 +14,7 @@ export default RecipeCardList;
 
 
 function RecipeCardList(props) {
- const [searchTerm, setSearchTerm] = useState('');
+    const [searchTerm, setSearchTerm] = useState('');
     const navigate = useNavigate();
     const handleSearch = () => {
         navigate(`/recipes/search?keyword=${encodeURIComponent(searchTerm)}`)
@@ -33,12 +33,12 @@ function RecipeCardList(props) {
     }
 
     const buttonStyleForDefault = {
-        backgroundColor: filterType === "default"? "#07689F": "buttonface",
+        backgroundColor: filterType === "default" ? "#07689F" : "buttonface",
         color: "white"
     }
 
     const butttonStyleForIngredients = {
-        backgroundColor: filterType === "ingredients"? "#07689F": "buttonface",
+        backgroundColor: filterType === "ingredients" ? "#07689F" : "buttonface",
         color: "white"
     }
 
@@ -121,16 +121,16 @@ function RecipeCardList(props) {
 
     >
 
- <Sidebar
-        toggle = {toggleFilter}
-        filterType = {filterType}
-        applyFilters = {applyFilters}
-        closeSidebar = {props.closeSidebar}
-        handleMouseEnter={props.handleMouseEnter}
-        handleMouseLeave={props.handleMouseLeave}
-        buttonStyleForDefault = {buttonStyleForDefault}
-        butttonStyleForIngredients = {butttonStyleForIngredients}
-        style= {Sidebarstyles}
+        <Sidebar
+            toggle={toggleFilter}
+            filterType={filterType}
+            applyFilters={applyFilters}
+            closeSidebar={props.closeSidebar}
+            handleMouseEnter={props.handleMouseEnter}
+            handleMouseLeave={props.handleMouseLeave}
+            buttonStyleForDefault={buttonStyleForDefault}
+            butttonStyleForIngredients={butttonStyleForIngredients}
+            style={Sidebarstyles}
         ></Sidebar>
 
         <div>
@@ -175,7 +175,7 @@ function RecipeCardList(props) {
             <div className="wrapper">
                 {recipes.map((recipe) => (
                     <Card
-                        recipe = {recipe}
+                        recipe={recipe}
                         key={recipe.id}
                         style={props.style}
                     />
@@ -209,9 +209,7 @@ function RecipeCardList(props) {
     </div>
 
 }
-function Capitalize(str) {
-    return str.charAt(0).toUpperCase() + str.slice(1);
-}
+
 
 export function Card(props) {
     let link = "/recipes/" + props.recipe.id;
@@ -250,7 +248,7 @@ export function Card(props) {
                 <img src={imageUrl} className="card__image" />
 
                 <div className="card__title__container">
-                    <h2 className="card__title">{props.title}</h2>
+                    <h2 className="card__title">{props.recipe.name}</h2>
                 </div>
 
                 <div>
@@ -258,23 +256,22 @@ export function Card(props) {
 
 
 
-                <div className="recipe-icon-container">
-                    <img src={require('../../Resources/clockIcon.png')} className="icon-image" />
-                    <p className="card__description">{props.recipe.time_to_cook}</p>
-                </div>
-                {/* <p className="card__description">{props.description}</p> */}
+                    <div className="recipe-icon-container">
+                        <img src={require('../../Resources/clockIcon.png')} className="icon-image" />
+                        <p className="card__description">{props.recipe.time_to_cook}</p>
+                    </div>
 
-                <div className="recipe-icon-container">
-                    <img src={require('../../Resources/person-icon.png')} className="icon-image" />
-                    <p className="card__description">{props.recipe.serving}</p>
-                </div>
+                    <div className="recipe-icon-container">
+                        <img src={require('../../Resources/person-icon.png')} className="icon-image" />
+                        <p className="card__description">{props.recipe.serving}</p>
+                    </div>
 
-                <div className="recipe-icon-container">
-                    <img src={require('../../Resources/world.png')} className="icon-image" />
-                    <p className="card__description">{props.recipe.cuisine.charAt(0).toUpperCase() + props.recipe.cuisine.slice(1).toLowerCase()}</p>
-                </div>
+                    <div className="recipe-icon-container">
+                        <img src={require('../../Resources/world.png')} className="icon-image" />
+                        <p className="card__description">{props.recipe.cuisine.charAt(0).toUpperCase() + props.recipe.cuisine.slice(1).toLowerCase()}</p>
+                    </div>
 
-  
+
                     <div className="like-button-container">
                         <LikeButton recipeId={props.id}> </LikeButton>
 
@@ -286,13 +283,7 @@ export function Card(props) {
 
                 </div>
 
-
-            <div className="like-button-container">
-            <LikeButton recipeId={props.recipe.id}> </LikeButton>
-
             </div>
-
-
 
 
         </div>
