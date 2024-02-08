@@ -37,7 +37,7 @@ const SignUp = () => {
       const body = await PostNewUser(email, firstName, lastName);
       if (body == '201') {
         try {
-          await PostChangePassword(email, password, null).then((body)=>{
+          await PostChangePassword(email, password).then((body)=>{
              if (body=='password saved') {
               setMessage("Successfully signed up")
               GetPersonByEmail(email).then((body)=>{setUser(body)})
