@@ -66,6 +66,7 @@ const ChangePassword = () => {
        <div className="changepassword-box">
          <label className="passwordDetails-title">Forgotten your password?</label>
        </div>
+       <div className="changepassword-container">
        <div className="changepassword-box">
          <label className="passwordDetails">Send yourself a code below</label>
        </div>
@@ -75,26 +76,17 @@ const ChangePassword = () => {
        <div>
          <input className="changepassword-input-boxes" type="text" value={email} onChange={handleEmailChange} />
        </div>
+       </div>
        <div>
        <button className="changepassword-button" onClick={handleCodeSubmitClick}>Generate code</button>
        </div>
        <div>
-       <button className="changepassword-button" onClick={switchToResetPassword}>Already got a Code</button>
         </div>
-       <div className="account-login">
-           <label>Don't have an account?</label>
-           &nbsp;&nbsp;
-           <Link to="/signup">Sign up</Link>
-         </div>
-         <div className="account-login">
-           <label>Already a member?</label>
-           &nbsp;&nbsp;
-           <Link to="/login">Login</Link>
-         </div>
        <div className="changepassword-output-message">
          {codeMessage && <p>{codeMessage}</p>}
 
        </div>
+       <Link className ="page-toggle" onClick={switchToResetPassword}>Already got a Code?</Link>
      </div>
      
      ) : (
@@ -104,9 +96,7 @@ const ChangePassword = () => {
           <div className="changepassword-box">
             <label className="passwordDetails-title">Change Password</label>
           </div>
-          <div className="changepassword-output-message">
-          <button className="changepassword-button" onClick={switchToCodeGeneration}>Generate Code</button>
-          </div>
+          <div className="changepassword-container">
           <div className="changepassword-box">
             <label className="passwordDetails">Email</label>
           </div>
@@ -129,18 +119,16 @@ const ChangePassword = () => {
             <input className="changepassword-input-boxes" type="text" value={code} onChange={handleCodeChange} />
           </div>
           </div>
+          </div>
           <button className="changepassword-button" onClick={handleSubmitClick}>Change</button>
           <div>
-
-
-
-
           </div>
 
           <div className="changepassword-output-message">
             {message && <p>{message}</p>}
 
           </div>
+          <Link className ="page-toggle" onClick={switchToCodeGeneration}>Generate Code</Link>
         </div>
 
         )}
