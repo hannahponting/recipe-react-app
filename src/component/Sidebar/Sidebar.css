@@ -126,6 +126,8 @@ flex-direction: column;
 
 .sidebar-accordion {
   margin: 10px 0px;
+  border-bottom: 2px solid rgb(146, 143, 143);
+
 }
 
 .sidebar-accordion-header {
