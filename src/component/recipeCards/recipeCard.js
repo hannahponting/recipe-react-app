@@ -272,7 +272,10 @@ export function Card(props) {
 
 
                     <div className="like-button-container">
-                    <LikeButton recipeId={props.recipe.id}> </LikeButton>
+
+                        <LikeButton recipeId={props.recipe.id}> </LikeButton>
+
+
                     </div>
 
                     <Link to={link}>
