@@ -36,11 +36,11 @@
     align-items: center;
 }
 
-.subtitles {
+/* .subtitles {
     margin-bottom: 15px;
     font-family: Inter, sans-serif;
     font-weight: bold;
-}
+} */
 
 .subtitles-accordion {
     font-weight: 500;
@@ -97,11 +97,11 @@
     height: 40px;
     margin-right: 10px;    
 }
-
+/* 
 .boxes{
     margin-top: 1%;
 
-}
+} */
 
 .recipe-details{
     padding: 40px;
@@ -160,6 +160,10 @@
 }
 
 .like-button-container-recipe-info {
-    margin-left: 60%;
-    margin-top: 5px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 0px 5px;
+    
 }

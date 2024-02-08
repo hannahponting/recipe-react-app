@@ -42,7 +42,7 @@ function RecipeCardList(props) {
             setTotalPages(result.totalPages);
         };
 
-        if(pageSize)fetchData();
+        if (pageSize) fetchData();
     }, [currentPage, query, filterType, pageSize]);
 
     useEffect(() => {
@@ -69,13 +69,14 @@ function RecipeCardList(props) {
             setCurrentPage(1);
             setQuery("");
         }
-      };
-      function getPageSize() {
+    };
+    function getPageSize() {
         const windowWidth = window.innerWidth;
         const imageWidth = 280;
-        const cardsPerRow = Math.floor(windowWidth / imageWidth); 
-        setPageSize(cardsPerRow * 2)};
-    
+        const cardsPerRow = Math.floor(windowWidth / imageWidth);
+        setPageSize(cardsPerRow * 2)
+    };
+
 
     const applyFilters = (filterArray) => {
 
@@ -112,14 +113,14 @@ function RecipeCardList(props) {
     return <div className="recipecard-page-container"
 
     >
- <Sidebar
-        toggle = {toggleFilter}
-        filterType = {filterType}
-        applyFilters = {applyFilters}
-        closeSidebar = {props.closeSidebar}
-        handleMouseEnter={props.handleMouseEnter}
-        handleMouseLeave={props.handleMouseLeave}
-        style= {Sidebarstyles}
+        <Sidebar
+            toggle={toggleFilter}
+            filterType={filterType}
+            applyFilters={applyFilters}
+            closeSidebar={props.closeSidebar}
+            handleMouseEnter={props.handleMouseEnter}
+            handleMouseLeave={props.handleMouseLeave}
+            style={Sidebarstyles}
         ></Sidebar>
 
         <div>
@@ -156,8 +157,8 @@ function RecipeCardList(props) {
 
         </div>
         <div>
-      {/* <button onClick={(toggleFilter)}>Toggle Filter</button> */}
-    </div>
+            {/* <button onClick={(toggleFilter)}>Toggle Filter</button> */}
+        </div>
         <div className="Divider"></div>
 
         {recipes?.length > 0 ? (
@@ -242,37 +243,44 @@ export function Card(props) {
         <div style={props.style} className="card">
             <div className="card__body">
                 <img src={imageUrl} className="card__image" />
-                <h2 className="card__title">{props.title}</h2>
-                <StarRating id='stars' stars={starRating}></StarRating>
-
-
-
-                <div className="recipe-icon-container">
-                    <img src={require('../../Resources/clockIcon.png')} className="icon-image" />
-                    <p className="card__description">{props.time_to_cook}</p>
-                </div>
-                {/* <p className="card__description">{props.description}</p> */}
-
-                <div className="recipe-icon-container">
-                    <img src={require('../../Resources/person-icon.png')} className="icon-image" />
-                    <p className="card__description">{props.serving}</p>
+                <div className="card__title__container">
+                    <h2 className="card__title">{props.title}</h2>
                 </div>
 
-                <div className="recipe-icon-container">
-                    <img src={require('../../Resources/world.png')} className="icon-image" />
-                    <p className="card__description">{props.cuisine.charAt(0).toUpperCase() + props.cuisine.slice(1).toLowerCase()}</p>
+                <div>
+                    <StarRating id='stars' stars={starRating}></StarRating>
+
+
+
+                    <div className="recipe-icon-container">
+                        <img src={require('../../Resources/clockIcon.png')} className="icon-image" />
+                        <p className="card__description">{props.time_to_cook}</p>
+                    </div>
+                    {/* <p className="card__description">{props.description}</p> */}
+
+                    <div className="recipe-icon-container">
+                        <img src={require('../../Resources/person-icon.png')} className="icon-image" />
+                        <p className="card__description">{props.serving}</p>
+                    </div>
+
+                    <div className="recipe-icon-container">
+                        <img src={require('../../Resources/world.png')} className="icon-image" />
+                        <p className="card__description">{props.cuisine.charAt(0).toUpperCase() + props.cuisine.slice(1).toLowerCase()}</p>
+                    </div>
+                    <div className="like-button-container">
+                        <LikeButton recipeId={props.id}> </LikeButton>
+
+                    </div>
+
+                    <Link to={link}>
+                        <button className="card__btn">View Recipe</button>
+                    </Link>
+
                 </div>
+
 
             </div>
 
-            <div className="like-button-container">
-            <LikeButton recipeId={props.id}> </LikeButton>
-
-            </div>
-
-            <Link to={link}>
-                <button className="card__btn">View Recipe</button>
-            </Link>
 
 
 
