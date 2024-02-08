@@ -1,10 +1,10 @@
-import { Await, useParams } from "react-router-dom"
-import { GetNewRatingById, GetRatingById, GetRecipes, GetRecipesById, GetRecipeImage } from "../../utils";
+import { useParams } from "react-router-dom"
+import {GetRatingById, GetRecipesById, GetRecipeImage } from "../../utils";
 import "./RecipeDetails.css";
 import { useEffect, useState } from "react";
 import StarRating from "../StarRating/StarRating";
 import RateRecipe from "../RateRecipe/RateRecipe";
-import { Accordion, AccordionBody, AccordionHeader, AccordionItem } from "react-bootstrap";
+import { Accordion, AccordionBody, AccordionHeader } from "react-bootstrap";
 import LikeButton from "../likeButton/likeButton";
 
 
@@ -14,7 +14,7 @@ function RecipeDetails(props) {
 
     const fetchData = async () => {
         try {
-            const rating = await GetRatingById(params.id).then((rating) => { setStarRating(rating) })
+            await GetRatingById(params.id).then((rating) => { setStarRating(rating) })
         } catch (error) {
             console.error('Error fetching rating:', error);
         }

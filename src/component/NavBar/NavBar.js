@@ -1,13 +1,10 @@
-import { Link, Navigate, Outlet, useNavigate } from "react-router-dom";
-import React, { useContext, useEffect } from "react";
+import { Link, Outlet, useNavigate } from "react-router-dom";
+import React, { useContext} from "react";
 import { useState } from "react";
 import "./NavBar.css";
-import { Dropdown, Nav, Navbar } from "react-bootstrap";
-import { InputGroup } from "react-bootstrap";
-import { GetUserByEmail } from "../../utils";
 import DropdownAccount from "./DropdownAccount";
 import AuthContext from "../AuthContext/AuthContext";
-import Container from 'react-bootstrap/Container';
+
 
 
 

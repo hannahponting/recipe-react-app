@@ -1,10 +1,8 @@
 import * as React from "https://cdn.skypack.dev/react@17.0.1";
 import "./recipeCard.css";
-import { GetNewRatingById, GetRecipesPaginated, GetIngredientsPaginated, GetRatingById, GetRecipeImage } from "../../utils";
+import { GetRecipesPaginated, GetIngredientsPaginated, GetRatingById, GetRecipeImage } from "../../utils";
 import { Link, useNavigate } from "react-router-dom";
 import { useEffect, useState, useRef } from "react";
-import { RecipeFilter } from "../FilterBar/RecipeFilter";
-import { IngredientFilter } from "../FilterBar/IngredientFilter";
 import StarRating from "../StarRating/StarRating";
 import LikeButton from "../likeButton/likeButton";
 import Sidebar from "../Sidebar/Sidebar";
@@ -216,7 +214,7 @@ export function Card(props) {
     const [starRating, setStarRating] = useState(0);
     const fetchData = async () => {
         try {
-            const rating = await GetRatingById(props.recipe.id).then((rating) => { setStarRating(rating) })
+            await GetRatingById(props.recipe.id).then((rating) => { setStarRating(rating) })
         } catch (error) {
             console.error('Error fetching rating:', error);
         }
@@ -270,11 +268,11 @@ export function Card(props) {
                         <img src={require('../../Resources/world.png')} className="icon-image" />
                         <p className="card__description">{props.recipe.cuisine.charAt(0).toUpperCase() + props.recipe.cuisine.slice(1).toLowerCase()}</p>
                     </div>
+                    
 
 
                     <div className="like-button-container">
-                        <LikeButton recipeId={props.id}> </LikeButton>
-
+                    <LikeButton recipeId={props.recipe.id}> </LikeButton>
                     </div>
 
                     <Link to={link}>

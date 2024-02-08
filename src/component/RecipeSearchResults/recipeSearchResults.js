@@ -1,11 +1,9 @@
 import * as React from "https://cdn.skypack.dev/react@17.0.1";
 import "../recipeCards/recipeCard.css";
 import "./RecipeSearchResults.css"
-import { GetRecipesByKeyword, GetRecipesPaginated } from "../../utils";
-import { Link, useNavigate } from "react-router-dom";
+import { GetRecipesByKeyword} from "../../utils";
 import { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
-import { Navbar } from "react-bootstrap";
 import { Card } from "../recipeCards/recipeCard";
 
 function RecipeSearchResults() {
@@ -27,11 +25,7 @@ function RecipeSearchResults() {
     useEffect(() => {
         setTotalPages(data.totalPages);
     }, [data]);
-    const handlePageChange = (newPage) => {
-        if (newPage > 0 && newPage <= totalPages) {
-            setCurrentPage(newPage);
-        }
-    };
+
 
     if (searchdata.length > 0) {
 
