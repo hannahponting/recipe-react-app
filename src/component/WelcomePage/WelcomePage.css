@@ -52,6 +52,7 @@
 }
 
 .subheading{
+  margin: auto;
   color: black;
   font-size: 64px;
   font-family: Inter;
@@ -60,6 +61,7 @@
   line-height: 120%;
   word-wrap: break-word;
   justify-content: space-between;
+  margin-bottom: 30px;
 }
 
 .header.search-container {
@@ -176,6 +178,7 @@
   align-items: center;
   justify-content: center;
   position: relative;
+  margin-bottom: 40px;
 }
 
 .video {

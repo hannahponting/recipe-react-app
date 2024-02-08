@@ -52,7 +52,7 @@ const WelcomePage = (props) => {
 
             <header className="subheader">
                 <div className="subheading">
-                    Top Rated recipes
+                    Top Rated Recipes
                 </div>
             </header>
 
