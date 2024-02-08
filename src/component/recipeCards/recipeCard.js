@@ -207,7 +207,7 @@ export function Card(props) {
     const [starRating, setStarRating] = useState(0);
     const fetchData = async () => {
         try {
-            const rating = await GetRatingById(props.id).then((rating) => { setStarRating(rating) })
+            const rating = await GetRatingById(props.recipe.id).then((rating) => { setStarRating(rating) })
         } catch (error) {
             console.error('Error fetching rating:', error);
         }
@@ -261,7 +261,7 @@ export function Card(props) {
             </div>
 
             <div className="like-button-container">
-            <LikeButton recipeId={props.id}> </LikeButton>
+            <LikeButton recipeId={props.recipe.id}> </LikeButton>
 
             </div>
 
