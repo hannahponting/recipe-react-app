@@ -16,12 +16,13 @@
     /* padding: 10px 20px; */
     display: flex;
     justify-content: space-between;
+    font-family: Inter;
 }
 
 .header.recipelist-container.Title {
     color: black;
     font-size: 64px;
-    font-family: Newsreader;
+    font-family: Inter;
     padding-left: 2%;
     font-weight: 400;
     line-height: 120%;
@@ -36,7 +37,7 @@
     align-items: left;
     padding: 30px;
     font-size: 64px;
-    font-family: NewsReader;
+    font-family: Inter;
     font-weight: 400;
     line-height: 120%;
     /* word-wrap: "break-word"; */
