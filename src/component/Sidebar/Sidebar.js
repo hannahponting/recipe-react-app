@@ -217,7 +217,7 @@ const Sidebar = (props) => {
                 <Accordion className="sidebar-accordion">
                     <AccordionHeader className="sidebar-accordion-header"><h2 className="subtitles-accordion">Minutes to Prepare</h2></AccordionHeader>
                     <AccordionBody id="sidebar-accordion-body" >
-                        <h3 id="subtitles-accordion">Enter Minimum Minutes to Prepare Meal</h3>
+                        <h3 id="subtitles-accordion">Enter Maximum Minutes to Prepare Meal</h3>
                         <input type='number' name="cookingMinutes" value={filterValues.cookingMinutes} onChange={handleChange} />
                         </AccordionBody>
                 </Accordion>
