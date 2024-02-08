@@ -6,6 +6,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import { Navbar } from "react-bootstrap";
+import { Card } from "../recipeCards/recipeCard";
 
 function RecipeSearchResults() {
     const location = useLocation();
@@ -55,9 +56,7 @@ function RecipeSearchResults() {
 
                         <Card
                             key={recipe.id}
-                            title={recipe.name}
-                            description={"Delicious recipe from " + recipe.cuisine.toLowerCase() + " cuisine. It serves up to " + recipe.serving + " people!" }
-                            id={recipe.id}
+                            recipe = {recipe}
                         />
                     </>
                     )
@@ -89,29 +88,4 @@ function RecipeSearchResults() {
 
 
 }
-
-
-
-
-
-
-
-
-
-function Card(props) {
-    let link = "/recipes/" + props.id;
-    return (
-        <div className="card">
-            <div className="card__body">
-                <img src={props.img} className="card__image" />
-                <h2 className="card__title">{props.title}</h2>
-                <p className="card__description">{props.description}</p>
-            </div>
-            <Link to={link}>
-                <button className="card__btn">View Recipe</button>
-            </Link>
-        </div>
-    );
-}
-
 export default RecipeSearchResults;
