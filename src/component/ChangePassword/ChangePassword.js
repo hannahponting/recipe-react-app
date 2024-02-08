@@ -23,6 +23,8 @@ const ChangePassword = () => {
   }
 
   const getData = async () => {
+    const regex = /^(?=.*[A-Z])(?=.*[!@#$%^&*()\-=']).{8,}$/;
+    if(regex.test(password)){
     try {
       PostChangePassword(email, password, code).then((body) => {
         if (body === 'password saved') {
@@ -35,6 +37,9 @@ const ChangePassword = () => {
     } catch (error) {
       setMessage(error)
     }
+  }else{
+    setMessage("The password must be at least 8 characters and contain an uppercase and a special character.")
+  }
   };
 
   const handleSubmitClick = () => {
@@ -44,10 +49,10 @@ const ChangePassword = () => {
   const handleCodeSubmitClick = () => {
     console.log("starting")
     TriggerPasswordReset(email).then(((response) => {
-      if (response === '200') {
+      if (response == '200') {
         setCodeMessage("code sent")
       } else {
-        setCodeMessage("error")
+        setCodeMessage("please check email provided")
       }
     }))
   };
