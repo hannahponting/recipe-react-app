@@ -119,9 +119,6 @@ function RecipeDetails(props) {
         );
     }
     catch (err) {
-        return (<div>
-            <p>error</p>
-        </div>)
     }
 
 
