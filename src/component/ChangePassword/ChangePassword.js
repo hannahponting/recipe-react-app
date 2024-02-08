@@ -24,8 +24,8 @@ const ChangePassword = () => {
 
   const getData = async () => {
     try {
-      const body = await PostChangePassword(email, password, code).then((body)=>{
-         if (body=='password saved') {
+      PostChangePassword(email, password, code).then((body)=>{
+         if (body==='password saved') {
           setMessage(body)
       }
       else{
@@ -43,7 +43,7 @@ const ChangePassword = () => {
 
   const handleCodeSubmitClick = () => {
     console.log("starting")
-    TriggerPasswordReset(email).then(((response)=>{if(response == '200'){
+    TriggerPasswordReset(email).then(((response)=>{if(response === '200'){
       setCodeMessage("code sent")
     }else{
       setCodeMessage("error")

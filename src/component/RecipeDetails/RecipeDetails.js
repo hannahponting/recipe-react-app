@@ -1,10 +1,10 @@
-import { Await, useParams } from "react-router-dom"
-import { GetNewRatingById, GetRatingById, GetRecipes, GetRecipesById, GetRecipeImage } from "../../utils";
+import { useParams } from "react-router-dom"
+import {GetRatingById, GetRecipesById, GetRecipeImage } from "../../utils";
 import "./RecipeDetails.css";
 import { useEffect, useState } from "react";
 import StarRating from "../StarRating/StarRating";
 import RateRecipe from "../RateRecipe/RateRecipe";
-import { Accordion, AccordionBody, AccordionHeader, AccordionItem } from "react-bootstrap";
+import { Accordion, AccordionBody, AccordionHeader } from "react-bootstrap";
 import LikeButton from "../likeButton/likeButton";
 
 
@@ -14,7 +14,7 @@ function RecipeDetails(props) {
 
     const fetchData = async () => {
         try {
-            const rating = await GetRatingById(params.id).then((rating) => { setStarRating(rating) })
+            await GetRatingById(params.id).then((rating) => { setStarRating(rating) })
         } catch (error) {
             console.error('Error fetching rating:', error);
         }
@@ -51,13 +51,14 @@ function RecipeDetails(props) {
                             <div id="recipe-title">{recipe.name}
 
 
-                    </div>
+                            </div>
                         </div>
 
                         <div className="like-button-container-recipe-info" >
-                                    <LikeButton recipeId={params.id}> </LikeButton>
-                                </div>
-                        <StarRating stars={starRating} recipeId={recipe.id}></StarRating>
+                            <LikeButton recipeId={params.id}> </LikeButton>
+                            <StarRating stars={starRating} recipeId={recipe.id}></StarRating>
+                        </div>
+                        
                     </header>
 
 
@@ -65,13 +66,12 @@ function RecipeDetails(props) {
                     <div className="Divider"></div>
                     <div className="recipe-details">
                         <div className="details_image-container">
-
-                            <img src={`http://localhost:8080/api/recipes/image/${recipe.id}`} className="details_image" />
+                            <img alt="" src={`http://localhost:8080/api/recipes/image/${recipe.id}`} className="details_image" />
                         </div>
 
                         <h2 className="subtitles">Details</h2>
                         <ul className="details">
-                            <li className="timer-listitem"><img src={require('../../Resources/clockIcon.png')} id="timer" />
+                            <li className="timer-listitem"><img alt="" src={require('../../Resources/clockIcon.png')} id="timer" />
                                 <strong>{recipe.time_to_cook} </strong>
                             </li>
                             <li><strong>Meal Type: </strong>{recipe.mealType[0] + recipe.mealType.slice(1).toLowerCase()}</li>

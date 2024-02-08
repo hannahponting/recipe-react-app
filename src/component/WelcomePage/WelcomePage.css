@@ -69,15 +69,6 @@
 
 }
 
-.video-container {
-  overflow: hidden;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 1000px;
-  position: relative;
-}
-
 
 
 /* Basic styling for the search bar */
@@ -169,4 +160,37 @@
   margin: auto;
   justify-content: center;
   align-items: center;
+}
+
+
+
+.video-container {
+  width: 100%;
+  max-width: 1500px;
+  max-height: 800px;
+  margin: 0 auto;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.video {
+  width: 100%; /* Make the video fill its container */
+  height: auto; /* Maintain aspect ratio */
+}
+
+@media screen and (max-width: 1200px) {
+  .video-container {
+    max-width: 1000px;
+    max-height: 600px;
+  }
+}
+
+@media screen and (max-width: 900px) {
+  .video-container {
+    max-width: 750px;
+    max-height: 400px;
+  }
 }

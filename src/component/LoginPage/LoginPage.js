@@ -9,9 +9,8 @@ const LoginPage = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [message, setMessage] = useState('');
-  const [uuid, setUuid] = useState(0);
   const context = useContext(AuthContext)
-  const [user, setUser] = [context.user, context.setUser];
+  const [setUser] = [context.setUser];
 
   let navigate = useNavigate();
 
@@ -27,7 +26,7 @@ const LoginPage = () => {
     try{
       PostUserLogin(username, password).then((body) => {
       console.log(body)
-      if (body == true) {
+      if (body === true) {
         setMessage('Logged in');
         GetPersonByEmail(username).then((body)=>{setUser(body)})
         navigate("/");

@@ -22,7 +22,7 @@
 .content{
     padding: 13px 16px;
     display: flex;
-    border: 5px solid rgb(255, 255, 255);
+    border: 1px solid rgb(255, 255, 255);
 
     border-radius: 60%;
     cursor: pointer;

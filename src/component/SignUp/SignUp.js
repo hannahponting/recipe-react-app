@@ -2,7 +2,7 @@ import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import "./SignUp.css";
 import AuthContext from "../AuthContext/AuthContext";
-import { GetPersonByEmail, GetUserByEmail, PostChangePassword, PostNewUser } from "../../utils";
+import { GetPersonByEmail, PostChangePassword, PostNewUser } from "../../utils";
 
 
 const SignUp = () => {
@@ -15,7 +15,6 @@ const SignUp = () => {
   const context = useContext(AuthContext)
   const [user, setUser] = [context.user, context.setUser];
 
-  let answer = "";
 
   const handleFirstNameChange = (event) => {
     setFirstName(event.target.value);
@@ -30,22 +29,16 @@ const SignUp = () => {
     setPassword(event.target.value)
   }
 
-  const newUser ={
-    "email": email,
-    "firstName": firstName,
-    "lastName": lastName
-  }
-
 
   const getData = async () => {
     const regex = /^(?=.*[A-Z])(?=.*[!@#$%^&*()\-=']).{8,}$/;
     if(regex.test(password)){
     try{
       const body = await PostNewUser(email, firstName, lastName);
-      if (body == '201') {
+      if (body === '201') {
         try {
-          const body = await PostChangePassword(email, password).then((body)=>{
-             if (body=='password saved') {
+          await PostChangePassword(email, password).then((body)=>{
+             if (body==='password saved') {
               setMessage("Successfully signed up")
               GetPersonByEmail(email).then((body)=>{setUser(body)})
           }
