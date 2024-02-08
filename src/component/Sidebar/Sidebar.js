@@ -109,7 +109,7 @@ const Sidebar = (props) => {
 
                             <button style={props.buttonStyleForDefault} className="recipe-toggle" onClick={toggleFilterToDefault}>By Recipe Information</button>
                             <button className="ingredients-toggle" onClick={()=> { props.toggle();}}>By Ingredients</button>
-                            <button className="sidebar-close-button" onClick={props.closeSidebar}><img className="sidebar-close-img" src={close}></img> </button>
+                            <button className="sidebar-close-button" onClick={props.closeSidebar}><img alt="" className="sidebar-close-img" src={close}></img> </button>
                         </div>
                    
                        
@@ -253,7 +253,7 @@ const Sidebar = (props) => {
                         <h2>Filter recipes</h2>
                         <button  className="recipe-toggle" onClick={()=> { props.toggle();}}>By Recipe Information</button>
                             <button style={props.butttonStyleForIngredients} className="ingredients-toggle"  onClick={toggleFilterToIngredients}>By Ingredients</button>
-                            <button className="sidebar-close-button" onClick={props.closeSidebar}><img className="sidebar-close-img" src={close}></img> </button>
+                            <button className="sidebar-close-button" onClick={props.closeSidebar}><img alt="" className="sidebar-close-img" src={close}></img> </button>
                         </div>
                     <nav> 
                     {filters.map((filter, index) => (

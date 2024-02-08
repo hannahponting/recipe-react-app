@@ -13,7 +13,7 @@ function RecipeSearchResults() {
 
 
     const [recipes, setRecipes] = useState([]);
-    const [currentPage, setCurrentPage] = useState(1);
+    const [currentPage] = useState(1);
     let data = GetRecipesByKeyword(searchTerm)
     let searchdata = data
     const fetchedRecipes = data.recipes;

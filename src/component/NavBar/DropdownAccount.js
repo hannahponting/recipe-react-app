@@ -22,7 +22,7 @@ const CustomToggle = React.forwardRef(({ style, className, children, onClick }, 
   
   const CustomMenu = React.forwardRef(
     ({ children, style, className, 'aria-labelledby': labeledBy }, ref) => {
-      const [value, setValue] = useState('');
+      const [value] = useState('');
   
       return (
         <div
@@ -45,7 +45,7 @@ const CustomToggle = React.forwardRef(({ style, className, children, onClick }, 
   const DropdownAccount = (props) =>{
     const context = useContext(AuthContext);
     
-    let user = context.user;
+
     let setUser = context.setUser
     let firstName = context.user?.firstName ?? "Guest";
 

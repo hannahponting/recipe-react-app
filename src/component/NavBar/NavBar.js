@@ -1,6 +1,5 @@
-import { Link, Outlet, useNavigate } from "react-router-dom";
+import { Link, Outlet} from "react-router-dom";
 import React, { useContext} from "react";
-import { useState } from "react";
 import "./NavBar.css";
 import DropdownAccount from "./DropdownAccount";
 import AuthContext from "../AuthContext/AuthContext";
@@ -9,15 +8,9 @@ import AuthContext from "../AuthContext/AuthContext";
 
 
 const Navigation = (props) => {
-    const [searchTerm, setSearchTerm] = useState('');
-    const navigate = useNavigate();
     const context = useContext(AuthContext);
     let user = context.user;
 
-
-    const handleSearch = () => {
-        navigate(`/recipes/search?keyword=${encodeURIComponent(searchTerm)}`)
-    }
 
     return (
         <>

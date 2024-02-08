@@ -243,7 +243,7 @@ export function Card(props) {
     return (
         <div style={props.style} className="card">
             <div className="card__body">
-                <img src={imageUrl} className="card__image" />
+                <img alt="" src={imageUrl} className="card__image" />
 
                 <div className="card__title__container">
                     <h2 className="card__title">{props.recipe.name}</h2>
@@ -255,17 +255,17 @@ export function Card(props) {
 
 
                     <div className="recipe-icon-container">
-                        <img src={require('../../Resources/clockIcon.png')} className="icon-image" />
+                        <img alt=""  src={require('../../Resources/clockIcon.png')} className="icon-image" />
                         <p className="card__description">{props.recipe.time_to_cook}</p>
                     </div>
 
                     <div className="recipe-icon-container">
-                        <img src={require('../../Resources/person-icon.png')} className="icon-image" />
+                        <img alt=""  src={require('../../Resources/person-icon.png')} className="icon-image" />
                         <p className="card__description">{props.recipe.serving}</p>
                     </div>
 
                     <div className="recipe-icon-container">
-                        <img src={require('../../Resources/world.png')} className="icon-image" />
+                        <img alt="" src={require('../../Resources/world.png')} className="icon-image" />
                         <p className="card__description">{props.recipe.cuisine.charAt(0).toUpperCase() + props.recipe.cuisine.slice(1).toLowerCase()}</p>
                     </div>
                     
