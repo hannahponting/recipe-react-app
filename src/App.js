@@ -50,8 +50,13 @@ function App() {
         };
   
     const headerStyle = {
-      zIndex : !sidebarVisible? "1": "-1"
+     zIndex : !sidebarVisible? "1": "-1"
+
     }
+    const headerStyleForRecipeCard = {
+        zIndex : !sidebarVisible? "0": "-1"
+    }
+
 
     const appStyle = {
      backgroundColor : !sidebarVisible? "white ":"rgb(204, 204, 204, 0.70)"
@@ -70,7 +75,7 @@ function App() {
       
           <Route path='/' element={<NavBar  style={headerStyle} />}>
             <Route path="/" element={<WelcomePage />} />
-            <Route path="/recipes" element={<RecipeCardList sidebarVisible={sidebarVisible} handleMouseLeave={handleMouseLeave} handleMouseEnter={handleMouseEnter} moveSidebar={moveSidebar} style={headerStyle} closeSidebar={closeSidebar}   />} />
+            <Route path="/recipes" element={<RecipeCardList sidebarVisible={sidebarVisible} handleMouseLeave={handleMouseLeave} handleMouseEnter={handleMouseEnter} moveSidebar={moveSidebar} style={headerStyleForRecipeCard} closeSidebar={closeSidebar}   />} />
             <Route path="/recipes/:id" element={<RecipeDetails/>} />
             <Route path="/recipes/search" element={<RecipeSearchResults />} />
             <Route path="/login" element={<LoginPage/>} />

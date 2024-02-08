@@ -4,6 +4,7 @@ import Form from 'react-bootstrap/Form';
 import { Link } from 'react-router-dom';
 import AuthContext from "../AuthContext/AuthContext";
 import { Button, ButtonGroup } from 'react-bootstrap';
+import "../NavBar/DropDown.css"
 
 
 const CustomToggle = React.forwardRef(({ style, className, children, onClick }, ref) => (
@@ -59,11 +60,12 @@ const CustomToggle = React.forwardRef(({ style, className, children, onClick }, 
         backgroundColor: "#07689f",
         fontFamily: "NewsReader",
         fontSize: "24px",
-        textDecoration: "none"
+        textDecoration: "none",
+
       };
 
   return(
-    <Dropdown className="dropdown">
+    <Dropdown className="dropdown" >
       <Dropdown.Toggle as={CustomToggle} className="dropdownToggle" style={mystyle}>
         Hello {firstName}
       </Dropdown.Toggle>

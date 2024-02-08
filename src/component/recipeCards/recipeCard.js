@@ -132,40 +132,36 @@ function RecipeCardList(props) {
         ></Sidebar>
 
         <div>
-            <header className="header" style={props.style}>
+            {/*<header className="header" style={props.style}>*/}
+            <header className="header" >
+
                 <div className="recipelist-container">
                     <div className="Title">
                         Recipes
                     </div>
                 </div>
 
-                {/* <div>
-                    {filterType === 'ingredients' ? (
-                        <IngredientFilter applyFilters={applyFilters} />
-                    ) : (
-                        <RecipeFilter applyFilters={applyFilters} />
-                    )}
-                </div> */}
                 <div>
                     <button className="filter-button" onClick={props.moveSidebar}>Filters</button>
                 </div>
-                <div className="header-search-container" style={props.style}>
-                    <div className="search-bar">
-                        <input
-                            type="text"
-                            value={searchTerm}
-                            onChange={(e) => setSearchTerm(e.target.value)}
-                        />
-                        <button onClick={handleSearch}>Search</button>
+                 <div className="header-search-container" style={props.style}>
+
+                        <div className="search-bar">
+                            <input
+                                type="text"
+                                value={searchTerm}
+                                onChange={(e) => setSearchTerm(e.target.value)}
+                            />
+                            <button onClick={handleSearch}>Search</button>
+                        </div>
                     </div>
-                </div>
 
             </header>
 
 
         </div>
         <div>
-      {/* <button onClick={(toggleFilter)}>Toggle Filter</button> */}
+            {/* <button onClick={(toggleFilter)}>Toggle Filter</button> */}
     </div>
         <div className="Divider"></div>
 

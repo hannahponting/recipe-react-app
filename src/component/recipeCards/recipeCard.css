@@ -55,18 +55,14 @@
     cursor: pointer;
 
   }
-/* 
-  .header {
-    position: relative;
-    z-index: -1;
-  } */
+
 
 .header-search-container {
     margin: 15px;
     display: flex;
     border-radius: 5px;
     padding: 5px;
-
+    position: relative
 
 }
 
@@ -79,6 +75,7 @@
     position: relative;
     display: flex;
     align-items: center;
+
   }
   
   /* Input field styling */
@@ -88,6 +85,8 @@
     border-radius: 5px;
     outline: none;
     width: 200px; /* Adjust the width as needed */
+
+
   }
   
   /* Search button styling */
@@ -131,7 +130,7 @@
     transition: transform 200ms ease-in;
     border-radius: 5%;
     background-color:  rgb(204, 204, 204, 0.80);
-    /* z-index: -1; */
+
 
 }
 
