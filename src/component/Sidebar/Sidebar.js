@@ -1,13 +1,12 @@
-import { Link, Navigate, Outlet, useNavigate } from "react-router-dom";
-import React, { useEffect, useRef } from "react";
+
+import React, {useRef } from "react";
 import { useState } from "react";
 import "./Sidebar.css";
-import { RecipeFilter } from "../FilterBar/RecipeFilter";
-import { Accordion, AccordionBody, AccordionHeader, Nav } from "react-bootstrap";
-import { InputGroup } from "react-bootstrap";
-import { GetUserByEmail } from "../../utils";
+
+import { Accordion, AccordionBody, AccordionHeader} from "react-bootstrap";
+
 import close from "../../Resources/delete-sign.png"
-import { IngredientFilter } from "../FilterBar/IngredientFilter";
+
 
 
 const Sidebar = (props) => {
@@ -92,7 +91,7 @@ const Sidebar = (props) => {
     console.log(filterType)
 
         
-        return ( props.filterType != 'ingredients' ? 
+        return ( props.filterType !== 'ingredients' ? 
                 
                 
                 

@@ -1,10 +1,5 @@
-import { Link, useNavigate } from "react-router-dom";
-import Navigation from '../NavBar/NavBar';
-
-
-import RecipeFilterApp from "../FilterBar/RecipeFilter";
-
-import React, { useEffect } from "react";
+import {useNavigate } from "react-router-dom";
+import React from "react";
 import { useState } from "react";
 import "./WelcomePage.css";
 import GetTopThreeRecipes from "./GetTopThreeRecipes";

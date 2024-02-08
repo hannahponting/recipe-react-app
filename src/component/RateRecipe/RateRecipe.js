@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useState } from "react";
 import "./RateRecipe.css"
 import { submitRating } from "../../utils";
 
@@ -24,11 +24,11 @@ const RateRecipe = (props) => {
   const getData = async () => {
     const response = await submitRating(requestBody);
     const body = response.json();
-      if (response.status == 201) {
+      if (response.status === 201) {
         props.fetchData();
         setMessage("Submitted Rating");
       }
-      if (response.status == 500) {
+      if (response.status === 500) {
         navigate('/login');
         setMessage(body.message);
       }

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 
 export function GetRecipes(){
     const initialState = {
@@ -211,7 +211,7 @@ export async function PostChangePassword(email, password, code){
         const body = await response.text();
         return body;
     }
-    if (response.status == 500) {
+    if (response.status === 500) {
         const body = await response.json();
         return body;
       }
@@ -230,9 +230,9 @@ export async function PostNewUser(email, firstName, lastName){
         headers: { 'content-type': 'application/json' },
         body: JSON.stringify(requestBody),
       });
-      if (response.status == '201') {
+      if (response.status === '201') {
         return '201';
-      } if(response.status == 500) {
+      } if(response.status === 500) {
         const body = await response.json();
         return body
       }
