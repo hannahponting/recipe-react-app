@@ -63,9 +63,7 @@ const Favourites = () => {
                                 {recipes.map((recipe) => (
                                     <Card
                                         key={recipe.id}
-                                        title={recipe.name}
-                                        description={"Delicious recipe from " + recipe.cuisine.toLowerCase() + " cuisine. It serves up to " + recipe.serving + " people!"}
-                                        id={recipe.id}
+                                        recipe={recipe}
                                     />
                                 ))}
                             </div>

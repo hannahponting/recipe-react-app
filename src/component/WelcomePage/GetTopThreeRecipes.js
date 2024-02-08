@@ -27,13 +27,7 @@ const GetTopThreeRecipes = () => {
                 {recipes.map((recipe) => (
                     <Card
                         key={recipe.id}
-                        title={recipe.name}
-                        // description={"Delicious recipe from " + recipe.cuisine.toLowerCase() + " cuisine. It serves up to " + recipe.serving + " people!"}
-                        id={recipe.id}
-                        style={recipe.style}
-                        time_to_cook={recipe.time_to_cook}
-                        serving={recipe.serving}
-                        cuisine={recipe.cuisine}
+                        recipe={recipe}
                     />
                     ))}
                 </div>

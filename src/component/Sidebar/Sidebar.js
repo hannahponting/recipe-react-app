@@ -108,8 +108,8 @@ const Sidebar = (props) => {
                         <div className="sidebar-top">
                         <h2>Filter recipes</h2>
 
-                            <button className="recipe-toggle" onClick={toggleFilterToDefault}>By Recipe Information</button>
-                            <button className="ingredients-toggle" onClick={()=> {toggleFilterToIngredients(); props.toggle();}}>By Ingredients</button>
+                            <button style={props.buttonStyleForDefault} className="recipe-toggle" onClick={toggleFilterToDefault}>By Recipe Information</button>
+                            <button className="ingredients-toggle" onClick={()=> { props.toggle();}}>By Ingredients</button>
                             <button className="sidebar-close-button" onClick={props.closeSidebar}><img className="sidebar-close-img" src={close}></img> </button>
                         </div>
                    
@@ -117,8 +117,9 @@ const Sidebar = (props) => {
 
                         <Accordion className="sidebar-accordion">
                     <AccordionHeader className="sidebar-accordion-header"><h2 className="subtitles-accordion">Spice Level</h2></AccordionHeader>
-                    <AccordionBody className="sidebar-accordion-body" >
-                        <h3 id="subtitles-accordion">Spice</h3>
+                    <AccordionBody id="sidebar-accordion-body" >
+                        <h3 id="subtitles-accordion">Choose Your Spice Level</h3>
+                <div id="input-container"> 
                     <label><input type='radio' name="spice_level" value="NONE" onChange={handleChange}></input>None</label>
                     <br></br>
                    <label><input type='radio' name="spice_level" value="MILD" onChange={handleChange}></input>Mild</label>
@@ -128,13 +129,15 @@ const Sidebar = (props) => {
                    <label><input type='radio' name="spice_level" value="SPICY" onChange={handleChange}></input>Spicey</label>
                    <br></br>
                    <label><input type='radio' name="spice_level" value="" onChange={handleChange}></input>Any</label>
+                   </div>
                         </AccordionBody>
                 </Accordion>
 
                 <Accordion className="sidebar-accordion">
                     <AccordionHeader className="accordion-header"><h2 className="subtitles-accordion">Difficulty</h2></AccordionHeader>
-                    <AccordionBody className="sidebar-accordion-body" >
-                    <h3 id="subtitles-accordion">Difficulty</h3>
+                    <AccordionBody id="sidebar-accordion-body" >
+                    <h3 id="subtitles-accordion">Choose Your Difficulty</h3>
+                    <div id="input-container">
                     <label><input type='radio' name="difficulty" value="EASY" onChange={handleChange}></input>Easy</label>
                     <br></br>
                     <label><input type='radio' name="difficulty" value="MODERATE" onChange={handleChange}></input>Moderate</label>
@@ -142,12 +145,14 @@ const Sidebar = (props) => {
                     <label><input type='radio' name="difficulty" value="H" onChange={handleChange}></input>High</label>
                     <br></br>
                     <label><input type='radio' name="difficulty" value="" onChange={handleChange}></input>Any</label>
+                    </div>
                         </AccordionBody>
                 </Accordion>
                 <Accordion className="sidebar-accordion">
                     <AccordionHeader className="sidebar-accordion-header"><h2 className="subtitles-accordion">Cost Level</h2></AccordionHeader>
-                    <AccordionBody className="sidebar-accordion-body" >
-                    <h3 id="subtitles-accordion">Cost</h3>
+                    <AccordionBody id="sidebar-accordion-body" >
+                    <h3 id="subtitles-accordion">Choose Your Meal Cost</h3>
+                    <div id="input-container">
                     <label><input type='radio' name="cost" value ="LOW" onChange={handleChange}></input>Low</label>
                     <br></br>
                     <label><input type='radio' name="cost" value ="MODERATE" onChange={handleChange}></input>Moderate</label>
@@ -155,71 +160,69 @@ const Sidebar = (props) => {
                     <label><input type='radio' name="cost" value ="PRICEY" onChange={handleChange}></input>Pricey</label>
                     <br></br>
                     <label><input type='radio' name="cost" value ="" onChange={handleChange}></input>Any</label>                      
+                    </div>
                      </AccordionBody>
                 </Accordion>
                 <Accordion className="sidebar-accordion">
                     <AccordionHeader className="sidebar-accordion-header"><h2 className="subtitles-accordion">Meal</h2></AccordionHeader>
-                    <AccordionBody className="sidebar-accordion-body" >
-                    <h3 id="subtitles-accordion">Meal</h3>
-                    <input type='radio' name="mealType" value="BREAKFAST" onChange={handleChange} /> Breakfast
+                    <AccordionBody id="sidebar-accordion-body" >
+                    <h3 id="subtitles-accordion">What Meal Would You Like?</h3>
+                    <div id="input-container">
+                   <label> <input type='radio' name="mealType" value="BREAKFAST" onChange={handleChange}></input> Breakfast</label>
                     <br></br>
-                <input type='radio' name="mealType" value="LUNCH" onChange={handleChange} /> Lunch
+                <label><input type='radio' name="mealType" value="LUNCH" onChange={handleChange}></input> Lunch </label>
                     <br></br>
-                <input type='radio' name="mealType" value="DINNER" onChange={handleChange} /> Dinner
+                <label>  <input type='radio' name="mealType" value="DINNER" onChange={handleChange}></input> Dinner </label>
                     <br></br>
-                <input type='radio' name="mealType" value="" onChange={handleChange} /> Any
+                <label> <input type='radio' name="mealType" value="" onChange={handleChange}></input> Any </label>
+                     </div>
                                        </AccordionBody>
                 </Accordion>
                 <Accordion className="sidebar-accordion">
                     <AccordionHeader className="sidebar-accordion-header"><h2 className="subtitles-accordion">Cuisine</h2></AccordionHeader>
-                    <AccordionBody className="sidebar-accordion-body" >
-                        <h3 id="subtitles-accordion">Cuisine</h3>
-                        <input type='radio' name="cuisineType" value="AMERICAN" onChange={handleChange} /> American
+                    <AccordionBody id="sidebar-accordion-body" >
+                        <h3 id="subtitles-accordion">Choose The Cuisine</h3>
+                        <div id="input-container">
+                <label><input type='radio' name="cuisineType" value="AMERICAN" onChange={handleChange}></input>American</label>
                 <br></br>
-                <input type='radio' name="cuisineType" value="ASIAN" onChange={handleChange} /> Asian
+                <label><input type='radio' name="cuisineType" value="ASIAN" onChange={handleChange}></input>Asian
+       </label>         <br></br>
+                <label><input type='radio' name="cuisineType" value="BRITISH" onChange={handleChange}></input>British
+     </label>           <br></br>
+                <label><input type='radio' name="cuisineType" value="FRENCH" onChange={handleChange}></input>French
+      </label>          <br></br>
+                <label><input type='radio' name="cuisineType" value="INDIAN" onChange={handleChange}></input>Indian
+      </label>          <br></br>
+                <label><input type='radio' name="cuisineType" value="INTERNATIONAL" onChange={handleChange}></input>International</label>
                 <br></br>
-                <input type='radio' name="cuisineType" value="BRITISH" onChange={handleChange} /> British
+                <label><input type='radio' name="cuisineType" value="ITALIAN" onChange={handleChange}></input>Italian
+     </label>           <br></br>
+                <label><input type='radio' name="cuisineType" value="MEDITERRANEAN" onChange={handleChange}></input>Mediterranean</label>
                 <br></br>
-                <input type='radio' name="cuisineType" value="FRENCH" onChange={handleChange} /> French
-                <br></br>
-                <input type='radio' name="cuisineType" value="INDIAN" onChange={handleChange} /> Indian
-                <br></br>
-                <input type='radio' name="cuisineType" value="INTERNATIONAL" onChange={handleChange} /> International
-                <br></br>
-                <input type='radio' name="cuisineType" value="ITALIAN" onChange={handleChange} /> Italian
-                <br></br>
-                <input type='radio' name="cuisineType" value="MEDITERRANEAN" onChange={handleChange} /> Mediterranean
-                <br></br>
-                <input type='radio' name="cuisineType" value="MEXICAN" onChange={handleChange} /> Mexican
-                <br></br>
-                <input type='radio' name="cuisineType" value="SPANISH" onChange={handleChange} /> Spanish
-                <br></br>
-                <input type='radio' name="cuisineType" value="" onChange={handleChange} /> Any
+                <label><input type='radio' name="cuisineType" value="MEXICAN" onChange={handleChange}></input>Mexican
+     </label>           <br></br>
+                <label><input type='radio' name="cuisineType" value="SPANISH" onChange={handleChange}></input>Spanish
+     </label>           <br></br>
+                <label><input type='radio' name="cuisineType" value="" onChange={handleChange}></input>Any
+         </label>       </div>
                         </AccordionBody>
                 </Accordion>
                 <Accordion className="sidebar-accordion">
                     <AccordionHeader className="sidebar-accordion-header"><h2 className="subtitles-accordion">Minimum Servings</h2></AccordionHeader>
-                    <AccordionBody className="sidebar-accordion-body" >
-                        <h3 id="subtitles-accordion">Minimum Servings</h3>
+                    <AccordionBody id="sidebar-accordion-body" >
+                        <h3 id="subtitles-accordion">Enter Your Desired Minimum Servings</h3>
                         <input type='number' name="servingNo" value={filterValues.servingNo} onChange={handleChange} />
-
                         </AccordionBody>
                 </Accordion>
                 <Accordion className="sidebar-accordion">
                     <AccordionHeader className="sidebar-accordion-header"><h2 className="subtitles-accordion">Minutes to Prepare</h2></AccordionHeader>
-                    <AccordionBody className="sidebar-accordion-body" >
-                        <h3 id="subtitles-accordion">Minutes to Prepare</h3>
+                    <AccordionBody id="sidebar-accordion-body" >
+                        <h3 id="subtitles-accordion">Enter Maximum Minutes to Prepare Meal</h3>
                         <input type='number' name="cookingMinutes" value={filterValues.cookingMinutes} onChange={handleChange} />
-
                         </AccordionBody>
                 </Accordion>
-                <Accordion className="sidebar-accordion">
-                    <AccordionHeader className="sidebar-accordion-header"><h2 className="subtitles-accordion">Filter #</h2></AccordionHeader>
-                    <AccordionBody className="sidebar-accordion-body" >
-                        <h3 id="subtitles-accordion">Rate this recipe</h3>
-                        </AccordionBody>
-                </Accordion>
-            
+               
+        
                 </nav>
                 
 
@@ -240,7 +243,7 @@ const Sidebar = (props) => {
         <div>
 
 
-                <form className="ingredients-sidebar"
+                <form className="sidebar"
                 onSubmit={handleSubmit}
                 onMouseEnter={props.handleMouseEnter}
                 onMouseLeave={props.handleMouseLeave}
@@ -249,33 +252,40 @@ const Sidebar = (props) => {
                 >
                 <div className="sidebar-top">
                         <h2>Filter recipes</h2>
-                        <button className="recipe-toggle" onClick={()=> {toggleFilterToDefault(); props.toggle();}}>By Recipe Information</button>
-                            <button className="ingredients-toggle"  onClick={toggleFilterToIngredients}>By Ingredients</button>
+                        <button  className="recipe-toggle" onClick={()=> { props.toggle();}}>By Recipe Information</button>
+                            <button style={props.butttonStyleForIngredients} className="ingredients-toggle"  onClick={toggleFilterToIngredients}>By Ingredients</button>
                             <button className="sidebar-close-button" onClick={props.closeSidebar}><img className="sidebar-close-img" src={close}></img> </button>
                         </div>
                     <nav> 
                     {filters.map((filter, index) => (
-                        <div key={index} className="filter-row">
-                            <label htmlFor={`filter-${index}`}>Ingredient:</label>
+                        <div key={index} className="filter-rows">
+                            <label className="ingredient-label" htmlFor={`filter-${index}`}>Ingredient {index + 1}: </label>
                             <input
+                                className="ingredient-input"
                                 type="text"
                                 id={`filter-${index}`}
                                 value={filter}
                                 onChange={(e) =>handleInputChange(index, e.target.value)}
                             />
+                            
                             {index > 0 && (
-                                <button type="button" onClick={() => handleRemoveFilter(index)}>
+                                <> 
+                                <button className="remove-ingredients" type="button" onClick={() => handleRemoveFilter(index)}>
                                     Remove
                                 </button>
+                                 
+                             </>
                             )}
                         </div>
                     ))}
-                    <button type="button" onClick={handleAddFilter}>
+                    <div className="add-ingredients-container"> 
+                    <button className="add-ingredients" type="button" onClick={handleAddFilter}>
                         Add ingredient
                     </button>
-                    <button className='filterButton' id="apply-filters" type="button" onClick={()=>{ setFilterType("default"); handleApplyFilters(); props.closeSidebar();}}>
+                    <button  className='apply-filter-button' id="apply-filters" type="button" onClick={()=>{ setFilterType("default"); handleApplyFilters(); props.closeSidebar();}}>
                         Apply Filters
                     </button>
+                    </div>
                     </nav>
                 </form>
 
