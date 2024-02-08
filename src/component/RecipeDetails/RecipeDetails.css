@@ -17,7 +17,7 @@
 
 .recipe-title-container {
     color: black;
-    height:120px;
+    height:fit-content;
     display: flex;
     align-items: center;
     padding: 30px;
@@ -25,13 +25,13 @@
     font-family: NewsReader;
     font-weight: 400;
     line-height: 120%;
-    word-wrap: "break-word";
+    word-wrap: normal;
     justify-content: space-between;
 
 }
 
 #recipe-title {
-    display: flex;
+    word-wrap: normal;
     padding: 5px;
     align-items: center;
 }
@@ -70,7 +70,6 @@
     background-color: rgba(7, 104, 159, 0.25);
     background: linear-gradient(90deg,rgba(7, 104, 159, 0.25) 50%, rgba(7, 104, 159, 0.35) 100%);
     box-shadow: 0px 1px 5px ;
-
     display: block;
     width: 400px;
     margin-top: 30px;
@@ -78,12 +77,20 @@
     padding-bottom: 25px;
     margin-bottom: 40px;
     border-radius: 3%;
-    /* border: solid black; */
 
 }
 
 .details li {
+    display: flex;
+    width: 330px;
+    margin: auto;
+    height: fit-content;
     list-style-type: none;
+}
+
+.details li strong {
+    width: fit-content;
+  margin-right: 10px;
 }
 
 .timer-listitem {
@@ -99,13 +106,14 @@
 }
 /* 
 .boxes{
-    margin-top: 1%;
+    margin-top: 4%;
 
 } */
 
 .recipe-details{
     padding: 40px;
     max-width: 1440px;
+    min-width: fit-content;
     margin: auto;
     text-align: left;
     font-family: 'Inter', sans-serif;
@@ -118,8 +126,20 @@
 
 }
 
+.details_image-container{
+    margin-left: auto;
+    margin: 10px;
+    width: fit-content;
+    height: fit-content;
+    float:right;
+    border-radius: 5%;
+
+
+}
+
 .details_image{
-    width: auto;
+    margin: 10px;
+    width: fit-content;
     height: 600px;
     float:right;
     border-radius: 5%;
@@ -129,14 +149,28 @@
 
 .recipe-ingredients{
     display: block;
-    margin:15px;
     margin-bottom: 40px;
+}
+
+.recipe-ingredients > li {
+    color: black;
+    margin:0px;
+    margin-bottom: 5px;
+    list-style-type:initial
+
 }
 
 
 .recipe-instructions{
     display: block;
     margin:15px;
+}
+
+.recipe-instructions > li {
+    color: black;
+    margin:0px;
+    margin-bottom: 5px;
+    list-style-type:nu
 }
 
 .details-accordion {
